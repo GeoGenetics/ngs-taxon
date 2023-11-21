@@ -1,0 +1,60 @@
+from snakemake.utils import min_version
+min_version("7.25.0")
+
+# Define wrapper versions
+wrapper_ver = "v2.13.0"
+
+
+
+include: "rules/utils.smk"
+include: "rules/setup.smk"
+include: "rules/map.smk"
+include: "rules/mark_duplicates.smk"
+include: "rules/bam_filter.smk"
+include: "rules/merge_alns.smk"
+include: "rules/metadmg.smk"
+
+
+
+###########################
+### Taxonomy assignment ###
+###########################
+
+rule multiqc:
+    input:
+        ### Bowtie2
+        expand_pandas(expand_pandas(rules.bowtie2.log, bowtie_sets, allow_missing=True), units),
+        ### MarkDuplicates
+        expand_pandas(expand_pandas(get_rule_stats(config["align"]["mark_duplicates"]["tool"]), bowtie_sets, allow_missing=True), units) if is_activated("align/mark_duplicates") else [],
+        ### Samtools Stats
+        expand_pandas(expand_pandas(rules.samtools_stats.output.txt, bowtie_sets, allow_missing=True), units),
+        ### metaDMG LCA Stats
+#        expand_pandas(expand_pandas(rules.metadmg_lca.output.lca, bowtie_sets, allow_missing=True), units),
+#        expand_pandas(expand_pandas(rules.metadmg_lca.output.stats, bowtie_sets, allow_missing=True), units),
+        ### metaDMG dfit Stats
+        expand_pandas(expand_pandas(rules.metadmg_dfit.output.dfit, bowtie_sets, allow_missing=True), units),
+#        expand_pandas(expand_pandas(rules.metadmg_dfit.output.stats_dfit, bowtie_sets, allow_missing=True), units),
+#        expand_pandas(expand_pandas(rules.metadmg_dfit.output.stats_boot, bowtie_sets, allow_missing=True), units),
+    output:
+        html = "reports/multiqc.html",
+        data = "reports/multiqc_data.zip",
+    log:
+        "logs/reports/multiqc.log"
+    benchmark:
+        "benchmarks/reports/multiqc.log"
+    localrule: True
+    threads: 1
+    resources:
+        mem = lambda w, attempt: f"{10 * attempt} GiB",
+        runtime = lambda w, attempt: f"{30 * attempt} m",
+    wrapper:
+        wrapper_ver + "/bio/multiqc"
+
+rule all:
+    input:
+        qc = rules.multiqc.output.html,
+        res = [expand_pandas(expand(rules.metadmg_damage.output.stats, read_type_map="collapsed", allow_missing=True), units),
+               expand_pandas(expand(rules.metadmg_aggregate.output.stats, read_type_map="collapsed", allow_missing=True), units)],
+    message:
+        "Read mapping finished successfully!"
+    default_target: True

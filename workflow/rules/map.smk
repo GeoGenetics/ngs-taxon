@@ -87,7 +87,7 @@ rule bowtie2:
 #    priority: lambda w, input: int(input.size_mb)
     threads: 20
     resources:
-        mem = lambda w, attempt, input: f"{(get_input_size_mb(input.idx) * 0.9 + 105000) * attempt} MiB",
+        mem = lambda w, attempt, input: f"{(sum(f.size for f in input.idx) / 1024**2 * 0.9 + 105000) * attempt} MB",
         runtime = lambda w, attempt: f"{3 * attempt} d",
     wrapper:
         wrapper_ver + "/bio/bowtie2/align"
@@ -104,7 +104,7 @@ rule clean_header:
         "benchmarks/align/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
     threads: 4
     resources:
-        mem = lambda w, attempt: f"{50 * attempt} GiB",
+        mem = lambda w, attempt: f"{50 * attempt} GB",
         runtime = lambda w, attempt: f"{1 * attempt} d",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/misc/compressbam --threads {threads} --input {input.bam} --output {output.bam} >{log} 2>&1"

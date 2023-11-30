@@ -16,7 +16,7 @@ rule sort_coord:
         "benchmarks/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
     threads: 4
     resources:
-        mem = lambda w, attempt: f"{150 * attempt} GiB",
+        mem = lambda w, attempt: f"{150 * attempt} GB",
         runtime = lambda w, attempt: f"{4 * attempt} d",
     wrapper:
         wrapper_ver + "/bio/samtools/sort"
@@ -56,7 +56,7 @@ rule bam_filter:
         base_dir / "envs" / "bam_filter.yaml"
     threads: 12
     resources:
-        mem_mb = lambda w, attempt, input, threads: get_input_size_mb(input, factor=threads*1.2, min=50*1024) * attempt,
+        mem_mb = lambda w, attempt, input, threads: max(input.size_mb * 1.2 * threads, 50 * 1024) * attempt,
         runtime = lambda w, attempt: f"{1 * attempt} d",
     shell:
         "filterBAM --threads {threads} --sort-memory $(({resources.mem_mb}/{threads}))M --low-memory --disable-sort --bam {input.aln} --bam-index {input.idx} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} --knee-plot {output.knee} >{log} 2>&1"
@@ -78,7 +78,7 @@ rule calmd:
         extra = check_cmd(config["align"]["calmd"]["params"], forbidden_args = ["--threads", "-@", "-b"]),
     threads: 5
     resources:
-        mem = lambda w, attempt: f"{10 * attempt} GiB",
+        mem = lambda w, attempt: f"{10 * attempt} GB",
         runtime = lambda w, attempt: f"{12 * attempt} h",
     wrapper:
         wrapper_ver + "/bio/samtools/calmd"

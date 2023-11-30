@@ -22,7 +22,7 @@ rule merge_alns:
         extra = "-n",
     threads: 3
     resources:
-        mem = lambda w, attempt: f"{50 * attempt} GiB",
+        mem = lambda w, attempt: f"{50 * attempt} GB",
         runtime = lambda w, attempt: f"{1 * attempt} d",
         tmpdir = get_tmp(),
     wrapper:
@@ -44,7 +44,7 @@ rule samtools_stats:
         "benchmarks/align/samtools_stats/{sample}_{library}_{read_type_map}.log",
     threads: 4
     resources:
-        mem = lambda w, attempt: f"{50 * attempt} GiB",
+        mem = lambda w, attempt: f"{50 * attempt} GB",
         runtime = lambda w, attempt: f"{10 * attempt} h",
     wrapper:
         wrapper_ver + "/bio/samtools/stats"

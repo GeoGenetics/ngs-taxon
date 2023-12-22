@@ -2,7 +2,7 @@ from snakemake.utils import min_version
 min_version("7.25.0")
 
 # Define wrapper versions
-wrapper_ver = "v3.0.2"
+wrapper_ver = "v3.3.2"
 
 
 
@@ -28,13 +28,10 @@ rule multiqc:
         expand_pandas(expand_pandas(get_rule_stats(config["align"]["mark_duplicates"]["tool"]), bowtie_sets, allow_missing=True), units) if is_activated("align/mark_duplicates") else [],
         ### Samtools Stats
         expand_pandas(expand_pandas(rules.samtools_stats.output.txt, bowtie_sets, allow_missing=True), units),
-        ### metaDMG LCA Stats
-#        expand_pandas(expand_pandas(rules.metadmg_lca.output.lca, bowtie_sets, allow_missing=True), units),
-#        expand_pandas(expand_pandas(rules.metadmg_lca.output.stats, bowtie_sets, allow_missing=True), units),
-        ### metaDMG dfit Stats
+        ### metaDMG dfit
         expand_pandas(expand_pandas(rules.metadmg_dfit.output.dfit, bowtie_sets, allow_missing=True), units),
-#        expand_pandas(expand_pandas(rules.metadmg_dfit.output.stats_dfit, bowtie_sets, allow_missing=True), units),
-#        expand_pandas(expand_pandas(rules.metadmg_dfit.output.stats_boot, bowtie_sets, allow_missing=True), units),
+        ### metaDMG LCA Aggregated Stats
+        expand_pandas(expand_pandas(rules.metadmg_aggregate.output.stats, bowtie_sets, allow_missing=True), units),
     output:
         html = "reports/multiqc.html",
         data = "reports/multiqc_data.zip",

@@ -12,1232 +12,1232 @@
 <!-- 0 -->
 <g id="node1" class="node">
 <title>0</title>
-<path fill="none" stroke="#70d856" stroke-width="2" d="M1347.5,-36C1347.5,-36 1317.5,-36 1317.5,-36 1311.5,-36 1305.5,-30 1305.5,-24 1305.5,-24 1305.5,-12 1305.5,-12 1305.5,-6 1311.5,0 1317.5,0 1317.5,0 1347.5,0 1347.5,0 1353.5,0 1359.5,-6 1359.5,-12 1359.5,-12 1359.5,-24 1359.5,-24 1359.5,-30 1353.5,-36 1347.5,-36"/>
-<text text-anchor="middle" x="1332.5" y="-15.5" font-family="sans" font-size="10.00" fill="#000000">all</text>
+<path fill="none" stroke="#5673d8" stroke-width="2" d="M1350.5,-36C1350.5,-36 1320.5,-36 1320.5,-36 1314.5,-36 1308.5,-30 1308.5,-24 1308.5,-24 1308.5,-12 1308.5,-12 1308.5,-6 1314.5,0 1320.5,0 1320.5,0 1350.5,0 1350.5,0 1356.5,0 1362.5,-6 1362.5,-12 1362.5,-12 1362.5,-24 1362.5,-24 1362.5,-30 1356.5,-36 1350.5,-36"/>
+<text text-anchor="middle" x="1335.5" y="-15.5" font-family="sans" font-size="10.00" fill="#000000">all</text>
 </g>
 <!-- 1 -->
 <g id="node2" class="node">
 <title>1</title>
-<path fill="none" stroke="#d85656" stroke-width="2" d="M1347.5,-108C1347.5,-108 1317.5,-108 1317.5,-108 1311.5,-108 1305.5,-102 1305.5,-96 1305.5,-96 1305.5,-84 1305.5,-84 1305.5,-78 1311.5,-72 1317.5,-72 1317.5,-72 1347.5,-72 1347.5,-72 1353.5,-72 1359.5,-78 1359.5,-84 1359.5,-84 1359.5,-96 1359.5,-96 1359.5,-102 1353.5,-108 1347.5,-108"/>
-<text text-anchor="middle" x="1332.5" y="-87.5" font-family="sans" font-size="10.00" fill="#000000">multiqc</text>
+<path fill="none" stroke="#d8ac56" stroke-width="2" d="M1350.5,-108C1350.5,-108 1320.5,-108 1320.5,-108 1314.5,-108 1308.5,-102 1308.5,-96 1308.5,-96 1308.5,-84 1308.5,-84 1308.5,-78 1314.5,-72 1320.5,-72 1320.5,-72 1350.5,-72 1350.5,-72 1356.5,-72 1362.5,-78 1362.5,-84 1362.5,-84 1362.5,-96 1362.5,-96 1362.5,-102 1356.5,-108 1350.5,-108"/>
+<text text-anchor="middle" x="1335.5" y="-87.5" font-family="sans" font-size="10.00" fill="#000000">multiqc</text>
 </g>
 <!-- 1&#45;&gt;0 -->
 <g id="edge1" class="edge">
 <title>1&#45;&gt;0</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1332.5,-71.8314C1332.5,-64.131 1332.5,-54.9743 1332.5,-46.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1336.0001,-46.4132 1332.5,-36.4133 1329.0001,-46.4133 1336.0001,-46.4132"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1335.5,-71.8314C1335.5,-64.131 1335.5,-54.9743 1335.5,-46.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1339.0001,-46.4132 1335.5,-36.4133 1332.0001,-46.4133 1339.0001,-46.4132"/>
 </g>
 <!-- 2 -->
 <g id="node3" class="node">
 <title>2</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M1853,-877C1853,-877 1626,-877 1626,-877 1620,-877 1614,-871 1614,-865 1614,-865 1614,-804 1614,-804 1614,-798 1620,-792 1626,-792 1626,-792 1853,-792 1853,-792 1859,-792 1865,-798 1865,-804 1865,-804 1865,-865 1865,-865 1865,-871 1859,-877 1853,-877"/>
-<text text-anchor="middle" x="1739.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="1739.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056737&#45;TATGACAATCxATACAAGCAA</text>
-<text text-anchor="middle" x="1739.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 2</text>
-<text text-anchor="middle" x="1739.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="1739.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_invertebrate</text>
-<text text-anchor="middle" x="1739.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007859&#45;QSB1</text>
-<text text-anchor="middle" x="1739.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 3</text>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M1046,-877C1046,-877 819,-877 819,-877 813,-877 807,-871 807,-865 807,-865 807,-804 807,-804 807,-798 813,-792 819,-792 819,-792 1046,-792 1046,-792 1052,-792 1058,-798 1058,-804 1058,-804 1058,-865 1058,-865 1058,-871 1052,-877 1046,-877"/>
+<text text-anchor="middle" x="932.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="932.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056737&#45;TATGACAATCxATACAAGCAA</text>
+<text text-anchor="middle" x="932.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 1</text>
+<text text-anchor="middle" x="932.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="932.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: polar</text>
+<text text-anchor="middle" x="932.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007859&#45;QSB1</text>
+<text text-anchor="middle" x="932.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 1</text>
 </g>
 <!-- 2&#45;&gt;1 -->
-<g id="edge8" class="edge">
+<g id="edge6" class="edge">
 <title>2&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1613.7368,-793.6788C1571.5577,-778.9271 1533.3787,-763.9565 1526.5,-756 1499.7629,-725.0737 1507.5,-706.8816 1507.5,-666 1507.5,-666 1507.5,-666 1507.5,-234 1507.5,-163.0307 1420.6218,-120.5815 1369.2924,-101.695"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1370.4385,-98.3879 1359.8438,-98.3356 1368.0934,-104.9834 1370.4385,-98.3879"/>
-</g>
-<!-- 35 -->
-<g id="node36" class="node">
-<title>35</title>
-<path fill="none" stroke="#56d8c9" stroke-width="2" d="M1597.5,-756C1597.5,-756 1547.5,-756 1547.5,-756 1541.5,-756 1535.5,-750 1535.5,-744 1535.5,-744 1535.5,-732 1535.5,-732 1535.5,-726 1541.5,-720 1547.5,-720 1547.5,-720 1597.5,-720 1597.5,-720 1603.5,-720 1609.5,-726 1609.5,-732 1609.5,-732 1609.5,-744 1609.5,-744 1609.5,-750 1603.5,-756 1597.5,-756"/>
-<text text-anchor="middle" x="1572.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
-</g>
-<!-- 2&#45;&gt;35 -->
-<g id="edge55" class="edge">
-<title>2&#45;&gt;35</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1665.7652,-791.8928C1647.6509,-781.4255 1628.915,-770.5991 1613.0307,-761.4205"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1614.4436,-758.1946 1604.0341,-756.2218 1610.9414,-764.2555 1614.4436,-758.1946"/>
-</g>
-<!-- 3 -->
-<g id="node4" class="node">
-<title>3</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M1315,-877C1315,-877 1088,-877 1088,-877 1082,-877 1076,-871 1076,-865 1076,-865 1076,-804 1076,-804 1076,-798 1082,-792 1088,-792 1088,-792 1315,-792 1315,-792 1321,-792 1327,-798 1327,-804 1327,-804 1327,-865 1327,-865 1327,-871 1321,-877 1315,-877"/>
-<text text-anchor="middle" x="1201.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="1201.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056754&#45;AGCCTATGATxGTAGGTGGTG</text>
-<text text-anchor="middle" x="1201.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 1</text>
-<text text-anchor="middle" x="1201.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="1201.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_mitochondrion</text>
-<text text-anchor="middle" x="1201.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007861&#45;QSB1</text>
-<text text-anchor="middle" x="1201.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 1</text>
-</g>
-<!-- 3&#45;&gt;1 -->
-<g id="edge9" class="edge">
-<title>3&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1250.299,-791.6792C1280.4807,-760.3059 1313.5,-714.8255 1313.5,-666 1313.5,-666 1313.5,-666 1313.5,-234 1313.5,-193.5282 1320.968,-147.2037 1326.54,-118.2725"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1330.0483,-118.5746 1328.5632,-108.0844 1323.1823,-117.2111 1330.0483,-118.5746"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1058.1652,-794.2129C1101.9152,-779.1987 1142.0326,-763.895 1149.5,-756 1178.1967,-725.6603 1176.5,-707.7612 1176.5,-666 1176.5,-666 1176.5,-666 1176.5,-594 1176.5,-553.1184 1184.3775,-543.3395 1195.5,-504 1211.6782,-446.7788 1240.5,-437.4643 1240.5,-378 1240.5,-378 1240.5,-378 1240.5,-234 1240.5,-186.0912 1277.5913,-141.8312 1305.421,-115.3654"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1308.0108,-117.7382 1312.9863,-108.3843 1303.2636,-112.5938 1308.0108,-117.7382"/>
 </g>
 <!-- 43 -->
 <g id="node44" class="node">
 <title>43</title>
-<path fill="none" stroke="#56d8c9" stroke-width="2" d="M1256.5,-756C1256.5,-756 1206.5,-756 1206.5,-756 1200.5,-756 1194.5,-750 1194.5,-744 1194.5,-744 1194.5,-732 1194.5,-732 1194.5,-726 1200.5,-720 1206.5,-720 1206.5,-720 1256.5,-720 1256.5,-720 1262.5,-720 1268.5,-726 1268.5,-732 1268.5,-732 1268.5,-744 1268.5,-744 1268.5,-750 1262.5,-756 1256.5,-756"/>
-<text text-anchor="middle" x="1231.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
+<path fill="none" stroke="#56d8c9" stroke-width="2" d="M1128.5,-756C1128.5,-756 1078.5,-756 1078.5,-756 1072.5,-756 1066.5,-750 1066.5,-744 1066.5,-744 1066.5,-732 1066.5,-732 1066.5,-726 1072.5,-720 1078.5,-720 1078.5,-720 1128.5,-720 1128.5,-720 1134.5,-720 1140.5,-726 1140.5,-732 1140.5,-732 1140.5,-744 1140.5,-744 1140.5,-750 1134.5,-756 1128.5,-756"/>
+<text text-anchor="middle" x="1103.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
 </g>
-<!-- 3&#45;&gt;43 -->
+<!-- 2&#45;&gt;43 -->
 <g id="edge63" class="edge">
-<title>3&#45;&gt;43</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1214.7458,-791.8928C1217.4828,-783.0886 1220.2989,-774.0302 1222.8227,-765.9121"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1226.2087,-766.81 1225.8352,-756.2218 1219.5242,-764.7319 1226.2087,-766.81"/>
+<title>2&#45;&gt;43</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1008.0009,-791.8928C1026.7224,-781.3277 1046.0924,-770.3967 1062.4537,-761.1635"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1064.2218,-764.1847 1071.2106,-756.2218 1060.7815,-758.0884 1064.2218,-764.1847"/>
 </g>
-<!-- 4 -->
-<g id="node5" class="node">
-<title>4</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M777,-877C777,-877 550,-877 550,-877 544,-877 538,-871 538,-865 538,-865 538,-804 538,-804 538,-798 544,-792 550,-792 550,-792 777,-792 777,-792 783,-792 789,-798 789,-804 789,-804 789,-865 789,-865 789,-871 783,-877 777,-877"/>
-<text text-anchor="middle" x="663.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="663.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056754&#45;AGCCTATGATxGTAGGTGGTG</text>
-<text text-anchor="middle" x="663.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 3</text>
-<text text-anchor="middle" x="663.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="663.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_invertebrate</text>
-<text text-anchor="middle" x="663.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007861&#45;QSB1</text>
-<text text-anchor="middle" x="663.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 3</text>
+<!-- 3 -->
+<g id="node4" class="node">
+<title>3</title>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M2660,-877C2660,-877 2433,-877 2433,-877 2427,-877 2421,-871 2421,-865 2421,-865 2421,-804 2421,-804 2421,-798 2427,-792 2433,-792 2433,-792 2660,-792 2660,-792 2666,-792 2672,-798 2672,-804 2672,-804 2672,-865 2672,-865 2672,-871 2666,-877 2660,-877"/>
+<text text-anchor="middle" x="2546.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="2546.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056754&#45;AGCCTATGATxGTAGGTGGTG</text>
+<text text-anchor="middle" x="2546.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 1</text>
+<text text-anchor="middle" x="2546.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="2546.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_mitochondrion</text>
+<text text-anchor="middle" x="2546.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007861&#45;QSB1</text>
+<text text-anchor="middle" x="2546.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 1</text>
 </g>
-<!-- 4&#45;&gt;1 -->
-<g id="edge10" class="edge">
-<title>4&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M789.1082,-794.3867C792.2644,-793.5627 795.3988,-792.7654 798.5,-792 885.7614,-770.4624 930.1696,-815.5403 997.5,-756 1028.8812,-728.2496 1025.5,-707.8911 1025.5,-666 1025.5,-666 1025.5,-666 1025.5,-594 1025.5,-496.9522 1057.5,-475.0478 1057.5,-378 1057.5,-378 1057.5,-378 1057.5,-234 1057.5,-187.3524 1073.9457,-171.6708 1111.5,-144 1140.4761,-122.6498 1240.2067,-104.3298 1295.2611,-95.5465"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1295.9813,-98.9764 1305.3181,-93.9689 1294.8964,-92.061 1295.9813,-98.9764"/>
-</g>
-<!-- 15 -->
-<g id="node16" class="node">
-<title>15</title>
-<path fill="none" stroke="#56d8c9" stroke-width="2" d="M976.5,-756C976.5,-756 926.5,-756 926.5,-756 920.5,-756 914.5,-750 914.5,-744 914.5,-744 914.5,-732 914.5,-732 914.5,-726 920.5,-720 926.5,-720 926.5,-720 976.5,-720 976.5,-720 982.5,-720 988.5,-726 988.5,-732 988.5,-732 988.5,-744 988.5,-744 988.5,-750 982.5,-756 976.5,-756"/>
-<text text-anchor="middle" x="951.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
-</g>
-<!-- 4&#45;&gt;15 -->
-<g id="edge35" class="edge">
-<title>4&#45;&gt;15</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M789.1349,-793.0243C824.8313,-781.1547 863.7223,-768.1421 899.5,-756 901.1482,-755.4406 902.8251,-754.8697 904.5184,-754.2918"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="905.9839,-757.4894 914.3083,-750.9354 903.7136,-750.8677 905.9839,-757.4894"/>
-</g>
-<!-- 5 -->
-<g id="node6" class="node">
-<title>5</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M1046,-877C1046,-877 819,-877 819,-877 813,-877 807,-871 807,-865 807,-865 807,-804 807,-804 807,-798 813,-792 819,-792 819,-792 1046,-792 1046,-792 1052,-792 1058,-798 1058,-804 1058,-804 1058,-865 1058,-865 1058,-871 1052,-877 1046,-877"/>
-<text text-anchor="middle" x="932.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="932.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056754&#45;AGCCTATGATxGTAGGTGGTG</text>
-<text text-anchor="middle" x="932.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 1</text>
-<text text-anchor="middle" x="932.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="932.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: polar</text>
-<text text-anchor="middle" x="932.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007861&#45;QSB1</text>
-<text text-anchor="middle" x="932.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 1</text>
-</g>
-<!-- 5&#45;&gt;1 -->
-<g id="edge11" class="edge">
-<title>5&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1056.3213,-791.9841C1095.6176,-777.5381 1130.7215,-763.2274 1137.5,-756 1166.1573,-725.4448 1165.5,-707.8911 1165.5,-666 1165.5,-666 1165.5,-666 1165.5,-522 1165.5,-423.6582 1213.5,-404.3418 1213.5,-306 1213.5,-306 1213.5,-306 1213.5,-234 1213.5,-181.0804 1261.8457,-137.1193 1296.9069,-112.1961"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1299.2492,-114.8325 1305.4971,-106.276 1295.2769,-109.0687 1299.2492,-114.8325"/>
+<!-- 3&#45;&gt;1 -->
+<g id="edge7" class="edge">
+<title>3&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2468.3419,-791.6809C2426.509,-762.5186 2383.5,-719.5219 2383.5,-666 2383.5,-666 2383.5,-666 2383.5,-234 2383.5,-129.7906 1559.7144,-97.1729 1372.8756,-91.1151"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1372.8316,-87.612 1362.7252,-90.792 1372.6088,-94.6085 1372.8316,-87.612"/>
 </g>
 <!-- 39 -->
 <g id="node40" class="node">
 <title>39</title>
-<path fill="none" stroke="#56d8c9" stroke-width="2" d="M1116.5,-756C1116.5,-756 1066.5,-756 1066.5,-756 1060.5,-756 1054.5,-750 1054.5,-744 1054.5,-744 1054.5,-732 1054.5,-732 1054.5,-726 1060.5,-720 1066.5,-720 1066.5,-720 1116.5,-720 1116.5,-720 1122.5,-720 1128.5,-726 1128.5,-732 1128.5,-732 1128.5,-744 1128.5,-744 1128.5,-750 1122.5,-756 1116.5,-756"/>
-<text text-anchor="middle" x="1091.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
+<path fill="none" stroke="#56d8c9" stroke-width="2" d="M2290.5,-756C2290.5,-756 2240.5,-756 2240.5,-756 2234.5,-756 2228.5,-750 2228.5,-744 2228.5,-744 2228.5,-732 2228.5,-732 2228.5,-726 2234.5,-720 2240.5,-720 2240.5,-720 2290.5,-720 2290.5,-720 2296.5,-720 2302.5,-726 2302.5,-732 2302.5,-732 2302.5,-744 2302.5,-744 2302.5,-750 2296.5,-756 2290.5,-756"/>
+<text text-anchor="middle" x="2265.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
 </g>
-<!-- 5&#45;&gt;39 -->
+<!-- 3&#45;&gt;39 -->
 <g id="edge59" class="edge">
-<title>5&#45;&gt;39</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1002.7025,-791.8928C1019.9491,-781.4255 1037.7875,-770.5991 1052.9109,-761.4205"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1054.7437,-764.4023 1061.4765,-756.2218 1051.1118,-758.4182 1054.7437,-764.4023"/>
+<title>3&#45;&gt;39</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2422.4313,-791.8928C2383.4644,-778.5109 2342.788,-764.542 2312.6138,-754.1796"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="2313.3957,-750.7476 2302.801,-750.8098 2311.1221,-757.3681 2313.3957,-750.7476"/>
 </g>
-<!-- 6 -->
-<g id="node7" class="node">
-<title>6</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M1584,-877C1584,-877 1357,-877 1357,-877 1351,-877 1345,-871 1345,-865 1345,-865 1345,-804 1345,-804 1345,-798 1351,-792 1357,-792 1357,-792 1584,-792 1584,-792 1590,-792 1596,-798 1596,-804 1596,-804 1596,-865 1596,-865 1596,-871 1590,-877 1584,-877"/>
-<text text-anchor="middle" x="1470.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="1470.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056737&#45;TATGACAATCxATACAAGCAA</text>
-<text text-anchor="middle" x="1470.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 1</text>
-<text text-anchor="middle" x="1470.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="1470.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_mitochondrion</text>
-<text text-anchor="middle" x="1470.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007859&#45;QSB1</text>
-<text text-anchor="middle" x="1470.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 1</text>
+<!-- 4 -->
+<g id="node5" class="node">
+<title>4</title>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M239,-877C239,-877 12,-877 12,-877 6,-877 0,-871 0,-865 0,-865 0,-804 0,-804 0,-798 6,-792 12,-792 12,-792 239,-792 239,-792 245,-792 251,-798 251,-804 251,-804 251,-865 251,-865 251,-871 245,-877 239,-877"/>
+<text text-anchor="middle" x="125.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="125.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056737&#45;TATGACAATCxATACAAGCAA</text>
+<text text-anchor="middle" x="125.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 3</text>
+<text text-anchor="middle" x="125.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="125.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_invertebrate</text>
+<text text-anchor="middle" x="125.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007859&#45;QSB1</text>
+<text text-anchor="middle" x="125.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 3</text>
 </g>
-<!-- 6&#45;&gt;1 -->
-<g id="edge12" class="edge">
-<title>6&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1418.3049,-791.9415C1386.3311,-760.8521 1351.5,-715.6014 1351.5,-666 1351.5,-666 1351.5,-666 1351.5,-234 1351.5,-193.5282 1344.032,-147.2037 1338.46,-118.2725"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1341.8177,-117.2111 1336.4368,-108.0844 1334.9517,-118.5746 1341.8177,-117.2111"/>
+<!-- 4&#45;&gt;1 -->
+<g id="edge8" class="edge">
+<title>4&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M250.4524,-791.9436C377.7249,-747.6801 556.5,-682.5579 556.5,-666 556.5,-666 556.5,-666 556.5,-234 556.5,-193.1184 544.6798,-170.8594 575.5,-144 603.0416,-119.9978 1149.1654,-97.2025 1298.2048,-91.41"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1298.3794,-94.9059 1308.2368,-91.0225 1298.1091,-87.9112 1298.3794,-94.9059"/>
+</g>
+<!-- 15 -->
+<g id="node16" class="node">
+<title>15</title>
+<path fill="none" stroke="#56d8c9" stroke-width="2" d="M229.5,-756C229.5,-756 179.5,-756 179.5,-756 173.5,-756 167.5,-750 167.5,-744 167.5,-744 167.5,-732 167.5,-732 167.5,-726 173.5,-720 179.5,-720 179.5,-720 229.5,-720 229.5,-720 235.5,-720 241.5,-726 241.5,-732 241.5,-732 241.5,-744 241.5,-744 241.5,-750 235.5,-756 229.5,-756"/>
+<text text-anchor="middle" x="204.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
+</g>
+<!-- 4&#45;&gt;15 -->
+<g id="edge35" class="edge">
+<title>4&#45;&gt;15</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M160.3805,-791.8928C168.1487,-782.4038 176.1586,-772.6196 183.186,-764.0354"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="185.9563,-766.1767 189.5827,-756.2218 180.5399,-761.7425 185.9563,-766.1767"/>
+</g>
+<!-- 5 -->
+<g id="node6" class="node">
+<title>5</title>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M508,-877C508,-877 281,-877 281,-877 275,-877 269,-871 269,-865 269,-865 269,-804 269,-804 269,-798 275,-792 281,-792 281,-792 508,-792 508,-792 514,-792 520,-798 520,-804 520,-804 520,-865 520,-865 520,-871 514,-877 508,-877"/>
+<text text-anchor="middle" x="394.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="394.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056737&#45;TATGACAATCxATACAAGCAA</text>
+<text text-anchor="middle" x="394.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 1</text>
+<text text-anchor="middle" x="394.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="394.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_invertebrate</text>
+<text text-anchor="middle" x="394.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007859&#45;QSB1</text>
+<text text-anchor="middle" x="394.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 3</text>
+</g>
+<!-- 5&#45;&gt;1 -->
+<g id="edge9" class="edge">
+<title>5&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M520.2798,-794.1828C523.041,-793.4352 525.7837,-792.7065 528.5,-792 686.0797,-751.0163 872.5,-828.822 872.5,-666 872.5,-666 872.5,-666 872.5,-450 872.5,-300.07 891.602,-229.8784 1014.5,-144 1059.8108,-112.3378 1223.3233,-97.5325 1297.9239,-92.3104"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1298.5208,-95.778 1308.2608,-91.6086 1298.0466,-88.7941 1298.5208,-95.778"/>
 </g>
 <!-- 47 -->
 <g id="node48" class="node">
 <title>47</title>
-<path fill="none" stroke="#56d8c9" stroke-width="2" d="M1466.5,-756C1466.5,-756 1416.5,-756 1416.5,-756 1410.5,-756 1404.5,-750 1404.5,-744 1404.5,-744 1404.5,-732 1404.5,-732 1404.5,-726 1410.5,-720 1416.5,-720 1416.5,-720 1466.5,-720 1466.5,-720 1472.5,-720 1478.5,-726 1478.5,-732 1478.5,-732 1478.5,-744 1478.5,-744 1478.5,-750 1472.5,-756 1466.5,-756"/>
-<text text-anchor="middle" x="1441.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
+<path fill="none" stroke="#56d8c9" stroke-width="2" d="M683.5,-756C683.5,-756 633.5,-756 633.5,-756 627.5,-756 621.5,-750 621.5,-744 621.5,-744 621.5,-732 621.5,-732 621.5,-726 627.5,-720 633.5,-720 633.5,-720 683.5,-720 683.5,-720 689.5,-720 695.5,-726 695.5,-732 695.5,-732 695.5,-744 695.5,-744 695.5,-750 689.5,-756 683.5,-756"/>
+<text text-anchor="middle" x="658.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
 </g>
-<!-- 6&#45;&gt;47 -->
+<!-- 5&#45;&gt;47 -->
 <g id="edge67" class="edge">
-<title>6&#45;&gt;47</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1457.6958,-791.8928C1455.0499,-783.0886 1452.3277,-774.0302 1449.8881,-765.9121"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1453.206,-764.7914 1446.976,-756.2218 1446.5022,-766.806 1453.206,-764.7914"/>
+<title>5&#45;&gt;47</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M511.0627,-791.8928C546.6482,-778.8852 583.751,-765.323 611.8346,-755.0576"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="613.1841,-758.2909 621.3747,-751.5704 610.7808,-751.7164 613.1841,-758.2909"/>
 </g>
-<!-- 7 -->
-<g id="node8" class="node">
-<title>7</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M2122,-877C2122,-877 1895,-877 1895,-877 1889,-877 1883,-871 1883,-865 1883,-865 1883,-804 1883,-804 1883,-798 1889,-792 1895,-792 1895,-792 2122,-792 2122,-792 2128,-792 2134,-798 2134,-804 2134,-804 2134,-865 2134,-865 2134,-871 2128,-877 2122,-877"/>
-<text text-anchor="middle" x="2008.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="2008.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056737&#45;TATGACAATCxATACAAGCAA</text>
-<text text-anchor="middle" x="2008.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 1</text>
-<text text-anchor="middle" x="2008.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="2008.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_invertebrate</text>
-<text text-anchor="middle" x="2008.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007859&#45;QSB1</text>
-<text text-anchor="middle" x="2008.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 3</text>
+<!-- 6 -->
+<g id="node7" class="node">
+<title>6</title>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M1584,-877C1584,-877 1357,-877 1357,-877 1351,-877 1345,-871 1345,-865 1345,-865 1345,-804 1345,-804 1345,-798 1351,-792 1357,-792 1357,-792 1584,-792 1584,-792 1590,-792 1596,-798 1596,-804 1596,-804 1596,-865 1596,-865 1596,-871 1590,-877 1584,-877"/>
+<text text-anchor="middle" x="1470.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="1470.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056754&#45;AGCCTATGATxGTAGGTGGTG</text>
+<text text-anchor="middle" x="1470.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 2</text>
+<text text-anchor="middle" x="1470.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="1470.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_invertebrate</text>
+<text text-anchor="middle" x="1470.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007861&#45;QSB1</text>
+<text text-anchor="middle" x="1470.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 3</text>
 </g>
-<!-- 7&#45;&gt;1 -->
-<g id="edge13" class="edge">
-<title>7&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1882.7557,-794.0409C1879.9838,-793.3361 1877.2293,-792.6546 1874.5,-792 1779.007,-769.0969 1744.4489,-799.6858 1656.5,-756 1635.6644,-745.6506 1636.2795,-735.0041 1618.5,-720 1598.1204,-702.8017 1584.215,-706.8694 1570.5,-684 1533.0313,-621.5216 1545.5,-594.8523 1545.5,-522 1545.5,-522 1545.5,-522 1545.5,-234 1545.5,-150.2412 1431.0617,-111.9038 1369.9485,-97.4022"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1370.437,-93.9241 1359.91,-95.1206 1368.8855,-100.75 1370.437,-93.9241"/>
+<!-- 6&#45;&gt;1 -->
+<g id="edge10" class="edge">
+<title>6&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1414.9281,-791.9234C1403.174,-781.1125 1391.5906,-768.8791 1382.5,-756 1337.667,-692.4827 1316.5,-671.746 1316.5,-594 1316.5,-594 1316.5,-594 1316.5,-234 1316.5,-193.5282 1323.968,-147.2037 1329.54,-118.2725"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1333.0483,-118.5746 1331.5632,-108.0844 1326.1823,-117.2111 1333.0483,-118.5746"/>
 </g>
 <!-- 23 -->
 <g id="node24" class="node">
 <title>23</title>
-<path fill="none" stroke="#56d8c9" stroke-width="2" d="M1727.5,-756C1727.5,-756 1677.5,-756 1677.5,-756 1671.5,-756 1665.5,-750 1665.5,-744 1665.5,-744 1665.5,-732 1665.5,-732 1665.5,-726 1671.5,-720 1677.5,-720 1677.5,-720 1727.5,-720 1727.5,-720 1733.5,-720 1739.5,-726 1739.5,-732 1739.5,-732 1739.5,-744 1739.5,-744 1739.5,-750 1733.5,-756 1727.5,-756"/>
-<text text-anchor="middle" x="1702.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
+<path fill="none" stroke="#56d8c9" stroke-width="2" d="M1453.5,-756C1453.5,-756 1403.5,-756 1403.5,-756 1397.5,-756 1391.5,-750 1391.5,-744 1391.5,-744 1391.5,-732 1391.5,-732 1391.5,-726 1397.5,-720 1403.5,-720 1403.5,-720 1453.5,-720 1453.5,-720 1459.5,-720 1465.5,-726 1465.5,-732 1465.5,-732 1465.5,-744 1465.5,-744 1465.5,-750 1459.5,-756 1453.5,-756"/>
+<text text-anchor="middle" x="1428.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
 </g>
-<!-- 7&#45;&gt;23 -->
+<!-- 6&#45;&gt;23 -->
 <g id="edge43" class="edge">
-<title>7&#45;&gt;23</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1882.9853,-794.6161C1880.131,-793.7334 1877.2995,-792.8603 1874.5,-792 1820.868,-775.5181 1806.86,-773.3423 1753.5,-756 1752.1047,-755.5465 1750.6898,-755.0814 1749.2628,-754.6076"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1750.3445,-751.2787 1739.7502,-751.3894 1748.1012,-757.9096 1750.3445,-751.2787"/>
+<title>6&#45;&gt;23</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1451.9559,-791.8928C1448.0815,-782.9907 1444.0939,-773.8289 1440.5306,-765.6418"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1443.6307,-763.9942 1436.4307,-756.2218 1437.2123,-766.7878 1443.6307,-763.9942"/>
 </g>
-<!-- 8 -->
-<g id="node9" class="node">
-<title>8</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M2391,-877C2391,-877 2164,-877 2164,-877 2158,-877 2152,-871 2152,-865 2152,-865 2152,-804 2152,-804 2152,-798 2158,-792 2164,-792 2164,-792 2391,-792 2391,-792 2397,-792 2403,-798 2403,-804 2403,-804 2403,-865 2403,-865 2403,-871 2397,-877 2391,-877"/>
-<text text-anchor="middle" x="2277.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="2277.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056737&#45;TATGACAATCxATACAAGCAA</text>
-<text text-anchor="middle" x="2277.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 1</text>
-<text text-anchor="middle" x="2277.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="2277.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: polar</text>
-<text text-anchor="middle" x="2277.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007859&#45;QSB1</text>
-<text text-anchor="middle" x="2277.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 1</text>
+<!-- 7 -->
+<g id="node8" class="node">
+<title>7</title>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M777,-877C777,-877 550,-877 550,-877 544,-877 538,-871 538,-865 538,-865 538,-804 538,-804 538,-798 544,-792 550,-792 550,-792 777,-792 777,-792 783,-792 789,-798 789,-804 789,-804 789,-865 789,-865 789,-871 783,-877 777,-877"/>
+<text text-anchor="middle" x="663.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="663.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056737&#45;TATGACAATCxATACAAGCAA</text>
+<text text-anchor="middle" x="663.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 1</text>
+<text text-anchor="middle" x="663.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="663.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_mitochondrion</text>
+<text text-anchor="middle" x="663.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007859&#45;QSB1</text>
+<text text-anchor="middle" x="663.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 1</text>
 </g>
-<!-- 8&#45;&gt;1 -->
-<g id="edge14" class="edge">
-<title>8&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2151.7869,-793.9053C2149.0056,-793.2415 2146.2407,-792.605 2143.5,-792 2020.5507,-764.8578 1983.1961,-791.8566 1862.5,-756 1791.9969,-735.0548 1760.2048,-740.8159 1713.5,-684 1660.9951,-620.1284 1700.3432,-579.4386 1666.5,-504 1658.629,-486.4551 1649.2463,-486.0074 1642.5,-468 1617.0289,-400.0122 1621.5,-378.6024 1621.5,-306 1621.5,-306 1621.5,-306 1621.5,-234 1621.5,-190.7517 1617.6915,-171.7262 1584.5,-144 1552.2826,-117.0875 1431.9032,-100.6155 1369.9143,-93.7377"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1370.0891,-90.2363 1359.7706,-92.6402 1369.336,-97.1957 1370.0891,-90.2363"/>
+<!-- 7&#45;&gt;1 -->
+<g id="edge11" class="edge">
+<title>7&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M789.2678,-794.1361C792.0326,-793.4026 794.7793,-792.6894 797.5,-792 879.9675,-771.1038 916.3704,-805.5846 985.5,-756 1022.8593,-729.2033 1036.5,-711.9758 1036.5,-666 1036.5,-666 1036.5,-666 1036.5,-594 1036.5,-553.1184 1042.0265,-542.5976 1055.5,-504 1061.3956,-487.1109 1067.5149,-484.8576 1073.5,-468 1077.9591,-455.4405 1108.5,-307.758 1108.5,-306 1108.5,-306 1108.5,-306 1108.5,-234 1108.5,-145.3604 1233.4448,-108.9844 1297.941,-96.1118"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1298.9489,-99.483 1308.1185,-94.1756 1297.6405,-92.6063 1298.9489,-99.483"/>
 </g>
 <!-- 27 -->
 <g id="node28" class="node">
 <title>27</title>
-<path fill="none" stroke="#56d8c9" stroke-width="2" d="M1933.5,-756C1933.5,-756 1883.5,-756 1883.5,-756 1877.5,-756 1871.5,-750 1871.5,-744 1871.5,-744 1871.5,-732 1871.5,-732 1871.5,-726 1877.5,-720 1883.5,-720 1883.5,-720 1933.5,-720 1933.5,-720 1939.5,-720 1945.5,-726 1945.5,-732 1945.5,-732 1945.5,-744 1945.5,-744 1945.5,-750 1939.5,-756 1933.5,-756"/>
-<text text-anchor="middle" x="1908.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
+<path fill="none" stroke="#56d8c9" stroke-width="2" d="M964.5,-756C964.5,-756 914.5,-756 914.5,-756 908.5,-756 902.5,-750 902.5,-744 902.5,-744 902.5,-732 902.5,-732 902.5,-726 908.5,-720 914.5,-720 914.5,-720 964.5,-720 964.5,-720 970.5,-720 976.5,-726 976.5,-732 976.5,-732 976.5,-744 976.5,-744 976.5,-750 970.5,-756 964.5,-756"/>
+<text text-anchor="middle" x="939.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
 </g>
-<!-- 8&#45;&gt;27 -->
+<!-- 7&#45;&gt;27 -->
 <g id="edge47" class="edge">
-<title>8&#45;&gt;27</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2151.7264,-794.1588C2148.9633,-793.4184 2146.2186,-792.6977 2143.5,-792 2063.6319,-771.5038 2041.1563,-777.3047 1961.5,-756 1959.5638,-755.4822 1957.5956,-754.9309 1955.613,-754.355"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1956.2497,-750.8897 1945.6632,-751.3106 1954.2015,-757.5834 1956.2497,-750.8897"/>
+<title>7&#45;&gt;27</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M785.361,-791.8928C823.3751,-778.6016 863.0456,-764.7313 892.6203,-754.3909"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="893.9616,-757.6298 902.246,-751.0254 891.6512,-751.022 893.9616,-757.6298"/>
+</g>
+<!-- 8 -->
+<g id="node9" class="node">
+<title>8</title>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M1853,-877C1853,-877 1626,-877 1626,-877 1620,-877 1614,-871 1614,-865 1614,-865 1614,-804 1614,-804 1614,-798 1620,-792 1626,-792 1626,-792 1853,-792 1853,-792 1859,-792 1865,-798 1865,-804 1865,-804 1865,-865 1865,-865 1865,-871 1859,-877 1853,-877"/>
+<text text-anchor="middle" x="1739.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="1739.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056754&#45;AGCCTATGATxGTAGGTGGTG</text>
+<text text-anchor="middle" x="1739.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 1</text>
+<text text-anchor="middle" x="1739.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="1739.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: polar</text>
+<text text-anchor="middle" x="1739.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007861&#45;QSB1</text>
+<text text-anchor="middle" x="1739.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 1</text>
+</g>
+<!-- 8&#45;&gt;1 -->
+<g id="edge12" class="edge">
+<title>8&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1626.0167,-791.7789C1605.5594,-781.6059 1585.1502,-769.6627 1567.5,-756 1526.7726,-724.4735 1494.5,-717.5038 1494.5,-666 1494.5,-666 1494.5,-666 1494.5,-594 1494.5,-553.0242 1489.836,-541.9976 1474.5,-504 1467.482,-486.6117 1458.7844,-485.6667 1452.5,-468 1428.1478,-399.5414 1430.5,-378.6609 1430.5,-306 1430.5,-306 1430.5,-306 1430.5,-234 1430.5,-186.0912 1393.4087,-141.8312 1365.579,-115.3654"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1367.7364,-112.5938 1358.0137,-108.3843 1362.9892,-117.7382 1367.7364,-112.5938"/>
+</g>
+<!-- 35 -->
+<g id="node36" class="node">
+<title>35</title>
+<path fill="none" stroke="#56d8c9" stroke-width="2" d="M1638.5,-756C1638.5,-756 1588.5,-756 1588.5,-756 1582.5,-756 1576.5,-750 1576.5,-744 1576.5,-744 1576.5,-732 1576.5,-732 1576.5,-726 1582.5,-720 1588.5,-720 1588.5,-720 1638.5,-720 1638.5,-720 1644.5,-720 1650.5,-726 1650.5,-732 1650.5,-732 1650.5,-744 1650.5,-744 1650.5,-750 1644.5,-756 1638.5,-756"/>
+<text text-anchor="middle" x="1613.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
+</g>
+<!-- 8&#45;&gt;35 -->
+<g id="edge55" class="edge">
+<title>8&#45;&gt;35</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1683.8678,-791.8928C1670.7116,-781.8168 1657.1209,-771.408 1645.433,-762.4566"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1647.3594,-759.5235 1637.2922,-756.2218 1643.1032,-765.0809 1647.3594,-759.5235"/>
 </g>
 <!-- 9 -->
 <g id="node10" class="node">
 <title>9</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M2660,-877C2660,-877 2433,-877 2433,-877 2427,-877 2421,-871 2421,-865 2421,-865 2421,-804 2421,-804 2421,-798 2427,-792 2433,-792 2433,-792 2660,-792 2660,-792 2666,-792 2672,-798 2672,-804 2672,-804 2672,-865 2672,-865 2672,-871 2666,-877 2660,-877"/>
-<text text-anchor="middle" x="2546.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="2546.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056737&#45;TATGACAATCxATACAAGCAA</text>
-<text text-anchor="middle" x="2546.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 3</text>
-<text text-anchor="middle" x="2546.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="2546.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_invertebrate</text>
-<text text-anchor="middle" x="2546.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007859&#45;QSB1</text>
-<text text-anchor="middle" x="2546.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 3</text>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M1315,-877C1315,-877 1088,-877 1088,-877 1082,-877 1076,-871 1076,-865 1076,-865 1076,-804 1076,-804 1076,-798 1082,-792 1088,-792 1088,-792 1315,-792 1315,-792 1321,-792 1327,-798 1327,-804 1327,-804 1327,-865 1327,-865 1327,-871 1321,-877 1315,-877"/>
+<text text-anchor="middle" x="1201.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="1201.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056737&#45;TATGACAATCxATACAAGCAA</text>
+<text text-anchor="middle" x="1201.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 2</text>
+<text text-anchor="middle" x="1201.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="1201.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_invertebrate</text>
+<text text-anchor="middle" x="1201.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007859&#45;QSB1</text>
+<text text-anchor="middle" x="1201.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 3</text>
 </g>
 <!-- 9&#45;&gt;1 -->
-<g id="edge15" class="edge">
+<g id="edge13" class="edge">
 <title>9&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2420.9951,-794.5838C2418.1379,-793.7108 2415.3031,-792.8485 2412.5,-792 2219.0342,-733.44 1975.5,-868.1343 1975.5,-666 1975.5,-666 1975.5,-666 1975.5,-234 1975.5,-193.1184 1987.1126,-171.0957 1956.5,-144 1934.4236,-124.4598 1501.803,-99.2662 1370.1738,-92.0266"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1369.9783,-88.5108 1359.802,-91.4591 1369.5958,-95.5003 1369.9783,-88.5108"/>
-</g>
-<!-- 51 -->
-<g id="node52" class="node">
-<title>51</title>
-<path fill="none" stroke="#56d8c9" stroke-width="2" d="M2541.5,-756C2541.5,-756 2491.5,-756 2491.5,-756 2485.5,-756 2479.5,-750 2479.5,-744 2479.5,-744 2479.5,-732 2479.5,-732 2479.5,-726 2485.5,-720 2491.5,-720 2491.5,-720 2541.5,-720 2541.5,-720 2547.5,-720 2553.5,-726 2553.5,-732 2553.5,-732 2553.5,-744 2553.5,-744 2553.5,-750 2547.5,-756 2541.5,-756"/>
-<text text-anchor="middle" x="2516.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
-</g>
-<!-- 9&#45;&gt;51 -->
-<g id="edge71" class="edge">
-<title>9&#45;&gt;51</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2533.2542,-791.8928C2530.5172,-783.0886 2527.7011,-774.0302 2525.1773,-765.9121"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="2528.4758,-764.7319 2522.1648,-756.2218 2521.7913,-766.81 2528.4758,-764.7319"/>
-</g>
-<!-- 10 -->
-<g id="node11" class="node">
-<title>10</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M508,-877C508,-877 281,-877 281,-877 275,-877 269,-871 269,-865 269,-865 269,-804 269,-804 269,-798 275,-792 281,-792 281,-792 508,-792 508,-792 514,-792 520,-798 520,-804 520,-804 520,-865 520,-865 520,-871 514,-877 508,-877"/>
-<text text-anchor="middle" x="394.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="394.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056754&#45;AGCCTATGATxGTAGGTGGTG</text>
-<text text-anchor="middle" x="394.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 2</text>
-<text text-anchor="middle" x="394.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="394.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_invertebrate</text>
-<text text-anchor="middle" x="394.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007861&#45;QSB1</text>
-<text text-anchor="middle" x="394.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 3</text>
-</g>
-<!-- 10&#45;&gt;1 -->
-<g id="edge16" class="edge">
-<title>10&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M520.2535,-794.0789C523.0227,-793.3627 525.7741,-792.6685 528.5,-792 691.9171,-751.9255 885.5,-834.2591 885.5,-666 885.5,-666 885.5,-666 885.5,-594 885.5,-519.5068 901.2021,-501.3113 928.5,-432 934.984,-415.5366 938.4332,-412.2218 945.5,-396 962.7059,-356.5037 981.5,-349.0813 981.5,-306 981.5,-306 981.5,-306 981.5,-234 981.5,-191.0818 983.2518,-171.1392 1016.5,-144 1058.6225,-109.617 1220.5289,-96.262 1294.8321,-91.8655"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1295.3492,-95.3419 1305.1346,-91.2804 1294.9522,-88.3532 1295.3492,-95.3419"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1256.4264,-791.8418C1268.0476,-781.0346 1279.5032,-768.8235 1288.5,-756 1333.1524,-692.3556 1354.5,-671.746 1354.5,-594 1354.5,-594 1354.5,-594 1354.5,-234 1354.5,-193.5282 1347.032,-147.2037 1341.46,-118.2725"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1344.8177,-117.2111 1339.4368,-108.0844 1337.9517,-118.5746 1344.8177,-117.2111"/>
 </g>
 <!-- 19 -->
 <g id="node20" class="node">
 <title>19</title>
-<path fill="none" stroke="#56d8c9" stroke-width="2" d="M712.5,-756C712.5,-756 662.5,-756 662.5,-756 656.5,-756 650.5,-750 650.5,-744 650.5,-744 650.5,-732 650.5,-732 650.5,-726 656.5,-720 662.5,-720 662.5,-720 712.5,-720 712.5,-720 718.5,-720 724.5,-726 724.5,-732 724.5,-732 724.5,-744 724.5,-744 724.5,-750 718.5,-756 712.5,-756"/>
-<text text-anchor="middle" x="687.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
+<path fill="none" stroke="#56d8c9" stroke-width="2" d="M1267.5,-756C1267.5,-756 1217.5,-756 1217.5,-756 1211.5,-756 1205.5,-750 1205.5,-744 1205.5,-744 1205.5,-732 1205.5,-732 1205.5,-726 1211.5,-720 1217.5,-720 1217.5,-720 1267.5,-720 1267.5,-720 1273.5,-720 1279.5,-726 1279.5,-732 1279.5,-732 1279.5,-744 1279.5,-744 1279.5,-750 1273.5,-756 1267.5,-756"/>
+<text text-anchor="middle" x="1242.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
 </g>
-<!-- 10&#45;&gt;19 -->
+<!-- 9&#45;&gt;19 -->
 <g id="edge39" class="edge">
-<title>10&#45;&gt;19</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M520.0334,-793.1554C562.8248,-779.062 608.053,-764.166 640.7059,-753.4117"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="642.016,-756.6652 650.4192,-750.2126 639.8262,-750.0166 642.016,-756.6652"/>
+<title>9&#45;&gt;19</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1219.6025,-791.8928C1223.3848,-782.9907 1227.2774,-773.8289 1230.7558,-765.6418"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1234.069,-766.7942 1234.7581,-756.2218 1227.6263,-764.0569 1234.069,-766.7942"/>
 </g>
-<!-- 11 -->
-<g id="node12" class="node">
-<title>11</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M239,-877C239,-877 12,-877 12,-877 6,-877 0,-871 0,-865 0,-865 0,-804 0,-804 0,-798 6,-792 12,-792 12,-792 239,-792 239,-792 245,-792 251,-798 251,-804 251,-804 251,-865 251,-865 251,-871 245,-877 239,-877"/>
-<text text-anchor="middle" x="125.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="125.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056754&#45;AGCCTATGATxGTAGGTGGTG</text>
-<text text-anchor="middle" x="125.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 1</text>
-<text text-anchor="middle" x="125.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="125.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_invertebrate</text>
-<text text-anchor="middle" x="125.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007861&#45;QSB1</text>
-<text text-anchor="middle" x="125.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 3</text>
+<!-- 10 -->
+<g id="node11" class="node">
+<title>10</title>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M2122,-877C2122,-877 1895,-877 1895,-877 1889,-877 1883,-871 1883,-865 1883,-865 1883,-804 1883,-804 1883,-798 1889,-792 1895,-792 1895,-792 2122,-792 2122,-792 2128,-792 2134,-798 2134,-804 2134,-804 2134,-865 2134,-865 2134,-871 2128,-877 2122,-877"/>
+<text text-anchor="middle" x="2008.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="2008.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056754&#45;AGCCTATGATxGTAGGTGGTG</text>
+<text text-anchor="middle" x="2008.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 3</text>
+<text text-anchor="middle" x="2008.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="2008.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_invertebrate</text>
+<text text-anchor="middle" x="2008.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007861&#45;QSB1</text>
+<text text-anchor="middle" x="2008.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 3</text>
 </g>
-<!-- 11&#45;&gt;1 -->
-<g id="edge17" class="edge">
-<title>11&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M250.2859,-791.9362C386.5091,-745.0183 585.5,-674.9502 585.5,-666 585.5,-666 585.5,-666 585.5,-450 585.5,-262.9332 701.3443,-214.789 874.5,-144 913.1519,-128.1984 1192.9566,-102.2903 1295.2101,-93.241"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1295.7263,-96.7092 1305.3805,-92.3448 1295.1118,-89.7362 1295.7263,-96.7092"/>
+<!-- 10&#45;&gt;1 -->
+<g id="edge14" class="edge">
+<title>10&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1882.9803,-793.6466C1830.6989,-776.3722 1780.7823,-759.4262 1775.5,-756 1729.8488,-726.3899 1692.5,-720.4131 1692.5,-666 1692.5,-666 1692.5,-666 1692.5,-522 1692.5,-461.9145 1660.6513,-453.5856 1643.5,-396 1631.8304,-356.8193 1624.5,-346.8816 1624.5,-306 1624.5,-306 1624.5,-306 1624.5,-234 1624.5,-122.9069 1451.3064,-97.5189 1373.0698,-91.7178"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1372.9,-88.1986 1362.6884,-91.0223 1372.4321,-95.183 1372.9,-88.1986"/>
 </g>
 <!-- 31 -->
 <g id="node32" class="node">
 <title>31</title>
-<path fill="none" stroke="#56d8c9" stroke-width="2" d="M224.5,-756C224.5,-756 174.5,-756 174.5,-756 168.5,-756 162.5,-750 162.5,-744 162.5,-744 162.5,-732 162.5,-732 162.5,-726 168.5,-720 174.5,-720 174.5,-720 224.5,-720 224.5,-720 230.5,-720 236.5,-726 236.5,-732 236.5,-732 236.5,-744 236.5,-744 236.5,-750 230.5,-756 224.5,-756"/>
-<text text-anchor="middle" x="199.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
+<path fill="none" stroke="#56d8c9" stroke-width="2" d="M1846.5,-756C1846.5,-756 1796.5,-756 1796.5,-756 1790.5,-756 1784.5,-750 1784.5,-744 1784.5,-744 1784.5,-732 1784.5,-732 1784.5,-726 1790.5,-720 1796.5,-720 1796.5,-720 1846.5,-720 1846.5,-720 1852.5,-720 1858.5,-726 1858.5,-732 1858.5,-732 1858.5,-744 1858.5,-744 1858.5,-750 1852.5,-756 1846.5,-756"/>
+<text text-anchor="middle" x="1821.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
 </g>
-<!-- 11&#45;&gt;31 -->
+<!-- 10&#45;&gt;31 -->
 <g id="edge51" class="edge">
-<title>11&#45;&gt;31</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M158.1729,-791.8928C165.3744,-782.5016 172.7977,-772.8213 179.3311,-764.3013"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="182.219,-766.287 185.5268,-756.2218 176.6642,-762.0274 182.219,-766.287"/>
+<title>10&#45;&gt;31</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1925.9347,-791.8928C1905.2719,-781.2299 1883.8868,-770.1942 1865.8907,-760.9075"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1867.3022,-757.6974 1856.8106,-756.2218 1864.0921,-763.918 1867.3022,-757.6974"/>
+</g>
+<!-- 11 -->
+<g id="node12" class="node">
+<title>11</title>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M2391,-877C2391,-877 2164,-877 2164,-877 2158,-877 2152,-871 2152,-865 2152,-865 2152,-804 2152,-804 2152,-798 2158,-792 2164,-792 2164,-792 2391,-792 2391,-792 2397,-792 2403,-798 2403,-804 2403,-804 2403,-865 2403,-865 2403,-871 2397,-877 2391,-877"/>
+<text text-anchor="middle" x="2277.5" y="-865" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="2277.5" y="-854" font-family="sans" font-size="10.00" fill="#000000">library: LV3003056754&#45;AGCCTATGATxGTAGGTGGTG</text>
+<text text-anchor="middle" x="2277.5" y="-843" font-family="sans" font-size="10.00" fill="#000000">n_chunk: 1</text>
+<text text-anchor="middle" x="2277.5" y="-832" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="2277.5" y="-821" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_invertebrate</text>
+<text text-anchor="middle" x="2277.5" y="-810" font-family="sans" font-size="10.00" fill="#000000">sample: CGG&#45;3&#45;007861&#45;QSB1</text>
+<text text-anchor="middle" x="2277.5" y="-799" font-family="sans" font-size="10.00" fill="#000000">tot_chunks: 3</text>
+</g>
+<!-- 11&#45;&gt;1 -->
+<g id="edge15" class="edge">
+<title>11&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2188.7872,-791.988C2120.0703,-756.0714 2036.5,-704.4809 2036.5,-666 2036.5,-666 2036.5,-666 2036.5,-234 2036.5,-176.4809 1995.8117,-167.915 1943.5,-144 1891.6425,-120.2927 1497.2299,-98.2796 1372.9097,-91.8689"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1372.9089,-88.3644 1362.743,-91.3485 1372.551,-95.3553 1372.9089,-88.3644"/>
+</g>
+<!-- 51 -->
+<g id="node52" class="node">
+<title>51</title>
+<path fill="none" stroke="#56d8c9" stroke-width="2" d="M1995.5,-756C1995.5,-756 1945.5,-756 1945.5,-756 1939.5,-756 1933.5,-750 1933.5,-744 1933.5,-744 1933.5,-732 1933.5,-732 1933.5,-726 1939.5,-720 1945.5,-720 1945.5,-720 1995.5,-720 1995.5,-720 2001.5,-720 2007.5,-726 2007.5,-732 2007.5,-732 2007.5,-744 2007.5,-744 2007.5,-750 2001.5,-756 1995.5,-756"/>
+<text text-anchor="middle" x="1970.5" y="-735.5" font-family="sans" font-size="10.00" fill="#000000">clean_header</text>
+</g>
+<!-- 11&#45;&gt;51 -->
+<g id="edge71" class="edge">
+<title>11&#45;&gt;51</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2151.9853,-794.6161C2149.131,-793.7334 2146.2995,-792.8603 2143.5,-792 2089.868,-775.5181 2075.9122,-773.1808 2022.5,-756 2020.8431,-755.467 2019.1587,-754.9188 2017.459,-754.3601"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="2018.2377,-750.9301 2007.6439,-751.0802 2016.019,-757.5692 2018.2377,-750.9301"/>
 </g>
 <!-- 12 -->
 <g id="node13" class="node">
 <title>12</title>
-<path fill="none" stroke="#d8cb56" stroke-width="2" d="M985,-540C985,-540 926,-540 926,-540 920,-540 914,-534 914,-528 914,-528 914,-516 914,-516 914,-510 920,-504 926,-504 926,-504 985,-504 985,-504 991,-504 997,-510 997,-516 997,-516 997,-528 997,-528 997,-534 991,-540 985,-540"/>
-<text text-anchor="middle" x="955.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
+<path fill="none" stroke="#56d873" stroke-width="2" d="M468,-540C468,-540 409,-540 409,-540 403,-540 397,-534 397,-528 397,-528 397,-516 397,-516 397,-510 403,-504 409,-504 409,-504 468,-504 468,-504 474,-504 480,-510 480,-516 480,-516 480,-528 480,-528 480,-534 474,-540 468,-540"/>
+<text text-anchor="middle" x="438.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
 </g>
 <!-- 12&#45;&gt;1 -->
-<g id="edge18" class="edge">
+<g id="edge16" class="edge">
 <title>12&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M974.6979,-503.6291C983.8249,-493.8663 994.1119,-481.1774 1000.5,-468 1018.3335,-431.2131 1019.5,-418.8816 1019.5,-378 1019.5,-378 1019.5,-378 1019.5,-234 1019.5,-192.6022 1013.138,-172.1412 1043.5,-144 1079.6414,-110.502 1225.6734,-96.8155 1295.2656,-92.1117"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1295.6013,-95.5973 1305.3536,-91.4568 1295.1478,-88.612 1295.6013,-95.5973"/>
-</g>
-<!-- 57 -->
-<g id="node58" class="node">
-<title>57</title>
-<path fill="none" stroke="#d8ac56" stroke-width="2" d="M825.5,-468C825.5,-468 795.5,-468 795.5,-468 789.5,-468 783.5,-462 783.5,-456 783.5,-456 783.5,-444 783.5,-444 783.5,-438 789.5,-432 795.5,-432 795.5,-432 825.5,-432 825.5,-432 831.5,-432 837.5,-438 837.5,-444 837.5,-444 837.5,-456 837.5,-456 837.5,-462 831.5,-468 825.5,-468"/>
-<text text-anchor="middle" x="810.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
-</g>
-<!-- 12&#45;&gt;57 -->
-<g id="edge81" class="edge">
-<title>12&#45;&gt;57</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M918.9104,-503.8314C896.8875,-492.8959 868.9503,-479.0236 846.9521,-468.1004"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="848.4357,-464.9294 837.9225,-463.6167 845.3225,-471.199 848.4357,-464.9294"/>
-</g>
-<!-- 13 -->
-<g id="node14" class="node">
-<title>13</title>
-<path fill="none" stroke="#8fd856" stroke-width="2" d="M971,-612C971,-612 936,-612 936,-612 930,-612 924,-606 924,-600 924,-600 924,-588 924,-588 924,-582 930,-576 936,-576 936,-576 971,-576 971,-576 977,-576 983,-582 983,-588 983,-588 983,-600 983,-600 983,-606 977,-612 971,-612"/>
-<text text-anchor="middle" x="953.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
-</g>
-<!-- 13&#45;&gt;12 -->
-<g id="edge32" class="edge">
-<title>13&#45;&gt;12</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M954.0047,-575.8314C954.2186,-568.131 954.4729,-558.9743 954.7106,-550.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="958.2094,-550.5066 954.9885,-540.4133 951.2121,-550.3122 958.2094,-550.5066"/>
-</g>
-<!-- 14 -->
-<g id="node15" class="node">
-<title>14</title>
-<path fill="none" stroke="#c6d856" stroke-width="2" d="M971.5,-684C971.5,-684 933.5,-684 933.5,-684 927.5,-684 921.5,-678 921.5,-672 921.5,-672 921.5,-660 921.5,-660 921.5,-654 927.5,-648 933.5,-648 933.5,-648 971.5,-648 971.5,-648 977.5,-648 983.5,-654 983.5,-660 983.5,-660 983.5,-672 983.5,-672 983.5,-678 977.5,-684 971.5,-684"/>
-<text text-anchor="middle" x="952.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
-</g>
-<!-- 14&#45;&gt;13 -->
-<g id="edge33" class="edge">
-<title>14&#45;&gt;13</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M952.7523,-647.8314C952.8593,-640.131 952.9865,-630.9743 953.1053,-622.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="956.6049,-622.4609 953.2443,-612.4133 949.6056,-622.3637 956.6049,-622.4609"/>
-</g>
-<!-- 15&#45;&gt;14 -->
-<g id="edge34" class="edge">
-<title>15&#45;&gt;14</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M951.7523,-719.8314C951.8593,-712.131 951.9865,-702.9743 952.1053,-694.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="955.6049,-694.4609 952.2443,-684.4133 948.6056,-694.3637 955.6049,-694.4609"/>
-</g>
-<!-- 16 -->
-<g id="node17" class="node">
-<title>16</title>
-<path fill="none" stroke="#d8cb56" stroke-width="2" d="M754,-540C754,-540 695,-540 695,-540 689,-540 683,-534 683,-528 683,-528 683,-516 683,-516 683,-510 689,-504 695,-504 695,-504 754,-504 754,-504 760,-504 766,-510 766,-516 766,-516 766,-528 766,-528 766,-534 760,-540 754,-540"/>
-<text text-anchor="middle" x="724.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
-</g>
-<!-- 16&#45;&gt;1 -->
-<g id="edge19" class="edge">
-<title>16&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M766.0614,-507.5355C790.5021,-498.0902 821.4273,-484.4649 846.5,-468 866.2177,-455.0517 912.8463,-416.5094 924.5,-396 944.6967,-360.4556 943.5,-346.8816 943.5,-306 943.5,-306 943.5,-306 943.5,-234 943.5,-192.6022 936.6111,-171.5618 967.5,-144 991.7566,-122.3562 1207.0515,-101.0833 1295.1606,-93.2024"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1295.6014,-96.6771 1305.2537,-92.3086 1294.9839,-89.7044 1295.6014,-96.6771"/>
-</g>
-<!-- 59 -->
-<g id="node60" class="node">
-<title>59</title>
-<path fill="none" stroke="#d8ac56" stroke-width="2" d="M739.5,-468C739.5,-468 709.5,-468 709.5,-468 703.5,-468 697.5,-462 697.5,-456 697.5,-456 697.5,-444 697.5,-444 697.5,-438 703.5,-432 709.5,-432 709.5,-432 739.5,-432 739.5,-432 745.5,-432 751.5,-438 751.5,-444 751.5,-444 751.5,-456 751.5,-456 751.5,-462 745.5,-468 739.5,-468"/>
-<text text-anchor="middle" x="724.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
-</g>
-<!-- 16&#45;&gt;59 -->
-<g id="edge83" class="edge">
-<title>16&#45;&gt;59</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M724.5,-503.8314C724.5,-496.131 724.5,-486.9743 724.5,-478.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="728.0001,-478.4132 724.5,-468.4133 721.0001,-478.4133 728.0001,-478.4132"/>
-</g>
-<!-- 17 -->
-<g id="node18" class="node">
-<title>17</title>
-<path fill="none" stroke="#8fd856" stroke-width="2" d="M724,-612C724,-612 689,-612 689,-612 683,-612 677,-606 677,-600 677,-600 677,-588 677,-588 677,-582 683,-576 689,-576 689,-576 724,-576 724,-576 730,-576 736,-582 736,-588 736,-588 736,-600 736,-600 736,-606 730,-612 724,-612"/>
-<text text-anchor="middle" x="706.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
-</g>
-<!-- 17&#45;&gt;16 -->
-<g id="edge36" class="edge">
-<title>17&#45;&gt;16</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M711.0422,-575.8314C712.9884,-568.0463 715.3068,-558.7729 717.4663,-550.1347"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="720.8668,-550.9636 719.8967,-540.4133 714.0758,-549.2658 720.8668,-550.9636"/>
-</g>
-<!-- 18 -->
-<g id="node19" class="node">
-<title>18</title>
-<path fill="none" stroke="#c6d856" stroke-width="2" d="M715.5,-684C715.5,-684 677.5,-684 677.5,-684 671.5,-684 665.5,-678 665.5,-672 665.5,-672 665.5,-660 665.5,-660 665.5,-654 671.5,-648 677.5,-648 677.5,-648 715.5,-648 715.5,-648 721.5,-648 727.5,-654 727.5,-660 727.5,-660 727.5,-672 727.5,-672 727.5,-678 721.5,-684 715.5,-684"/>
-<text text-anchor="middle" x="696.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
-</g>
-<!-- 18&#45;&gt;17 -->
-<g id="edge37" class="edge">
-<title>18&#45;&gt;17</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M699.0234,-647.8314C700.0929,-640.131 701.3647,-630.9743 702.5532,-622.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="706.0336,-622.7997 703.9426,-612.4133 699.1001,-621.8367 706.0336,-622.7997"/>
-</g>
-<!-- 19&#45;&gt;18 -->
-<g id="edge38" class="edge">
-<title>19&#45;&gt;18</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M689.7711,-719.8314C690.7336,-712.131 691.8782,-702.9743 692.9479,-694.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="696.4309,-694.7702 694.1983,-684.4133 689.4849,-693.9019 696.4309,-694.7702"/>
-</g>
-<!-- 20 -->
-<g id="node21" class="node">
-<title>20</title>
-<path fill="none" stroke="#d8cb56" stroke-width="2" d="M1785,-540C1785,-540 1726,-540 1726,-540 1720,-540 1714,-534 1714,-528 1714,-528 1714,-516 1714,-516 1714,-510 1720,-504 1726,-504 1726,-504 1785,-504 1785,-504 1791,-504 1797,-510 1797,-516 1797,-516 1797,-528 1797,-528 1797,-534 1791,-540 1785,-540"/>
-<text text-anchor="middle" x="1755.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
-</g>
-<!-- 20&#45;&gt;1 -->
-<g id="edge20" class="edge">
-<title>20&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1752.1848,-503.8863C1747.4983,-476.6615 1739.5,-423.5285 1739.5,-378 1739.5,-378 1739.5,-378 1739.5,-234 1739.5,-172.8731 1690.6774,-170.3049 1635.5,-144 1588.9345,-121.8007 1440.2386,-102.3688 1369.9667,-94.1587"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1370.1243,-90.6538 1359.789,-92.9842 1369.3218,-97.6076 1370.1243,-90.6538"/>
-</g>
-<!-- 75 -->
-<g id="node76" class="node">
-<title>75</title>
-<path fill="none" stroke="#d8ac56" stroke-width="2" d="M1811.5,-468C1811.5,-468 1781.5,-468 1781.5,-468 1775.5,-468 1769.5,-462 1769.5,-456 1769.5,-456 1769.5,-444 1769.5,-444 1769.5,-438 1775.5,-432 1781.5,-432 1781.5,-432 1811.5,-432 1811.5,-432 1817.5,-432 1823.5,-438 1823.5,-444 1823.5,-444 1823.5,-456 1823.5,-456 1823.5,-462 1817.5,-468 1811.5,-468"/>
-<text text-anchor="middle" x="1796.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
-</g>
-<!-- 20&#45;&gt;75 -->
-<g id="edge103" class="edge">
-<title>20&#45;&gt;75</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1765.846,-503.8314C1770.4237,-495.7925 1775.9052,-486.1666 1780.9588,-477.2918"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1784.1077,-478.8351 1786.0147,-468.4133 1778.0248,-475.3712 1784.1077,-478.8351"/>
-</g>
-<!-- 21 -->
-<g id="node22" class="node">
-<title>21</title>
-<path fill="none" stroke="#8fd856" stroke-width="2" d="M1772,-612C1772,-612 1737,-612 1737,-612 1731,-612 1725,-606 1725,-600 1725,-600 1725,-588 1725,-588 1725,-582 1731,-576 1737,-576 1737,-576 1772,-576 1772,-576 1778,-576 1784,-582 1784,-588 1784,-588 1784,-600 1784,-600 1784,-606 1778,-612 1772,-612"/>
-<text text-anchor="middle" x="1754.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
-</g>
-<!-- 21&#45;&gt;20 -->
-<g id="edge40" class="edge">
-<title>21&#45;&gt;20</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1754.7523,-575.8314C1754.8593,-568.131 1754.9865,-558.9743 1755.1053,-550.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1758.6049,-550.4609 1755.2443,-540.4133 1751.6056,-550.3637 1758.6049,-550.4609"/>
-</g>
-<!-- 22 -->
-<g id="node23" class="node">
-<title>22</title>
-<path fill="none" stroke="#c6d856" stroke-width="2" d="M1772.5,-684C1772.5,-684 1734.5,-684 1734.5,-684 1728.5,-684 1722.5,-678 1722.5,-672 1722.5,-672 1722.5,-660 1722.5,-660 1722.5,-654 1728.5,-648 1734.5,-648 1734.5,-648 1772.5,-648 1772.5,-648 1778.5,-648 1784.5,-654 1784.5,-660 1784.5,-660 1784.5,-672 1784.5,-672 1784.5,-678 1778.5,-684 1772.5,-684"/>
-<text text-anchor="middle" x="1753.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
-</g>
-<!-- 22&#45;&gt;21 -->
-<g id="edge41" class="edge">
-<title>22&#45;&gt;21</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1753.7523,-647.8314C1753.8593,-640.131 1753.9865,-630.9743 1754.1053,-622.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1757.6049,-622.4609 1754.2443,-612.4133 1750.6056,-622.3637 1757.6049,-622.4609"/>
-</g>
-<!-- 23&#45;&gt;22 -->
-<g id="edge42" class="edge">
-<title>23&#45;&gt;22</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1715.3695,-719.8314C1721.1835,-711.6232 1728.1696,-701.7606 1734.5646,-692.7323"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1737.5331,-694.5966 1740.4573,-684.4133 1731.821,-690.5505 1737.5331,-694.5966"/>
-</g>
-<!-- 24 -->
-<g id="node25" class="node">
-<title>24</title>
-<path fill="none" stroke="#d8cb56" stroke-width="2" d="M1935,-540C1935,-540 1876,-540 1876,-540 1870,-540 1864,-534 1864,-528 1864,-528 1864,-516 1864,-516 1864,-510 1870,-504 1876,-504 1876,-504 1935,-504 1935,-504 1941,-504 1947,-510 1947,-516 1947,-516 1947,-528 1947,-528 1947,-534 1941,-540 1935,-540"/>
-<text text-anchor="middle" x="1905.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
-</g>
-<!-- 24&#45;&gt;1 -->
-<g id="edge21" class="edge">
-<title>24&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1895.7485,-503.7408C1890.3772,-493.3873 1883.7544,-480.1165 1878.5,-468 1811.9951,-314.6402 1834.9975,-222.6549 1687.5,-144 1632.8812,-114.8738 1449.3825,-98.4412 1369.8193,-92.5352"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1369.9798,-89.0377 1359.7523,-91.8031 1369.4721,-96.0193 1369.9798,-89.0377"/>
-</g>
-<!-- 73 -->
-<g id="node74" class="node">
-<title>73</title>
-<path fill="none" stroke="#d8ac56" stroke-width="2" d="M1929.5,-468C1929.5,-468 1899.5,-468 1899.5,-468 1893.5,-468 1887.5,-462 1887.5,-456 1887.5,-456 1887.5,-444 1887.5,-444 1887.5,-438 1893.5,-432 1899.5,-432 1899.5,-432 1929.5,-432 1929.5,-432 1935.5,-432 1941.5,-438 1941.5,-444 1941.5,-444 1941.5,-456 1941.5,-456 1941.5,-462 1935.5,-468 1929.5,-468"/>
-<text text-anchor="middle" x="1914.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
-</g>
-<!-- 24&#45;&gt;73 -->
-<g id="edge101" class="edge">
-<title>24&#45;&gt;73</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1907.7711,-503.8314C1908.7336,-496.131 1909.8782,-486.9743 1910.9479,-478.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1914.4309,-478.7702 1912.1983,-468.4133 1907.4849,-477.9019 1914.4309,-478.7702"/>
-</g>
-<!-- 25 -->
-<g id="node26" class="node">
-<title>25</title>
-<path fill="none" stroke="#8fd856" stroke-width="2" d="M1924,-612C1924,-612 1889,-612 1889,-612 1883,-612 1877,-606 1877,-600 1877,-600 1877,-588 1877,-588 1877,-582 1883,-576 1889,-576 1889,-576 1924,-576 1924,-576 1930,-576 1936,-582 1936,-588 1936,-588 1936,-600 1936,-600 1936,-606 1930,-612 1924,-612"/>
-<text text-anchor="middle" x="1906.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
-</g>
-<!-- 25&#45;&gt;24 -->
-<g id="edge44" class="edge">
-<title>25&#45;&gt;24</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1906.2477,-575.8314C1906.1407,-568.131 1906.0135,-558.9743 1905.8947,-550.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1909.3944,-550.3637 1905.7557,-540.4133 1902.3951,-550.4609 1909.3944,-550.3637"/>
-</g>
-<!-- 26 -->
-<g id="node27" class="node">
-<title>26</title>
-<path fill="none" stroke="#c6d856" stroke-width="2" d="M1926.5,-684C1926.5,-684 1888.5,-684 1888.5,-684 1882.5,-684 1876.5,-678 1876.5,-672 1876.5,-672 1876.5,-660 1876.5,-660 1876.5,-654 1882.5,-648 1888.5,-648 1888.5,-648 1926.5,-648 1926.5,-648 1932.5,-648 1938.5,-654 1938.5,-660 1938.5,-660 1938.5,-672 1938.5,-672 1938.5,-678 1932.5,-684 1926.5,-684"/>
-<text text-anchor="middle" x="1907.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
-</g>
-<!-- 26&#45;&gt;25 -->
-<g id="edge45" class="edge">
-<title>26&#45;&gt;25</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1907.2477,-647.8314C1907.1407,-640.131 1907.0135,-630.9743 1906.8947,-622.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1910.3944,-622.3637 1906.7557,-612.4133 1903.3951,-622.4609 1910.3944,-622.3637"/>
-</g>
-<!-- 27&#45;&gt;26 -->
-<g id="edge46" class="edge">
-<title>27&#45;&gt;26</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1908.2477,-719.8314C1908.1407,-712.131 1908.0135,-702.9743 1907.8947,-694.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1911.3944,-694.3637 1907.7557,-684.4133 1904.3951,-694.4609 1911.3944,-694.3637"/>
-</g>
-<!-- 28 -->
-<g id="node29" class="node">
-<title>28</title>
-<path fill="none" stroke="#d8cb56" stroke-width="2" d="M505,-540C505,-540 446,-540 446,-540 440,-540 434,-534 434,-528 434,-528 434,-516 434,-516 434,-510 440,-504 446,-504 446,-504 505,-504 505,-504 511,-504 517,-510 517,-516 517,-516 517,-528 517,-528 517,-534 511,-540 505,-540"/>
-<text text-anchor="middle" x="475.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
-</g>
-<!-- 28&#45;&gt;1 -->
-<g id="edge22" class="edge">
-<title>28&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M477.1977,-503.7688C479.4221,-485.1165 484.3099,-455.6052 494.5,-432 533.1024,-342.5781 573.0673,-337.6179 619.5,-252 644.2093,-206.4383 621.6876,-174.6292 663.5,-144 669.9345,-139.2865 1155.1442,-103.1048 1295.1013,-92.7565"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1295.6074,-96.2287 1305.3223,-92.0013 1295.0916,-89.2478 1295.6074,-96.2287"/>
-</g>
-<!-- 63 -->
-<g id="node64" class="node">
-<title>63</title>
-<path fill="none" stroke="#d8ac56" stroke-width="2" d="M545.5,-468C545.5,-468 515.5,-468 515.5,-468 509.5,-468 503.5,-462 503.5,-456 503.5,-456 503.5,-444 503.5,-444 503.5,-438 509.5,-432 515.5,-432 515.5,-432 545.5,-432 545.5,-432 551.5,-432 557.5,-438 557.5,-444 557.5,-444 557.5,-456 557.5,-456 557.5,-462 551.5,-468 545.5,-468"/>
-<text text-anchor="middle" x="530.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
-</g>
-<!-- 28&#45;&gt;63 -->
-<g id="edge87" class="edge">
-<title>28&#45;&gt;63</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M489.3788,-503.8314C495.7136,-495.5386 503.3384,-485.557 510.2926,-476.4533"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="513.1452,-478.4847 516.4343,-468.4133 507.5825,-474.2353 513.1452,-478.4847"/>
-</g>
-<!-- 29 -->
-<g id="node30" class="node">
-<title>29</title>
-<path fill="none" stroke="#8fd856" stroke-width="2" d="M454,-612C454,-612 419,-612 419,-612 413,-612 407,-606 407,-600 407,-600 407,-588 407,-588 407,-582 413,-576 419,-576 419,-576 454,-576 454,-576 460,-576 466,-582 466,-588 466,-588 466,-600 466,-600 466,-606 460,-612 454,-612"/>
-<text text-anchor="middle" x="436.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
-</g>
-<!-- 29&#45;&gt;28 -->
-<g id="edge48" class="edge">
-<title>29&#45;&gt;28</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M446.3413,-575.8314C450.6957,-567.7925 455.9098,-558.1666 460.7169,-549.2918"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="463.8408,-550.8732 465.5261,-540.4133 457.6857,-547.5392 463.8408,-550.8732"/>
-</g>
-<!-- 30 -->
-<g id="node31" class="node">
-<title>30</title>
-<path fill="none" stroke="#c6d856" stroke-width="2" d="M376.5,-684C376.5,-684 338.5,-684 338.5,-684 332.5,-684 326.5,-678 326.5,-672 326.5,-672 326.5,-660 326.5,-660 326.5,-654 332.5,-648 338.5,-648 338.5,-648 376.5,-648 376.5,-648 382.5,-648 388.5,-654 388.5,-660 388.5,-660 388.5,-672 388.5,-672 388.5,-678 382.5,-684 376.5,-684"/>
-<text text-anchor="middle" x="357.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
-</g>
-<!-- 30&#45;&gt;29 -->
-<g id="edge49" class="edge">
-<title>30&#45;&gt;29</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M377.435,-647.8314C386.9783,-639.1337 398.5599,-628.5783 408.9306,-619.1265"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="411.538,-621.4857 416.5713,-612.1628 406.8228,-616.3121 411.538,-621.4857"/>
-</g>
-<!-- 31&#45;&gt;30 -->
-<g id="edge50" class="edge">
-<title>31&#45;&gt;30</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M236.544,-721.1192C260.7267,-710.0992 292.2984,-695.7121 317.1221,-684.4"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="318.6278,-687.5602 326.2762,-680.2286 315.7251,-681.1904 318.6278,-687.5602"/>
-</g>
-<!-- 32 -->
-<g id="node33" class="node">
-<title>32</title>
-<path fill="none" stroke="#d8cb56" stroke-width="2" d="M1645,-540C1645,-540 1586,-540 1586,-540 1580,-540 1574,-534 1574,-528 1574,-528 1574,-516 1574,-516 1574,-510 1580,-504 1586,-504 1586,-504 1645,-504 1645,-504 1651,-504 1657,-510 1657,-516 1657,-516 1657,-528 1657,-528 1657,-534 1651,-540 1645,-540"/>
-<text text-anchor="middle" x="1615.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
-</g>
-<!-- 32&#45;&gt;1 -->
-<g id="edge23" class="edge">
-<title>32&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1608.7136,-503.6497C1599.3203,-476.5619 1583.5,-424.0977 1583.5,-378 1583.5,-378 1583.5,-378 1583.5,-234 1583.5,-192.6022 1589.166,-172.874 1559.5,-144 1532.7864,-117.9996 1427.1572,-101.4738 1369.8882,-94.2379"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1370.1403,-90.7426 1359.7876,-92.9948 1369.2851,-97.6902 1370.1403,-90.7426"/>
-</g>
-<!-- 71 -->
-<g id="node72" class="node">
-<title>71</title>
-<path fill="none" stroke="#d8ac56" stroke-width="2" d="M1693.5,-468C1693.5,-468 1663.5,-468 1663.5,-468 1657.5,-468 1651.5,-462 1651.5,-456 1651.5,-456 1651.5,-444 1651.5,-444 1651.5,-438 1657.5,-432 1663.5,-432 1663.5,-432 1693.5,-432 1693.5,-432 1699.5,-432 1705.5,-438 1705.5,-444 1705.5,-444 1705.5,-456 1705.5,-456 1705.5,-462 1699.5,-468 1693.5,-468"/>
-<text text-anchor="middle" x="1678.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
-</g>
-<!-- 32&#45;&gt;71 -->
-<g id="edge99" class="edge">
-<title>32&#45;&gt;71</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1631.3976,-503.8314C1638.7278,-495.454 1647.566,-485.3531 1655.5969,-476.1749"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1658.4373,-478.2438 1662.3884,-468.4133 1653.1693,-473.6343 1658.4373,-478.2438"/>
-</g>
-<!-- 33 -->
-<g id="node34" class="node">
-<title>33</title>
-<path fill="none" stroke="#8fd856" stroke-width="2" d="M1631,-612C1631,-612 1596,-612 1596,-612 1590,-612 1584,-606 1584,-600 1584,-600 1584,-588 1584,-588 1584,-582 1590,-576 1596,-576 1596,-576 1631,-576 1631,-576 1637,-576 1643,-582 1643,-588 1643,-588 1643,-600 1643,-600 1643,-606 1637,-612 1631,-612"/>
-<text text-anchor="middle" x="1613.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
-</g>
-<!-- 33&#45;&gt;32 -->
-<g id="edge52" class="edge">
-<title>33&#45;&gt;32</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1614.0047,-575.8314C1614.2186,-568.131 1614.4729,-558.9743 1614.7106,-550.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1618.2094,-550.5066 1614.9885,-540.4133 1611.2121,-550.3122 1618.2094,-550.5066"/>
-</g>
-<!-- 34 -->
-<g id="node35" class="node">
-<title>34</title>
-<path fill="none" stroke="#c6d856" stroke-width="2" d="M1629.5,-684C1629.5,-684 1591.5,-684 1591.5,-684 1585.5,-684 1579.5,-678 1579.5,-672 1579.5,-672 1579.5,-660 1579.5,-660 1579.5,-654 1585.5,-648 1591.5,-648 1591.5,-648 1629.5,-648 1629.5,-648 1635.5,-648 1641.5,-654 1641.5,-660 1641.5,-660 1641.5,-672 1641.5,-672 1641.5,-678 1635.5,-684 1629.5,-684"/>
-<text text-anchor="middle" x="1610.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
-</g>
-<!-- 34&#45;&gt;33 -->
-<g id="edge53" class="edge">
-<title>34&#45;&gt;33</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1611.257,-647.8314C1611.5779,-640.131 1611.9594,-630.9743 1612.316,-622.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1615.8133,-622.5503 1612.7328,-612.4133 1608.8194,-622.2589 1615.8133,-622.5503"/>
-</g>
-<!-- 35&#45;&gt;34 -->
-<g id="edge54" class="edge">
-<title>35&#45;&gt;34</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1582.089,-719.8314C1586.3317,-711.7925 1591.4121,-702.1666 1596.096,-693.2918"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1599.2096,-694.8908 1600.7819,-684.4133 1593.0189,-691.6235 1599.2096,-694.8908"/>
-</g>
-<!-- 36 -->
-<g id="node37" class="node">
-<title>36</title>
-<path fill="none" stroke="#d8cb56" stroke-width="2" d="M1125,-540C1125,-540 1066,-540 1066,-540 1060,-540 1054,-534 1054,-528 1054,-528 1054,-516 1054,-516 1054,-510 1060,-504 1066,-504 1066,-504 1125,-504 1125,-504 1131,-504 1137,-510 1137,-516 1137,-516 1137,-528 1137,-528 1137,-534 1131,-540 1125,-540"/>
-<text text-anchor="middle" x="1095.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
-</g>
-<!-- 36&#45;&gt;1 -->
-<g id="edge24" class="edge">
-<title>36&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1095.5,-503.8146C1095.5,-476.4983 1095.5,-423.25 1095.5,-378 1095.5,-378 1095.5,-378 1095.5,-234 1095.5,-141.685 1228.4547,-106.8739 1295.1999,-95.2146"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1296.0207,-98.6263 1305.3131,-93.5368 1294.8751,-91.7207 1296.0207,-98.6263"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M438.5,-503.8146C438.5,-476.4983 438.5,-423.25 438.5,-378 438.5,-378 438.5,-378 438.5,-306 438.5,-220.4401 468.8535,-187.551 542.5,-144 575.3772,-124.558 1144.6965,-98.3475 1297.8332,-91.6241"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1298.2892,-95.1076 1308.1267,-91.1741 1297.9834,-88.1143 1298.2892,-95.1076"/>
 </g>
 <!-- 61 -->
 <g id="node62" class="node">
 <title>61</title>
-<path fill="none" stroke="#d8ac56" stroke-width="2" d="M979.5,-468C979.5,-468 949.5,-468 949.5,-468 943.5,-468 937.5,-462 937.5,-456 937.5,-456 937.5,-444 937.5,-444 937.5,-438 943.5,-432 949.5,-432 949.5,-432 979.5,-432 979.5,-432 985.5,-432 991.5,-438 991.5,-444 991.5,-444 991.5,-456 991.5,-456 991.5,-462 985.5,-468 979.5,-468"/>
-<text text-anchor="middle" x="964.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
+<path fill="none" stroke="#c6d856" stroke-width="2" d="M510.5,-468C510.5,-468 480.5,-468 480.5,-468 474.5,-468 468.5,-462 468.5,-456 468.5,-456 468.5,-444 468.5,-444 468.5,-438 474.5,-432 480.5,-432 480.5,-432 510.5,-432 510.5,-432 516.5,-432 522.5,-438 522.5,-444 522.5,-444 522.5,-456 522.5,-456 522.5,-462 516.5,-468 510.5,-468"/>
+<text text-anchor="middle" x="495.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
 </g>
-<!-- 36&#45;&gt;61 -->
+<!-- 12&#45;&gt;61 -->
 <g id="edge85" class="edge">
-<title>36&#45;&gt;61</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1062.4432,-503.8314C1043.5983,-493.4739 1019.9601,-480.4819 1000.6275,-469.8563"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1002.2519,-466.7553 991.8024,-465.0059 998.8802,-472.8898 1002.2519,-466.7553"/>
+<title>12&#45;&gt;61</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M452.8835,-503.8314C459.4486,-495.5386 467.3507,-485.557 474.5578,-476.4533"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="477.4599,-478.4262 480.9228,-468.4133 471.9716,-474.0813 477.4599,-478.4262"/>
 </g>
-<!-- 37 -->
-<g id="node38" class="node">
-<title>37</title>
-<path fill="none" stroke="#8fd856" stroke-width="2" d="M1111,-612C1111,-612 1076,-612 1076,-612 1070,-612 1064,-606 1064,-600 1064,-600 1064,-588 1064,-588 1064,-582 1070,-576 1076,-576 1076,-576 1111,-576 1111,-576 1117,-576 1123,-582 1123,-588 1123,-588 1123,-600 1123,-600 1123,-606 1117,-612 1111,-612"/>
-<text text-anchor="middle" x="1093.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
+<!-- 13 -->
+<g id="node14" class="node">
+<title>13</title>
+<path fill="none" stroke="#d87556" stroke-width="2" d="M423,-612C423,-612 388,-612 388,-612 382,-612 376,-606 376,-600 376,-600 376,-588 376,-588 376,-582 382,-576 388,-576 388,-576 423,-576 423,-576 429,-576 435,-582 435,-588 435,-588 435,-600 435,-600 435,-606 429,-612 423,-612"/>
+<text text-anchor="middle" x="405.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
 </g>
-<!-- 37&#45;&gt;36 -->
-<g id="edge56" class="edge">
-<title>37&#45;&gt;36</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1094.0047,-575.8314C1094.2186,-568.131 1094.4729,-558.9743 1094.7106,-550.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1098.2094,-550.5066 1094.9885,-540.4133 1091.2121,-550.3122 1098.2094,-550.5066"/>
+<!-- 13&#45;&gt;12 -->
+<g id="edge32" class="edge">
+<title>13&#45;&gt;12</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M413.8273,-575.8314C417.473,-567.8771 421.8309,-558.369 425.8627,-549.5723"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="429.0757,-550.9622 430.0606,-540.4133 422.7123,-548.0456 429.0757,-550.9622"/>
 </g>
-<!-- 38 -->
-<g id="node39" class="node">
-<title>38</title>
-<path fill="none" stroke="#c6d856" stroke-width="2" d="M1111.5,-684C1111.5,-684 1073.5,-684 1073.5,-684 1067.5,-684 1061.5,-678 1061.5,-672 1061.5,-672 1061.5,-660 1061.5,-660 1061.5,-654 1067.5,-648 1073.5,-648 1073.5,-648 1111.5,-648 1111.5,-648 1117.5,-648 1123.5,-654 1123.5,-660 1123.5,-660 1123.5,-672 1123.5,-672 1123.5,-678 1117.5,-684 1111.5,-684"/>
-<text text-anchor="middle" x="1092.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
+<!-- 14 -->
+<g id="node15" class="node">
+<title>14</title>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M357.5,-684C357.5,-684 319.5,-684 319.5,-684 313.5,-684 307.5,-678 307.5,-672 307.5,-672 307.5,-660 307.5,-660 307.5,-654 313.5,-648 319.5,-648 319.5,-648 357.5,-648 357.5,-648 363.5,-648 369.5,-654 369.5,-660 369.5,-660 369.5,-672 369.5,-672 369.5,-678 363.5,-684 357.5,-684"/>
+<text text-anchor="middle" x="338.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
 </g>
-<!-- 38&#45;&gt;37 -->
-<g id="edge57" class="edge">
-<title>38&#45;&gt;37</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1092.7523,-647.8314C1092.8593,-640.131 1092.9865,-630.9743 1093.1053,-622.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1096.6049,-622.4609 1093.2443,-612.4133 1089.6056,-622.3637 1096.6049,-622.4609"/>
+<!-- 14&#45;&gt;13 -->
+<g id="edge33" class="edge">
+<title>14&#45;&gt;13</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M355.4069,-647.8314C363.2813,-639.3694 372.792,-629.1489 381.4013,-619.8971"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="384.1153,-622.1183 388.3654,-612.4133 378.9908,-617.3497 384.1153,-622.1183"/>
 </g>
-<!-- 39&#45;&gt;38 -->
-<g id="edge58" class="edge">
-<title>39&#45;&gt;38</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1091.7523,-719.8314C1091.8593,-712.131 1091.9865,-702.9743 1092.1053,-694.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1095.6049,-694.4609 1092.2443,-684.4133 1088.6056,-694.3637 1095.6049,-694.4609"/>
+<!-- 15&#45;&gt;14 -->
+<g id="edge34" class="edge">
+<title>15&#45;&gt;14</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M238.3139,-719.8314C256.6532,-709.9774 279.4306,-697.7388 298.6311,-687.4221"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="300.3002,-690.4986 307.4525,-682.6822 296.987,-684.3323 300.3002,-690.4986"/>
 </g>
-<!-- 40 -->
-<g id="node41" class="node">
-<title>40</title>
-<path fill="none" stroke="#d8cb56" stroke-width="2" d="M1265,-540C1265,-540 1206,-540 1206,-540 1200,-540 1194,-534 1194,-528 1194,-528 1194,-516 1194,-516 1194,-510 1200,-504 1206,-504 1206,-504 1265,-504 1265,-504 1271,-504 1277,-510 1277,-516 1277,-516 1277,-528 1277,-528 1277,-534 1271,-540 1265,-540"/>
-<text text-anchor="middle" x="1235.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
+<!-- 16 -->
+<g id="node17" class="node">
+<title>16</title>
+<path fill="none" stroke="#56d873" stroke-width="2" d="M1276,-540C1276,-540 1217,-540 1217,-540 1211,-540 1205,-534 1205,-528 1205,-528 1205,-516 1205,-516 1205,-510 1211,-504 1217,-504 1217,-504 1276,-504 1276,-504 1282,-504 1288,-510 1288,-516 1288,-516 1288,-528 1288,-528 1288,-534 1282,-540 1276,-540"/>
+<text text-anchor="middle" x="1246.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
 </g>
-<!-- 40&#45;&gt;1 -->
-<g id="edge25" class="edge">
-<title>40&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1243.983,-503.81C1255.7246,-476.9218 1275.5,-424.7039 1275.5,-378 1275.5,-378 1275.5,-378 1275.5,-234 1275.5,-192.6022 1283.2046,-182.0557 1299.5,-144 1303.4383,-134.8027 1308.7503,-125.3159 1313.9604,-116.9093"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1317.046,-118.5817 1319.5042,-108.276 1311.1558,-114.7994 1317.046,-118.5817"/>
+<!-- 16&#45;&gt;1 -->
+<g id="edge17" class="edge">
+<title>16&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1253.2864,-503.6497C1262.6797,-476.5619 1278.5,-424.0977 1278.5,-378 1278.5,-378 1278.5,-378 1278.5,-234 1278.5,-192.6022 1286.2046,-182.0557 1302.5,-144 1306.4383,-134.8027 1311.7503,-125.3159 1316.9604,-116.9093"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1320.046,-118.5817 1322.5042,-108.276 1314.1558,-114.7994 1320.046,-118.5817"/>
+</g>
+<!-- 59 -->
+<g id="node60" class="node">
+<title>59</title>
+<path fill="none" stroke="#c6d856" stroke-width="2" d="M1162.5,-468C1162.5,-468 1132.5,-468 1132.5,-468 1126.5,-468 1120.5,-462 1120.5,-456 1120.5,-456 1120.5,-444 1120.5,-444 1120.5,-438 1126.5,-432 1132.5,-432 1132.5,-432 1162.5,-432 1162.5,-432 1168.5,-432 1174.5,-438 1174.5,-444 1174.5,-444 1174.5,-456 1174.5,-456 1174.5,-462 1168.5,-468 1162.5,-468"/>
+<text text-anchor="middle" x="1147.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
+</g>
+<!-- 16&#45;&gt;59 -->
+<g id="edge83" class="edge">
+<title>16&#45;&gt;59</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1221.5181,-503.8314C1209.2072,-494.8779 1194.1893,-483.9558 1180.9063,-474.2955"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1182.6199,-471.214 1172.4739,-468.1628 1178.5027,-476.8752 1182.6199,-471.214"/>
+</g>
+<!-- 17 -->
+<g id="node18" class="node">
+<title>17</title>
+<path fill="none" stroke="#d87556" stroke-width="2" d="M1262,-612C1262,-612 1227,-612 1227,-612 1221,-612 1215,-606 1215,-600 1215,-600 1215,-588 1215,-588 1215,-582 1221,-576 1227,-576 1227,-576 1262,-576 1262,-576 1268,-576 1274,-582 1274,-588 1274,-588 1274,-600 1274,-600 1274,-606 1268,-612 1262,-612"/>
+<text text-anchor="middle" x="1244.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
+</g>
+<!-- 17&#45;&gt;16 -->
+<g id="edge36" class="edge">
+<title>17&#45;&gt;16</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1245.0047,-575.8314C1245.2186,-568.131 1245.4729,-558.9743 1245.7106,-550.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1249.2094,-550.5066 1245.9885,-540.4133 1242.2121,-550.3122 1249.2094,-550.5066"/>
+</g>
+<!-- 18 -->
+<g id="node19" class="node">
+<title>18</title>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M1262.5,-684C1262.5,-684 1224.5,-684 1224.5,-684 1218.5,-684 1212.5,-678 1212.5,-672 1212.5,-672 1212.5,-660 1212.5,-660 1212.5,-654 1218.5,-648 1224.5,-648 1224.5,-648 1262.5,-648 1262.5,-648 1268.5,-648 1274.5,-654 1274.5,-660 1274.5,-660 1274.5,-672 1274.5,-672 1274.5,-678 1268.5,-684 1262.5,-684"/>
+<text text-anchor="middle" x="1243.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
+</g>
+<!-- 18&#45;&gt;17 -->
+<g id="edge37" class="edge">
+<title>18&#45;&gt;17</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1243.7523,-647.8314C1243.8593,-640.131 1243.9865,-630.9743 1244.1053,-622.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1247.6049,-622.4609 1244.2443,-612.4133 1240.6056,-622.3637 1247.6049,-622.4609"/>
+</g>
+<!-- 19&#45;&gt;18 -->
+<g id="edge38" class="edge">
+<title>19&#45;&gt;18</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1242.7523,-719.8314C1242.8593,-712.131 1242.9865,-702.9743 1243.1053,-694.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1246.6049,-694.4609 1243.2443,-684.4133 1239.6056,-694.3637 1246.6049,-694.4609"/>
+</g>
+<!-- 20 -->
+<g id="node21" class="node">
+<title>20</title>
+<path fill="none" stroke="#56d873" stroke-width="2" d="M1454,-540C1454,-540 1395,-540 1395,-540 1389,-540 1383,-534 1383,-528 1383,-528 1383,-516 1383,-516 1383,-510 1389,-504 1395,-504 1395,-504 1454,-504 1454,-504 1460,-504 1466,-510 1466,-516 1466,-516 1466,-528 1466,-528 1466,-534 1460,-540 1454,-540"/>
+<text text-anchor="middle" x="1424.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
+</g>
+<!-- 20&#45;&gt;1 -->
+<g id="edge18" class="edge">
+<title>20&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1417.7136,-503.6497C1408.3203,-476.5619 1392.5,-424.0977 1392.5,-378 1392.5,-378 1392.5,-378 1392.5,-234 1392.5,-192.6022 1384.7954,-182.0557 1368.5,-144 1364.5617,-134.8027 1359.2497,-125.3159 1354.0396,-116.9093"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1356.8442,-114.7994 1348.4958,-108.276 1350.954,-118.5817 1356.8442,-114.7994"/>
+</g>
+<!-- 71 -->
+<g id="node72" class="node">
+<title>71</title>
+<path fill="none" stroke="#c6d856" stroke-width="2" d="M1503.5,-468C1503.5,-468 1473.5,-468 1473.5,-468 1467.5,-468 1461.5,-462 1461.5,-456 1461.5,-456 1461.5,-444 1461.5,-444 1461.5,-438 1467.5,-432 1473.5,-432 1473.5,-432 1503.5,-432 1503.5,-432 1509.5,-432 1515.5,-438 1515.5,-444 1515.5,-444 1515.5,-456 1515.5,-456 1515.5,-462 1509.5,-468 1503.5,-468"/>
+<text text-anchor="middle" x="1488.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
+</g>
+<!-- 20&#45;&gt;71 -->
+<g id="edge99" class="edge">
+<title>20&#45;&gt;71</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1440.6499,-503.8314C1448.1717,-495.3694 1457.2565,-485.1489 1465.4804,-475.8971"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1468.1049,-478.2127 1472.1327,-468.4133 1462.873,-473.5621 1468.1049,-478.2127"/>
+</g>
+<!-- 21 -->
+<g id="node22" class="node">
+<title>21</title>
+<path fill="none" stroke="#d87556" stroke-width="2" d="M1443,-612C1443,-612 1408,-612 1408,-612 1402,-612 1396,-606 1396,-600 1396,-600 1396,-588 1396,-588 1396,-582 1402,-576 1408,-576 1408,-576 1443,-576 1443,-576 1449,-576 1455,-582 1455,-588 1455,-588 1455,-600 1455,-600 1455,-606 1449,-612 1443,-612"/>
+<text text-anchor="middle" x="1425.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
+</g>
+<!-- 21&#45;&gt;20 -->
+<g id="edge40" class="edge">
+<title>21&#45;&gt;20</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1425.2477,-575.8314C1425.1407,-568.131 1425.0135,-558.9743 1424.8947,-550.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1428.3944,-550.3637 1424.7557,-540.4133 1421.3951,-550.4609 1428.3944,-550.3637"/>
+</g>
+<!-- 22 -->
+<g id="node23" class="node">
+<title>22</title>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M1445.5,-684C1445.5,-684 1407.5,-684 1407.5,-684 1401.5,-684 1395.5,-678 1395.5,-672 1395.5,-672 1395.5,-660 1395.5,-660 1395.5,-654 1401.5,-648 1407.5,-648 1407.5,-648 1445.5,-648 1445.5,-648 1451.5,-648 1457.5,-654 1457.5,-660 1457.5,-660 1457.5,-672 1457.5,-672 1457.5,-678 1451.5,-684 1445.5,-684"/>
+<text text-anchor="middle" x="1426.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
+</g>
+<!-- 22&#45;&gt;21 -->
+<g id="edge41" class="edge">
+<title>22&#45;&gt;21</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1426.2477,-647.8314C1426.1407,-640.131 1426.0135,-630.9743 1425.8947,-622.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1429.3944,-622.3637 1425.7557,-612.4133 1422.3951,-622.4609 1429.3944,-622.3637"/>
+</g>
+<!-- 23&#45;&gt;22 -->
+<g id="edge42" class="edge">
+<title>23&#45;&gt;22</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1427.9953,-719.8314C1427.7814,-712.131 1427.5271,-702.9743 1427.2894,-694.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1430.7879,-694.3122 1427.0115,-684.4133 1423.7906,-694.5066 1430.7879,-694.3122"/>
+</g>
+<!-- 24 -->
+<g id="node25" class="node">
+<title>24</title>
+<path fill="none" stroke="#56d873" stroke-width="2" d="M972,-540C972,-540 913,-540 913,-540 907,-540 901,-534 901,-528 901,-528 901,-516 901,-516 901,-510 907,-504 913,-504 913,-504 972,-504 972,-504 978,-504 984,-510 984,-516 984,-516 984,-528 984,-528 984,-534 978,-540 972,-540"/>
+<text text-anchor="middle" x="942.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
+</g>
+<!-- 24&#45;&gt;1 -->
+<g id="edge19" class="edge">
+<title>24&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M950.6495,-503.8223C955.0039,-493.4942 960.1436,-480.2218 963.5,-468 982.8302,-397.6129 990.5,-378.9932 990.5,-306 990.5,-306 990.5,-306 990.5,-234 990.5,-172.8731 1039.9154,-171.514 1094.5,-144 1161.3835,-110.2866 1249.2018,-97.4393 1298.2436,-92.6793"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1298.7471,-96.148 1308.3891,-91.757 1298.1133,-89.1768 1298.7471,-96.148"/>
 </g>
 <!-- 55 -->
 <g id="node56" class="node">
 <title>55</title>
-<path fill="none" stroke="#d8ac56" stroke-width="2" d="M1235.5,-468C1235.5,-468 1205.5,-468 1205.5,-468 1199.5,-468 1193.5,-462 1193.5,-456 1193.5,-456 1193.5,-444 1193.5,-444 1193.5,-438 1199.5,-432 1205.5,-432 1205.5,-432 1235.5,-432 1235.5,-432 1241.5,-432 1247.5,-438 1247.5,-444 1247.5,-444 1247.5,-456 1247.5,-456 1247.5,-462 1241.5,-468 1235.5,-468"/>
-<text text-anchor="middle" x="1220.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
+<path fill="none" stroke="#c6d856" stroke-width="2" d="M942.5,-468C942.5,-468 912.5,-468 912.5,-468 906.5,-468 900.5,-462 900.5,-456 900.5,-456 900.5,-444 900.5,-444 900.5,-438 906.5,-432 912.5,-432 912.5,-432 942.5,-432 942.5,-432 948.5,-432 954.5,-438 954.5,-444 954.5,-444 954.5,-456 954.5,-456 954.5,-462 948.5,-468 942.5,-468"/>
+<text text-anchor="middle" x="927.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
 </g>
-<!-- 40&#45;&gt;55 -->
+<!-- 24&#45;&gt;55 -->
 <g id="edge79" class="edge">
-<title>40&#45;&gt;55</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1231.7149,-503.8314C1230.1106,-496.131 1228.203,-486.9743 1226.4201,-478.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1229.8021,-477.4892 1224.3361,-468.4133 1222.9493,-478.9169 1229.8021,-477.4892"/>
+<title>24&#45;&gt;55</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M938.7149,-503.8314C937.1106,-496.131 935.203,-486.9743 933.4201,-478.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="936.8021,-477.4892 931.3361,-468.4133 929.9493,-478.9169 936.8021,-477.4892"/>
 </g>
-<!-- 41 -->
-<g id="node42" class="node">
-<title>41</title>
-<path fill="none" stroke="#8fd856" stroke-width="2" d="M1252,-612C1252,-612 1217,-612 1217,-612 1211,-612 1205,-606 1205,-600 1205,-600 1205,-588 1205,-588 1205,-582 1211,-576 1217,-576 1217,-576 1252,-576 1252,-576 1258,-576 1264,-582 1264,-588 1264,-588 1264,-600 1264,-600 1264,-606 1258,-612 1252,-612"/>
-<text text-anchor="middle" x="1234.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
+<!-- 25 -->
+<g id="node26" class="node">
+<title>25</title>
+<path fill="none" stroke="#d87556" stroke-width="2" d="M959,-612C959,-612 924,-612 924,-612 918,-612 912,-606 912,-600 912,-600 912,-588 912,-588 912,-582 918,-576 924,-576 924,-576 959,-576 959,-576 965,-576 971,-582 971,-588 971,-588 971,-600 971,-600 971,-606 965,-612 959,-612"/>
+<text text-anchor="middle" x="941.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
 </g>
-<!-- 41&#45;&gt;40 -->
-<g id="edge60" class="edge">
-<title>41&#45;&gt;40</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1234.7523,-575.8314C1234.8593,-568.131 1234.9865,-558.9743 1235.1053,-550.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1238.6049,-550.4609 1235.2443,-540.4133 1231.6056,-550.3637 1238.6049,-550.4609"/>
+<!-- 25&#45;&gt;24 -->
+<g id="edge44" class="edge">
+<title>25&#45;&gt;24</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M941.7523,-575.8314C941.8593,-568.131 941.9865,-558.9743 942.1053,-550.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="945.6049,-550.4609 942.2443,-540.4133 938.6056,-550.3637 945.6049,-550.4609"/>
 </g>
-<!-- 42 -->
-<g id="node43" class="node">
-<title>42</title>
-<path fill="none" stroke="#c6d856" stroke-width="2" d="M1251.5,-684C1251.5,-684 1213.5,-684 1213.5,-684 1207.5,-684 1201.5,-678 1201.5,-672 1201.5,-672 1201.5,-660 1201.5,-660 1201.5,-654 1207.5,-648 1213.5,-648 1213.5,-648 1251.5,-648 1251.5,-648 1257.5,-648 1263.5,-654 1263.5,-660 1263.5,-660 1263.5,-672 1263.5,-672 1263.5,-678 1257.5,-684 1251.5,-684"/>
-<text text-anchor="middle" x="1232.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
+<!-- 26 -->
+<g id="node27" class="node">
+<title>26</title>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M959.5,-684C959.5,-684 921.5,-684 921.5,-684 915.5,-684 909.5,-678 909.5,-672 909.5,-672 909.5,-660 909.5,-660 909.5,-654 915.5,-648 921.5,-648 921.5,-648 959.5,-648 959.5,-648 965.5,-648 971.5,-654 971.5,-660 971.5,-660 971.5,-672 971.5,-672 971.5,-678 965.5,-684 959.5,-684"/>
+<text text-anchor="middle" x="940.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
 </g>
-<!-- 42&#45;&gt;41 -->
-<g id="edge61" class="edge">
-<title>42&#45;&gt;41</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1233.0047,-647.8314C1233.2186,-640.131 1233.4729,-630.9743 1233.7106,-622.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1237.2094,-622.5066 1233.9885,-612.4133 1230.2121,-622.3122 1237.2094,-622.5066"/>
+<!-- 26&#45;&gt;25 -->
+<g id="edge45" class="edge">
+<title>26&#45;&gt;25</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M940.7523,-647.8314C940.8593,-640.131 940.9865,-630.9743 941.1053,-622.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="944.6049,-622.4609 941.2443,-612.4133 937.6056,-622.3637 944.6049,-622.4609"/>
 </g>
-<!-- 43&#45;&gt;42 -->
-<g id="edge62" class="edge">
-<title>43&#45;&gt;42</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1231.7523,-719.8314C1231.8593,-712.131 1231.9865,-702.9743 1232.1053,-694.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1235.6049,-694.4609 1232.2443,-684.4133 1228.6056,-694.3637 1235.6049,-694.4609"/>
+<!-- 27&#45;&gt;26 -->
+<g id="edge46" class="edge">
+<title>27&#45;&gt;26</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M939.7523,-719.8314C939.8593,-712.131 939.9865,-702.9743 940.1053,-694.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="943.6049,-694.4609 940.2443,-684.4133 936.6056,-694.3637 943.6049,-694.4609"/>
 </g>
-<!-- 44 -->
-<g id="node45" class="node">
-<title>44</title>
-<path fill="none" stroke="#d8cb56" stroke-width="2" d="M1467,-540C1467,-540 1408,-540 1408,-540 1402,-540 1396,-534 1396,-528 1396,-528 1396,-516 1396,-516 1396,-510 1402,-504 1408,-504 1408,-504 1467,-504 1467,-504 1473,-504 1479,-510 1479,-516 1479,-516 1479,-528 1479,-528 1479,-534 1473,-540 1467,-540"/>
-<text text-anchor="middle" x="1437.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
+<!-- 28 -->
+<g id="node29" class="node">
+<title>28</title>
+<path fill="none" stroke="#56d873" stroke-width="2" d="M1793,-540C1793,-540 1734,-540 1734,-540 1728,-540 1722,-534 1722,-528 1722,-528 1722,-516 1722,-516 1722,-510 1728,-504 1734,-504 1734,-504 1793,-504 1793,-504 1799,-504 1805,-510 1805,-516 1805,-516 1805,-528 1805,-528 1805,-534 1799,-540 1793,-540"/>
+<text text-anchor="middle" x="1763.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
 </g>
-<!-- 44&#45;&gt;1 -->
-<g id="edge26" class="edge">
-<title>44&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1427.0847,-503.5566C1412.9675,-476.7787 1389.5,-425.1706 1389.5,-378 1389.5,-378 1389.5,-378 1389.5,-234 1389.5,-192.6022 1381.7954,-182.0557 1365.5,-144 1361.5617,-134.8027 1356.2497,-125.3159 1351.0396,-116.9093"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1353.8442,-114.7994 1345.4958,-108.276 1347.954,-118.5817 1353.8442,-114.7994"/>
+<!-- 28&#45;&gt;1 -->
+<g id="edge20" class="edge">
+<title>28&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1733.0726,-503.9292C1682.4657,-471.3042 1586.5,-397.3891 1586.5,-306 1586.5,-306 1586.5,-306 1586.5,-234 1586.5,-136.7567 1443.0037,-104.2416 1373.0084,-94.1656"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1373.2191,-90.6622 1362.8392,-92.7855 1372.2777,-97.5986 1373.2191,-90.6622"/>
+</g>
+<!-- 73 -->
+<g id="node74" class="node">
+<title>73</title>
+<path fill="none" stroke="#c6d856" stroke-width="2" d="M1778.5,-468C1778.5,-468 1748.5,-468 1748.5,-468 1742.5,-468 1736.5,-462 1736.5,-456 1736.5,-456 1736.5,-444 1736.5,-444 1736.5,-438 1742.5,-432 1748.5,-432 1748.5,-432 1778.5,-432 1778.5,-432 1784.5,-432 1790.5,-438 1790.5,-444 1790.5,-444 1790.5,-456 1790.5,-456 1790.5,-462 1784.5,-468 1778.5,-468"/>
+<text text-anchor="middle" x="1763.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
+</g>
+<!-- 28&#45;&gt;73 -->
+<g id="edge101" class="edge">
+<title>28&#45;&gt;73</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1763.5,-503.8314C1763.5,-496.131 1763.5,-486.9743 1763.5,-478.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1767.0001,-478.4132 1763.5,-468.4133 1760.0001,-478.4133 1767.0001,-478.4132"/>
+</g>
+<!-- 29 -->
+<g id="node30" class="node">
+<title>29</title>
+<path fill="none" stroke="#d87556" stroke-width="2" d="M1810,-612C1810,-612 1775,-612 1775,-612 1769,-612 1763,-606 1763,-600 1763,-600 1763,-588 1763,-588 1763,-582 1769,-576 1775,-576 1775,-576 1810,-576 1810,-576 1816,-576 1822,-582 1822,-588 1822,-588 1822,-600 1822,-600 1822,-606 1816,-612 1810,-612"/>
+<text text-anchor="middle" x="1792.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
+</g>
+<!-- 29&#45;&gt;28 -->
+<g id="edge48" class="edge">
+<title>29&#45;&gt;28</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1785.1821,-575.8314C1782.0124,-567.9617 1778.23,-558.5712 1774.7187,-549.8533"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1777.8992,-548.3815 1770.9165,-540.4133 1771.4061,-550.9968 1777.8992,-548.3815"/>
+</g>
+<!-- 30 -->
+<g id="node31" class="node">
+<title>30</title>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M1826.5,-684C1826.5,-684 1788.5,-684 1788.5,-684 1782.5,-684 1776.5,-678 1776.5,-672 1776.5,-672 1776.5,-660 1776.5,-660 1776.5,-654 1782.5,-648 1788.5,-648 1788.5,-648 1826.5,-648 1826.5,-648 1832.5,-648 1838.5,-654 1838.5,-660 1838.5,-660 1838.5,-672 1838.5,-672 1838.5,-678 1832.5,-684 1826.5,-684"/>
+<text text-anchor="middle" x="1807.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
+</g>
+<!-- 30&#45;&gt;29 -->
+<g id="edge49" class="edge">
+<title>30&#45;&gt;29</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1803.7149,-647.8314C1802.1106,-640.131 1800.203,-630.9743 1798.4201,-622.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1801.8021,-621.4892 1796.3361,-612.4133 1794.9493,-622.9169 1801.8021,-621.4892"/>
+</g>
+<!-- 31&#45;&gt;30 -->
+<g id="edge50" class="edge">
+<title>31&#45;&gt;30</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1817.9672,-719.8314C1816.4699,-712.131 1814.6895,-702.9743 1813.0255,-694.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1816.4248,-693.5614 1811.0804,-684.4133 1809.5535,-694.8975 1816.4248,-693.5614"/>
+</g>
+<!-- 32 -->
+<g id="node33" class="node">
+<title>32</title>
+<path fill="none" stroke="#56d873" stroke-width="2" d="M1629,-540C1629,-540 1570,-540 1570,-540 1564,-540 1558,-534 1558,-528 1558,-528 1558,-516 1558,-516 1558,-510 1564,-504 1570,-504 1570,-504 1629,-504 1629,-504 1635,-504 1641,-510 1641,-516 1641,-516 1641,-528 1641,-528 1641,-534 1635,-540 1629,-540"/>
+<text text-anchor="middle" x="1599.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
+</g>
+<!-- 32&#45;&gt;1 -->
+<g id="edge21" class="edge">
+<title>32&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1584.0051,-503.7543C1576.4773,-493.83 1568.0863,-480.9585 1563.5,-468 1539.3749,-399.8353 1548.5,-378.308 1548.5,-306 1548.5,-306 1548.5,-306 1548.5,-234 1548.5,-150.2412 1434.0617,-111.9038 1372.9485,-97.4022"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1373.437,-93.9241 1362.91,-95.1206 1371.8855,-100.75 1373.437,-93.9241"/>
+</g>
+<!-- 75 -->
+<g id="node76" class="node">
+<title>75</title>
+<path fill="none" stroke="#c6d856" stroke-width="2" d="M1614.5,-468C1614.5,-468 1584.5,-468 1584.5,-468 1578.5,-468 1572.5,-462 1572.5,-456 1572.5,-456 1572.5,-444 1572.5,-444 1572.5,-438 1578.5,-432 1584.5,-432 1584.5,-432 1614.5,-432 1614.5,-432 1620.5,-432 1626.5,-438 1626.5,-444 1626.5,-444 1626.5,-456 1626.5,-456 1626.5,-462 1620.5,-468 1614.5,-468"/>
+<text text-anchor="middle" x="1599.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
+</g>
+<!-- 32&#45;&gt;75 -->
+<g id="edge103" class="edge">
+<title>32&#45;&gt;75</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1599.5,-503.8314C1599.5,-496.131 1599.5,-486.9743 1599.5,-478.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1603.0001,-478.4132 1599.5,-468.4133 1596.0001,-478.4133 1603.0001,-478.4132"/>
+</g>
+<!-- 33 -->
+<g id="node34" class="node">
+<title>33</title>
+<path fill="none" stroke="#d87556" stroke-width="2" d="M1624,-612C1624,-612 1589,-612 1589,-612 1583,-612 1577,-606 1577,-600 1577,-600 1577,-588 1577,-588 1577,-582 1583,-576 1589,-576 1589,-576 1624,-576 1624,-576 1630,-576 1636,-582 1636,-588 1636,-588 1636,-600 1636,-600 1636,-606 1630,-612 1624,-612"/>
+<text text-anchor="middle" x="1606.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
+</g>
+<!-- 33&#45;&gt;32 -->
+<g id="edge52" class="edge">
+<title>33&#45;&gt;32</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1604.7336,-575.8314C1603.985,-568.131 1603.0947,-558.9743 1602.2627,-550.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1605.7415,-550.0276 1601.2902,-540.4133 1598.7744,-550.7051 1605.7415,-550.0276"/>
+</g>
+<!-- 34 -->
+<g id="node35" class="node">
+<title>34</title>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M1628.5,-684C1628.5,-684 1590.5,-684 1590.5,-684 1584.5,-684 1578.5,-678 1578.5,-672 1578.5,-672 1578.5,-660 1578.5,-660 1578.5,-654 1584.5,-648 1590.5,-648 1590.5,-648 1628.5,-648 1628.5,-648 1634.5,-648 1640.5,-654 1640.5,-660 1640.5,-660 1640.5,-672 1640.5,-672 1640.5,-678 1634.5,-684 1628.5,-684"/>
+<text text-anchor="middle" x="1609.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
+</g>
+<!-- 34&#45;&gt;33 -->
+<g id="edge53" class="edge">
+<title>34&#45;&gt;33</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1608.743,-647.8314C1608.4221,-640.131 1608.0406,-630.9743 1607.684,-622.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1611.1806,-622.2589 1607.2672,-612.4133 1604.1867,-622.5503 1611.1806,-622.2589"/>
+</g>
+<!-- 35&#45;&gt;34 -->
+<g id="edge54" class="edge">
+<title>35&#45;&gt;34</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1612.4906,-719.8314C1612.0628,-712.131 1611.5541,-702.9743 1611.0787,-694.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1614.5724,-694.2037 1610.523,-684.4133 1607.5831,-694.592 1614.5724,-694.2037"/>
+</g>
+<!-- 36 -->
+<g id="node37" class="node">
+<title>36</title>
+<path fill="none" stroke="#56d873" stroke-width="2" d="M2136,-540C2136,-540 2077,-540 2077,-540 2071,-540 2065,-534 2065,-528 2065,-528 2065,-516 2065,-516 2065,-510 2071,-504 2077,-504 2077,-504 2136,-504 2136,-504 2142,-504 2148,-510 2148,-516 2148,-516 2148,-528 2148,-528 2148,-534 2142,-540 2136,-540"/>
+<text text-anchor="middle" x="2106.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
+</g>
+<!-- 36&#45;&gt;1 -->
+<g id="edge22" class="edge">
+<title>36&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2103.1848,-503.8863C2098.4983,-476.6615 2090.5,-423.5285 2090.5,-378 2090.5,-378 2090.5,-378 2090.5,-234 2090.5,-190.2273 2086.2782,-169.2184 2050.5,-144 2022.5505,-124.2997 1515.735,-98.6309 1372.7666,-91.7565"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1372.8859,-88.2583 1362.73,-91.2761 1372.5512,-95.2503 1372.8859,-88.2583"/>
 </g>
 <!-- 67 -->
 <g id="node68" class="node">
 <title>67</title>
-<path fill="none" stroke="#d8ac56" stroke-width="2" d="M1461.5,-468C1461.5,-468 1431.5,-468 1431.5,-468 1425.5,-468 1419.5,-462 1419.5,-456 1419.5,-456 1419.5,-444 1419.5,-444 1419.5,-438 1425.5,-432 1431.5,-432 1431.5,-432 1461.5,-432 1461.5,-432 1467.5,-432 1473.5,-438 1473.5,-444 1473.5,-444 1473.5,-456 1473.5,-456 1473.5,-462 1467.5,-468 1461.5,-468"/>
-<text text-anchor="middle" x="1446.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
+<path fill="none" stroke="#c6d856" stroke-width="2" d="M1940.5,-468C1940.5,-468 1910.5,-468 1910.5,-468 1904.5,-468 1898.5,-462 1898.5,-456 1898.5,-456 1898.5,-444 1898.5,-444 1898.5,-438 1904.5,-432 1910.5,-432 1910.5,-432 1940.5,-432 1940.5,-432 1946.5,-432 1952.5,-438 1952.5,-444 1952.5,-444 1952.5,-456 1952.5,-456 1952.5,-462 1946.5,-468 1940.5,-468"/>
+<text text-anchor="middle" x="1925.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
 </g>
-<!-- 44&#45;&gt;67 -->
+<!-- 36&#45;&gt;67 -->
 <g id="edge95" class="edge">
-<title>44&#45;&gt;67</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1439.7711,-503.8314C1440.7336,-496.131 1441.8782,-486.9743 1442.9479,-478.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1446.4309,-478.7702 1444.1983,-468.4133 1439.4849,-477.9019 1446.4309,-478.7702"/>
+<title>36&#45;&gt;67</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2064.9749,-505.4817C2033.9371,-493.1352 1991.9014,-476.4138 1962.1143,-464.5648"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1963.1013,-461.1907 1952.5158,-460.7466 1960.5139,-467.695 1963.1013,-461.1907"/>
+</g>
+<!-- 37 -->
+<g id="node38" class="node">
+<title>37</title>
+<path fill="none" stroke="#d87556" stroke-width="2" d="M2150,-612C2150,-612 2115,-612 2115,-612 2109,-612 2103,-606 2103,-600 2103,-600 2103,-588 2103,-588 2103,-582 2109,-576 2115,-576 2115,-576 2150,-576 2150,-576 2156,-576 2162,-582 2162,-588 2162,-588 2162,-600 2162,-600 2162,-606 2156,-612 2150,-612"/>
+<text text-anchor="middle" x="2132.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
+</g>
+<!-- 37&#45;&gt;36 -->
+<g id="edge56" class="edge">
+<title>37&#45;&gt;36</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2125.9391,-575.8314C2123.0973,-567.9617 2119.7063,-558.5712 2116.5581,-549.8533"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="2119.8377,-548.63 2113.1492,-540.4133 2113.2538,-551.0076 2119.8377,-548.63"/>
+</g>
+<!-- 38 -->
+<g id="node39" class="node">
+<title>38</title>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M2178.5,-684C2178.5,-684 2140.5,-684 2140.5,-684 2134.5,-684 2128.5,-678 2128.5,-672 2128.5,-672 2128.5,-660 2128.5,-660 2128.5,-654 2134.5,-648 2140.5,-648 2140.5,-648 2178.5,-648 2178.5,-648 2184.5,-648 2190.5,-654 2190.5,-660 2190.5,-660 2190.5,-672 2190.5,-672 2190.5,-678 2184.5,-684 2178.5,-684"/>
+<text text-anchor="middle" x="2159.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
+</g>
+<!-- 38&#45;&gt;37 -->
+<g id="edge57" class="edge">
+<title>38&#45;&gt;37</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2152.6868,-647.8314C2149.7356,-639.9617 2146.2142,-630.5712 2142.945,-621.8533"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="2146.1934,-620.5476 2139.405,-612.4133 2139.6391,-623.0055 2146.1934,-620.5476"/>
+</g>
+<!-- 39&#45;&gt;38 -->
+<g id="edge58" class="edge">
+<title>39&#45;&gt;38</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2238.7517,-719.8314C2225.4447,-710.7927 2209.184,-699.7476 2194.8625,-690.0198"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="2196.4785,-686.8864 2186.2397,-684.1628 2192.5453,-692.677 2196.4785,-686.8864"/>
+</g>
+<!-- 40 -->
+<g id="node41" class="node">
+<title>40</title>
+<path fill="none" stroke="#56d873" stroke-width="2" d="M1136,-540C1136,-540 1077,-540 1077,-540 1071,-540 1065,-534 1065,-528 1065,-528 1065,-516 1065,-516 1065,-510 1071,-504 1077,-504 1077,-504 1136,-504 1136,-504 1142,-504 1148,-510 1148,-516 1148,-516 1148,-528 1148,-528 1148,-534 1142,-540 1136,-540"/>
+<text text-anchor="middle" x="1106.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
+</g>
+<!-- 40&#45;&gt;1 -->
+<g id="edge23" class="edge">
+<title>40&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1143.4101,-503.9666C1157.9944,-495.0652 1173.6028,-482.9875 1183.5,-468 1206.028,-433.8855 1202.5,-418.8816 1202.5,-378 1202.5,-378 1202.5,-378 1202.5,-234 1202.5,-192.6022 1200.2859,-176.0405 1226.5,-144 1244.7539,-121.689 1274.531,-107.8181 1298.3533,-99.7298"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1299.6815,-102.9801 1308.1473,-96.6097 1297.5566,-96.3104 1299.6815,-102.9801"/>
+</g>
+<!-- 63 -->
+<g id="node64" class="node">
+<title>63</title>
+<path fill="none" stroke="#c6d856" stroke-width="2" d="M1052.5,-468C1052.5,-468 1022.5,-468 1022.5,-468 1016.5,-468 1010.5,-462 1010.5,-456 1010.5,-456 1010.5,-444 1010.5,-444 1010.5,-438 1016.5,-432 1022.5,-432 1022.5,-432 1052.5,-432 1052.5,-432 1058.5,-432 1064.5,-438 1064.5,-444 1064.5,-444 1064.5,-456 1064.5,-456 1064.5,-462 1058.5,-468 1052.5,-468"/>
+<text text-anchor="middle" x="1037.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
+</g>
+<!-- 40&#45;&gt;63 -->
+<g id="edge87" class="edge">
+<title>40&#45;&gt;63</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1089.0884,-503.8314C1080.979,-495.3694 1071.1844,-485.1489 1062.318,-475.8971"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1064.5921,-473.2115 1055.146,-468.4133 1059.5382,-478.0549 1064.5921,-473.2115"/>
+</g>
+<!-- 41 -->
+<g id="node42" class="node">
+<title>41</title>
+<path fill="none" stroke="#d87556" stroke-width="2" d="M1123,-612C1123,-612 1088,-612 1088,-612 1082,-612 1076,-606 1076,-600 1076,-600 1076,-588 1076,-588 1076,-582 1082,-576 1088,-576 1088,-576 1123,-576 1123,-576 1129,-576 1135,-582 1135,-588 1135,-588 1135,-600 1135,-600 1135,-606 1129,-612 1123,-612"/>
+<text text-anchor="middle" x="1105.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
+</g>
+<!-- 41&#45;&gt;40 -->
+<g id="edge60" class="edge">
+<title>41&#45;&gt;40</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1105.7523,-575.8314C1105.8593,-568.131 1105.9865,-558.9743 1106.1053,-550.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1109.6049,-550.4609 1106.2443,-540.4133 1102.6056,-550.3637 1109.6049,-550.4609"/>
+</g>
+<!-- 42 -->
+<g id="node43" class="node">
+<title>42</title>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M1123.5,-684C1123.5,-684 1085.5,-684 1085.5,-684 1079.5,-684 1073.5,-678 1073.5,-672 1073.5,-672 1073.5,-660 1073.5,-660 1073.5,-654 1079.5,-648 1085.5,-648 1085.5,-648 1123.5,-648 1123.5,-648 1129.5,-648 1135.5,-654 1135.5,-660 1135.5,-660 1135.5,-672 1135.5,-672 1135.5,-678 1129.5,-684 1123.5,-684"/>
+<text text-anchor="middle" x="1104.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
+</g>
+<!-- 42&#45;&gt;41 -->
+<g id="edge61" class="edge">
+<title>42&#45;&gt;41</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1104.7523,-647.8314C1104.8593,-640.131 1104.9865,-630.9743 1105.1053,-622.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1108.6049,-622.4609 1105.2443,-612.4133 1101.6056,-622.3637 1108.6049,-622.4609"/>
+</g>
+<!-- 43&#45;&gt;42 -->
+<g id="edge62" class="edge">
+<title>43&#45;&gt;42</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1103.7523,-719.8314C1103.8593,-712.131 1103.9865,-702.9743 1104.1053,-694.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1107.6049,-694.4609 1104.2443,-684.4133 1100.6056,-694.3637 1107.6049,-694.4609"/>
+</g>
+<!-- 44 -->
+<g id="node45" class="node">
+<title>44</title>
+<path fill="none" stroke="#56d873" stroke-width="2" d="M725,-540C725,-540 666,-540 666,-540 660,-540 654,-534 654,-528 654,-528 654,-516 654,-516 654,-510 660,-504 666,-504 666,-504 725,-504 725,-504 731,-504 737,-510 737,-516 737,-516 737,-528 737,-528 737,-534 731,-540 725,-540"/>
+<text text-anchor="middle" x="695.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
+</g>
+<!-- 44&#45;&gt;1 -->
+<g id="edge24" class="edge">
+<title>44&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M709.203,-503.6221C716.4074,-493.453 725.0551,-480.3962 731.5,-468 755.2572,-422.3049 745.061,-402.9379 773.5,-360 786.1695,-340.8714 795.5685,-341.4204 810.5,-324 874.3844,-249.4673 854.5017,-194.7999 938.5,-144 998.6366,-107.631 1211.1921,-95.0319 1298.0761,-91.3376"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1298.423,-94.8264 1308.2716,-90.9207 1298.1369,-87.8323 1298.423,-94.8264"/>
+</g>
+<!-- 57 -->
+<g id="node58" class="node">
+<title>57</title>
+<path fill="none" stroke="#c6d856" stroke-width="2" d="M710.5,-468C710.5,-468 680.5,-468 680.5,-468 674.5,-468 668.5,-462 668.5,-456 668.5,-456 668.5,-444 668.5,-444 668.5,-438 674.5,-432 680.5,-432 680.5,-432 710.5,-432 710.5,-432 716.5,-432 722.5,-438 722.5,-444 722.5,-444 722.5,-456 722.5,-456 722.5,-462 716.5,-468 710.5,-468"/>
+<text text-anchor="middle" x="695.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
+</g>
+<!-- 44&#45;&gt;57 -->
+<g id="edge81" class="edge">
+<title>44&#45;&gt;57</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M695.5,-503.8314C695.5,-496.131 695.5,-486.9743 695.5,-478.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="699.0001,-478.4132 695.5,-468.4133 692.0001,-478.4133 699.0001,-478.4132"/>
 </g>
 <!-- 45 -->
 <g id="node46" class="node">
 <title>45</title>
-<path fill="none" stroke="#8fd856" stroke-width="2" d="M1456,-612C1456,-612 1421,-612 1421,-612 1415,-612 1409,-606 1409,-600 1409,-600 1409,-588 1409,-588 1409,-582 1415,-576 1421,-576 1421,-576 1456,-576 1456,-576 1462,-576 1468,-582 1468,-588 1468,-588 1468,-600 1468,-600 1468,-606 1462,-612 1456,-612"/>
-<text text-anchor="middle" x="1438.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
+<path fill="none" stroke="#d87556" stroke-width="2" d="M703,-612C703,-612 668,-612 668,-612 662,-612 656,-606 656,-600 656,-600 656,-588 656,-588 656,-582 662,-576 668,-576 668,-576 703,-576 703,-576 709,-576 715,-582 715,-588 715,-588 715,-600 715,-600 715,-606 709,-612 703,-612"/>
+<text text-anchor="middle" x="685.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
 </g>
 <!-- 45&#45;&gt;44 -->
 <g id="edge64" class="edge">
 <title>45&#45;&gt;44</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1438.2477,-575.8314C1438.1407,-568.131 1438.0135,-558.9743 1437.8947,-550.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1441.3944,-550.3637 1437.7557,-540.4133 1434.3951,-550.4609 1441.3944,-550.3637"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M688.0234,-575.8314C689.0929,-568.131 690.3647,-558.9743 691.5532,-550.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="695.0336,-550.7997 692.9426,-540.4133 688.1001,-549.8367 695.0336,-550.7997"/>
 </g>
 <!-- 46 -->
 <g id="node47" class="node">
 <title>46</title>
-<path fill="none" stroke="#c6d856" stroke-width="2" d="M1458.5,-684C1458.5,-684 1420.5,-684 1420.5,-684 1414.5,-684 1408.5,-678 1408.5,-672 1408.5,-672 1408.5,-660 1408.5,-660 1408.5,-654 1414.5,-648 1420.5,-648 1420.5,-648 1458.5,-648 1458.5,-648 1464.5,-648 1470.5,-654 1470.5,-660 1470.5,-660 1470.5,-672 1470.5,-672 1470.5,-678 1464.5,-684 1458.5,-684"/>
-<text text-anchor="middle" x="1439.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M686.5,-684C686.5,-684 648.5,-684 648.5,-684 642.5,-684 636.5,-678 636.5,-672 636.5,-672 636.5,-660 636.5,-660 636.5,-654 642.5,-648 648.5,-648 648.5,-648 686.5,-648 686.5,-648 692.5,-648 698.5,-654 698.5,-660 698.5,-660 698.5,-672 698.5,-672 698.5,-678 692.5,-684 686.5,-684"/>
+<text text-anchor="middle" x="667.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
 </g>
 <!-- 46&#45;&gt;45 -->
 <g id="edge65" class="edge">
 <title>46&#45;&gt;45</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1439.2477,-647.8314C1439.1407,-640.131 1439.0135,-630.9743 1438.8947,-622.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1442.3944,-622.3637 1438.7557,-612.4133 1435.3951,-622.4609 1442.3944,-622.3637"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M672.0422,-647.8314C673.9884,-640.0463 676.3068,-630.7729 678.4663,-622.1347"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="681.8668,-622.9636 680.8967,-612.4133 675.0758,-621.2658 681.8668,-622.9636"/>
 </g>
 <!-- 47&#45;&gt;46 -->
 <g id="edge66" class="edge">
 <title>47&#45;&gt;46</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1440.9953,-719.8314C1440.7814,-712.131 1440.5271,-702.9743 1440.2894,-694.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1443.7879,-694.3122 1440.0115,-684.4133 1436.7906,-694.5066 1443.7879,-694.3122"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M660.7711,-719.8314C661.7336,-712.131 662.8782,-702.9743 663.9479,-694.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="667.4309,-694.7702 665.1983,-684.4133 660.4849,-693.9019 667.4309,-694.7702"/>
 </g>
 <!-- 48 -->
 <g id="node49" class="node">
 <title>48</title>
-<path fill="none" stroke="#d8cb56" stroke-width="2" d="M2123,-540C2123,-540 2064,-540 2064,-540 2058,-540 2052,-534 2052,-528 2052,-528 2052,-516 2052,-516 2052,-510 2058,-504 2064,-504 2064,-504 2123,-504 2123,-504 2129,-504 2135,-510 2135,-516 2135,-516 2135,-528 2135,-528 2135,-534 2129,-540 2123,-540"/>
-<text text-anchor="middle" x="2093.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
+<path fill="none" stroke="#56d873" stroke-width="2" d="M1996,-540C1996,-540 1937,-540 1937,-540 1931,-540 1925,-534 1925,-528 1925,-528 1925,-516 1925,-516 1925,-510 1931,-504 1937,-504 1937,-504 1996,-504 1996,-504 2002,-504 2008,-510 2008,-516 2008,-516 2008,-528 2008,-528 2008,-534 2002,-540 1996,-540"/>
+<text text-anchor="middle" x="1966.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">markduplicates</text>
 </g>
 <!-- 48&#45;&gt;1 -->
-<g id="edge27" class="edge">
+<g id="edge25" class="edge">
 <title>48&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2092.8902,-503.7459C2091.5398,-473.4572 2087.318,-411.0876 2074.5,-360 2073.7154,-356.873 1992.0879,-145.9226 1989.5,-144 1964.4548,-125.3937 1505.2439,-99.2976 1369.8012,-91.9774"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1369.6983,-88.4669 1359.5247,-91.4245 1369.3222,-95.4568 1369.6983,-88.4669"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1969.8152,-503.8863C1974.5017,-476.6615 1982.5,-423.5285 1982.5,-378 1982.5,-378 1982.5,-378 1982.5,-234 1982.5,-179.5869 1948.2414,-168.1881 1899.5,-144 1852.405,-120.6289 1490.6,-98.6311 1372.5899,-92.0133"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1372.7655,-88.5178 1362.5864,-91.4566 1372.3764,-95.507 1372.7655,-88.5178"/>
 </g>
 <!-- 69 -->
 <g id="node70" class="node">
 <title>69</title>
-<path fill="none" stroke="#d8ac56" stroke-width="2" d="M2051.5,-468C2051.5,-468 2021.5,-468 2021.5,-468 2015.5,-468 2009.5,-462 2009.5,-456 2009.5,-456 2009.5,-444 2009.5,-444 2009.5,-438 2015.5,-432 2021.5,-432 2021.5,-432 2051.5,-432 2051.5,-432 2057.5,-432 2063.5,-438 2063.5,-444 2063.5,-444 2063.5,-456 2063.5,-456 2063.5,-462 2057.5,-468 2051.5,-468"/>
-<text text-anchor="middle" x="2036.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
+<path fill="none" stroke="#c6d856" stroke-width="2" d="M1863.5,-468C1863.5,-468 1833.5,-468 1833.5,-468 1827.5,-468 1821.5,-462 1821.5,-456 1821.5,-456 1821.5,-444 1821.5,-444 1821.5,-438 1827.5,-432 1833.5,-432 1833.5,-432 1863.5,-432 1863.5,-432 1869.5,-432 1875.5,-438 1875.5,-444 1875.5,-444 1875.5,-456 1875.5,-456 1875.5,-462 1869.5,-468 1863.5,-468"/>
+<text text-anchor="middle" x="1848.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">calmd</text>
 </g>
 <!-- 48&#45;&gt;69 -->
 <g id="edge97" class="edge">
 <title>48&#45;&gt;69</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2079.1165,-503.8314C2072.5514,-495.5386 2064.6493,-485.557 2057.4422,-476.4533"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="2060.0284,-474.0813 2051.0772,-468.4133 2054.5401,-478.4262 2060.0284,-474.0813"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1936.7236,-503.8314C1920.9394,-494.2003 1901.4219,-482.2913 1884.7608,-472.1252"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1886.1998,-468.9032 1875.8403,-466.6822 1882.5537,-474.8787 1886.1998,-468.9032"/>
 </g>
 <!-- 49 -->
 <g id="node50" class="node">
 <title>49</title>
-<path fill="none" stroke="#8fd856" stroke-width="2" d="M2171,-612C2171,-612 2136,-612 2136,-612 2130,-612 2124,-606 2124,-600 2124,-600 2124,-588 2124,-588 2124,-582 2130,-576 2136,-576 2136,-576 2171,-576 2171,-576 2177,-576 2183,-582 2183,-588 2183,-588 2183,-600 2183,-600 2183,-606 2177,-612 2171,-612"/>
-<text text-anchor="middle" x="2153.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
+<path fill="none" stroke="#d87556" stroke-width="2" d="M1985,-612C1985,-612 1950,-612 1950,-612 1944,-612 1938,-606 1938,-600 1938,-600 1938,-588 1938,-588 1938,-582 1944,-576 1950,-576 1950,-576 1985,-576 1985,-576 1991,-576 1997,-582 1997,-588 1997,-588 1997,-600 1997,-600 1997,-606 1991,-612 1985,-612"/>
+<text text-anchor="middle" x="1967.5" y="-591.5" font-family="sans" font-size="10.00" fill="#000000">bam_filter</text>
 </g>
 <!-- 49&#45;&gt;48 -->
 <g id="edge68" class="edge">
 <title>49&#45;&gt;48</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2138.3595,-575.8314C2131.3783,-567.454 2122.9609,-557.3531 2115.3124,-548.1749"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="2117.9351,-545.8548 2108.8444,-540.4133 2112.5575,-550.3362 2117.9351,-545.8548"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1967.2477,-575.8314C1967.1407,-568.131 1967.0135,-558.9743 1966.8947,-550.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1970.3944,-550.3637 1966.7557,-540.4133 1963.3951,-550.4609 1970.3944,-550.3637"/>
 </g>
 <!-- 50 -->
 <g id="node51" class="node">
 <title>50</title>
-<path fill="none" stroke="#c6d856" stroke-width="2" d="M2414.5,-684C2414.5,-684 2376.5,-684 2376.5,-684 2370.5,-684 2364.5,-678 2364.5,-672 2364.5,-672 2364.5,-660 2364.5,-660 2364.5,-654 2370.5,-648 2376.5,-648 2376.5,-648 2414.5,-648 2414.5,-648 2420.5,-648 2426.5,-654 2426.5,-660 2426.5,-660 2426.5,-672 2426.5,-672 2426.5,-678 2420.5,-684 2414.5,-684"/>
-<text text-anchor="middle" x="2395.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M1988.5,-684C1988.5,-684 1950.5,-684 1950.5,-684 1944.5,-684 1938.5,-678 1938.5,-672 1938.5,-672 1938.5,-660 1938.5,-660 1938.5,-654 1944.5,-648 1950.5,-648 1950.5,-648 1988.5,-648 1988.5,-648 1994.5,-648 2000.5,-654 2000.5,-660 2000.5,-660 2000.5,-672 2000.5,-672 2000.5,-678 1994.5,-684 1988.5,-684"/>
+<text text-anchor="middle" x="1969.5" y="-663.5" font-family="sans" font-size="10.00" fill="#000000">sort_coord</text>
 </g>
 <!-- 50&#45;&gt;49 -->
 <g id="edge69" class="edge">
 <title>50&#45;&gt;49</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2364.3582,-656.7347C2320.5,-643.686 2240.5585,-619.9017 2192.7069,-605.6649"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="2193.5904,-602.2762 2183.0075,-602.7791 2191.5942,-608.9855 2193.5904,-602.2762"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1968.9953,-647.8314C1968.7814,-640.131 1968.5271,-630.9743 1968.2894,-622.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1971.7879,-622.3122 1968.0115,-612.4133 1964.7906,-622.5066 1971.7879,-622.3122"/>
 </g>
 <!-- 51&#45;&gt;50 -->
 <g id="edge70" class="edge">
 <title>51&#45;&gt;50</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2485.9666,-719.8314C2470.4899,-710.6221 2451.5131,-699.3301 2434.9437,-689.4706"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="2436.4071,-686.2687 2426.0236,-684.1628 2432.8276,-692.2843 2436.4071,-686.2687"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1970.2477,-719.8314C1970.1407,-712.131 1970.0135,-702.9743 1969.8947,-694.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1973.3944,-694.3637 1969.7557,-684.4133 1966.3951,-694.4609 1973.3944,-694.3637"/>
 </g>
 <!-- 52 -->
 <g id="node53" class="node">
 <title>52</title>
-<path fill="none" stroke="#d88d56" stroke-width="2" d="M861,-252C861,-252 802,-252 802,-252 796,-252 790,-246 790,-240 790,-240 790,-228 790,-228 790,-222 796,-216 802,-216 802,-216 861,-216 861,-216 867,-216 873,-222 873,-228 873,-228 873,-240 873,-240 873,-246 867,-252 861,-252"/>
-<text text-anchor="middle" x="831.5" y="-231.5" font-family="sans" font-size="10.00" fill="#000000">samtools_stats</text>
+<path fill="none" stroke="#56d892" stroke-width="2" d="M874,-180C874,-180 815,-180 815,-180 809,-180 803,-174 803,-168 803,-168 803,-156 803,-156 803,-150 809,-144 815,-144 815,-144 874,-144 874,-144 880,-144 886,-150 886,-156 886,-156 886,-168 886,-168 886,-174 880,-180 874,-180"/>
+<text text-anchor="middle" x="844.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">samtools_stats</text>
 </g>
 <!-- 52&#45;&gt;1 -->
-<g id="edge28" class="edge">
+<g id="edge26" class="edge">
 <title>52&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M845.1984,-215.9719C862.371,-194.8376 893.9084,-160.5946 929.5,-144 1041.6179,-91.7248 1082.924,-124.6801 1205.5,-108 1235.754,-103.8831 1270.0308,-99.0128 1295.343,-95.377"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1295.8614,-98.8385 1305.2609,-93.9497 1294.8643,-91.9099 1295.8614,-98.8385"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M886.1587,-147.666C890.9596,-146.296 895.8131,-145.0346 900.5,-144 1045.5209,-111.9887 1222.2272,-97.4021 1298.0355,-92.2765"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1298.7246,-95.7387 1308.4725,-91.588 1298.2637,-88.7539 1298.7246,-95.7387"/>
 </g>
 <!-- 53 -->
 <g id="node54" class="node">
 <title>53</title>
-<path fill="none" stroke="#56c9d8" stroke-width="2" d="M767,-324C767,-324 724,-324 724,-324 718,-324 712,-318 712,-312 712,-312 712,-300 712,-300 712,-294 718,-288 724,-288 724,-288 767,-288 767,-288 773,-288 779,-294 779,-300 779,-300 779,-312 779,-312 779,-318 773,-324 767,-324"/>
-<text text-anchor="middle" x="745.5" y="-303.5" font-family="sans" font-size="10.00" fill="#000000">merge_alns</text>
+<path fill="none" stroke="#afd856" stroke-width="2" d="M790,-324C790,-324 747,-324 747,-324 741,-324 735,-318 735,-312 735,-312 735,-300 735,-300 735,-294 741,-288 747,-288 747,-288 790,-288 790,-288 796,-288 802,-294 802,-300 802,-300 802,-312 802,-312 802,-318 796,-324 790,-324"/>
+<text text-anchor="middle" x="768.5" y="-303.5" font-family="sans" font-size="10.00" fill="#000000">merge_alns</text>
 </g>
 <!-- 53&#45;&gt;52 -->
 <g id="edge72" class="edge">
 <title>53&#45;&gt;52</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M767.2014,-287.8314C777.6921,-279.0485 790.4455,-268.3712 801.8194,-258.8489"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="804.3847,-261.2659 809.8055,-252.1628 799.8911,-255.8986 804.3847,-261.2659"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M778.1255,-287.7623C791.2597,-262.8764 814.901,-218.0822 830.1358,-189.2165"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="833.3804,-190.5671 834.9527,-180.0896 827.1897,-187.2998 833.3804,-190.5671"/>
 </g>
 <!-- 77 -->
 <g id="node78" class="node">
 <title>77</title>
-<path fill="none" stroke="#56d892" stroke-width="2" d="M599,-252C599,-252 548,-252 548,-252 542,-252 536,-246 536,-240 536,-240 536,-228 536,-228 536,-222 542,-216 548,-216 548,-216 599,-216 599,-216 605,-216 611,-222 611,-228 611,-228 611,-240 611,-240 611,-246 605,-252 599,-252"/>
-<text text-anchor="middle" x="573.5" y="-231.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_lca</text>
+<path fill="none" stroke="#56d8a9" stroke-width="2" d="M772,-252C772,-252 721,-252 721,-252 715,-252 709,-246 709,-240 709,-240 709,-228 709,-228 709,-222 715,-216 721,-216 721,-216 772,-216 772,-216 778,-216 784,-222 784,-228 784,-228 784,-240 784,-240 784,-246 778,-252 772,-252"/>
+<text text-anchor="middle" x="746.5" y="-231.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_lca</text>
 </g>
 <!-- 53&#45;&gt;77 -->
 <g id="edge105" class="edge">
 <title>53&#45;&gt;77</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M711.9284,-291.9468C685.9293,-281.0634 649.5925,-265.8527 620.6712,-253.7461"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="621.7489,-250.403 611.173,-249.7701 619.0459,-256.8601 621.7489,-250.403"/>
-</g>
-<!-- 80 -->
-<g id="node81" class="node">
-<title>80</title>
-<path fill="none" stroke="#56a9d8" stroke-width="2" d="M467,-180C467,-180 394,-180 394,-180 388,-180 382,-174 382,-168 382,-168 382,-156 382,-156 382,-150 388,-144 394,-144 394,-144 467,-144 467,-144 473,-144 479,-150 479,-156 479,-156 479,-168 479,-168 479,-174 473,-180 467,-180"/>
-<text text-anchor="middle" x="430.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_damage</text>
-</g>
-<!-- 53&#45;&gt;80 -->
-<g id="edge108" class="edge">
-<title>53&#45;&gt;80</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M711.6875,-303.0242C666.9491,-297.9281 586.7236,-284.7014 526.5,-252 496.7238,-235.8315 469.2274,-208.1896 451.3634,-187.7952"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="453.938,-185.4207 444.7758,-180.1005 448.6205,-189.9731 453.938,-185.4207"/>
-</g>
-<!-- 54 -->
-<g id="node55" class="node">
-<title>54</title>
-<path fill="none" stroke="#56d8a9" stroke-width="2" d="M1173.5,-396C1173.5,-396 1135.5,-396 1135.5,-396 1129.5,-396 1123.5,-390 1123.5,-384 1123.5,-384 1123.5,-372 1123.5,-372 1123.5,-366 1129.5,-360 1135.5,-360 1135.5,-360 1173.5,-360 1173.5,-360 1179.5,-360 1185.5,-366 1185.5,-372 1185.5,-372 1185.5,-384 1185.5,-384 1185.5,-390 1179.5,-396 1173.5,-396"/>
-<text text-anchor="middle" x="1154.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
-</g>
-<!-- 54&#45;&gt;53 -->
-<g id="edge73" class="edge">
-<title>54&#45;&gt;53</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1123.4228,-372.5292C1051.2147,-359.8178 871.9616,-328.2622 788.957,-313.6501"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="789.5433,-310.1996 779.0879,-311.9128 788.3297,-317.0936 789.5433,-310.1996"/>
-</g>
-<!-- 55&#45;&gt;54 -->
-<g id="edge78" class="edge">
-<title>55&#45;&gt;54</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1203.8454,-431.8314C1196.0886,-423.3694 1186.7198,-413.1489 1178.239,-403.8971"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1180.7162,-401.4198 1171.3788,-396.4133 1175.5561,-406.1499 1180.7162,-401.4198"/>
-</g>
-<!-- 56 -->
-<g id="node57" class="node">
-<title>56</title>
-<path fill="none" stroke="#56d8a9" stroke-width="2" d="M823.5,-396C823.5,-396 785.5,-396 785.5,-396 779.5,-396 773.5,-390 773.5,-384 773.5,-384 773.5,-372 773.5,-372 773.5,-366 779.5,-360 785.5,-360 785.5,-360 823.5,-360 823.5,-360 829.5,-360 835.5,-366 835.5,-372 835.5,-372 835.5,-384 835.5,-384 835.5,-390 829.5,-396 823.5,-396"/>
-<text text-anchor="middle" x="804.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
-</g>
-<!-- 56&#45;&gt;53 -->
-<g id="edge74" class="edge">
-<title>56&#45;&gt;53</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M789.6118,-359.8314C782.747,-351.454 774.4699,-341.3531 766.9489,-332.1749"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="769.6341,-329.9297 760.5886,-324.4133 764.2197,-334.3665 769.6341,-329.9297"/>
-</g>
-<!-- 57&#45;&gt;56 -->
-<g id="edge80" class="edge">
-<title>57&#45;&gt;56</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M808.9859,-431.8314C808.3442,-424.131 807.5812,-414.9743 806.8681,-406.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="810.3529,-406.088 806.0344,-396.4133 803.3771,-406.6694 810.3529,-406.088"/>
-</g>
-<!-- 58 -->
-<g id="node59" class="node">
-<title>58</title>
-<path fill="none" stroke="#56d8a9" stroke-width="2" d="M743.5,-396C743.5,-396 705.5,-396 705.5,-396 699.5,-396 693.5,-390 693.5,-384 693.5,-384 693.5,-372 693.5,-372 693.5,-366 699.5,-360 705.5,-360 705.5,-360 743.5,-360 743.5,-360 749.5,-360 755.5,-366 755.5,-372 755.5,-372 755.5,-384 755.5,-384 755.5,-390 749.5,-396 743.5,-396"/>
-<text text-anchor="middle" x="724.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
-</g>
-<!-- 58&#45;&gt;53 -->
-<g id="edge75" class="edge">
-<title>58&#45;&gt;53</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M729.7992,-359.8314C732.0698,-352.0463 734.7746,-342.7729 737.294,-334.1347"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="740.6894,-334.9933 740.1295,-324.4133 733.9694,-333.0332 740.6894,-334.9933"/>
-</g>
-<!-- 59&#45;&gt;58 -->
-<g id="edge82" class="edge">
-<title>59&#45;&gt;58</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M724.5,-431.8314C724.5,-424.131 724.5,-414.9743 724.5,-406.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="728.0001,-406.4132 724.5,-396.4133 721.0001,-406.4133 728.0001,-406.4132"/>
-</g>
-<!-- 60 -->
-<g id="node61" class="node">
-<title>60</title>
-<path fill="none" stroke="#56d8a9" stroke-width="2" d="M903.5,-396C903.5,-396 865.5,-396 865.5,-396 859.5,-396 853.5,-390 853.5,-384 853.5,-384 853.5,-372 853.5,-372 853.5,-366 859.5,-360 865.5,-360 865.5,-360 903.5,-360 903.5,-360 909.5,-360 915.5,-366 915.5,-372 915.5,-372 915.5,-384 915.5,-384 915.5,-390 909.5,-396 903.5,-396"/>
-<text text-anchor="middle" x="884.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
-</g>
-<!-- 60&#45;&gt;53 -->
-<g id="edge76" class="edge">
-<title>60&#45;&gt;53</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M853.3057,-361.8418C834.0617,-351.8737 809.1195,-338.954 788.0739,-328.0527"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="789.5072,-324.8535 779.0179,-323.3618 786.2875,-331.0691 789.5072,-324.8535"/>
-</g>
-<!-- 61&#45;&gt;60 -->
-<g id="edge84" class="edge">
-<title>61&#45;&gt;60</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M944.3126,-431.8314C934.6486,-423.1337 922.9204,-412.5783 912.4184,-403.1265"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="914.4553,-400.251 904.6809,-396.1628 909.7725,-405.454 914.4553,-400.251"/>
-</g>
-<!-- 62 -->
-<g id="node63" class="node">
-<title>62</title>
-<path fill="none" stroke="#56d8a9" stroke-width="2" d="M663.5,-396C663.5,-396 625.5,-396 625.5,-396 619.5,-396 613.5,-390 613.5,-384 613.5,-384 613.5,-372 613.5,-372 613.5,-366 619.5,-360 625.5,-360 625.5,-360 663.5,-360 663.5,-360 669.5,-360 675.5,-366 675.5,-372 675.5,-372 675.5,-384 675.5,-384 675.5,-390 669.5,-396 663.5,-396"/>
-<text text-anchor="middle" x="644.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
-</g>
-<!-- 62&#45;&gt;53 -->
-<g id="edge77" class="edge">
-<title>62&#45;&gt;53</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M669.9866,-359.8314C682.6659,-350.7927 698.1596,-339.7476 711.8055,-330.0198"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="713.9105,-332.8176 720.0216,-324.1628 709.8471,-327.1176 713.9105,-332.8176"/>
-</g>
-<!-- 63&#45;&gt;62 -->
-<g id="edge86" class="edge">
-<title>63&#45;&gt;62</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M557.5164,-432.937C572.2939,-423.6038 590.8302,-411.8967 606.9903,-401.6904"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="609.0987,-404.4984 615.6847,-396.1992 605.3608,-398.5799 609.0987,-404.4984"/>
-</g>
-<!-- 64 -->
-<g id="node65" class="node">
-<title>64</title>
-<path fill="none" stroke="#d88d56" stroke-width="2" d="M1935,-180C1935,-180 1876,-180 1876,-180 1870,-180 1864,-174 1864,-168 1864,-168 1864,-156 1864,-156 1864,-150 1870,-144 1876,-144 1876,-144 1935,-144 1935,-144 1941,-144 1947,-150 1947,-156 1947,-156 1947,-168 1947,-168 1947,-174 1941,-180 1935,-180"/>
-<text text-anchor="middle" x="1905.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">samtools_stats</text>
-</g>
-<!-- 64&#45;&gt;1 -->
-<g id="edge29" class="edge">
-<title>64&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1863.8609,-147.5749C1859.0564,-146.2215 1854.1967,-144.989 1849.5,-144 1672.3246,-106.6928 1455.3117,-94.6947 1369.7276,-91.2499"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1369.845,-87.7519 1359.7171,-90.8623 1369.5741,-94.7467 1369.845,-87.7519"/>
-</g>
-<!-- 65 -->
-<g id="node66" class="node">
-<title>65</title>
-<path fill="none" stroke="#56c9d8" stroke-width="2" d="M1931,-324C1931,-324 1888,-324 1888,-324 1882,-324 1876,-318 1876,-312 1876,-312 1876,-300 1876,-300 1876,-294 1882,-288 1888,-288 1888,-288 1931,-288 1931,-288 1937,-288 1943,-294 1943,-300 1943,-300 1943,-312 1943,-312 1943,-318 1937,-324 1931,-324"/>
-<text text-anchor="middle" x="1909.5" y="-303.5" font-family="sans" font-size="10.00" fill="#000000">merge_alns</text>
-</g>
-<!-- 65&#45;&gt;64 -->
-<g id="edge88" class="edge">
-<title>65&#45;&gt;64</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1908.9934,-287.7623C1908.3111,-263.201 1907.0902,-219.2474 1906.2876,-190.3541"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1909.7789,-189.9885 1906.0025,-180.0896 1902.7816,-190.183 1909.7789,-189.9885"/>
-</g>
-<!-- 79 -->
-<g id="node80" class="node">
-<title>79</title>
-<path fill="none" stroke="#56d892" stroke-width="2" d="M2105,-252C2105,-252 2054,-252 2054,-252 2048,-252 2042,-246 2042,-240 2042,-240 2042,-228 2042,-228 2042,-222 2048,-216 2054,-216 2054,-216 2105,-216 2105,-216 2111,-216 2117,-222 2117,-228 2117,-228 2117,-240 2117,-240 2117,-246 2111,-252 2105,-252"/>
-<text text-anchor="middle" x="2079.5" y="-231.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_lca</text>
-</g>
-<!-- 65&#45;&gt;79 -->
-<g id="edge107" class="edge">
-<title>65&#45;&gt;79</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1943.0865,-291.7751C1968.6458,-280.95 2004.1399,-265.9172 2032.5153,-253.8994"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="2033.9975,-257.0727 2041.8407,-249.9498 2031.2675,-250.6269 2033.9975,-257.0727"/>
-</g>
-<!-- 81 -->
-<g id="node82" class="node">
-<title>81</title>
-<path fill="none" stroke="#56a9d8" stroke-width="2" d="M2159,-108C2159,-108 2086,-108 2086,-108 2080,-108 2074,-102 2074,-96 2074,-96 2074,-84 2074,-84 2074,-78 2080,-72 2086,-72 2086,-72 2159,-72 2159,-72 2165,-72 2171,-78 2171,-84 2171,-84 2171,-96 2171,-96 2171,-102 2165,-108 2159,-108"/>
-<text text-anchor="middle" x="2122.5" y="-87.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_damage</text>
-</g>
-<!-- 65&#45;&gt;81 -->
-<g id="edge109" class="edge">
-<title>65&#45;&gt;81</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1943.2087,-301.9521C1997.6076,-294.7332 2101.2262,-277.9195 2126.5,-252 2160.3761,-217.2584 2151.0608,-191.7628 2142.5,-144 2140.9027,-135.0882 2137.9326,-125.7238 2134.7609,-117.3422"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="2137.9973,-116.0093 2131.0151,-108.0406 2131.504,-118.6241 2137.9973,-116.0093"/>
-</g>
-<!-- 66 -->
-<g id="node67" class="node">
-<title>66</title>
-<path fill="none" stroke="#56d8a9" stroke-width="2" d="M1467.5,-396C1467.5,-396 1429.5,-396 1429.5,-396 1423.5,-396 1417.5,-390 1417.5,-384 1417.5,-384 1417.5,-372 1417.5,-372 1417.5,-366 1423.5,-360 1429.5,-360 1429.5,-360 1467.5,-360 1467.5,-360 1473.5,-360 1479.5,-366 1479.5,-372 1479.5,-372 1479.5,-384 1479.5,-384 1479.5,-390 1473.5,-396 1467.5,-396"/>
-<text text-anchor="middle" x="1448.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
-</g>
-<!-- 66&#45;&gt;65 -->
-<g id="edge89" class="edge">
-<title>66&#45;&gt;65</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1479.824,-373.1078C1560.1214,-360.5667 1773.4694,-327.2456 1865.846,-312.818"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1866.6328,-316.2376 1875.9729,-311.2363 1865.5525,-309.3215 1866.6328,-316.2376"/>
-</g>
-<!-- 67&#45;&gt;66 -->
-<g id="edge94" class="edge">
-<title>67&#45;&gt;66</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1447.0047,-431.8314C1447.2186,-424.131 1447.4729,-414.9743 1447.7106,-406.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1451.2094,-406.5066 1447.9885,-396.4133 1444.2121,-406.3122 1451.2094,-406.5066"/>
-</g>
-<!-- 68 -->
-<g id="node69" class="node">
-<title>68</title>
-<path fill="none" stroke="#56d8a9" stroke-width="2" d="M2053.5,-396C2053.5,-396 2015.5,-396 2015.5,-396 2009.5,-396 2003.5,-390 2003.5,-384 2003.5,-384 2003.5,-372 2003.5,-372 2003.5,-366 2009.5,-360 2015.5,-360 2015.5,-360 2053.5,-360 2053.5,-360 2059.5,-360 2065.5,-366 2065.5,-372 2065.5,-372 2065.5,-384 2065.5,-384 2065.5,-390 2059.5,-396 2053.5,-396"/>
-<text text-anchor="middle" x="2034.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
-</g>
-<!-- 68&#45;&gt;65 -->
-<g id="edge90" class="edge">
-<title>68&#45;&gt;65</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2003.2797,-360.0171C1987.0229,-350.6532 1966.9619,-339.098 1949.5717,-329.0813"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1951.1678,-325.9616 1940.7556,-324.0032 1947.6739,-332.0273 1951.1678,-325.9616"/>
-</g>
-<!-- 69&#45;&gt;68 -->
-<g id="edge96" class="edge">
-<title>69&#45;&gt;68</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2035.9953,-431.8314C2035.7814,-424.131 2035.5271,-414.9743 2035.2894,-406.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="2038.7879,-406.3122 2035.0115,-396.4133 2031.7906,-406.5066 2038.7879,-406.3122"/>
-</g>
-<!-- 70 -->
-<g id="node71" class="node">
-<title>70</title>
-<path fill="none" stroke="#56d8a9" stroke-width="2" d="M1699.5,-396C1699.5,-396 1661.5,-396 1661.5,-396 1655.5,-396 1649.5,-390 1649.5,-384 1649.5,-384 1649.5,-372 1649.5,-372 1649.5,-366 1655.5,-360 1661.5,-360 1661.5,-360 1699.5,-360 1699.5,-360 1705.5,-360 1711.5,-366 1711.5,-372 1711.5,-372 1711.5,-384 1711.5,-384 1711.5,-390 1705.5,-396 1699.5,-396"/>
-<text text-anchor="middle" x="1680.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
-</g>
-<!-- 70&#45;&gt;65 -->
-<g id="edge91" class="edge">
-<title>70&#45;&gt;65</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1711.8613,-368.1397C1751.8339,-355.5719 1821.1362,-333.7825 1866.1449,-319.6313"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1867.427,-322.8972 1875.9168,-316.5589 1865.3274,-316.2195 1867.427,-322.8972"/>
-</g>
-<!-- 71&#45;&gt;70 -->
-<g id="edge98" class="edge">
-<title>71&#45;&gt;70</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1679.0047,-431.8314C1679.2186,-424.131 1679.4729,-414.9743 1679.7106,-406.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1683.2094,-406.5066 1679.9885,-396.4133 1676.2121,-406.3122 1683.2094,-406.5066"/>
-</g>
-<!-- 72 -->
-<g id="node73" class="node">
-<title>72</title>
-<path fill="none" stroke="#56d8a9" stroke-width="2" d="M1935.5,-396C1935.5,-396 1897.5,-396 1897.5,-396 1891.5,-396 1885.5,-390 1885.5,-384 1885.5,-384 1885.5,-372 1885.5,-372 1885.5,-366 1891.5,-360 1897.5,-360 1897.5,-360 1935.5,-360 1935.5,-360 1941.5,-360 1947.5,-366 1947.5,-372 1947.5,-372 1947.5,-384 1947.5,-384 1947.5,-390 1941.5,-396 1935.5,-396"/>
-<text text-anchor="middle" x="1916.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
-</g>
-<!-- 72&#45;&gt;65 -->
-<g id="edge92" class="edge">
-<title>72&#45;&gt;65</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1914.7336,-359.8314C1913.985,-352.131 1913.0947,-342.9743 1912.2627,-334.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1915.7415,-334.0276 1911.2902,-324.4133 1908.7744,-334.7051 1915.7415,-334.0276"/>
-</g>
-<!-- 73&#45;&gt;72 -->
-<g id="edge100" class="edge">
-<title>73&#45;&gt;72</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1915.0047,-431.8314C1915.2186,-424.131 1915.4729,-414.9743 1915.7106,-406.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1919.2094,-406.5066 1915.9885,-396.4133 1912.2121,-406.3122 1919.2094,-406.5066"/>
-</g>
-<!-- 74 -->
-<g id="node75" class="node">
-<title>74</title>
-<path fill="none" stroke="#56d8a9" stroke-width="2" d="M1817.5,-396C1817.5,-396 1779.5,-396 1779.5,-396 1773.5,-396 1767.5,-390 1767.5,-384 1767.5,-384 1767.5,-372 1767.5,-372 1767.5,-366 1773.5,-360 1779.5,-360 1779.5,-360 1817.5,-360 1817.5,-360 1823.5,-360 1829.5,-366 1829.5,-372 1829.5,-372 1829.5,-384 1829.5,-384 1829.5,-390 1823.5,-396 1817.5,-396"/>
-<text text-anchor="middle" x="1798.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
-</g>
-<!-- 74&#45;&gt;65 -->
-<g id="edge93" class="edge">
-<title>74&#45;&gt;65</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1826.51,-359.8314C1840.5761,-350.7074 1857.794,-339.539 1872.8933,-329.7449"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1875.014,-332.5412 1881.499,-324.1628 1871.2047,-326.6684 1875.014,-332.5412"/>
-</g>
-<!-- 75&#45;&gt;74 -->
-<g id="edge102" class="edge">
-<title>75&#45;&gt;74</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1797.0047,-431.8314C1797.2186,-424.131 1797.4729,-414.9743 1797.7106,-406.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1801.2094,-406.5066 1797.9885,-396.4133 1794.2121,-406.3122 1801.2094,-406.5066"/>
-</g>
-<!-- 76 -->
-<g id="node77" class="node">
-<title>76</title>
-<path fill="none" stroke="#d87556" stroke-width="2" d="M599.5,-180C599.5,-180 547.5,-180 547.5,-180 541.5,-180 535.5,-174 535.5,-168 535.5,-168 535.5,-156 535.5,-156 535.5,-150 541.5,-144 547.5,-144 547.5,-144 599.5,-144 599.5,-144 605.5,-144 611.5,-150 611.5,-156 611.5,-156 611.5,-168 611.5,-168 611.5,-174 605.5,-180 599.5,-180"/>
-<text text-anchor="middle" x="573.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_dfit</text>
-</g>
-<!-- 76&#45;&gt;0 -->
-<g id="edge6" class="edge">
-<title>76&#45;&gt;0</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M611.5425,-147.6801C616.1981,-146.2707 620.9261,-144.9963 625.5,-144 789.0967,-108.3644 835.7786,-138.0108 1000.5,-108 1109.5815,-88.1263 1235.0682,-49.7405 1295.7888,-30.1477"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1296.8823,-33.4726 1305.3136,-27.0567 1294.7216,-26.8145 1296.8823,-33.4726"/>
-</g>
-<!-- 76&#45;&gt;1 -->
-<g id="edge30" class="edge">
-<title>76&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M611.5108,-147.5286C616.172,-146.1458 620.91,-144.9191 625.5,-144 878.7471,-93.2923 948.5526,-134.1421 1205.5,-108 1235.876,-104.9095 1270.1442,-99.9662 1295.422,-96.0412"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1295.9894,-99.495 1305.3244,-94.4844 1294.9022,-92.58 1295.9894,-99.495"/>
-</g>
-<!-- 77&#45;&gt;76 -->
-<g id="edge104" class="edge">
-<title>77&#45;&gt;76</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M573.5,-215.8314C573.5,-208.131 573.5,-198.9743 573.5,-190.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="577.0001,-190.4132 573.5,-180.4133 570.0001,-190.4133 577.0001,-190.4132"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M762.9485,-287.8314C760.5697,-280.0463 757.7362,-270.7729 755.0967,-262.1347"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="758.3958,-260.954 752.1263,-252.4133 751.7013,-262.9996 758.3958,-260.954"/>
 </g>
 <!-- 82 -->
 <g id="node83" class="node">
 <title>82</title>
-<path fill="none" stroke="#5692d8" stroke-width="2" d="M979,-108C979,-108 922,-108 922,-108 916,-108 910,-102 910,-96 910,-96 910,-84 910,-84 910,-78 916,-72 922,-72 922,-72 979,-72 979,-72 985,-72 991,-78 991,-84 991,-84 991,-96 991,-96 991,-102 985,-108 979,-108"/>
-<text text-anchor="middle" x="950.5" y="-87.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_print</text>
+<path fill="none" stroke="#d88d56" stroke-width="2" d="M867,-108C867,-108 794,-108 794,-108 788,-108 782,-102 782,-96 782,-96 782,-84 782,-84 782,-78 788,-72 794,-72 794,-72 867,-72 867,-72 873,-72 879,-78 879,-84 879,-84 879,-96 879,-96 879,-102 873,-108 867,-108"/>
+<text text-anchor="middle" x="830.5" y="-87.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_damage</text>
 </g>
-<!-- 77&#45;&gt;82 -->
+<!-- 53&#45;&gt;82 -->
 <g id="edge110" class="edge">
-<title>77&#45;&gt;82</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M552.2497,-215.8894C532.0559,-196.5289 507.3933,-165.6945 526.5,-144 550.8255,-116.38 792.0961,-99.138 899.4483,-92.7768"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="899.9353,-96.2544 909.7143,-92.1775 899.5273,-89.2663 899.9353,-96.2544"/>
+<title>53&#45;&gt;82</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M734.8706,-295.184C666.2422,-271.4018 520.9643,-211.2938 575.5,-144 599.7211,-114.1126 704.2481,-100.1055 771.7272,-94.0681"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="772.1475,-97.545 781.8105,-93.2002 771.5472,-90.5707 772.1475,-97.545"/>
 </g>
-<!-- 78 -->
-<g id="node79" class="node">
-<title>78</title>
-<path fill="none" stroke="#d87556" stroke-width="2" d="M2105.5,-180C2105.5,-180 2053.5,-180 2053.5,-180 2047.5,-180 2041.5,-174 2041.5,-168 2041.5,-168 2041.5,-156 2041.5,-156 2041.5,-150 2047.5,-144 2053.5,-144 2053.5,-144 2105.5,-144 2105.5,-144 2111.5,-144 2117.5,-150 2117.5,-156 2117.5,-156 2117.5,-168 2117.5,-168 2117.5,-174 2111.5,-180 2105.5,-180"/>
-<text text-anchor="middle" x="2079.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_dfit</text>
+<!-- 54 -->
+<g id="node55" class="node">
+<title>54</title>
+<path fill="none" stroke="#56a9d8" stroke-width="2" d="M832.5,-396C832.5,-396 794.5,-396 794.5,-396 788.5,-396 782.5,-390 782.5,-384 782.5,-384 782.5,-372 782.5,-372 782.5,-366 788.5,-360 794.5,-360 794.5,-360 832.5,-360 832.5,-360 838.5,-360 844.5,-366 844.5,-372 844.5,-372 844.5,-384 844.5,-384 844.5,-390 838.5,-396 832.5,-396"/>
+<text text-anchor="middle" x="813.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
 </g>
-<!-- 78&#45;&gt;0 -->
-<g id="edge7" class="edge">
-<title>78&#45;&gt;0</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2041.368,-148.0535C2036.7281,-146.5785 2032.0282,-145.1867 2027.5,-144 1780.0725,-79.1594 1474.4489,-36.3325 1369.7277,-22.6928"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1370.0259,-19.2023 1359.6596,-21.391 1369.1282,-26.1445 1370.0259,-19.2023"/>
+<!-- 54&#45;&gt;53 -->
+<g id="edge73" class="edge">
+<title>54&#45;&gt;53</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M802.1446,-359.8314C797.0674,-351.7079 790.9773,-341.9637 785.3824,-333.0118"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="788.2763,-331.0383 780.0083,-324.4133 782.3403,-334.7483 788.2763,-331.0383"/>
 </g>
-<!-- 78&#45;&gt;1 -->
-<g id="edge31" class="edge">
-<title>78&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2041.4749,-147.5986C2036.8162,-146.2034 2032.0827,-144.9547 2027.5,-144 1900,-117.4378 1495.6408,-97.3702 1370.071,-91.6517"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1369.9636,-88.1434 1359.8158,-91.1884 1369.6476,-95.1362 1369.9636,-88.1434"/>
+<!-- 55&#45;&gt;54 -->
+<g id="edge78" class="edge">
+<title>55&#45;&gt;54</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M900.4836,-432.937C885.7061,-423.6038 867.1698,-411.8967 851.0097,-401.6904"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="852.6392,-398.5799 842.3153,-396.1992 848.9013,-404.4984 852.6392,-398.5799"/>
 </g>
-<!-- 79&#45;&gt;78 -->
-<g id="edge106" class="edge">
-<title>79&#45;&gt;78</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2079.5,-215.8314C2079.5,-208.131 2079.5,-198.9743 2079.5,-190.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="2083.0001,-190.4132 2079.5,-180.4133 2076.0001,-190.4133 2083.0001,-190.4132"/>
+<!-- 56 -->
+<g id="node57" class="node">
+<title>56</title>
+<path fill="none" stroke="#56a9d8" stroke-width="2" d="M714.5,-396C714.5,-396 676.5,-396 676.5,-396 670.5,-396 664.5,-390 664.5,-384 664.5,-384 664.5,-372 664.5,-372 664.5,-366 670.5,-360 676.5,-360 676.5,-360 714.5,-360 714.5,-360 720.5,-360 726.5,-366 726.5,-372 726.5,-372 726.5,-384 726.5,-384 726.5,-390 720.5,-396 714.5,-396"/>
+<text text-anchor="middle" x="695.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
+</g>
+<!-- 56&#45;&gt;53 -->
+<g id="edge74" class="edge">
+<title>56&#45;&gt;53</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M713.921,-359.8314C722.6529,-351.219 733.2317,-340.7851 742.7423,-331.4048"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="745.423,-333.6769 750.0849,-324.1628 740.5075,-328.6931 745.423,-333.6769"/>
+</g>
+<!-- 57&#45;&gt;56 -->
+<g id="edge80" class="edge">
+<title>57&#45;&gt;56</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M695.5,-431.8314C695.5,-424.131 695.5,-414.9743 695.5,-406.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="699.0001,-406.4132 695.5,-396.4133 692.0001,-406.4133 699.0001,-406.4132"/>
+</g>
+<!-- 58 -->
+<g id="node59" class="node">
+<title>58</title>
+<path fill="none" stroke="#56a9d8" stroke-width="2" d="M1068.5,-396C1068.5,-396 1030.5,-396 1030.5,-396 1024.5,-396 1018.5,-390 1018.5,-384 1018.5,-384 1018.5,-372 1018.5,-372 1018.5,-366 1024.5,-360 1030.5,-360 1030.5,-360 1068.5,-360 1068.5,-360 1074.5,-360 1080.5,-366 1080.5,-372 1080.5,-372 1080.5,-384 1080.5,-384 1080.5,-390 1074.5,-396 1068.5,-396"/>
+<text text-anchor="middle" x="1049.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
+</g>
+<!-- 58&#45;&gt;53 -->
+<g id="edge75" class="edge">
+<title>58&#45;&gt;53</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1018.3544,-370.0196C968.2086,-357.1709 869.4255,-331.8599 812.2358,-317.2063"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="812.9597,-313.7788 802.4039,-314.6871 811.2222,-320.5598 812.9597,-313.7788"/>
+</g>
+<!-- 59&#45;&gt;58 -->
+<g id="edge82" class="edge">
+<title>59&#45;&gt;58</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1122.7705,-431.8314C1110.5838,-422.8779 1095.7177,-411.9558 1082.5688,-402.2955"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1084.3527,-399.263 1074.2216,-396.1628 1080.2082,-404.9042 1084.3527,-399.263"/>
+</g>
+<!-- 60 -->
+<g id="node61" class="node">
+<title>60</title>
+<path fill="none" stroke="#56a9d8" stroke-width="2" d="M516.5,-396C516.5,-396 478.5,-396 478.5,-396 472.5,-396 466.5,-390 466.5,-384 466.5,-384 466.5,-372 466.5,-372 466.5,-366 472.5,-360 478.5,-360 478.5,-360 516.5,-360 516.5,-360 522.5,-360 528.5,-366 528.5,-372 528.5,-372 528.5,-384 528.5,-384 528.5,-390 522.5,-396 516.5,-396"/>
+<text text-anchor="middle" x="497.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
+</g>
+<!-- 60&#45;&gt;53 -->
+<g id="edge76" class="edge">
+<title>60&#45;&gt;53</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M528.5871,-369.7407C576.8829,-356.9093 670.0823,-332.1479 725.0215,-317.5515"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="726.0492,-320.8999 734.8152,-314.9495 724.2517,-314.1346 726.0492,-320.8999"/>
+</g>
+<!-- 61&#45;&gt;60 -->
+<g id="edge84" class="edge">
+<title>61&#45;&gt;60</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M496.0047,-431.8314C496.2186,-424.131 496.4729,-414.9743 496.7106,-406.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="500.2094,-406.5066 496.9885,-396.4133 493.2121,-406.3122 500.2094,-406.5066"/>
+</g>
+<!-- 62 -->
+<g id="node63" class="node">
+<title>62</title>
+<path fill="none" stroke="#56a9d8" stroke-width="2" d="M950.5,-396C950.5,-396 912.5,-396 912.5,-396 906.5,-396 900.5,-390 900.5,-384 900.5,-384 900.5,-372 900.5,-372 900.5,-366 906.5,-360 912.5,-360 912.5,-360 950.5,-360 950.5,-360 956.5,-360 962.5,-366 962.5,-372 962.5,-372 962.5,-384 962.5,-384 962.5,-390 956.5,-396 950.5,-396"/>
+<text text-anchor="middle" x="931.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
+</g>
+<!-- 62&#45;&gt;53 -->
+<g id="edge77" class="edge">
+<title>62&#45;&gt;53</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M900.4573,-364.2879C875.229,-353.1441 839.3661,-337.3028 811.3937,-324.9469"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="812.7982,-321.7411 802.2366,-320.9021 809.9698,-328.1442 812.7982,-321.7411"/>
+</g>
+<!-- 63&#45;&gt;62 -->
+<g id="edge86" class="edge">
+<title>63&#45;&gt;62</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1010.7517,-431.8314C997.4447,-422.7927 981.184,-411.7476 966.8625,-402.0198"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="968.4785,-398.8864 958.2397,-396.1628 964.5453,-404.677 968.4785,-398.8864"/>
+</g>
+<!-- 64 -->
+<g id="node65" class="node">
+<title>64</title>
+<path fill="none" stroke="#56d892" stroke-width="2" d="M1724,-252C1724,-252 1665,-252 1665,-252 1659,-252 1653,-246 1653,-240 1653,-240 1653,-228 1653,-228 1653,-222 1659,-216 1665,-216 1665,-216 1724,-216 1724,-216 1730,-216 1736,-222 1736,-228 1736,-228 1736,-240 1736,-240 1736,-246 1730,-252 1724,-252"/>
+<text text-anchor="middle" x="1694.5" y="-231.5" font-family="sans" font-size="10.00" fill="#000000">samtools_stats</text>
+</g>
+<!-- 64&#45;&gt;1 -->
+<g id="edge27" class="edge">
+<title>64&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1688.4153,-215.9241C1680.4078,-195.0759 1664.2511,-161.4395 1638.5,-144 1595.6818,-115.0021 1444.3893,-98.9836 1373.1381,-92.8948"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1373.0795,-89.3779 1362.8234,-92.0352 1372.4981,-96.3537 1373.0795,-89.3779"/>
+</g>
+<!-- 65 -->
+<g id="node66" class="node">
+<title>65</title>
+<path fill="none" stroke="#afd856" stroke-width="2" d="M1799,-324C1799,-324 1756,-324 1756,-324 1750,-324 1744,-318 1744,-312 1744,-312 1744,-300 1744,-300 1744,-294 1750,-288 1756,-288 1756,-288 1799,-288 1799,-288 1805,-288 1811,-294 1811,-300 1811,-300 1811,-312 1811,-312 1811,-318 1805,-324 1799,-324"/>
+<text text-anchor="middle" x="1777.5" y="-303.5" font-family="sans" font-size="10.00" fill="#000000">merge_alns</text>
+</g>
+<!-- 65&#45;&gt;64 -->
+<g id="edge88" class="edge">
+<title>65&#45;&gt;64</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1756.5556,-287.8314C1746.4309,-279.0485 1734.1223,-268.3712 1723.1452,-258.8489"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1725.2851,-256.0718 1715.4377,-252.1628 1720.6981,-261.3595 1725.2851,-256.0718"/>
+</g>
+<!-- 79 -->
+<g id="node80" class="node">
+<title>79</title>
+<path fill="none" stroke="#56d8a9" stroke-width="2" d="M1817,-252C1817,-252 1766,-252 1766,-252 1760,-252 1754,-246 1754,-240 1754,-240 1754,-228 1754,-228 1754,-222 1760,-216 1766,-216 1766,-216 1817,-216 1817,-216 1823,-216 1829,-222 1829,-228 1829,-228 1829,-240 1829,-240 1829,-246 1823,-252 1817,-252"/>
+<text text-anchor="middle" x="1791.5" y="-231.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_lca</text>
+</g>
+<!-- 65&#45;&gt;79 -->
+<g id="edge107" class="edge">
+<title>65&#45;&gt;79</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1781.0328,-287.8314C1782.5301,-280.131 1784.3105,-270.9743 1785.9745,-262.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1789.4465,-262.8975 1787.9196,-252.4133 1782.5752,-261.5614 1789.4465,-262.8975"/>
 </g>
 <!-- 83 -->
 <g id="node84" class="node">
 <title>83</title>
-<path fill="none" stroke="#5692d8" stroke-width="2" d="M1964,-108C1964,-108 1907,-108 1907,-108 1901,-108 1895,-102 1895,-96 1895,-96 1895,-84 1895,-84 1895,-78 1901,-72 1907,-72 1907,-72 1964,-72 1964,-72 1970,-72 1976,-78 1976,-84 1976,-84 1976,-96 1976,-96 1976,-102 1970,-108 1964,-108"/>
-<text text-anchor="middle" x="1935.5" y="-87.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_print</text>
+<path fill="none" stroke="#d88d56" stroke-width="2" d="M1855,-108C1855,-108 1782,-108 1782,-108 1776,-108 1770,-102 1770,-96 1770,-96 1770,-84 1770,-84 1770,-78 1776,-72 1782,-72 1782,-72 1855,-72 1855,-72 1861,-72 1867,-78 1867,-84 1867,-84 1867,-96 1867,-96 1867,-102 1861,-108 1855,-108"/>
+<text text-anchor="middle" x="1818.5" y="-87.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_damage</text>
 </g>
-<!-- 79&#45;&gt;83 -->
+<!-- 65&#45;&gt;83 -->
 <g id="edge111" class="edge">
-<title>79&#45;&gt;83</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2100.8253,-215.7196C2120.3306,-196.7653 2143.728,-166.774 2126.5,-144 2109.579,-121.6317 2036.9479,-105.876 1986.2985,-97.3677"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1986.6022,-93.871 1976.1687,-95.7126 1985.4734,-100.7794 1986.6022,-93.871"/>
+<title>65&#45;&gt;83</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1805.3389,-287.9943C1835.5564,-266.5316 1881.8565,-227.5281 1899.5,-180 1905.0683,-165.0002 1907.0497,-158.1068 1899.5,-144 1892.826,-131.5296 1881.8594,-121.4416 1870.1199,-113.5111"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1871.8204,-110.4466 1861.4854,-108.1146 1868.1104,-116.3826 1871.8204,-110.4466"/>
+</g>
+<!-- 66 -->
+<g id="node67" class="node">
+<title>66</title>
+<path fill="none" stroke="#56a9d8" stroke-width="2" d="M1942.5,-396C1942.5,-396 1904.5,-396 1904.5,-396 1898.5,-396 1892.5,-390 1892.5,-384 1892.5,-384 1892.5,-372 1892.5,-372 1892.5,-366 1898.5,-360 1904.5,-360 1904.5,-360 1942.5,-360 1942.5,-360 1948.5,-360 1954.5,-366 1954.5,-372 1954.5,-372 1954.5,-384 1954.5,-384 1954.5,-390 1948.5,-396 1942.5,-396"/>
+<text text-anchor="middle" x="1923.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
+</g>
+<!-- 66&#45;&gt;65 -->
+<g id="edge89" class="edge">
+<title>66&#45;&gt;65</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1892.1793,-362.5542C1871.1914,-352.204 1843.2909,-338.4448 1820.2651,-327.0896"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1821.5729,-323.8322 1811.0562,-322.5483 1818.4769,-330.1103 1821.5729,-323.8322"/>
+</g>
+<!-- 67&#45;&gt;66 -->
+<g id="edge94" class="edge">
+<title>67&#45;&gt;66</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1924.9953,-431.8314C1924.7814,-424.131 1924.5271,-414.9743 1924.2894,-406.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1927.7879,-406.3122 1924.0115,-396.4133 1920.7906,-406.5066 1927.7879,-406.3122"/>
+</g>
+<!-- 68 -->
+<g id="node69" class="node">
+<title>68</title>
+<path fill="none" stroke="#56a9d8" stroke-width="2" d="M1862.5,-396C1862.5,-396 1824.5,-396 1824.5,-396 1818.5,-396 1812.5,-390 1812.5,-384 1812.5,-384 1812.5,-372 1812.5,-372 1812.5,-366 1818.5,-360 1824.5,-360 1824.5,-360 1862.5,-360 1862.5,-360 1868.5,-360 1874.5,-366 1874.5,-372 1874.5,-372 1874.5,-384 1874.5,-384 1874.5,-390 1868.5,-396 1862.5,-396"/>
+<text text-anchor="middle" x="1843.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
+</g>
+<!-- 68&#45;&gt;65 -->
+<g id="edge90" class="edge">
+<title>68&#45;&gt;65</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1826.8454,-359.8314C1819.0886,-351.3694 1809.7198,-341.1489 1801.239,-331.8971"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1803.7162,-329.4198 1794.3788,-324.4133 1798.5561,-334.1499 1803.7162,-329.4198"/>
+</g>
+<!-- 69&#45;&gt;68 -->
+<g id="edge96" class="edge">
+<title>69&#45;&gt;68</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1847.2383,-431.8314C1846.7035,-424.131 1846.0677,-414.9743 1845.4734,-406.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1848.9632,-406.1467 1844.7787,-396.4133 1841.98,-406.6317 1848.9632,-406.1467"/>
+</g>
+<!-- 70 -->
+<g id="node71" class="node">
+<title>70</title>
+<path fill="none" stroke="#56a9d8" stroke-width="2" d="M1508.5,-396C1508.5,-396 1470.5,-396 1470.5,-396 1464.5,-396 1458.5,-390 1458.5,-384 1458.5,-384 1458.5,-372 1458.5,-372 1458.5,-366 1464.5,-360 1470.5,-360 1470.5,-360 1508.5,-360 1508.5,-360 1514.5,-360 1520.5,-366 1520.5,-372 1520.5,-372 1520.5,-384 1520.5,-384 1520.5,-390 1514.5,-396 1508.5,-396"/>
+<text text-anchor="middle" x="1489.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
+</g>
+<!-- 70&#45;&gt;65 -->
+<g id="edge91" class="edge">
+<title>70&#45;&gt;65</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1520.5947,-370.2263C1572.1556,-357.3361 1675.4717,-331.5071 1734.1589,-316.8353"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1735.025,-320.2265 1743.8776,-314.4056 1733.3272,-313.4355 1735.025,-320.2265"/>
+</g>
+<!-- 71&#45;&gt;70 -->
+<g id="edge98" class="edge">
+<title>71&#45;&gt;70</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1488.7523,-431.8314C1488.8593,-424.131 1488.9865,-414.9743 1489.1053,-406.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1492.6049,-406.4609 1489.2443,-396.4133 1485.6056,-406.3637 1492.6049,-406.4609"/>
+</g>
+<!-- 72 -->
+<g id="node73" class="node">
+<title>72</title>
+<path fill="none" stroke="#56a9d8" stroke-width="2" d="M1782.5,-396C1782.5,-396 1744.5,-396 1744.5,-396 1738.5,-396 1732.5,-390 1732.5,-384 1732.5,-384 1732.5,-372 1732.5,-372 1732.5,-366 1738.5,-360 1744.5,-360 1744.5,-360 1782.5,-360 1782.5,-360 1788.5,-360 1794.5,-366 1794.5,-372 1794.5,-372 1794.5,-384 1794.5,-384 1794.5,-390 1788.5,-396 1782.5,-396"/>
+<text text-anchor="middle" x="1763.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
+</g>
+<!-- 72&#45;&gt;65 -->
+<g id="edge92" class="edge">
+<title>72&#45;&gt;65</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1767.0328,-359.8314C1768.5301,-352.131 1770.3105,-342.9743 1771.9745,-334.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1775.4465,-334.8975 1773.9196,-324.4133 1768.5752,-333.5614 1775.4465,-334.8975"/>
+</g>
+<!-- 73&#45;&gt;72 -->
+<g id="edge100" class="edge">
+<title>73&#45;&gt;72</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1763.5,-431.8314C1763.5,-424.131 1763.5,-414.9743 1763.5,-406.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1767.0001,-406.4132 1763.5,-396.4133 1760.0001,-406.4133 1767.0001,-406.4132"/>
+</g>
+<!-- 74 -->
+<g id="node75" class="node">
+<title>74</title>
+<path fill="none" stroke="#56a9d8" stroke-width="2" d="M1702.5,-396C1702.5,-396 1664.5,-396 1664.5,-396 1658.5,-396 1652.5,-390 1652.5,-384 1652.5,-384 1652.5,-372 1652.5,-372 1652.5,-366 1658.5,-360 1664.5,-360 1664.5,-360 1702.5,-360 1702.5,-360 1708.5,-360 1714.5,-366 1714.5,-372 1714.5,-372 1714.5,-384 1714.5,-384 1714.5,-390 1708.5,-396 1702.5,-396"/>
+<text text-anchor="middle" x="1683.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">sort_name</text>
+</g>
+<!-- 74&#45;&gt;65 -->
+<g id="edge93" class="edge">
+<title>74&#45;&gt;65</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1707.2202,-359.8314C1718.9094,-350.8779 1733.1688,-339.9558 1745.7809,-330.2955"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1747.9769,-333.0222 1753.7874,-324.1628 1743.7203,-327.4651 1747.9769,-333.0222"/>
+</g>
+<!-- 75&#45;&gt;74 -->
+<g id="edge102" class="edge">
+<title>75&#45;&gt;74</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1620.6967,-431.8314C1630.9434,-423.0485 1643.4003,-412.3712 1654.5097,-402.8489"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1656.9952,-405.3282 1662.31,-396.1628 1652.4397,-400.0134 1656.9952,-405.3282"/>
+</g>
+<!-- 76 -->
+<g id="node77" class="node">
+<title>76</title>
+<path fill="none" stroke="#56c9d8" stroke-width="2" d="M772.5,-180C772.5,-180 720.5,-180 720.5,-180 714.5,-180 708.5,-174 708.5,-168 708.5,-168 708.5,-156 708.5,-156 708.5,-150 714.5,-144 720.5,-144 720.5,-144 772.5,-144 772.5,-144 778.5,-144 784.5,-150 784.5,-156 784.5,-156 784.5,-168 784.5,-168 784.5,-174 778.5,-180 772.5,-180"/>
+<text text-anchor="middle" x="746.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_dfit</text>
+</g>
+<!-- 76&#45;&gt;1 -->
+<g id="edge28" class="edge">
+<title>76&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M784.7112,-146.4126C787.6571,-145.5048 790.6091,-144.6846 793.5,-144 842.4105,-132.4176 1183.9287,-102.8269 1298.2863,-93.1295"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1298.6474,-96.6115 1308.3166,-92.2806 1298.057,-89.6364 1298.6474,-96.6115"/>
+</g>
+<!-- 77&#45;&gt;76 -->
+<g id="edge104" class="edge">
+<title>77&#45;&gt;76</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M746.5,-215.8314C746.5,-208.131 746.5,-198.9743 746.5,-190.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="750.0001,-190.4132 746.5,-180.4133 743.0001,-190.4133 750.0001,-190.4132"/>
+</g>
+<!-- 80 -->
+<g id="node81" class="node">
+<title>80</title>
+<path fill="none" stroke="#59d856" stroke-width="2" d="M678,-180C678,-180 597,-180 597,-180 591,-180 585,-174 585,-168 585,-168 585,-156 585,-156 585,-150 591,-144 597,-144 597,-144 678,-144 678,-144 684,-144 690,-150 690,-156 690,-156 690,-168 690,-168 690,-174 684,-180 678,-180"/>
+<text text-anchor="middle" x="637.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_aggregate</text>
+</g>
+<!-- 77&#45;&gt;80 -->
+<g id="edge108" class="edge">
+<title>77&#45;&gt;80</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M718.9947,-215.8314C705.182,-206.7074 688.2744,-195.539 673.4471,-185.7449"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="675.2696,-182.7541 664.9965,-180.1628 671.4114,-188.5949 675.2696,-182.7541"/>
+</g>
+<!-- 78 -->
+<g id="node79" class="node">
+<title>78</title>
+<path fill="none" stroke="#56c9d8" stroke-width="2" d="M1754.5,-180C1754.5,-180 1702.5,-180 1702.5,-180 1696.5,-180 1690.5,-174 1690.5,-168 1690.5,-168 1690.5,-156 1690.5,-156 1690.5,-150 1696.5,-144 1702.5,-144 1702.5,-144 1754.5,-144 1754.5,-144 1760.5,-144 1766.5,-150 1766.5,-156 1766.5,-156 1766.5,-168 1766.5,-168 1766.5,-174 1760.5,-180 1754.5,-180"/>
+<text text-anchor="middle" x="1728.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_dfit</text>
+</g>
+<!-- 78&#45;&gt;1 -->
+<g id="edge29" class="edge">
+<title>78&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1690.3934,-147.9544C1685.749,-146.4968 1681.0412,-145.1361 1676.5,-144 1567.94,-116.8404 1436.3568,-100.5745 1373.0715,-93.7582"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1373.1044,-90.2423 1362.7915,-92.6699 1372.3674,-97.2034 1373.1044,-90.2423"/>
+</g>
+<!-- 79&#45;&gt;78 -->
+<g id="edge106" class="edge">
+<title>79&#45;&gt;78</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1775.6024,-215.8314C1768.2722,-207.454 1759.434,-197.3531 1751.4031,-188.1749"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1753.8307,-185.6343 1744.6116,-180.4133 1748.5627,-190.2438 1753.8307,-185.6343"/>
+</g>
+<!-- 81 -->
+<g id="node82" class="node">
+<title>81</title>
+<path fill="none" stroke="#59d856" stroke-width="2" d="M1878,-180C1878,-180 1797,-180 1797,-180 1791,-180 1785,-174 1785,-168 1785,-168 1785,-156 1785,-156 1785,-150 1791,-144 1797,-144 1797,-144 1878,-144 1878,-144 1884,-144 1890,-150 1890,-156 1890,-156 1890,-168 1890,-168 1890,-174 1884,-180 1878,-180"/>
+<text text-anchor="middle" x="1837.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_aggregate</text>
+</g>
+<!-- 79&#45;&gt;81 -->
+<g id="edge109" class="edge">
+<title>79&#45;&gt;81</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1803.1077,-215.8314C1808.2978,-207.7079 1814.5232,-197.9637 1820.2425,-189.0118"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1823.3015,-190.7246 1825.736,-180.4133 1817.4026,-186.9559 1823.3015,-190.7246"/>
 </g>
 <!-- 80&#45;&gt;0 -->
-<g id="edge2" class="edge">
+<g id="edge4" class="edge">
 <title>80&#45;&gt;0</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M479.1279,-151.6323C491.3197,-149.0852 504.3798,-146.4014 516.5,-144 687.2581,-110.167 729.5028,-98.8327 901.5,-72 1046.3756,-49.3985 1219.8112,-29.9785 1294.8481,-21.9454"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1295.617,-25.3834 1305.19,-20.8438 1294.8755,-18.4227 1295.617,-25.3834"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M690.1758,-146.3442C693.3229,-145.5217 696.4486,-144.7334 699.5,-144 782.218,-124.1186 804.0177,-124.3781 887.5,-108 1040.1047,-78.0609 1221.6871,-41.2007 1298.3872,-25.5739"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1299.4003,-28.9395 1308.4998,-23.5128 1298.0023,-22.0805 1299.4003,-28.9395"/>
+</g>
+<!-- 80&#45;&gt;1 -->
+<g id="edge30" class="edge">
+<title>80&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M690.0946,-145.9626C693.2621,-145.2361 696.4144,-144.5731 699.5,-144 714.3344,-141.2449 1164.4892,-104.074 1298.3258,-93.0567"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1298.8091,-96.5288 1308.4883,-92.2203 1298.2349,-89.5524 1298.8091,-96.5288"/>
 </g>
 <!-- 81&#45;&gt;0 -->
-<g id="edge3" class="edge">
+<g id="edge5" class="edge">
 <title>81&#45;&gt;0</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M2073.7455,-83.0144C2047.6118,-79.4166 2014.8392,-75.1387 1985.5,-72 1751.6823,-46.9866 1469.6926,-27.1591 1369.7868,-20.4522"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1369.8134,-16.9463 1359.6023,-19.7717 1369.3467,-23.9307 1369.8134,-16.9463"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1784.7386,-146.668C1781.613,-145.7641 1778.5155,-144.8695 1775.5,-144 1626.1982,-100.95 1448.2497,-50.1479 1372.5381,-28.5569"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1373.1234,-25.0844 1362.547,-25.7081 1371.2039,-31.8161 1373.1234,-25.0844"/>
+</g>
+<!-- 81&#45;&gt;1 -->
+<g id="edge31" class="edge">
+<title>81&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1784.8786,-146.0997C1781.7178,-145.3387 1778.5743,-144.6307 1775.5,-144 1627.8893,-113.7187 1448.6963,-98.1699 1372.5721,-92.531"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1372.7562,-89.0352 1362.5287,-91.8006 1372.2484,-96.0168 1372.7562,-89.0352"/>
 </g>
 <!-- 82&#45;&gt;0 -->
-<g id="edge4" class="edge">
+<g id="edge2" class="edge">
 <title>82&#45;&gt;0</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M991.019,-82.3629C1065.5063,-68.3234 1223.1482,-38.6108 1295.1795,-25.0342"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1295.9872,-28.4437 1305.1658,-23.152 1294.6906,-21.5648 1295.9872,-28.4437"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M879.3804,-83.0309C980.098,-68.6712 1208.7998,-36.0642 1298.4571,-23.2814"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1299.0304,-26.7351 1308.4362,-21.8586 1298.0423,-19.8052 1299.0304,-26.7351"/>
 </g>
 <!-- 83&#45;&gt;0 -->
-<g id="edge5" class="edge">
+<g id="edge3" class="edge">
 <title>83&#45;&gt;0</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1894.9991,-85.1641C1784.0892,-71.9211 1476.6094,-35.2071 1369.7052,-22.4424"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1370.052,-18.959 1359.7075,-21.2487 1369.222,-25.9097 1370.052,-18.959"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1769.9767,-82.7667C1673.411,-68.3718 1459.0478,-36.4171 1372.655,-23.5386"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1372.9374,-20.0421 1362.5307,-22.0294 1371.9053,-26.9656 1372.9374,-20.0421"/>
 </g>
 </g>
 </svg>

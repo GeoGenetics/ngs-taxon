@@ -71,7 +71,7 @@ rule metadmg_dfit:
         extra = check_cmd(config["metadmg"]["dfit"]["params"], forbidden_args = ["--nthreads", "--node", "--names", "--out", "--out_prefix"]),
     threads: 4
     resources:
-        mem_mb = lambda w, attempt, input: 40 * input.size_mb * attempt,
+        mem_mb = lambda w, attempt, input: 60 * input.size_mb * attempt,
         runtime = lambda w, attempt: f"{10 * attempt} h",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp dfit {input.dmg} --nthreads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed $RANDOM --out_prefix {params.out_prefix} > {log} 2>&1"

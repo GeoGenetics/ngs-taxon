@@ -21,8 +21,8 @@ rule metadmg_damage:
         extra = check_cmd(config["metadmg"]["damage"]["params"], forbidden_args = ["-n", "--threads", "-r", "--run_mode", "-o", "--out_prefix"]),
     threads: 4
     resources:
-        mem = lambda w, attempt: f"{100 * attempt} GB",
-        runtime = lambda w, attempt: f"{2 * attempt} d",
+        mem = lambda w, attempt: f"{10 * attempt} GB",
+        runtime = lambda w, attempt: f"{1 * attempt} d",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.bam} > {log} 2>&1"
 
@@ -47,7 +47,7 @@ rule metadmg_lca:
         extra = check_cmd(config["metadmg"]["lca"]["params"], forbidden_args = ["--bam", "--nodes", "--names", "--acc2tax", "--temp", "--out", "--out_prefix"]),
     threads: 1
     resources:
-        mem = lambda w, attempt: f"{100 * attempt} GB",
+        mem = lambda w, attempt: f"{30 * attempt} GB",
         runtime = lambda w, attempt: f"{1 * attempt} d",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp lca --bam {input.bam} --nodes {input.nodes} --names {input.names} --acc2tax {input.acc2tax} {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1"
@@ -94,7 +94,7 @@ rule metadmg_aggregate:
         out_prefix = lambda w, output: Path(output.stats.removesuffix(".gz")).with_suffix(""),
     threads: 1
     resources:
-        mem = lambda w, attempt: f"{30 * attempt} GB",
-        runtime = lambda w, attempt: f"{10 * attempt} h",
+        mem = lambda w, attempt: f"{20 * attempt} GB",
+        runtime = lambda w, attempt: f"{30 * attempt} m",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp aggregate {input.dmg} --nodes {input.nodes} --names {input.names} --lcastat {input.stats} --out_prefix {params.out_prefix} > {log} 2>&1"

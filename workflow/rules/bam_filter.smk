@@ -16,8 +16,8 @@ rule sort_coord:
         "benchmarks/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
     threads: 4
     resources:
-        mem = lambda w, attempt: f"{150 * attempt} GB",
-        runtime = lambda w, attempt: f"{4 * attempt} d",
+        mem_mb = lambda w, attempt, input: max(input.size_mb * 25 * attempt, 1024),
+        runtime = lambda w, attempt: f"{2 * attempt} h",
     wrapper:
         wrapper_ver + "/bio/samtools/sort"
 

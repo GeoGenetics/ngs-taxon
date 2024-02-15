@@ -19,10 +19,10 @@ rule merge_alns:
     benchmark:
         "benchmarks/align/merge_alns/{sample}_{library}_{read_type_map}.tsv"
     params:
-        extra = "-n",
+        extra = "-n -c",
     threads: 3
     resources:
-        mem = lambda w, attempt: f"{50 * attempt} GB",
+        mem = lambda w, attempt: f"{50 * attempt} GiB",
         runtime = lambda w, attempt: f"{1 * attempt} d",
         tmpdir = get_tmp(),
     wrapper:
@@ -44,7 +44,7 @@ rule samtools_stats:
         "benchmarks/align/samtools_stats/{sample}_{library}_{read_type_map}.log",
     threads: 4
     resources:
-        mem = lambda w, attempt: f"{50 * attempt} GB",
+        mem = lambda w, attempt: f"{50 * attempt} GiB",
         runtime = lambda w, attempt: f"{10 * attempt} h",
     wrapper:
         wrapper_ver + "/bio/samtools/stats"

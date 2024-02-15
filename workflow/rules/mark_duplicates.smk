@@ -15,7 +15,7 @@ rule bamsormadup:
             check_cmd(config["align"]["mark_duplicates"]["params"], forbidden_args = ["threads", "inputformat", "outputformat", "SO", "tmpfile"]),
     threads: 10
     resources:
-        mem = lambda w, attempt: f"{100 * attempt} GB",
+        mem = lambda w, attempt: f"{100 * attempt} GiB",
         runtime = lambda w, attempt: f"{5 * attempt} h",
     wrapper:
         wrapper_ver + "/bio/biobambam2/bamsormadup"
@@ -36,7 +36,7 @@ rule markduplicates:
         extra = check_cmd(config["align"]["mark_duplicates"]["params"], forbidden_args = ["--INPUT", "--TMP_DIR", "--OUTPUT", "--METRICS_FILE"]),
     threads: 1
     resources:
-        mem = lambda w, attempt: f"{40 * attempt} GB",
+        mem = lambda w, attempt: f"{40 * attempt} GiB",
         runtime = lambda w, attempt: f"{1 * attempt} d",
     wrapper:
         wrapper_ver + "/bio/picard/markduplicates"
@@ -74,7 +74,7 @@ rule markduplicatesspark:
         spark_extra = "--conf 'spark.local.dir={}'".format(get_tmp()),
     threads: 10
     resources:
-        mem = lambda w, attempt: f"{100 * attempt} GB",
+        mem = lambda w, attempt: f"{100 * attempt} GiB",
         runtime = lambda w, attempt: f"{1 * attempt} d",
         tmpdir = get_tmp(),
     wrapper:

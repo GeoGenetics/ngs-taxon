@@ -11,15 +11,22 @@ units["read_type_map"] = [get_read_type_map(u.sample, u.library, u.lane) for u i
 def get_read_group(wildcards):
     """Denote sample name and platform in read group."""
 
-    flowcell = pd.unique(units.loc[(wildcards.sample, wildcards.library), "flowcell"])
-    if flowcell.size != 1:
-        raise ValueError("no flowcell provided")
+    extra_info = {"center": "CN",
+                  "date": "DT",
+                  "platform": "PL",
+                  "platform_model": "PM",
+                 }
 
-    platform = pd.unique(units.loc[(wildcards.sample, wildcards.library), "platform"])
-    if platform.size != 1:
-        raise ValueError("no platform provided")
+    # Get flowcell
+    flowcell = units.loc[(wildcards.sample, wildcards.library, slice(None)), "flowcell"].drop_duplicates().item()
+    rg_info = f"--rg-id '{wildcards.sample}_{wildcards.library}_{flowcell}' --rg 'SM:{wildcards.sample}' --rg 'LB:{wildcards.library}' --rg 'PU:{flowcell}'"
+    # Add extra info to RG
+    for key, abv in extra_info.items():
+        value = units.loc[(wildcards.sample, wildcards.library, slice(None))].get(key)
+	if value is not None and value.any():
+            rg_info += f" --rg '{abv}:{value.drop_duplicates().item()}'"
 
-    return f"--rg-id '{wildcards.sample}' --rg 'PU:{flowcell[0]}.{wildcards.library}' --rg 'SM:{wildcards.sample}' --rg 'LB:{wildcards.library}' --rg 'PL:{platform[0]}'"
+    return rg_info
 
 
 def is_bt2l(wildcards):
@@ -87,7 +94,7 @@ rule bowtie2:
 #    priority: lambda w, input: int(input.size_mb)
     threads: 20
     resources:
-        mem = lambda w, attempt, input: f"{(sum(f.size for f in input.idx) / 1024**2 * 0.9 + 105000) * attempt} MB",
+        mem = lambda w, attempt, input: f"{(sum(f.size for f in input.idx) / 1024**2 * 0.9 + 105000) * attempt} MiB",
         runtime = lambda w, attempt: f"{3 * attempt} d",
     wrapper:
         wrapper_ver + "/bio/bowtie2/align"
@@ -104,7 +111,7 @@ rule clean_header:
         "benchmarks/align/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
     threads: 4
     resources:
-        mem = lambda w, attempt: f"{50 * attempt} GB",
+        mem = lambda w, attempt: f"{50 * attempt} GiB",
         runtime = lambda w, attempt: f"{1 * attempt} d",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/misc/compressbam --threads {threads} --input {input.bam} --output {output.bam} >{log} 2>&1"

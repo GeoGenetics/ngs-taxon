@@ -43,6 +43,11 @@ properties:
         required:
           - tool
 
+    required:
+      - trim
+      - collapse
+      - derep
+
   ref:
     type: object
     patternProperties:
@@ -154,6 +159,14 @@ properties:
       - lca
       - dfit
 
+  report:
+    type: object
+    properties:
+      multiqc:
+        type: string
+    required:
+      - multiqc
+
 required:
   - samples
   - units
@@ -162,3 +175,4 @@ required:
   - align
   - taxonomy
   - metadmg
+  - report

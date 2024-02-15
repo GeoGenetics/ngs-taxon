@@ -75,7 +75,7 @@ ref:
 
 align:
   map:
-    params: "-k 1000 -D 15 -R 2 -N 1 -L 22 -i S,1,1.15 --np 1 --mp '1,1' --rdg '0,1' --rfg '0,1' --score-min 'L,0,-0.1' --no-unal"
+    params: "-k 1000 -D 15 -R 2 -L 22 -i S,1,1.15 --np 1 --mp '1,1' --rdg '0,1' --rfg '0,1' --score-min 'L,0,-0.1' --no-unal"
 
   bam_filter:
     activate: true
@@ -100,7 +100,10 @@ metadmg:
     params: "--min_length 30 --print_length 30"
 
   lca:
-    params: "--weight_type 1 --fix_ncbi 0 --sim_score_low 0.95 --sim_score_high 1.0 --min_mapq 30 --how_many 30 --lca_rank genus"
+    params: "--weight_type 1 --fix_ncbi 0 --sim_score_low 0.95 --how_many 30"
 
   dfit:
-    params: "--nopt 10 --doboot 1 --nbootstrap 20 --showfits 2 --lib ds"
+    params: "--nopt 10 --doboot 1 --nbootstrap 20 --showfits 2"
+
+report:
+  multiqc: "--verbose"

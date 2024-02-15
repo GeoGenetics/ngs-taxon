@@ -1,10 +1,7 @@
-from snakemake.utils import min_version
-min_version("7.25.0")
+snakemake.utils.min_version("7.25.0")
 
 # Define wrapper versions
-wrapper_ver = "v3.3.2"
-
-
+wrapper_ver = "v3.3.6"
 
 include: "rules/utils.smk"
 include: "rules/setup.smk"
@@ -39,10 +36,12 @@ rule multiqc:
         "logs/reports/multiqc.log"
     benchmark:
         "benchmarks/reports/multiqc.log"
+    params:
+        extra = "--force " + check_cmd(config["report"]["multiqc"], forbidden_args = ["-n", "--filename", "-o", "--outdir", "--data-dir", "--no-data-dir", "-z", "--zip-data-dir", "--no-report", "--pdf", "--version", "-h", "--help"]),
     localrule: True
     threads: 1
     resources:
-        mem = lambda w, attempt: f"{10 * attempt} GB",
+        mem = lambda w, attempt: f"{10 * attempt} GiB",
         runtime = lambda w, attempt: f"{30 * attempt} m",
     wrapper:
         wrapper_ver + "/bio/multiqc"

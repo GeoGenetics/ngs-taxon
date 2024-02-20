@@ -23,7 +23,7 @@ def get_read_group(wildcards):
     # Add extra info to RG
     for key, abv in extra_info.items():
         value = units.loc[(wildcards.sample, wildcards.library, slice(None))].get(key)
-	if value is not None and value.any():
+        if value is not None and value.any():
             rg_info += f" --rg '{abv}:{value.drop_duplicates().item()}'"
 
     return rg_info
@@ -90,11 +90,11 @@ rule bowtie2:
     benchmark:
         "benchmarks/align/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
     params:
-        extra = lambda w: "--time {} ".format(get_read_group(w)) + check_cmd(config["align"]["map"]["params"], forbidden_args = ["--threads", "--mm", "-t", "--time", "-q", "-U", "-1", "-2", "--interleaved", "-x", "-b", "-S", "-rd-id", "-rg"]),
-#    priority: lambda w, input: int(input.size_mb)
+        extra = lambda w: f"--time {get_read_group(w)} " + check_cmd(config["align"]["map"]["params"], forbidden_args = ["--threads", "--mm", "-t", "--time", "-q", "-U", "-1", "-2", "--interleaved", "-x", "-b", "-S", "-rd-id", "-rg"]),
+    #priority: lambda w, input: int(input.size_mb)
     threads: 20
     resources:
-        mem = lambda w, attempt, input: f"{(sum(f.size for f in input.idx) / 1024**2 * 0.9 + 105000) * attempt} MiB",
+        mem = lambda w, attempt, input: "{} GiB".format((sum(Path(f).stat().st_size for f in input.idx) / 1024**3 * 0.9 + 100) * attempt),
         runtime = lambda w, attempt: f"{3 * attempt} d",
     wrapper:
         wrapper_ver + "/bio/bowtie2/align"

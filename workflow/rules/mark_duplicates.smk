@@ -62,7 +62,7 @@ rule markduplicatesspark:
         lambda w: get_chunk_aln(w, "mark_duplicates"),
     output:
         bam = temp("temp/align/markduplicatesspark/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
-#        bai = temp("temp/align/markduplicatesspark/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.crai"),
+        #bai = temp("temp/align/markduplicatesspark/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.crai"),
         metrics = "stats/align/markduplicatesspark/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.metrics.txt",
     log:
         "logs/align/markduplicatesspark/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"

@@ -4,6 +4,7 @@
 ### RULES ###
 #############
 
+# https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c
 rule sort_coord:
     input:
         bam = rules.clean_header.output.bam,
@@ -14,12 +15,12 @@ rule sort_coord:
         "logs/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
         "benchmarks/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
-    threads: 4
+    threads: 8
     resources:
-        mem_mb = lambda w, attempt, input: max((input.size_mb * 19 + 30720) * attempt, 1024),
-        runtime = lambda w, attempt: f"{2 * attempt} h",
+        mem = lambda w, attempt, threads: f"{10 * threads * attempt} GiB",
+        runtime = lambda w, attempt: f"{1 * attempt} d",
     wrapper:
-        wrapper_ver + "/bio/samtools/sort"
+        "master/bio/samtools/sort"
 
 
 use rule sort_coord as sort_name with:
@@ -78,7 +79,7 @@ rule calmd:
         extra = check_cmd(config["align"]["calmd"]["params"], forbidden_args = ["--threads", "-@", "-b"]),
     threads: 5
     resources:
-        mem = lambda w, attempt: f"{10 * attempt} GB",
+        mem = lambda w, attempt: f"{10 * attempt} GiB",
         runtime = lambda w, attempt: f"{12 * attempt} h",
     wrapper:
         wrapper_ver + "/bio/samtools/calmd"

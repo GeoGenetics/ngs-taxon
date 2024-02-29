@@ -20,7 +20,7 @@ rule sort_coord:
         mem = lambda w, attempt, threads: f"{10 * threads * attempt} GiB",
         runtime = lambda w, attempt: f"{1 * attempt} d",
     wrapper:
-        "master/bio/samtools/sort"
+        wrapper_ver + "/bio/samtools/sort"
 
 
 use rule sort_coord as sort_name with:

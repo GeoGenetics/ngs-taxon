@@ -12,6 +12,7 @@ This module implements read derelication steps:
   - [GATK MarkDuplicatesSpark](https://gatk.broadinstitute.org/hc/en-us/articles/13832682540699-MarkDuplicatesSpark)
   - [Picard MarkDuplicatesWithMateCigar](https://broadinstitute.github.io/picard/command-line-overview.html#MarkDuplicatesWithMateCigar)
   - [BamSorMaDup](https://gitlab.com/german.tischler/biobambam2)
+  - [DeDup](https://github.com/apeltzer/DeDup) [TODO]
 - Filter BAM references
   - [bam-filter](https://github.com/genomewalker/bam-filter)
 - Sort reads by name

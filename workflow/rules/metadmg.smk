@@ -72,7 +72,7 @@ rule metadmg_dfit:
         "benchmarks/metadmg/dfit/{sample}_{library}_{read_type_map}.tsv"
     params:
         out_prefix = lambda w, output: Path(output.dfit.removesuffix(".gz")).with_suffix(""),
-        extra = lambda w: "--lib {} ".format(_get_library_type(w)) + check_cmd(config["metadmg"]["dfit"]["params"], forbidden_args = ["--nthreads", "--node", "--names", "--lib", "--out", "--out_prefix"]),
+        extra = lambda w: "--doboot 1 --lib {} ".format(_get_library_type(w)) + check_cmd(config["metadmg"]["dfit"]["params"], forbidden_args = ["--nthreads", "--node", "--names", "--doboot", "--lib", "--out", "--out_prefix"]),
     threads: 4
     resources:
         mem_mb = lambda w, attempt, input: 60 * input.size_mb * attempt,

@@ -11,43 +11,6 @@ properties:
   units:
     type: string
 
-  reads:
-    type: object
-    properties:
-      trim:
-        type: object
-        properties:
-          activate:
-            type: boolean
-          tool:
-            type: string
-            enum: ["adapterremoval", "bbduk", "cutadapt", "fastp", "trimmomatic"]
-        required:
-          - activate
-          - tool
-
-      collapse:
-        type: object
-        properties:
-          activate:
-            type: boolean
-        required:
-          - activate
-
-      derep:
-        type: object
-        properties:
-          tool:
-            type: string
-            enum: ["vsearch", "seqkit"]
-        required:
-          - tool
-
-    required:
-      - trim
-      - collapse
-      - derep
-
   ref:
     type: object
     patternProperties:
@@ -170,7 +133,6 @@ properties:
 required:
   - samples
   - units
-  - reads
   - ref
   - align
   - taxonomy

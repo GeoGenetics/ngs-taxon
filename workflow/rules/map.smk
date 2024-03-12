@@ -3,10 +3,6 @@
 ### FUNCTIONS ###
 #################
 
-# Add MAP read type
-units["read_type_map"] = [get_read_type_map(u.sample, u.library, u.lane) for u in units.itertuples()]
-
-
 # https://gatk.broadinstitute.org/hc/en-us/articles/360035890671-Read-groups
 def get_read_group(wildcards):
     """Denote sample name and platform in read group."""
@@ -58,19 +54,8 @@ def get_chunk_aln(wildcards, rule, ext=["bam"]):
 ### RULES ###
 #############
 
-wildcard_constraints:
-    read_type_map  = "|".join(set(flatten(units.read_type_map))),
-
-
 def get_data(wildcards):
-    if is_activated("reads/extension"):
-        reads_file = "temp/reads/represent/grep/{tool}/{sample}_{library}_{read_type_trim}.fastq.gz"
-    elif is_activated("reads/derep"):
-        reads_file = "temp/reads/derep/{tool}/{sample}_{library}_{read_type_trim}.fastq.gz"
-    else:
-        reads_file = "temp/reads/derep/merge_lanes/{sample}_{library}_{read_type_trim}.fastq.gz"
-
-    return expand(reads_file, tool=config["reads"]["derep"]["tool"], read_type_trim = get_read_type_trim(wildcards.read_type_map), allow_missing = True)
+    return expand("results/reads/low_complexity/{sample}_{library}_{read_type_trim}.fastq.gz", read_type_trim = get_read_type_trim(wildcards.read_type_map), allow_missing = True)
 
 
 def get_index(wildcards):

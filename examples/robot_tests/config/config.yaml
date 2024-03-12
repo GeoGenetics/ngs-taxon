@@ -8,25 +8,6 @@ units: config/units.tsv
 
 
 #############
-### READS ###
-#############
-reads:
-  trim:
-    activate: true
-    tool: fastp
-
-  # Ignored for SE
-  collapse:
-    activate: true
-
-  derep:
-    activate: true
-    # vsearch or seqkit
-    tool: vsearch
-
-
-
-#############
 ### ALIGN ###
 #############
 ref:
@@ -79,7 +60,7 @@ align:
 
   bam_filter:
     activate: true
-    params: "--min-read-ani 94 --min-read-count 100 --min-expected-breadth-ratio 0.75 --min-normalized-entropy auto --min-normalized-gini auto --min-coverage-evenness 0.4 --min-avg-read-ani 90 --include-low-detection --min-breadth 0.01"
+    params: "--min-read-ani 94 --min-read-count 3 --min-expected-breadth-ratio 0.5 --min-normalized-entropy auto --min-normalized-gini auto --min-breadth 0 --min-avg-read-ani 90 --min-coverage-evenness 0.4 --min-coverage-mean 0 --include-low-detection"
 
   mark_duplicates:
     activate: true

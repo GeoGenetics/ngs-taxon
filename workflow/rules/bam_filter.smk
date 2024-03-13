@@ -55,12 +55,13 @@ rule bam_filter:
         extra = check_cmd(config["align"]["bam_filter"]["params"], forbidden_args = ["-t", "--threads", "-m", "--low-memory", "--sort-memory", "-N", "--sort-by-name", "--disable-sort", "-r", "--reference-lengths", "--read-length-freqs", "--read-hits-count", "--only-stats", "--only-stats-filtered", "--plot", "-p", "--prefix"]),
     conda:
         base_dir / "envs" / "bam_filter.yaml"
-    threads: 12
+    threads: 10
     resources:
         mem_mb = lambda w, attempt, input, threads: max(input.size_mb * 1.2 * threads, 50 * 1024) * attempt,
         runtime = lambda w, attempt: f"{1 * attempt} d",
+        tmpdir = "temp/large_temp",
     shell:
-        "filterBAM --threads {threads} --sort-memory $(({resources.mem_mb}/{threads}))M --low-memory --disable-sort --bam {input.aln} --bam-index {input.idx} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} --knee-plot {output.knee} >{log} 2>&1"
+        "filterBAM filter --threads {threads} --low-memory --disable-sort --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} --knee-plot {output.knee} >{log} 2>&1"
 
 
 

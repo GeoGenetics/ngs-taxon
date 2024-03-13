@@ -22,7 +22,7 @@ rule metadmg_damage:
     threads: 4
     resources:
         mem = lambda w, attempt: f"{10 * attempt} GiB",
-        runtime = lambda w, attempt: f"{1 * attempt} d",
+        runtime = lambda w, attempt: f"{2 * attempt} d",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.bam} > {log} 2>&1"
 

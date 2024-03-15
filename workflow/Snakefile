@@ -1,7 +1,7 @@
 snakemake.utils.min_version("7.25.0")
 
 # Define wrapper versions
-wrapper_ver = "v3.4.0"
+wrapper_ver = "v3.5.0"
 
 include: "rules/utils.smk"
 include: "rules/setup.smk"
@@ -26,9 +26,9 @@ rule multiqc:
         ### Samtools Stats
         expand_pandas(expand_pandas(rules.samtools_stats.output.txt, bowtie_sets, allow_missing=True), units),
         ### metaDMG dfit
-        expand_pandas(expand_pandas(rules.metadmg_dfit.output.dfit, bowtie_sets, allow_missing=True), units),
+        expand_pandas(expand(rules.metadmg_dfit.output.dfit, read_type_map="collapsed", allow_missing=True), units),
         ### metaDMG LCA Aggregated Stats
-        expand_pandas(expand_pandas(rules.metadmg_aggregate.output.stats, bowtie_sets, allow_missing=True), units),
+        expand_pandas(expand(rules.metadmg_aggregate.output.stats, read_type_map="collapsed", allow_missing=True), units),
     output:
         html = "reports/multiqc.html",
         data = "reports/multiqc_data.zip",

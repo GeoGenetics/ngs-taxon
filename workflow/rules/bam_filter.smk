@@ -14,7 +14,7 @@ rule sort_coord:
     log:
         "logs/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
+        "benchmarks/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     threads: 8
     resources:
         mem = lambda w, attempt, threads: f"{10 * threads * attempt} GiB",
@@ -31,7 +31,7 @@ use rule sort_coord as sort_name with:
     log:
         "logs/align/sort_name/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/align/sort_name/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
+        "benchmarks/align/sort_name/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
         extra = "-n",
 
@@ -42,7 +42,7 @@ rule bam_filter:
         unpack(lambda w: ext_dict(get_chunk_aln(w, "bam_filter", ext=["bam","bam.csi"]), keys=["aln", "idx"])),
     output:
         bam = temp("temp/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
-        knee = "stats/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.knee-plot.png",
+        knee = touch("stats/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.knee-plot.png"),
         read_len = "stats/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.read-length-freqs.json",
         read_hits = "stats/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.read-hits-count.tsv.gz",
         stats = "stats/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.stats.tsv.gz",
@@ -50,14 +50,14 @@ rule bam_filter:
     log:
         "logs/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
+        "benchmarks/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
         extra = check_cmd(config["align"]["bam_filter"]["params"], forbidden_args = ["-t", "--threads", "-m", "--low-memory", "--sort-memory", "-N", "--sort-by-name", "--disable-sort", "-r", "--reference-lengths", "--read-length-freqs", "--read-hits-count", "--only-stats", "--only-stats-filtered", "--plot", "-p", "--prefix"]),
     conda:
         base_dir / "envs" / "bam_filter.yaml"
     threads: 10
     resources:
-        mem_mb = lambda w, attempt, input, threads: max(input.size_mb * 1.2 * threads, 50 * 1024) * attempt,
+        mem_mb = lambda w, attempt, input, threads: max(1.2 * input.size_mb * threads, 50 * 1024) * attempt,
         runtime = lambda w, attempt: f"{1 * attempt} d",
         tmpdir = "temp/large_temp",
     shell:
@@ -75,7 +75,7 @@ rule calmd:
     log:
         "logs/align/calmd/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/align/calmd/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
+        "benchmarks/align/calmd/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
         extra = check_cmd(config["align"]["calmd"]["params"], forbidden_args = ["--threads", "-@", "-b"]),
     threads: 5

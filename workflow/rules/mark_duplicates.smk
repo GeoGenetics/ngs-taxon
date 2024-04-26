@@ -9,7 +9,7 @@ rule bamsormadup:
     log:
         "logs/align/bamsormadup/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/align/bamsormadup/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
+        "benchmarks/align/bamsormadup/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
         extra = lambda w: "SO=coordinate " +
             check_cmd(config["align"]["mark_duplicates"]["params"], forbidden_args = ["threads", "inputformat", "outputformat", "SO", "tmpfile"]),
@@ -31,7 +31,7 @@ rule markduplicates:
     log:
         "logs/align/markduplicates/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/align/markduplicates/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
+        "benchmarks/align/markduplicates/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
         extra = check_cmd(config["align"]["mark_duplicates"]["params"], forbidden_args = ["--INPUT", "--TMP_DIR", "--OUTPUT", "--METRICS_FILE"]),
     threads: 1
@@ -50,10 +50,10 @@ use rule markduplicates as markduplicateswithmatecigar with:
     log:
         "logs/align/markduplicateswithmatecigar/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/align/markduplicateswithmatecigar/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
+        "benchmarks/align/markduplicateswithmatecigar/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
         withmatecigar = True,
-#        extra = check_cmd(config["align"]["mark_duplicates"]["params"], forbidden_args = ["--INPUT", "--TMP_DIR", "--OUTPUT", "--METRICS_FILE"]),
+        extra = check_cmd(config["align"]["mark_duplicates"]["params"], forbidden_args = ["--INPUT", "--TMP_DIR", "--OUTPUT", "--METRICS_FILE"]),
 
 
 
@@ -67,7 +67,7 @@ rule markduplicatesspark:
     log:
         "logs/align/markduplicatesspark/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/align/markduplicatesspark/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
+        "benchmarks/align/markduplicatesspark/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
         extra = "--create-output-bam-index false --create-output-bam-splitting-index false " +
             check_cmd(config["align"]["mark_duplicates"]["params"], forbidden_args = ["--input", "--metrics-file", "--create-output-bam-index", "--create-output-bam-splitting-index", "--tmp-dir", "--output"]),

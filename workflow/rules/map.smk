@@ -73,7 +73,7 @@ rule bowtie2:
     log:
         "logs/align/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/align/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
+        "benchmarks/align/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
         extra = lambda w: f"--time {get_read_group(w)} " + check_cmd(config["align"]["map"]["params"], forbidden_args = ["--threads", "--mm", "-t", "--time", "-q", "-U", "-1", "-2", "--interleaved", "-x", "-b", "-S", "-rd-id", "-rg"]),
     #priority: lambda w, input: int(input.size_mb)
@@ -93,10 +93,10 @@ rule clean_header:
     log:
         "logs/align/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/align/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.tsv"
+        "benchmarks/align/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     threads: 4
     resources:
-        mem = lambda w, attempt: f"{50 * attempt} GiB",
-        runtime = lambda w, attempt: f"{1 * attempt} d",
+        mem = lambda w, attempt: f"{20 * attempt} GiB",
+        runtime = lambda w, attempt: f"{5 * attempt} h",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/misc/compressbam --threads {threads} --input {input.bam} --output {output.bam} >{log} 2>&1"

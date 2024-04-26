@@ -15,7 +15,7 @@ rule metadmg_damage:
     log:
         "logs/metadmg/damage/{sample}_{library}_{read_type_map}.log"
     benchmark:
-        "benchmarks/metadmg/damage/{sample}_{library}_{read_type_map}.tsv"
+        "benchmarks/metadmg/damage/{sample}_{library}_{read_type_map}.jsonl"
     params:
         out_prefix = lambda w, output: Path(output.dmg.removesuffix(".gz")).with_suffix(""),
         extra = check_cmd(config["metadmg"]["damage"]["params"], forbidden_args = ["-n", "--threads", "-r", "--run_mode", "-o", "--out_prefix"]),
@@ -41,13 +41,13 @@ rule metadmg_lca:
     log:
         "logs/metadmg/lca/{sample}_{library}_{read_type_map}.log"
     benchmark:
-        "benchmarks/metadmg/lca/{sample}_{library}_{read_type_map}.tsv"
+        "benchmarks/metadmg/lca/{sample}_{library}_{read_type_map}.jsonl"
     params:
         out_prefix = lambda w, output: Path(output.stats.removesuffix(".gz")).with_suffix(""),
         extra = check_cmd(config["metadmg"]["lca"]["params"], forbidden_args = ["--bam", "--nodes", "--names", "--acc2tax", "--temp", "--out", "--out_prefix"]),
     threads: 4
     resources:
-        mem = lambda w, attempt: f"{50 * attempt} GiB",
+        mem = lambda w, attempt: f"{40 * attempt} GiB",
         runtime = lambda w, attempt: f"{2 * attempt} d",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp lca --threads {threads} --bam {input.bam} --nodes {input.nodes} --names {input.names} --acc2tax {input.acc2tax} {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1"
@@ -69,13 +69,13 @@ rule metadmg_dfit:
     log:
         "logs/metadmg/dfit/{sample}_{library}_{read_type_map}.log"
     benchmark:
-        "benchmarks/metadmg/dfit/{sample}_{library}_{read_type_map}.tsv"
+        "benchmarks/metadmg/dfit/{sample}_{library}_{read_type_map}.jsonl"
     params:
         out_prefix = lambda w, output: Path(output.dfit.removesuffix(".gz")).with_suffix(""),
         extra = lambda w: "--doboot 1 --lib {} ".format(_get_library_type(w)) + check_cmd(config["metadmg"]["dfit"]["params"], forbidden_args = ["--nthreads", "--node", "--names", "--doboot", "--lib", "--out", "--out_prefix"]),
     threads: 4
     resources:
-        mem_mb = lambda w, attempt, input: 60 * input.size_mb * attempt,
+        mem = lambda w, attempt, input: f"{60 * input.size_mb * attempt} MiB",
         runtime = lambda w, attempt: f"{10 * attempt} h",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp dfit {input.dmg} --nthreads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed $RANDOM --out_prefix {params.out_prefix} > {log} 2>&1"
@@ -93,12 +93,12 @@ rule metadmg_aggregate:
     log:
         "logs/metadmg/aggregate/{sample}_{library}_{read_type_map}.log"
     benchmark:
-        "benchmarks/metadmg/aggregate/{sample}_{library}_{read_type_map}.tsv"
+        "benchmarks/metadmg/aggregate/{sample}_{library}_{read_type_map}.jsonl"
     params:
         out_prefix = lambda w, output: Path(output.stats.removesuffix(".gz")).with_suffix(""),
     threads: 1
     resources:
-        mem = lambda w, attempt: f"{20 * attempt} GiB",
-        runtime = lambda w, attempt: f"{30 * attempt} m",
+        mem = lambda w, attempt: f"{25 * attempt} GiB",
+        runtime = lambda w, attempt: f"{15 * attempt} m",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp aggregate {input.dmg} --nodes {input.nodes} --names {input.names} --lcastat {input.stats} --out_prefix {params.out_prefix} > {log} 2>&1"

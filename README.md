@@ -1,20 +1,25 @@
 # NGS Taxon - a generic module for read taxonomic asignment
 
-[![Snakemake](https://img.shields.io/badge/snakemake-≥7.25.0-brightgreen.svg)](https://snakemake.readthedocs.io/en/stable/)
+[![Snakemake](https://img.shields.io/badge/snakemake-≥8.11.0-brightgreen.svg)](https://snakemake.readthedocs.io/en/stable/)
 
 This module implements read derelication steps:
 - Map reads agains reference collection
   - [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)
-- Generate MD tag
-  - [Samtools CalMD](https://www.htslib.org/doc/samtools-calmd.html)
+- Clean header for unused references
+- Sort reads by coordinates
+  - [Samtools Sort](https://www.htslib.org/doc/samtools-sort.html)
+- Reassign reads
+  - [bam-filter](https://github.com/genomewalker/bam-filter)
+- Filter BAM references
+  - [bam-filter](https://github.com/genomewalker/bam-filter)
 - Remove Duplicates
   - [Picard MarkDuplicates](https://broadinstitute.github.io/picard/command-line-overview.html#MarkDuplicates)
   - [GATK MarkDuplicatesSpark](https://gatk.broadinstitute.org/hc/en-us/articles/13832682540699-MarkDuplicatesSpark)
   - [Picard MarkDuplicatesWithMateCigar](https://broadinstitute.github.io/picard/command-line-overview.html#MarkDuplicatesWithMateCigar)
   - [BamSorMaDup](https://gitlab.com/german.tischler/biobambam2)
   - [DeDup](https://github.com/apeltzer/DeDup) [TODO]
-- Filter BAM references
-  - [bam-filter](https://github.com/genomewalker/bam-filter)
+- Generate MD tag
+  - [Samtools CalMD](https://www.htslib.org/doc/samtools-calmd.html)
 - Sort reads by name
   - [Samtools Sort](https://www.htslib.org/doc/samtools-sort.html)
 - Taxonomic assignment

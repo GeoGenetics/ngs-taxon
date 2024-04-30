@@ -38,9 +38,12 @@ def get_chunk_aln(wildcards, rule, ext=["bam"]):
             if is_activated("align/mark_duplicates"):
                 return expand_ext(format_partial("temp/align/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam", tool=config["align"]["mark_duplicates"]["tool"]), ext)
         if case("mark_duplicates"):
-            if is_activated("align/bam_filter"):
-                return expand_ext(rules.bam_filter.output.bam, ext)
-        if case("bam_filter"):
+            if is_activated("align/filter"):
+                return expand_ext(rules.filter.output.bam, ext)
+        if case("filter"):
+            if is_activated("align/reassign"):
+                return expand_ext(rules.reassign.output.bam, ext)
+        if case("reassign"):
             if rule != "sort_name":
                 return expand_ext(rules.sort_coord.output.bam, ext)
             else:

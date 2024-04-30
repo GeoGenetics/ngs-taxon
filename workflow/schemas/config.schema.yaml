@@ -1,6 +1,6 @@
-$schema: "http://json-schema.org/draft-07/schema#"
+$schema: "https://json-schema.org/draft/2020-12/schema"
 
-description: aeDNA Trimming configuration file
+description: aeDNA Taxonomy assignment configuration file
 
 type: object
 properties:
@@ -39,13 +39,25 @@ properties:
             type: string
         required:
           - params
-      bam_filter:
+      reassign:
         type: object
         properties:
           activate:
             type: boolean
           params:
             type: string
+            pattern: "^((?!\b--?(t|threads|bam|m|sort-memory|N|sort-by-name|r|reference-lengths|p|prefix) ).)*$"
+        required:
+          - activate
+          - params
+      filter:
+        type: object
+        properties:
+          activate:
+            type: boolean
+          params:
+            type: string
+            pattern: "^((?!\b--?(t|threads|bam|low-memory|m|sort-memory|N|sort-by-name|disable-sort|r|reference-lengths|tmp-dir|bam-filtered|stats|stats-filtered|read-length-freqs|read-hits-count|only-stats|only-stats-filtered|knee-plot|plot|p|prefix) ).)*$"
         required:
           - activate
           - params
@@ -75,7 +87,8 @@ properties:
           - params
     required:
       - map
-      - bam_filter
+      - reassign
+      - filter
       - mark_duplicates
       - calmd
 

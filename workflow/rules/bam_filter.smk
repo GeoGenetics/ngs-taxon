@@ -37,22 +37,44 @@ use rule sort_coord as sort_name with:
 
 
 
-rule bam_filter:
+rule reassign:
     input:
-        unpack(lambda w: ext_dict(get_chunk_aln(w, "bam_filter", ext=["bam","bam.csi"]), keys=["aln", "idx"])),
+        unpack(lambda w: ext_dict(get_chunk_aln(w, "reassign", ext=["bam","bam.csi"]), keys=["aln", "idx"])),
     output:
-        bam = temp("temp/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
-        knee = touch("stats/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.knee-plot.png"),
-        read_len = "stats/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.read-length-freqs.json",
-        read_hits = "stats/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.read-hits-count.tsv.gz",
-        stats = "stats/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.stats.tsv.gz",
-        stats_filt = "stats/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.stats-filtered.tsv.gz",
+        bam = temp("temp/align/reassign/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
     log:
-        "logs/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
+        "logs/align/reassign/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/align/bam_filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
+        "benchmarks/align/reassign/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
-        extra = check_cmd(config["align"]["bam_filter"]["params"], forbidden_args = ["-t", "--threads", "-m", "--low-memory", "--sort-memory", "-N", "--sort-by-name", "--disable-sort", "-r", "--reference-lengths", "--read-length-freqs", "--read-hits-count", "--only-stats", "--only-stats-filtered", "--plot", "-p", "--prefix"]),
+        extra = config["align"]["reassign"]["params"],
+    conda:
+        base_dir / "envs" / "bam_filter.yaml"
+    threads: 10
+    resources:
+        mem_mb = lambda w, attempt, input, threads: max(1.2 * input.size_mb * threads, 50 * 1024) * attempt,
+        runtime = lambda w, attempt: f"{1 * attempt} d",
+    shell:
+        "filterBAM reassign --threads {threads} --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"
+
+
+
+rule filter:
+    input:
+        unpack(lambda w: ext_dict(get_chunk_aln(w, "filter", ext=["bam"]), keys=["aln"])),
+    output:
+        bam = temp("temp/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
+        knee = touch("stats/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.knee-plot.png"),
+        read_len = "stats/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.read-length-freqs.json",
+        read_hits = "stats/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.read-hits-count.tsv.gz",
+        stats = "stats/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.stats.tsv.gz",
+        stats_filt = "stats/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.stats-filtered.tsv.gz",
+    log:
+        "logs/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
+    benchmark:
+        "benchmarks/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
+    params:
+        extra = config["align"]["filter"]["params"],
     conda:
         base_dir / "envs" / "bam_filter.yaml"
     threads: 10

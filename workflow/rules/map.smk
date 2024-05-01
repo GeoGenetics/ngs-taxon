@@ -78,7 +78,7 @@ rule bowtie2:
     benchmark:
         "benchmarks/align/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
-        extra = lambda w: f"--time {get_read_group(w)} " + check_cmd(config["align"]["map"]["params"], forbidden_args = ["--threads", "--mm", "-t", "--time", "-q", "-U", "-1", "-2", "--interleaved", "-x", "-b", "-S", "-rd-id", "-rg"]),
+        extra = lambda w: f"--time {get_read_group(w)} " + config["align"]["map"]["params"],
     #priority: lambda w, input: int(input.size_mb)
     threads: 20
     resources:

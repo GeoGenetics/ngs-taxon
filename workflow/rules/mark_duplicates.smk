@@ -11,8 +11,7 @@ rule bamsormadup:
     benchmark:
         "benchmarks/align/bamsormadup/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
-        extra = lambda w: "SO=coordinate " +
-            check_cmd(config["align"]["mark_duplicates"]["params"], forbidden_args = ["threads", "inputformat", "outputformat", "SO", "tmpfile"]),
+        extra = lambda w: "SO=coordinate " + config["align"]["mark_duplicates"]["params"],
     threads: 10
     resources:
         mem = lambda w, attempt: f"{100 * attempt} GiB",
@@ -33,7 +32,7 @@ rule markduplicates:
     benchmark:
         "benchmarks/align/markduplicates/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
-        extra = check_cmd(config["align"]["mark_duplicates"]["params"], forbidden_args = ["--INPUT", "--TMP_DIR", "--OUTPUT", "--METRICS_FILE"]),
+        extra = "--ASSUME_SORT_ORDER coordinate " + config["align"]["mark_duplicates"]["params"],
     threads: 1
     resources:
         mem = lambda w, attempt: f"{40 * attempt} GiB",
@@ -53,7 +52,7 @@ use rule markduplicates as markduplicateswithmatecigar with:
         "benchmarks/align/markduplicateswithmatecigar/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
         withmatecigar = True,
-        extra = check_cmd(config["align"]["mark_duplicates"]["params"], forbidden_args = ["--INPUT", "--TMP_DIR", "--OUTPUT", "--METRICS_FILE"]),
+        extra = "--ASSUME_SORT_ORDER coordinate " + config["align"]["mark_duplicates"]["params"],
 
 
 
@@ -69,8 +68,7 @@ rule markduplicatesspark:
     benchmark:
         "benchmarks/align/markduplicatesspark/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
-        extra = "--create-output-bam-index false --create-output-bam-splitting-index false " +
-            check_cmd(config["align"]["mark_duplicates"]["params"], forbidden_args = ["--input", "--metrics-file", "--create-output-bam-index", "--create-output-bam-splitting-index", "--tmp-dir", "--output"]),
+        extra = "--create-output-bam-index false --create-output-bam-splitting-index false --ASSUME_SORT_ORDER coordinate coordinate " + config["align"]["mark_duplicates"]["params"],
         spark_extra = "--conf 'spark.local.dir={}'".format(get_tmp()),
     threads: 10
     resources:

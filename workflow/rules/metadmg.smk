@@ -18,7 +18,7 @@ rule metadmg_damage:
         "benchmarks/metadmg/damage/{sample}_{library}_{read_type_map}.jsonl"
     params:
         out_prefix = lambda w, output: Path(output.dmg.removesuffix(".gz")).with_suffix(""),
-        extra = check_cmd(config["metadmg"]["damage"]["params"], forbidden_args = ["-n", "--threads", "-r", "--run_mode", "-o", "--out_prefix"]),
+        extra = config["metadmg"]["damage"]["params"],
     threads: 4
     resources:
         mem = lambda w, attempt: f"{10 * attempt} GiB",
@@ -44,7 +44,7 @@ rule metadmg_lca:
         "benchmarks/metadmg/lca/{sample}_{library}_{read_type_map}.jsonl"
     params:
         out_prefix = lambda w, output: Path(output.stats.removesuffix(".gz")).with_suffix(""),
-        extra = check_cmd(config["metadmg"]["lca"]["params"], forbidden_args = ["--bam", "--nodes", "--names", "--acc2tax", "--temp", "--out", "--out_prefix"]),
+        extra = config["metadmg"]["lca"]["params"],
     threads: 4
     resources:
         mem = lambda w, attempt: f"{40 * attempt} GiB",
@@ -72,7 +72,7 @@ rule metadmg_dfit:
         "benchmarks/metadmg/dfit/{sample}_{library}_{read_type_map}.jsonl"
     params:
         out_prefix = lambda w, output: Path(output.dfit.removesuffix(".gz")).with_suffix(""),
-        extra = lambda w: "--doboot 1 --lib {} ".format(_get_library_type(w)) + check_cmd(config["metadmg"]["dfit"]["params"], forbidden_args = ["--nthreads", "--node", "--names", "--doboot", "--lib", "--out", "--out_prefix"]),
+        extra = lambda w: f"--doboot 1 --lib {_get_library_type(w)} " + config["metadmg"]["dfit"]["params"],
     threads: 4
     resources:
         mem = lambda w, attempt, input: f"{60 * input.size_mb * attempt} MiB",

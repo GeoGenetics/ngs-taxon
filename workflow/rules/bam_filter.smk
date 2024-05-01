@@ -42,6 +42,7 @@ rule reassign:
         unpack(lambda w: ext_dict(get_chunk_aln(w, "reassign", ext=["bam","bam.csi"]), keys=["aln", "idx"])),
     output:
         bam = temp("temp/align/reassign/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
+        csi = temp("temp/align/reassign/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam.csi"),
     log:
         "logs/align/reassign/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
@@ -52,8 +53,9 @@ rule reassign:
         base_dir / "envs" / "bam_filter.yaml"
     threads: 10
     resources:
-        mem_mb = lambda w, attempt, input, threads: max(1.2 * input.size_mb * threads, 50 * 1024) * attempt,
-        runtime = lambda w, attempt: f"{1 * attempt} d",
+        mem = lambda w, attempt, input, threads: f"{max(1.2 * input.size_mb * threads / 1024, 50) * attempt} GiB",
+        runtime = lambda w, attempt: f"{10 * attempt} h",
+#        tmpdir = "temp/large_temp",
     shell:
         "filterBAM reassign --threads {threads} --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"
 
@@ -61,9 +63,10 @@ rule reassign:
 
 rule filter:
     input:
-        unpack(lambda w: ext_dict(get_chunk_aln(w, "filter", ext=["bam"]), keys=["aln"])),
+        unpack(lambda w: ext_dict(get_chunk_aln(w, "filter", ext=["bam", "bam.csi"]), keys=["aln", "idx"])),
     output:
         bam = temp("temp/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
+#        csi = temp("temp/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam.csi"),
         knee = touch("stats/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.knee-plot.png"),
         read_len = "stats/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.read-length-freqs.json",
         read_hits = "stats/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.read-hits-count.tsv.gz",
@@ -79,17 +82,17 @@ rule filter:
         base_dir / "envs" / "bam_filter.yaml"
     threads: 10
     resources:
-        mem_mb = lambda w, attempt, input, threads: max(1.2 * input.size_mb * threads, 50 * 1024) * attempt,
+        mem = lambda w, attempt, input, threads: f"{max(1.2 * input.size_mb * threads / 1024, 50) * attempt} GiB",
         runtime = lambda w, attempt: f"{1 * attempt} d",
-        tmpdir = "temp/large_temp",
+#        tmpdir = "temp/large_temp",
     shell:
-        "filterBAM filter --threads {threads} --low-memory --disable-sort --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} --knee-plot {output.knee} >{log} 2>&1"
+        "filterBAM filter --threads {threads} --low-memory --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} --knee-plot {output.knee} >{log} 2>&1"
 
 
 
 rule calmd:
     input:
-        lambda w: get_chunk_aln(w, "calmd"),
+        aln = lambda w: get_chunk_aln(w, "calmd"),
         ref = lambda w: config["ref"][w.ref]["path"],
         fai = lambda w: config["ref"][w.ref]["path"] + ".fai",
     output:
@@ -99,7 +102,7 @@ rule calmd:
     benchmark:
         "benchmarks/align/calmd/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
-        extra = check_cmd(config["align"]["calmd"]["params"], forbidden_args = ["--threads", "-@", "-b"]),
+        extra = config["align"]["calmd"]["params"],
     threads: 5
     resources:
         mem = lambda w, attempt: f"{10 * attempt} GiB",

@@ -42,7 +42,7 @@ rule reassign:
         unpack(lambda w: ext_dict(get_chunk_aln(w, "reassign", ext=["bam","bam.csi"]), keys=["aln", "idx"])),
     output:
         bam = temp("temp/align/reassign/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
-        csi = temp("temp/align/reassign/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam.csi"),
+        csi = temp(touch("temp/align/reassign/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam.csi")),
     log:
         "logs/align/reassign/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
@@ -66,7 +66,7 @@ rule filter:
         unpack(lambda w: ext_dict(get_chunk_aln(w, "filter", ext=["bam", "bam.csi"]), keys=["aln", "idx"])),
     output:
         bam = temp("temp/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
-#        csi = temp("temp/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam.csi"),
+#        csi = temp(touch("temp/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam.csi")),
         knee = touch("stats/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.knee-plot.png"),
         read_len = "stats/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.read-length-freqs.json",
         read_hits = "stats/align/filter/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.read-hits-count.tsv.gz",

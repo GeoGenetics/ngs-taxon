@@ -1,12 +1,44 @@
 
-
 #############
 ### RULES ###
 #############
 
+rule collate:
+    input:
+        lambda w: get_merge_aln(w, "collate"),
+    output:
+        bam = temp("temp/align/collate/{sample}_{library}_{read_type_map}.bam"),
+    log:
+        "logs/align/collate/{sample}_{library}_{read_type_map}.log"
+    benchmark:
+        "benchmarks/align/collate/{sample}_{library}_{read_type_map}.jsonl"
+    params:
+        extra = "-r 100000",
+    threads: 4
+    resources:
+        mem = lambda w, attempt: f"{75 * attempt} GiB",
+        runtime = lambda w, attempt: f"{2 * attempt} d",
+    wrapper:
+        wrapper_ver + "/bio/samtools/collate"
+
+
+use rule sort_coord as sort_name with:
+    input:
+        lambda w: get_merge_aln(w, "sort_name"),
+    output:
+        bam = temp("temp/align/sort_name/{sample}_{library}_{read_type_map}.bam"),
+    log:
+        "logs/align/sort_name/{sample}_{library}_{read_type_map}.log"
+    benchmark:
+        "benchmarks/align/sort_name/{sample}_{library}_{read_type_map}.jsonl"
+    params:
+        extra = "-n",
+
+
 rule metadmg_damage:
     input:
-        bam = rules.merge_alns.output.bam,
+        bam = rules.sort_name.output.bam,
+#        bam = lambda w: get_merge_aln(w, "metadmg_damage"),
     output:
         dmg = "results/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
         res = "results/metadmg/damage/{sample}_{library}_{read_type_map}.res.gz",
@@ -29,7 +61,7 @@ rule metadmg_damage:
 
 rule metadmg_lca:
     input:
-        bam = rules.merge_alns.output.bam,
+        bam = rules.sort_name.output.bam,
         nodes = config["taxonomy"]["nodes"],
         names = config["taxonomy"]["names"],
         acc2tax = config["taxonomy"]["acc2taxid"],
@@ -78,7 +110,7 @@ rule metadmg_dfit:
         mem = lambda w, attempt, input: f"{60 * input.size_mb * attempt} MiB",
         runtime = lambda w, attempt: f"{10 * attempt} h",
     shell:
-        "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp dfit {input.dmg} --nthreads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed $RANDOM --out_prefix {params.out_prefix} > {log} 2>&1"
+        "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed $RANDOM --out_prefix {params.out_prefix} > {log} 2>&1"
 
 
 

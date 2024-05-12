@@ -1,15 +1,15 @@
 snakemake.utils.min_version("8.11.2")
 
 # Define wrapper versions
-wrapper_ver = "v3.10.1"
+wrapper_ver = "v3.10.2"
 
 
 include: "rules/utils.smk"
 include: "rules/setup.smk"
 include: "rules/map.smk"
 include: "rules/mark_duplicates.smk"
-include: "rules/bam_filter.smk"
 include: "rules/merge_alns.smk"
+include: "rules/bam_filter.smk"
 include: "rules/metadmg.smk"
 
 
@@ -51,7 +51,9 @@ rule all:
     input:
         qc = rules.multiqc.output.html,
         res = [expand_pandas(expand(rules.metadmg_damage.output.stats, read_type_map="collapsed", allow_missing=True), units),
-               expand_pandas(expand(rules.metadmg_aggregate.output.stats, read_type_map="collapsed", allow_missing=True), units)],
+               expand_pandas(expand(rules.metadmg_aggregate.output.stats, read_type_map="collapsed", allow_missing=True), units),
+               expand_pandas(expand(rules.bam_filter_lca.output.stats, read_type_map="collapsed", allow_missing=True), units) if is_activated("bam_filter/lca") else [],
+	       ],
     message:
         "Read mapping finished successfully!"
     default_target: True

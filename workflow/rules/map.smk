@@ -3,6 +3,14 @@
 ### FUNCTIONS ###
 #################
 
+
+refs = pd.DataFrame.from_dict(config["ref"]).transpose()
+bowtie_sets = refs.reset_index().rename(columns={"index":"ref", "n_chunks":"tot_chunks"})
+bowtie_sets["read_type_map"] = "collapsed"
+bowtie_sets["n_chunk"] = [range(1, tot+1) for tot in bowtie_sets["tot_chunks"]]
+
+
+
 # https://gatk.broadinstitute.org/hc/en-us/articles/360035890671-Read-groups
 def get_read_group(wildcards):
     """Denote sample name and platform in read group."""
@@ -29,27 +37,18 @@ def is_bt2l(wildcards):
     return config["ref"][wildcards.ref].get("bt2l", True)
 
 
-def get_chunk_aln(wildcards, rule, ext=["bam"]):
+def get_chunk_aln(wildcards, rule):
     for case in switch(rule):
-        if case("sort_name"):
+        if case("merge_alns"):
             if is_activated("align/calmd"):
-                return expand_ext(rules.calmd.output.bam, ext)
+                return rules.calmd.output.bam
         if case("calmd"):
             if is_activated("align/mark_duplicates"):
-                return expand_ext(format_partial("temp/align/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam", tool=config["align"]["mark_duplicates"]["tool"]), ext)
+                return expand("temp/align/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam", tool=config["align"]["mark_duplicates"]["tool"], allow_missing=True)
         if case("mark_duplicates"):
-            if is_activated("align/filter"):
-                return expand_ext(rules.filter.output.bam, ext)
-        if case("filter"):
-            if is_activated("align/reassign"):
-                return expand_ext(rules.reassign.output.bam, ext)
-        if case("reassign"):
-            if rule != "sort_name":
-                return expand_ext(rules.sort_coord.output.bam, ext)
-            else:
-                return expand_ext(rules.sort_coord.input.bam, ext)
+            return rules.sort_coord.output.bam,
         if case():
-            raise ValueError("Invalid ALN rule specified!")
+            raise ValueError(f"Invalid chunk_aln rule specified: {rule}")
 
 
 
@@ -103,3 +102,22 @@ rule clean_header:
         runtime = lambda w, attempt: f"{5 * attempt} h",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/misc/compressbam --threads {threads} --input {input.bam} --output {output.bam} >{log} 2>&1"
+
+
+# https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c
+rule sort_coord:
+    input:
+        bam = rules.clean_header.output.bam,
+    output:
+        bam = temp("temp/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
+        idx = temp("temp/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam.csi"),
+    log:
+        "logs/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
+    benchmark:
+        "benchmarks/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
+    threads: 8
+    resources:
+        mem = lambda w, attempt, threads: f"{10 * threads * attempt} GiB",
+        runtime = lambda w, attempt: f"{1 * attempt} d",
+    wrapper:
+        wrapper_ver + "/bio/samtools/sort"

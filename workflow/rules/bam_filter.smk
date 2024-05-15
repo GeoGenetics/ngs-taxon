@@ -20,8 +20,8 @@ rule bam_filter_reassign:
         base_dir / "envs" / "bam_filter.yaml"
     threads: 10
     resources:
-        mem = lambda w, attempt, input, threads: f"{max(1.2 * input.size_mb * threads / 1024, 50) * attempt} GiB",
-        mem_thread = lambda w, attempt, input, threads: max(1.2 * input.size_mb / 1024, 50 / threads) * attempt,
+        mem = lambda w, attempt, input, threads: f"{min(1.2 * input.size_mb * threads / 1024, 500) * attempt} GiB",
+        mem_thread = lambda w, attempt, input, threads: min(1.2 * input.size_mb / 1024, 500 / threads) * attempt,
         runtime = lambda w, attempt: f"{10 * attempt} h",
 #        tmpdir = "temp/large_temp",
     shell:
@@ -50,8 +50,8 @@ rule bam_filter_filter:
         base_dir / "envs" / "bam_filter.yaml"
     threads: 10
     resources:
-        mem = lambda w, attempt, input, threads: f"{max(1.2 * input.size_mb * threads / 1024, 50) * attempt} GiB",
-        mem_thread = lambda w, attempt, input, threads: max(1.2 * input.size_mb / 1024, 50 / threads) * attempt,
+        mem = lambda w, attempt, input, threads: f"{min(1.2 * input.size_mb * threads / 1024, 500) * attempt} GiB",
+        mem_thread = lambda w, attempt, input, threads: min(1.2 * input.size_mb / 1024, 500 / threads) * attempt,
         runtime = lambda w, attempt: f"{1 * attempt} d",
 #        tmpdir = "temp/large_temp",
     shell:
@@ -78,8 +78,8 @@ rule bam_filter_lca:
         base_dir / "envs" / "bam_filter.yaml"
     threads: 10
     resources:
-        mem = lambda w, attempt, input, threads: f"{max(1.2 * input.size_mb * threads / 1024, 50) * attempt} GiB",
-        mem_thread = lambda w, attempt, input, threads: max(1.2 * input.size_mb / 1024, 50 / threads) * attempt,
+        mem = lambda w, attempt, input, threads: f"{min(1.2 * input.size_mb * threads / 1024, 500) * attempt} GiB",
+        mem_thread = lambda w, attempt, input, threads: min(1.2 * input.size_mb / 1024, 500 / threads) * attempt,
         runtime = lambda w, attempt: f"{1 * attempt} d",
 #        tmpdir = "temp/large_temp",
     shell:

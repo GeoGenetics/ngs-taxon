@@ -15,17 +15,18 @@ rule bam_filter_reassign:
     benchmark:
         "benchmarks/align/bam_filter/reassign/{sample}_{library}_{read_type_map}.jsonl"
     params:
+        mem_overhead=0.5,
         extra = config["bam_filter"]["reassign"]["params"],
     conda:
         base_dir / "envs" / "bam_filter.yaml"
     threads: 10
     resources:
-        mem = lambda w, attempt, input, threads: f"{min(1.2 * input.size_mb * threads / 1024, 500) * attempt} GiB",
-        mem_thread = lambda w, attempt, input, threads: min(1.2 * input.size_mb / 1024, 500 / threads) * attempt,
-        runtime = lambda w, attempt: f"{10 * attempt} h",
+        mem = lambda w, attempt, input, threads: f"{np.clip(2 * input.size_mb / 1024, 10 * threads, 100 * threads) * attempt} GiB",
+        runtime = lambda w, attempt: f"{12 * attempt} h",
 #        tmpdir = "temp/large_temp",
     shell:
-        "filterBAM reassign --threads {threads} --sort-memory {resources.mem_thread}G --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"
+#        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
+        "filterBAM reassign --threads {threads} --sort-memory 5G --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"
 
 
 
@@ -45,17 +46,18 @@ rule bam_filter_filter:
     benchmark:
         "benchmarks/align/bam_filter/filter/{sample}_{library}_{read_type_map}.jsonl"
     params:
+        mem_overhead=0.2,
         extra = config["bam_filter"]["filter"]["params"],
     conda:
         base_dir / "envs" / "bam_filter.yaml"
     threads: 10
     resources:
-        mem = lambda w, attempt, input, threads: f"{min(1.2 * input.size_mb * threads / 1024, 500) * attempt} GiB",
-        mem_thread = lambda w, attempt, input, threads: min(1.2 * input.size_mb / 1024, 500 / threads) * attempt,
-        runtime = lambda w, attempt: f"{1 * attempt} d",
+        mem = lambda w, attempt, input, threads: f"{np.clip(3 * input.size_mb / 1024, 10 * threads, 70 * threads) * attempt} GiB",
+        runtime = lambda w, attempt: f"{12 * attempt} h",
 #        tmpdir = "temp/large_temp",
     shell:
-        "filterBAM filter --threads {threads} --sort-memory {resources.mem_thread}G --low-memory --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} --knee-plot {output.knee} >{log} 2>&1"
+#        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
+        "filterBAM filter --threads {threads} --sort-memory 5G --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} --knee-plot {output.knee} >{log} 2>&1"
 
 
 
@@ -73,14 +75,15 @@ rule bam_filter_lca:
     benchmark:
         "benchmarks/align/bam_filter/lca/{sample}_{library}_{read_type_map}.jsonl"
     params:
+        mem_overhead=0.2,
         extra = config["bam_filter"]["lca"]["params"],
     conda:
         base_dir / "envs" / "bam_filter.yaml"
     threads: 10
     resources:
-        mem = lambda w, attempt, input, threads: f"{min(1.2 * input.size_mb * threads / 1024, 500) * attempt} GiB",
-        mem_thread = lambda w, attempt, input, threads: min(1.2 * input.size_mb / 1024, 500 / threads) * attempt,
-        runtime = lambda w, attempt: f"{1 * attempt} d",
+        mem = lambda w, attempt, input, threads: f"{np.clip(3 * input.size_mb / 1024, 10 * threads, 70 * threads) * attempt} GiB",
+        runtime = lambda w, attempt: f"{12 * attempt} h",
 #        tmpdir = "temp/large_temp",
     shell:
-        "filterBAM lca --threads {threads} --sort-memory {resources.mem_thread}G --bam {input.aln} --stats {input.stats} --names {input.names} --nodes {input.nodes} --acc2taxid {input.acc2tax} {params.extra} --lca-summary {output.stats} >{log} 2>&1"
+#        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
+        "filterBAM lca --threads {threads} --sort-memory 5G --bam {input.aln} --stats {input.stats} --names {input.names} --nodes {input.nodes} --acc2taxid {input.acc2tax} {params.extra} --lca-summary {output.stats} >{log} 2>&1"

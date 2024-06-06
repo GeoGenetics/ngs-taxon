@@ -13,13 +13,13 @@ rule collate:
     benchmark:
         "benchmarks/align/collate/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        extra = "-r 100000",
-    threads: 4
+        extra = "-l 6 -r 100000",
+    threads: 2
     resources:
-        mem = lambda w, attempt: f"{75 * attempt} GiB",
+        mem = lambda w, attempt: f"{40 * attempt} GiB",
         runtime = lambda w, attempt: f"{2 * attempt} d",
     wrapper:
-        wrapper_ver + "/bio/samtools/collate"
+        f"{wrapper_ver}/bio/samtools/collate"
 
 
 use rule sort_coord as sort_name with:

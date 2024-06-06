@@ -37,7 +37,7 @@ rule calmd:
         mem = lambda w, attempt: f"{10 * attempt} GiB",
         runtime = lambda w, attempt: f"{12 * attempt} h",
     wrapper:
-        wrapper_ver + "/bio/samtools/calmd"
+        f"{wrapper_ver}/bio/samtools/calmd"
 
 
 rule merge_alns:
@@ -54,14 +54,15 @@ rule merge_alns:
         extra = "-c -p",
     threads: 3
     resources:
-        mem = lambda w, attempt: f"{75 * attempt} GiB",
-        runtime = lambda w, attempt: f"{2 * attempt} d",
+        mem = lambda w, input, attempt: f"{(0.2 * input.size_mb + 50000) * attempt} MiB",
+        runtime = lambda w, input, attempt: f"{max(5e-5 * input.size_mb * attempt, 0.5)} h",
         tmpdir = get_tmp(),
     wrapper:
-        wrapper_ver + "/bio/samtools/merge"
- 
+        f"{wrapper_ver}/bio/samtools/merge"
 
-# Re-sorting, since merging of BAM files needs similar headers:
+
+
+# Re-sorting, since it is required even when merging sorted BAM files (needs similar headers):
 # https://www.biostars.org/p/251721/
 # https://www.biostars.org/p/9509574/
 use rule sort_coord as sort_merged with:
@@ -94,4 +95,4 @@ rule samtools_stats:
         mem = lambda w, attempt: f"{10 * attempt} GiB",
         runtime = lambda w, attempt: f"{10 * attempt} h",
     wrapper:
-        wrapper_ver + "/bio/samtools/stats"
+        f"{wrapper_ver}/bio/samtools/stats"

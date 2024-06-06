@@ -39,12 +39,12 @@ def is_bt2l(wildcards):
 
 def get_chunk_aln(wildcards, rule):
     for case in switch(rule):
-        if case("merge_alns"):
+        if case("merge_alns") or case("cat_alns"):
             if is_activated("align/calmd"):
                 return rules.calmd.output.bam
         if case("calmd"):
             if is_activated("align/mark_duplicates"):
-                return expand("temp/align/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam", tool=config["align"]["mark_duplicates"]["tool"], allow_missing=True)
+                return "temp/align/mark_duplicates/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"
         if case("mark_duplicates"):
             return rules.sort_coord.output.bam,
         if case():
@@ -84,7 +84,7 @@ rule bowtie2:
         mem = lambda w, attempt, input: "{} GiB".format((sum(Path(f).stat().st_size for f in input.idx) / 1024**3 * 0.9 + 100) * attempt),
         runtime = lambda w, attempt: f"{3 * attempt} d",
     wrapper:
-        wrapper_ver + "/bio/bowtie2/align"
+        f"{wrapper_ver}/bio/bowtie2/align"
 
 
 rule clean_header:
@@ -115,9 +115,11 @@ rule sort_coord:
         "logs/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
         "benchmarks/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
+    params:
+        mem_overhead_factor=0.2,
     threads: 8
     resources:
         mem = lambda w, attempt, threads: f"{10 * threads * attempt} GiB",
         runtime = lambda w, attempt: f"{1 * attempt} d",
     wrapper:
-        wrapper_ver + "/bio/samtools/sort"
+        f"{wrapper_ver}/bio/samtools/sort"

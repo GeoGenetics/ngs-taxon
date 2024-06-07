@@ -26,7 +26,7 @@ rule bam_filter_reassign:
 #        tmpdir = "temp/large_temp",
     shell:
 #        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
-        "filterBAM reassign --threads {threads} --sort-memory 5G --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"
+        "filterBAM reassign --threads {threads} --sort-memory 10G --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"
 
 
 
@@ -57,7 +57,7 @@ rule bam_filter_filter:
 #        tmpdir = "temp/large_temp",
     shell:
 #        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
-        "filterBAM filter --threads {threads} --sort-memory 5G --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} --knee-plot {output.knee} >{log} 2>&1"
+        "filterBAM filter --threads {threads} --sort-memory 10G --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} --knee-plot {output.knee} >{log} 2>&1"
 
 
 
@@ -86,4 +86,4 @@ rule bam_filter_lca:
 #        tmpdir = "temp/large_temp",
     shell:
 #        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
-        "filterBAM lca --threads {threads} --sort-memory 5G --bam {input.aln} --stats {input.stats} --names {input.names} --nodes {input.nodes} --acc2taxid {input.acc2tax} {params.extra} --lca-summary {output.stats} >{log} 2>&1"
+        "filterBAM lca --threads {threads} --sort-memory 10G --bam {input.aln} --stats {input.stats} --names {input.names} --nodes {input.nodes} --acc2taxid {input.acc2tax} {params.extra} --lca-summary {output.stats} >{log} 2>&1"

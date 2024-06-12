@@ -22,11 +22,12 @@ rule bam_filter_reassign:
     threads: 10
     resources:
         mem = lambda w, attempt, input, threads: f"{np.clip(2 * input.size_mb / 1024, 10 * threads, 100 * threads) * attempt} GiB",
+        mem_mb = lambda w, attempt, input, threads: np.clip(2 * input.size_mb / 1024, 10 * threads, 100 * threads) * attempt * 1024,
         runtime = lambda w, attempt: f"{12 * attempt} h",
 #        tmpdir = "temp/large_temp",
     shell:
 #        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
-        "filterBAM reassign --threads {threads} --sort-memory 10G --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"
+        "filterBAM reassign --threads {threads} --sort-memory 10G --max-memory {resources.mem_mb}M --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"
 
 
 

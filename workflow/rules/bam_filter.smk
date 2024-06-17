@@ -23,7 +23,7 @@ rule bam_filter_reassign:
     resources:
         mem = lambda w, attempt, input, threads: f"{np.clip(2 * input.size_mb / 1024, 10 * threads, 100 * threads) * attempt} GiB",
         mem_mb = lambda w, attempt, input, threads: np.clip(2 * input.size_mb / 1024, 10 * threads, 100 * threads) * attempt * 1024,
-        runtime = lambda w, attempt: f"{12 * attempt} h",
+        runtime = lambda w, attempt: f"{2 * attempt} d",
 #        tmpdir = "temp/large_temp",
     shell:
 #        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "

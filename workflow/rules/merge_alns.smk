@@ -2,14 +2,17 @@
 
 def get_merge_aln(wildcards, rule):
     for case in switch(rule):
-        if case("sort_name") or case("collate") or case("metadmg_damage") or case("bam_filter_lca"):
+        if case("sort_merged_name") or case("collate") or case("metadmg_damage") or case("bam_filter_lca"):
             if is_activated("bam_filter/filter"):
                 return rules.bam_filter_filter.output.bam
         if case("bam_filter_filter"):
             if is_activated("bam_filter/reassign"):
                 return rules.bam_filter_reassign.output.bam
         if case("bam_filter_reassign"):
-            return rules.sort_merged.output.bam,
+            if is_activated("bam_filter/filter"):
+                return rules.sort_merged_coord.output.bam
+            else:
+                return rules.merge_alns.output.bam
         if case():
             raise ValueError(f"Invalid merge_aln rule specified: {rule}")
 
@@ -65,16 +68,16 @@ rule merge_alns:
 # Re-sorting, since it is required even when merging sorted BAM files (needs similar headers):
 # https://www.biostars.org/p/251721/
 # https://www.biostars.org/p/9509574/
-use rule sort_coord as sort_merged with:
+use rule sort_coord as sort_merged_coord with:
     input:
         rules.merge_alns.output.bam,
     output:
-        bam = "results/align/sort_merged/{sample}_{library}_{read_type_map}.bam",
-        idx = "results/align/sort_merged/{sample}_{library}_{read_type_map}.bam.csi",
+        bam = "results/align/sort_merged_coord/{sample}_{library}_{read_type_map}.bam",
+        idx = "results/align/sort_merged_coord/{sample}_{library}_{read_type_map}.bam.csi",
     log:
-        "logs/align/sort_merged/{sample}_{library}_{read_type_map}.log"
+        "logs/align/sort_merged_coord/{sample}_{library}_{read_type_map}.log"
     benchmark:
-        "benchmarks/align/sort_merged/{sample}_{library}_{read_type_map}.jsonl"
+        "benchmarks/align/sort_merged_coord/{sample}_{library}_{read_type_map}.jsonl"
 
 
 

@@ -22,22 +22,22 @@ rule collate:
         f"{wrapper_ver}/bio/samtools/collate"
 
 
-use rule sort_coord as sort_name with:
+use rule sort_coord as sort_merged_name with:
     input:
-        lambda w: get_merge_aln(w, "sort_name"),
+        lambda w: get_merge_aln(w, "sort_merged_name"),
     output:
-        bam = temp("temp/align/sort_name/{sample}_{library}_{read_type_map}.bam"),
+        bam = temp("temp/align/sort_merged_name/{sample}_{library}_{read_type_map}.bam"),
     log:
-        "logs/align/sort_name/{sample}_{library}_{read_type_map}.log"
+        "logs/align/sort_merged_name/{sample}_{library}_{read_type_map}.log"
     benchmark:
-        "benchmarks/align/sort_name/{sample}_{library}_{read_type_map}.jsonl"
+        "benchmarks/align/sort_merged_name/{sample}_{library}_{read_type_map}.jsonl"
     params:
         extra = "-n",
 
 
 rule metadmg_damage:
     input:
-        bam = rules.sort_name.output.bam,
+        bam = rules.sort_merged_name.output.bam,
 #        bam = lambda w: get_merge_aln(w, "metadmg_damage"),
     output:
         dmg = "results/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
@@ -61,7 +61,7 @@ rule metadmg_damage:
 
 rule metadmg_lca:
     input:
-        bam = rules.sort_name.output.bam,
+        bam = rules.sort_merged_name.output.bam,
         nodes = config["taxonomy"]["nodes"],
         names = config["taxonomy"]["names"],
         acc2tax = config["taxonomy"]["acc2taxid"],

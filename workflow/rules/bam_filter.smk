@@ -53,8 +53,8 @@ rule bam_filter_filter:
         base_dir / "envs" / "bam_filter.yaml"
     threads: 10
     resources:
-        mem = lambda w, attempt, input, threads: f"{np.clip(3 * input.size_mb / 1024, 10 * threads, 70 * threads) * attempt} GiB",
-        runtime = lambda w, attempt: f"{12 * attempt} h",
+        mem = lambda w, attempt, input, threads: f"{np.clip(2 * input.size_mb / 1024, 10 * threads, 70 * threads) * attempt} GiB",
+        runtime = lambda w, attempt: f"{2 * attempt} d",
 #        tmpdir = "temp/large_temp",
     shell:
 #        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
@@ -82,8 +82,8 @@ rule bam_filter_lca:
         base_dir / "envs" / "bam_filter.yaml"
     threads: 10
     resources:
-        mem = lambda w, attempt, input, threads: f"{np.clip(3 * input.size_mb / 1024, 10 * threads, 70 * threads) * attempt} GiB",
-        runtime = lambda w, attempt: f"{12 * attempt} h",
+        mem = lambda w, attempt, input, threads: f"{np.clip(2 * input.size_mb / 1024, 20 * threads, 70 * threads) * attempt} GiB",
+        runtime = lambda w, attempt: f"{2 * attempt} d",
 #        tmpdir = "temp/large_temp",
     shell:
 #        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "

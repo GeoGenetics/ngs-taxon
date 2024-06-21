@@ -42,14 +42,14 @@ rule metadmg_damage:
     output:
         dmg = "results/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
         res = "results/metadmg/damage/{sample}_{library}_{read_type_map}.res.gz",
-        #stats = "stats/metadmg/damage/{sample}_{library}_{read_type_map}.stat.tsv",
-        stats = "results/metadmg/damage/{sample}_{library}_{read_type_map}.stat",
+        stats = "results/metadmg/damage/{sample}_{library}_{read_type_map}.stat", # TODO: move to stats/
+        rlen = "results/metadmg/damage/{sample}_{library}_{read_type_map}.rlens.gz", # TODO: move to stats/
     log:
         "logs/metadmg/damage/{sample}_{library}_{read_type_map}.log"
     benchmark:
         "benchmarks/metadmg/damage/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        out_prefix = lambda w, output: Path(output.dmg.removesuffix(".gz")).with_suffix(""),
+        out_prefix = lambda w, output: str(Path(output.dmg.removesuffix(".gz")).with_suffix("")),
         extra = config["metadmg"]["damage"]["params"],
     threads: 4
     resources:
@@ -68,14 +68,14 @@ rule metadmg_lca:
     output:
         dmg = "results/metadmg/lca/{sample}_{library}_{read_type_map}.bdamage.gz",
         lca = "results/metadmg/lca/{sample}_{library}_{read_type_map}.lca.gz",
-        #stats = "stats/metadmg/lca/{sample}_{library}_{read_type_map}.stat.gz",
-        stats = "results/metadmg/lca/{sample}_{library}_{read_type_map}.stat.gz",
+        stats = "results/metadmg/lca/{sample}_{library}_{read_type_map}.stat.gz", # TODO: move to stats/
+        rlen = "results/metadmg/lca/{sample}_{library}_{read_type_map}.rlens.gz", # TODO: move to stats/
     log:
         "logs/metadmg/lca/{sample}_{library}_{read_type_map}.log"
     benchmark:
         "benchmarks/metadmg/lca/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        out_prefix = lambda w, output: Path(output.stats.removesuffix(".gz")).with_suffix(""),
+        out_prefix = lambda w, output: str(Path(output.stats.removesuffix(".gz")).with_suffix("")),
         extra = config["metadmg"]["lca"]["params"],
     threads: 4
     resources:
@@ -103,7 +103,7 @@ rule metadmg_dfit:
     benchmark:
         "benchmarks/metadmg/dfit/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        out_prefix = lambda w, output: Path(output.dfit.removesuffix(".gz")).with_suffix(""),
+        out_prefix = lambda w, output: str(Path(output.dfit.removesuffix(".gz")).with_suffix("")),
         extra = lambda w: f"--doboot 1 --lib {_get_library_type(w)} " + config["metadmg"]["dfit"]["params"],
     threads: 4
     resources:
@@ -127,7 +127,7 @@ rule metadmg_aggregate:
     benchmark:
         "benchmarks/metadmg/aggregate/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        out_prefix = lambda w, output: Path(output.stats.removesuffix(".gz")).with_suffix(""),
+        out_prefix = lambda w, output: str(Path(output.stats.removesuffix(".gz")).with_suffix("")),
     threads: 1
     resources:
         mem = lambda w, attempt: f"{25 * attempt} GiB",

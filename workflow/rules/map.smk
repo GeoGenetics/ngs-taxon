@@ -120,6 +120,6 @@ rule sort_coord:
     threads: 8
     resources:
         mem = lambda w, attempt, threads: f"{10 * threads * attempt} GiB",
-        runtime = lambda w, attempt, input: f"{0.00005 * input.size_mb * attempt} h",
+        runtime = lambda w, attempt, input: f"{0.0005 * input.size_mb * attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/sort"

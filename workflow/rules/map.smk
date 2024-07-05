@@ -78,11 +78,11 @@ rule bowtie2:
         "benchmarks/align/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
         extra = lambda w: f"--time {get_read_group(w)} " + config["align"]["map"]["params"],
-        slurm_extra = "--nice 2000",
     threads: 20
     resources:
         mem = lambda w, attempt, input: "{} GiB".format((0.7 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50) * attempt),
         runtime = lambda w, attempt: f"{6 * attempt} h",
+        slurm_extra = "--nice 2000",
     wrapper:
         f"{wrapper_ver}/bio/bowtie2/align"
 

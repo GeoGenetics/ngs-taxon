@@ -57,7 +57,7 @@ rule merge_alns:
         extra = "-c -p",
     threads: 3
     resources:
-        mem = lambda w, input, attempt: f"{(0.2 * input.size_mb + 50000) * attempt} MiB",
+        mem = lambda w, input, attempt: f"{(7e-5 * input.size_mb + 40) * attempt} GiB",
         runtime = lambda w, input, attempt: f"{max(5e-5 * input.size_mb * attempt, 0.5)} h",
         tmpdir = get_tmp(),
     wrapper:

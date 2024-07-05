@@ -79,8 +79,8 @@ rule metadmg_lca:
         extra = config["metadmg"]["lca"]["params"],
     threads: 4
     resources:
-        mem = lambda w, attempt: f"{40 * attempt} GiB",
-        runtime = lambda w, attempt: f"{2 * attempt} d",
+        mem = lambda w, attempt, input: f"{30 * attempt} GiB",
+        runtime = lambda w, attempt, input: f"{1e-4 * input.size_mb * attempt} h",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp lca --threads {threads} --bam {input.bam} --nodes {input.nodes} --names {input.names} --acc2tax {input.acc2tax} {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1"
 
@@ -107,8 +107,8 @@ rule metadmg_dfit:
         extra = lambda w: f"--doboot 1 --lib {_get_library_type(w)} " + config["metadmg"]["dfit"]["params"],
     threads: 4
     resources:
-        mem = lambda w, attempt, input: f"{60 * input.size_mb * attempt} MiB",
-        runtime = lambda w, attempt: f"{10 * attempt} h",
+        mem = lambda w, attempt: f"{25 * attempt} GiB",
+        runtime = lambda w, attempt, input: f"{7 * attempt} h",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed $RANDOM --out_prefix {params.out_prefix} > {log} 2>&1"
 

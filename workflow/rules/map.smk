@@ -78,11 +78,11 @@ rule bowtie2:
         "benchmarks/align/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
         extra = lambda w: f"--time {get_read_group(w)} " + config["align"]["map"]["params"],
-    #priority: lambda w, input: int(input.size_mb)
+        slurm_extra = "--nice 2000",
     threads: 20
     resources:
-        mem = lambda w, attempt, input: "{} GiB".format((sum(Path(f).stat().st_size for f in input.idx) / 1024**3 * 0.9 + 100) * attempt),
-        runtime = lambda w, attempt: f"{3 * attempt} d",
+        mem = lambda w, attempt, input: "{} GiB".format((0.7 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50) * attempt),
+        runtime = lambda w, attempt: f"{6 * attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/bowtie2/align"
 
@@ -99,7 +99,7 @@ rule clean_header:
     threads: 4
     resources:
         mem = lambda w, attempt: f"{20 * attempt} GiB",
-        runtime = lambda w, attempt: f"{5 * attempt} h",
+        runtime = lambda w, attempt: f"{2 * attempt} h",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/misc/compressbam --threads {threads} --input {input.bam} --output {output.bam} >{log} 2>&1"
 
@@ -116,10 +116,10 @@ rule sort_coord:
     benchmark:
         "benchmarks/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
-        mem_overhead_factor=0.2,
+        mem_overhead_factor=0.25,
     threads: 8
     resources:
         mem = lambda w, attempt, threads: f"{10 * threads * attempt} GiB",
-        runtime = lambda w, attempt: f"{1 * attempt} d",
+        runtime = lambda w, attempt, input: f"{0.00005 * input.size_mb * attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/sort"

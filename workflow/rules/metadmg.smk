@@ -33,6 +33,7 @@ use rule sort_coord as sort_merged_name with:
         "benchmarks/align/sort_merged_name/{sample}_{library}_{read_type_map}.jsonl"
     params:
         extra = "-n",
+        mem_overhead_factor=0.3,
 
 
 rule metadmg_damage:

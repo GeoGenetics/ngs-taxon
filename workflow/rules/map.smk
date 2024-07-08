@@ -116,10 +116,10 @@ rule sort_coord:
     benchmark:
         "benchmarks/align/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
-        mem_overhead_factor=0.25,
+        mem_overhead_factor=0.1,
     threads: 8
     resources:
-        mem = lambda w, attempt, threads: f"{10 * threads * attempt} GiB",
-        runtime = lambda w, attempt, input: f"{0.0005 * input.size_mb * attempt} h",
+        mem = lambda w, attempt, threads, input: f"{10 * threads * attempt} GiB",
+        runtime = lambda w, attempt, input: f"{min(0.0001 * input.size_mb + 1, 20) * attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/sort"

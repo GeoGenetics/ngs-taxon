@@ -5,7 +5,7 @@
 
 rule collate:
     input:
-        lambda w: get_merge_aln(w, "collate"),
+        unpack(lambda w: get_merge_aln(w, "collate")),
     output:
         bam = temp("temp/align/collate/{sample}_{library}_{read_type_map}.bam"),
     log:
@@ -24,7 +24,7 @@ rule collate:
 
 use rule sort_coord as sort_merged_name with:
     input:
-        lambda w: get_merge_aln(w, "sort_merged_name"),
+        unpack(lambda w: get_merge_aln(w, "sort_merged_name")),
     output:
         bam = temp("temp/align/sort_merged_name/{sample}_{library}_{read_type_map}.bam"),
     log:
@@ -39,12 +39,12 @@ use rule sort_coord as sort_merged_name with:
 rule metadmg_damage:
     input:
         bam = rules.sort_merged_name.output.bam,
-#        bam = lambda w: get_merge_aln(w, "metadmg_damage"),
+#        bam = unpack(lambda w: get_merge_aln(w, "metadmg_damage")),
     output:
         dmg = "results/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
         res = "results/metadmg/damage/{sample}_{library}_{read_type_map}.res.gz",
-        stats = "results/metadmg/damage/{sample}_{library}_{read_type_map}.stat", # TODO: move to stats/
-        rlen = "results/metadmg/damage/{sample}_{library}_{read_type_map}.rlens.gz", # TODO: move to stats/
+        stats = "stats/metadmg/damage/{sample}_{library}_{read_type_map}.stat.gz",
+        rlen = "stats/metadmg/damage/{sample}_{library}_{read_type_map}.rlens.gz",
     log:
         "logs/metadmg/damage/{sample}_{library}_{read_type_map}.log"
     benchmark:
@@ -57,7 +57,11 @@ rule metadmg_damage:
         mem = lambda w, attempt: f"{10 * attempt} GiB",
         runtime = lambda w, attempt: f"{2 * attempt} d",
     shell:
-        "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.bam} > {log} 2>&1"
+        """
+        /projects/caeg/apps/metaDMG-cpp/metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.bam} > {log} 2>&1;
+        gzip {params.out_prefix}.stat; mv {params.out_prefix}.stat.gz {output.stats};
+        mv {params.out_prefix}.rlens.gz {output.rlen};
+        """
 
 
 rule metadmg_lca:
@@ -69,21 +73,26 @@ rule metadmg_lca:
     output:
         dmg = "results/metadmg/lca/{sample}_{library}_{read_type_map}.bdamage.gz",
         lca = "results/metadmg/lca/{sample}_{library}_{read_type_map}.lca.gz",
-        stats = "results/metadmg/lca/{sample}_{library}_{read_type_map}.stat.gz", # TODO: move to stats/
-        rlen = "results/metadmg/lca/{sample}_{library}_{read_type_map}.rlens.gz", # TODO: move to stats/
+        bam = "results/metadmg/lca/{sample}_{library}_{read_type_map}.reads.bam",
+        stats = "stats/metadmg/lca/{sample}_{library}_{read_type_map}.stat.gz",
+        rlen = "stats/metadmg/lca/{sample}_{library}_{read_type_map}.rlens.gz",
     log:
         "logs/metadmg/lca/{sample}_{library}_{read_type_map}.log"
     benchmark:
         "benchmarks/metadmg/lca/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        out_prefix = lambda w, output: str(Path(output.stats.removesuffix(".gz")).with_suffix("")),
+        out_prefix = lambda w, output: str(Path(output.dmg.removesuffix(".gz")).with_suffix("")),
         extra = config["metadmg"]["lca"]["params"],
     threads: 4
     resources:
         mem = lambda w, attempt, input: f"{30 * attempt} GiB",
         runtime = lambda w, attempt, input: f"{1e-4 * input.size_mb * attempt} h",
     shell:
-        "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp lca --threads {threads} --bam {input.bam} --nodes {input.nodes} --names {input.names} --acc2tax {input.acc2tax} {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1"
+        """
+        /projects/caeg/apps/metaDMG-cpp/metaDMG-cpp lca --threads {threads} --bam {input.bam} --nodes {input.nodes} --names {input.names} --acc2tax {input.acc2tax} {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1
+        mv {params.out_prefix}.stat.gz {output.stats};
+        mv {params.out_prefix}.rlens.gz {output.rlen};
+        """
 
 
 
@@ -118,7 +127,8 @@ rule metadmg_dfit:
 rule metadmg_aggregate:
     input:
         dmg = rules.metadmg_lca.output.dmg,
-        stats = rules.metadmg_lca.output.stats,
+        lca = rules.metadmg_lca.output.stats,
+        dfit = rules.metadmg_dfit.output.dfit,
         nodes = config["taxonomy"]["nodes"],
         names = config["taxonomy"]["names"],
     output:
@@ -134,4 +144,4 @@ rule metadmg_aggregate:
         mem = lambda w, attempt: f"{25 * attempt} GiB",
         runtime = lambda w, attempt: f"{15 * attempt} m",
     shell:
-        "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp aggregate {input.dmg} --nodes {input.nodes} --names {input.names} --lcastat {input.stats} --out_prefix {params.out_prefix} > {log} 2>&1"
+        "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp aggregate {input.dmg} --nodes {input.nodes} --names {input.names} --lcastat {input.lca} --dfit {input.dfit} --out_prefix {params.out_prefix} > {log} 2>&1"

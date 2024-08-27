@@ -4,13 +4,13 @@ def get_merge_aln(wildcards, rule):
     for case in switch(rule):
         if case("sort_merged_name") or case("collate") or case("metadmg_damage") or case("bam_filter_lca"):
             if is_activated("bam_filter/filter"):
-                return rules.bam_filter_filter.output.bam
+                return {"aln": rules.bam_filter_filter.output.bam, "idx": rules.bam_filter_filter.output.idx}
         if case("bam_filter_filter"):
             if is_activated("bam_filter/reassign"):
-                return rules.bam_filter_reassign.output.bam
+                return {"aln": rules.bam_filter_reassign.output.bam, "idx": rules.bam_filter_reassign.output.idx}
         if case("bam_filter_reassign"):
             if is_activated("bam_filter/filter"):
-                return rules.sort_merged_coord.output.bam
+                return {"aln": rules.sort_merged_coord.output.bam, "idx": rules.sort_merged_coord.output.idx}
             else:
                 return rules.merge_alns.output.bam
         if case():

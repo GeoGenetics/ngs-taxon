@@ -12,7 +12,7 @@ def get_merge_aln(wildcards, rule):
             if is_activated("bam_filter/filter"):
                 return {"aln": rules.sort_merged_coord.output.bam, "idx": rules.sort_merged_coord.output.idx}
             else:
-                return rules.merge_alns.output.bam
+                return {"aln": rules.merge_alns.output.bam}
         if case():
             raise ValueError(f"Invalid merge_aln rule specified: {rule}")
 

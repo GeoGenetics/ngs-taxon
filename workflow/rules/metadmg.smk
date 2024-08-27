@@ -38,8 +38,8 @@ use rule sort_coord as sort_merged_name with:
 
 rule metadmg_damage:
     input:
-        bam = rules.sort_merged_name.output.bam,
-#        bam = unpack(lambda w: get_merge_aln(w, "metadmg_damage")),
+        aln = rules.sort_merged_name.output.bam,
+#        unpack(lambda w: get_merge_aln(w, "metadmg_damage")),
     output:
         dmg = "results/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
         res = "results/metadmg/damage/{sample}_{library}_{read_type_map}.res.gz",
@@ -58,7 +58,7 @@ rule metadmg_damage:
         runtime = lambda w, attempt: f"{2 * attempt} d",
     shell:
         """
-        /projects/caeg/apps/metaDMG-cpp/metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.bam} > {log} 2>&1;
+        /projects/caeg/apps/metaDMG-cpp/metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.aln} > {log} 2>&1;
         gzip {params.out_prefix}.stat; mv {params.out_prefix}.stat.gz {output.stats};
         mv {params.out_prefix}.rlens.gz {output.rlen};
         """
@@ -66,7 +66,7 @@ rule metadmg_damage:
 
 rule metadmg_lca:
     input:
-        bam = rules.sort_merged_name.output.bam,
+        aln = rules.sort_merged_name.output.bam,
         nodes = config["taxonomy"]["nodes"],
         names = config["taxonomy"]["names"],
         acc2tax = config["taxonomy"]["acc2taxid"],
@@ -89,7 +89,7 @@ rule metadmg_lca:
         runtime = lambda w, attempt, input: f"{1e-4 * input.size_mb * attempt} h",
     shell:
         """
-        /projects/caeg/apps/metaDMG-cpp/metaDMG-cpp lca --threads {threads} --bam {input.bam} --nodes {input.nodes} --names {input.names} --acc2tax {input.acc2tax} {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1
+        /projects/caeg/apps/metaDMG-cpp/metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax {input.acc2tax} {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1
         mv {params.out_prefix}.stat.gz {output.stats};
         mv {params.out_prefix}.rlens.gz {output.rlen};
         """

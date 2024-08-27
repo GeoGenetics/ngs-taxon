@@ -37,7 +37,7 @@ properties:
         properties:
           params:
             type: string
-            pattern: "^((?!\b--?(threads|mm|t|time|q|U|1|2|interleaved|x|b|S|rd-id|rg)[ =]).)*$"
+            pattern: "^((?!\b--?(threads|mm|t|time|q|U|1|2|interleaved|x|b|S|rd-id|rg|r)[ =]).)*$"
         required:
           - params
       mark_duplicates:
@@ -142,7 +142,7 @@ properties:
         properties:
           params:
             type: string
-            pattern: "^((?!\b--?(n|threads|bam|nodes|names|acc2tax|temp|out|out_prefix)[ =]).)*$"
+            pattern: "^((?!\b--?(n|threads|bam|nodes|names|acc2tax|temp|out|out_prefix|dump_reads)[ =]).)*$"
         required:
           - params
       dfit:

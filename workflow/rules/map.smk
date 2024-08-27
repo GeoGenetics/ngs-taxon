@@ -23,12 +23,12 @@ def get_read_group(wildcards):
 
     # Get flowcell
     flowcell = units.loc[(wildcards.sample, wildcards.library, slice(None)), "flowcell"].drop_duplicates().item()
-    rg_info = f"--rg-id '{wildcards.sample}_{wildcards.library}_{flowcell}' --rg 'SM:{wildcards.sample}' --rg 'LB:{wildcards.library}' --rg 'PU:{flowcell}'"
+    rg_info = [f"{wildcards.sample}_{wildcards.library}_{flowcell}_{wildcards.ref}{wildcards.n_chunk}o{wildcards.tot_chunks}", f"SM:{wildcards.sample}", f"LB:{wildcards.library}", f"PU:{flowcell}", f"PG:{wildcards.ref}.{wildcards.n_chunk}-of-{wildcards.tot_chunks}"]
     # Add extra info to RG
     for key, abv in extra_info.items():
         value = units.loc[(wildcards.sample, wildcards.library, slice(None))].get(key)
         if value is not None and value.any():
-            rg_info += f" --rg '{abv}:{value.drop_duplicates().item()}'"
+            rg_info.append(f"{abv}:{value.drop_duplicates().item()}")
 
     return rg_info
 
@@ -77,7 +77,7 @@ rule bowtie2:
     benchmark:
         "benchmarks/align/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
-        extra = lambda w: f"--time {get_read_group(w)} " + config["align"]["map"]["params"],
+        extra = lambda w: f"""--time --rg-id '{"' --rg '".join(get_read_group(w))}' """ + config["align"]["map"]["params"],
     threads: 20
     resources:
         mem = lambda w, attempt, input: "{} GiB".format((0.7 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50) * attempt),
@@ -85,6 +85,47 @@ rule bowtie2:
         slurm_extra = "--nice=2000",
     wrapper:
         f"{wrapper_ver}/bio/bowtie2/align"
+
+
+rule bwa_aln:
+    input:
+        fastq = get_data,
+        idx = lambda w: multiext(config["ref"][w.ref]["path"], ".amb", ".ann", ".bwt", ".pac", ".sa"),
+    output:
+        sai = temp("temp/align/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.sai")
+    log:
+        "logs/align/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
+    benchmark:
+        "benchmarks/align/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
+    threads: 10
+    resources:
+        mem = lambda w, attempt: f"{20 * attempt} GiB",
+        runtime = lambda w, attempt: f"{1 * attempt} d",
+        slurm_extra = "--nice=2000",
+    wrapper:
+        f"{wrapper_ver}/bio/bwa/aln"
+
+
+rule bwa_samxe:
+    input:
+        fastq = get_data,
+        sai = rules.bwa_aln.output.sai,
+        idx = rules.bwa_aln.input.idx,
+    output:
+        bam = temp("temp/align/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
+    log:
+        "logs/align/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
+    benchmark:
+        "benchmarks/align/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
+    params:
+        extra = lambda w: f"""-r '@RG\tID:{"\t".join(get_read_group(w))}' """ + config["align"]["map"]["params"],
+        sort = "samtools",
+    threads: 1
+    resources:
+        mem = lambda w, attempt: f"{20 * attempt} GiB",
+        runtime = lambda w, attempt: f"{1 * attempt} d",
+    wrapper:
+        f"{wrapper_ver}/bio/bwa/samxe"
 
 
 rule clean_header:
@@ -120,6 +161,6 @@ rule sort_coord:
     threads: 8
     resources:
         mem = lambda w, attempt, threads, input: f"{10 * threads * attempt} GiB",
-        runtime = lambda w, attempt, input: f"{min(0.0001 * input.size_mb + 1, 20) * attempt} h",
+        runtime = lambda w, attempt, input: f"{np.clip(0.0001 * input.size_mb + 1, 0.1, 20) * attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/sort"

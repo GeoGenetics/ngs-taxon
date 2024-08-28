@@ -73,7 +73,6 @@ rule metadmg_lca:
     output:
         dmg = "results/metadmg/lca/{sample}_{library}_{read_type_map}.bdamage.gz",
         lca = "results/metadmg/lca/{sample}_{library}_{read_type_map}.lca.gz",
-        bam = "results/metadmg/lca/{sample}_{library}_{read_type_map}.reads.bam",
         stats = "stats/metadmg/lca/{sample}_{library}_{read_type_map}.stat.gz",
         rlen = "stats/metadmg/lca/{sample}_{library}_{read_type_map}.rlens.gz",
     log:

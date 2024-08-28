@@ -26,7 +26,7 @@ use rule sort_coord as sort_merged_name with:
     input:
         unpack(lambda w: get_merge_aln(w, "sort_merged_name")),
     output:
-        bam = temp("temp/align/sort_merged_name/{sample}_{library}_{read_type_map}.bam"),
+        bam = "results/align/sort_merged_name/{sample}_{library}_{read_type_map}.bam",
     log:
         "logs/align/sort_merged_name/{sample}_{library}_{read_type_map}.log"
     benchmark:

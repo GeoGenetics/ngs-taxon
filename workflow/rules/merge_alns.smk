@@ -72,8 +72,8 @@ use rule sort_coord as sort_merged_coord with:
     input:
         rules.merge_alns.output.bam,
     output:
-        bam = "results/align/sort_merged_coord/{sample}_{library}_{read_type_map}.bam",
-        idx = "results/align/sort_merged_coord/{sample}_{library}_{read_type_map}.bam.csi",
+        bam = temp("temp/align/sort_merged_coord/{sample}_{library}_{read_type_map}.bam"),
+        idx = temp("temp/align/sort_merged_coord/{sample}_{library}_{read_type_map}.bam.csi"),
     log:
         "logs/align/sort_merged_coord/{sample}_{library}_{read_type_map}.log"
     benchmark:

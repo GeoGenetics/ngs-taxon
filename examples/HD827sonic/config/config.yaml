@@ -46,9 +46,9 @@ bam_filter:
     params: "--lca-rank genus"
 
 taxonomy:
-  nodes: "/projects/caeg/data/db/aeDNA-refs/resources/20230825/ncbi/taxonomy/nodes.dmp"
-  names: "/projects/caeg/data/db/aeDNA-refs/resources/20230825/ncbi/taxonomy/names.dmp"
-  acc2taxid: "/projects/caeg/data/db/mikkels/combined_accession2taxid_20221112.gz"
+  nodes: /projects/caeg/data/db/aeDNA-refs/resources/20230825/ncbi/taxonomy/nodes.dmp
+  names: /projects/caeg/data/db/aeDNA-refs/resources/20230825/ncbi/taxonomy/names.dmp
+  acc2taxid: /projects/caeg/data/db/mikkels/combined_accession2taxid_20221112.gz
 
 metadmg:
   damage:

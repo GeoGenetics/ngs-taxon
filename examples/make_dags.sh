@@ -2,7 +2,7 @@
 
 SNAKEMAKE_OPTS="--snakefile ../../workflow/Snakefile --configfile config/config.yaml --forceall $@"
 
-for TEST in robot_tests robot_tests_big
+for TEST in HD827sonic
 do
     cd $TEST/
     snakemake $SNAKEMAKE_OPTS --dryrun

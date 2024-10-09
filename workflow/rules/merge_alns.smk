@@ -1,20 +1,23 @@
 
 
 def get_merge_aln(wildcards, rule):
-    for case in switch(rule):
-        if case("sort_merged_name") or case("collate") or case("metadmg_damage") or case("bam_filter_lca"):
-            if is_activated("bam_filter/filter"):
-                return {"aln": rules.bam_filter_filter.output.bam, "idx": rules.bam_filter_filter.output.idx}
-        if case("bam_filter_filter"):
-            if is_activated("bam_filter/reassign"):
-                return {"aln": rules.bam_filter_reassign.output.bam, "idx": rules.bam_filter_reassign.output.idx}
-        if case("bam_filter_reassign"):
-            if is_activated("bam_filter/filter"):
-                return {"aln": rules.sort_merged_coord.output.bam, "idx": rules.sort_merged_coord.output.idx}
-            else:
-                return {"aln": rules.merge_alns.output.bam}
-        if case():
-            raise ValueError(f"Invalid merge_aln rule specified: {rule}")
+    fall_through = False
+    if rule in ["sort_merged_name", "collate", "metadmg_damage", "bam_filter_lca"] or fall_through:
+        if is_activated("bam_filter/filter"):
+            return {"aln": rules.bam_filter_filter.output.bam, "idx": rules.bam_filter_filter.output.idx}
+        fall_through = True
+    if rule == "bam_filter_filter" or fall_through:
+        if is_activated("bam_filter/reassign"):
+            return {"aln": rules.bam_filter_reassign.output.bam, "idx": rules.bam_filter_reassign.output.idx}
+        fall_through = True
+    if rule == "bam_filter_reassign" or fall_through:
+        if is_activated("bam_filter/filter"):
+            return {"aln": rules.sort_merged_coord.output.bam, "idx": rules.sort_merged_coord.output.idx}
+        else:
+            return {"aln": rules.merge_alns.output.bam}
+        fall_through = True
+    raise ValueError(f"Invalid merge_aln rule specified: {rule}")
+
 
 
 #############

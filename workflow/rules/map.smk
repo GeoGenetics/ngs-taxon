@@ -38,17 +38,19 @@ def is_bt2l(wildcards):
 
 
 def get_chunk_aln(wildcards, rule):
-    for case in switch(rule):
-        if case("merge_alns") or case("cat_alns"):
-            if is_activated("align/calmd"):
-                return rules.calmd.output.bam
-        if case("calmd"):
-            if is_activated("align/mark_duplicates"):
-                return "temp/align/mark_duplicates/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"
-        if case("mark_duplicates"):
-            return rules.sort_coord.output.bam,
-        if case():
-            raise ValueError(f"Invalid chunk_aln rule specified: {rule}")
+    fall_through = False
+    if rule in ["merge_alns", "cat_alns"] or fall_through:
+        if is_activated("align/calmd"):
+            return rules.calmd.output.bam
+        fall_through = True
+    if rule == "calmd" or fall_through:
+        if is_activated("align/mark_duplicates"):
+            return "temp/align/mark_duplicates/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"
+        fall_through = True
+    if rule == "mark_duplicates" or fall_through:
+        return rules.sort_coord.output.bam
+        fall_through = True
+    raise ValueError(f"Invalid chunk_aln rule specified: {rule}")
 
 
 

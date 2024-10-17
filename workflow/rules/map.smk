@@ -83,7 +83,7 @@ rule bowtie2:
     threads: 20
     resources:
         mem = lambda w, attempt, input: "{} GiB".format((0.7 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50) * attempt),
-        runtime = lambda w, attempt: f"{10 * attempt} h",
+        runtime = lambda w, attempt: f"{1 * attempt} d",
         slurm_extra = "--nice=2000",
     wrapper:
         f"{wrapper_ver}/bio/bowtie2/align"

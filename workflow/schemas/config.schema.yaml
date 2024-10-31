@@ -35,10 +35,14 @@ properties:
       map:
         type: object
         properties:
+          tool:
+            type: string
+            enum: ["bowtie2", "bwa_aln"]
           params:
             type: string
             pattern: "^((?!\b--?(threads|mm|t|time|q|U|1|2|interleaved|x|b|S|rd-id|rg|r)[ =]).)*$"
         required:
+          - tool
           - params
       mark_duplicates:
         type: object

@@ -4,22 +4,18 @@
 
 This module implements read derelication steps:
 - Map reads agains reference collection
-  - [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)
+  - [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) / [BWA_aln](https://github.com/lh3/bwa)
 - Clean header for unused references
 - Sort reads by coordinates
   - [Samtools Sort](https://www.htslib.org/doc/samtools-sort.html)
+- Remove Duplicates
+  - [Picard MarkDuplicates](https://broadinstitute.github.io/picard/command-line-overview.html#MarkDuplicates) / [GATK MarkDuplicatesSpark](https://gatk.broadinstitute.org/hc/en-us/articles/13832682540699-MarkDuplicatesSpark) / [Picard MarkDuplicatesWithMateCigar](https://broadinstitute.github.io/picard/command-line-overview.html#MarkDuplicatesWithMateCigar) / [BamSorMaDup](https://gitlab.com/german.tischler/biobambam2)
+- Calculate MD (mismatch positions) and NM (edit distance to reference) tags
+  - [Samtools CalMD](https://www.htslib.org/doc/samtools-calmd.html)
 - Reassign reads
   - [bam-filter](https://github.com/genomewalker/bam-filter)
 - Filter BAM references
   - [bam-filter](https://github.com/genomewalker/bam-filter)
-- Remove Duplicates
-  - [Picard MarkDuplicates](https://broadinstitute.github.io/picard/command-line-overview.html#MarkDuplicates)
-  - [GATK MarkDuplicatesSpark](https://gatk.broadinstitute.org/hc/en-us/articles/13832682540699-MarkDuplicatesSpark)
-  - [Picard MarkDuplicatesWithMateCigar](https://broadinstitute.github.io/picard/command-line-overview.html#MarkDuplicatesWithMateCigar)
-  - [BamSorMaDup](https://gitlab.com/german.tischler/biobambam2)
-  - [DeDup](https://github.com/apeltzer/DeDup) [TODO]
-- Generate MD tag
-  - [Samtools CalMD](https://www.htslib.org/doc/samtools-calmd.html)
 - Sort reads by name
   - [Samtools Sort](https://www.htslib.org/doc/samtools-sort.html)
 - Taxonomic assignment
@@ -27,7 +23,7 @@ This module implements read derelication steps:
 
 And QC steps:
 - [MultiQC](https://multiqc.info/) (aggregates QC from several of the tools above)
-- [Samtools Stats](https://www.htslib.org/doc/samtools-stats.html)
+  - [Samtools Stats](https://www.htslib.org/doc/samtools-stats.html)
 
 This module can be used directly, but is designed to be used together with other modules.
 

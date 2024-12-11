@@ -19,6 +19,7 @@ properties:
         properties:
           bt2l:
             type: boolean
+            default: True
           n_chunks:
             type: integer
             minimum: 1

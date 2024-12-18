@@ -38,7 +38,7 @@ use rule shard_sort_coord as align_sort_query with:
 
 rule metadmg_damage:
     input:
-        aln = rules.sort_merged_name.output.bam,
+        aln = rules.align_sort_query.output.bam,
 #        unpack(lambda w: get_merge_aln(w, "metadmg_damage")),
     output:
         dmg = "results/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
@@ -66,7 +66,7 @@ rule metadmg_damage:
 
 rule metadmg_lca:
     input:
-        aln = rules.sort_merged_name.output.bam,
+        aln = rules.align_sort_query.output.bam,
         nodes = config["taxonomy"]["nodes"],
         names = config["taxonomy"]["names"],
         acc2tax = config["taxonomy"]["acc2taxid"],

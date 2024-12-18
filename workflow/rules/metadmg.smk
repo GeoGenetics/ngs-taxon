@@ -3,7 +3,7 @@
 ### RULES ###
 #############
 
-rule collate:
+rule align_collate:
     input:
         unpack(lambda w: get_merge_aln(w, "collate")),
     output:
@@ -22,15 +22,15 @@ rule collate:
         f"{wrapper_ver}/bio/samtools/collate"
 
 
-use rule sort_coord as sort_merged_name with:
+use rule shard_sort_coord as align_sort_query with:
     input:
-        unpack(lambda w: get_merge_aln(w, "sort_merged_name")),
+        unpack(lambda w: get_merge_aln(w, "sort_query")),
     output:
-        bam = "results/align/sort_merged_name/{sample}_{library}_{read_type_map}.bam",
+        bam = temp("temp/align/sort_query/{sample}_{library}_{read_type_map}.bam"),
     log:
-        "logs/align/sort_merged_name/{sample}_{library}_{read_type_map}.log"
+        "logs/align/sort_query/{sample}_{library}_{read_type_map}.log"
     benchmark:
-        "benchmarks/align/sort_merged_name/{sample}_{library}_{read_type_map}.jsonl"
+        "benchmarks/align/sort_query/{sample}_{library}_{read_type_map}.jsonl"
     params:
         extra = "-n",
         mem_overhead_factor=0.3,

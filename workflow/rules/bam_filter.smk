@@ -4,16 +4,16 @@
 ### RULES ###
 #############
 
-rule bam_filter_reassign:
+rule align_reassign:
     input:
-        unpack(lambda w: get_merge_aln(w, "bam_filter_reassign")),
+        unpack(lambda w: get_merge_aln(w, "align_reassign")),
     output:
-        bam = temp("temp/align/bam_filter/reassign/{sample}_{library}_{read_type_map}.bam"),
-        idx = temp("temp/align/bam_filter/reassign/{sample}_{library}_{read_type_map}.bam.csi"),
+        bam = temp("temp/align/reassign/{sample}_{library}_{read_type_map}.bam"),
+        idx = temp("temp/align/reassign/{sample}_{library}_{read_type_map}.bam.csi"),
     log:
-        "logs/align/bam_filter/reassign/{sample}_{library}_{read_type_map}.log"
+        "logs/align/reassign/{sample}_{library}_{read_type_map}.log"
     benchmark:
-        "benchmarks/align/bam_filter/reassign/{sample}_{library}_{read_type_map}.jsonl"
+        "benchmarks/align/reassign/{sample}_{library}_{read_type_map}.jsonl"
     params:
         mem_overhead=0.5,
         extra = config["bam_filter"]["reassign"]["params"],
@@ -31,20 +31,20 @@ rule bam_filter_reassign:
 
 
 
-rule bam_filter_filter:
+rule align_filter:
     input:
-        unpack(lambda w: get_merge_aln(w, "bam_filter_filter")),
+        unpack(lambda w: get_merge_aln(w, "align_filter")),
     output:
-        bam = temp("temp/align/bam_filter/filter/{sample}_{library}_{read_type_map}.bam"),
-        idx = temp("temp/align/bam_filter/filter/{sample}_{library}_{read_type_map}.bam.csi"),
-        read_len = "stats/align/bam_filter/filter/{sample}_{library}_{read_type_map}.read-length-freqs.json",
-        read_hits = "stats/align/bam_filter/filter/{sample}_{library}_{read_type_map}.read-hits-count.tsv.gz",
-        stats = "stats/align/bam_filter/filter/{sample}_{library}_{read_type_map}.stats.tsv.gz",
-        stats_filt = "stats/align/bam_filter/filter/{sample}_{library}_{read_type_map}.stats-filtered.tsv.gz",
+        bam = temp("temp/align/filter/{sample}_{library}_{read_type_map}.bam"),
+        idx = temp("temp/align/filter/{sample}_{library}_{read_type_map}.bam.csi"),
+        read_len = "stats/align/filter/{sample}_{library}_{read_type_map}.read-length-freqs.json",
+        read_hits = "stats/align/filter/{sample}_{library}_{read_type_map}.read-hits-count.tsv.gz",
+        stats = "stats/align/filter/{sample}_{library}_{read_type_map}.stats.tsv.gz",
+        stats_filt = "stats/align/filter/{sample}_{library}_{read_type_map}.stats-filtered.tsv.gz",
     log:
-        "logs/align/bam_filter/filter/{sample}_{library}_{read_type_map}.log"
+        "logs/align/filter/{sample}_{library}_{read_type_map}.log"
     benchmark:
-        "benchmarks/align/bam_filter/filter/{sample}_{library}_{read_type_map}.jsonl"
+        "benchmarks/align/filter/{sample}_{library}_{read_type_map}.jsonl"
     params:
         mem_overhead=0.2,
         extra = config["bam_filter"]["filter"]["params"],
@@ -61,19 +61,19 @@ rule bam_filter_filter:
 
 
 
-rule bam_filter_lca:
+rule align_bam_filter_lca:
     input:
         unpack(lambda w: get_merge_aln(w, "bam_filter_lca")),
-        stats = rules.bam_filter_filter.output.stats_filt,
+        stats = rules.align_filter.output.stats_filt,
         nodes = config["taxonomy"]["nodes"],
         names = config["taxonomy"]["names"],
         acc2tax = config["taxonomy"]["acc2taxid"],
     output:
-        stats = temp("temp/align/bam_filter/lca/{sample}_{library}_{read_type_map}.summary"),
+        stats = temp("temp/align/bam_filter_lca/{sample}_{library}_{read_type_map}.summary"),
     log:
-        "logs/align/bam_filter/lca/{sample}_{library}_{read_type_map}.log"
+        "logs/align/bam_filter_lca/{sample}_{library}_{read_type_map}.log"
     benchmark:
-        "benchmarks/align/bam_filter/lca/{sample}_{library}_{read_type_map}.jsonl"
+        "benchmarks/align/bam_filter_lca/{sample}_{library}_{read_type_map}.jsonl"
     params:
         mem_overhead=0.2,
         extra = config["bam_filter"]["lca"]["params"],

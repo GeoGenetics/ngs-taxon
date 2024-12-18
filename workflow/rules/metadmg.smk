@@ -7,7 +7,7 @@ rule align_collate:
     input:
         unpack(lambda w: get_merge_aln(w, "collate")),
     output:
-        bam = temp("temp/align/collate/{sample}_{library}_{read_type_map}.bam"),
+        bam = "results/align/collate/{sample}_{library}_{read_type_map}.bam",
     log:
         "logs/align/collate/{sample}_{library}_{read_type_map}.log"
     benchmark:
@@ -26,7 +26,7 @@ use rule shard_sort_coord as align_sort_query with:
     input:
         unpack(lambda w: get_merge_aln(w, "sort_query")),
     output:
-        bam = temp("temp/align/sort_query/{sample}_{library}_{read_type_map}.bam"),
+        bam = "results/align/sort_query/{sample}_{library}_{read_type_map}.bam",
     log:
         "logs/align/sort_query/{sample}_{library}_{read_type_map}.log"
     benchmark:

@@ -131,7 +131,7 @@ rule shard_clean_header:
         mem = lambda w, attempt: f"{20 * attempt} GiB",
         runtime = lambda w, attempt: f"{2 * attempt} h",
     shell:
-        "/projects/caeg/apps/metaDMG-cpp/misc/compressbam --threads {threads} --input {input.bam} --output {output.bam} >{log} 2>&1"
+        "/projects/caeg/apps/metaDMG-bb/misc/reheadbam -b {input.bam} -o {output.bam} >{log} 2>&1"
 
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c

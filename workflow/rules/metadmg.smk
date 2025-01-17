@@ -3,42 +3,9 @@
 ### RULES ###
 #############
 
-rule align_collate:
-    input:
-        unpack(lambda w: get_merge_aln(w, "collate")),
-    output:
-        bam = "results/align/collate/{sample}_{library}_{read_type_map}.bam",
-    log:
-        "logs/align/collate/{sample}_{library}_{read_type_map}.log"
-    benchmark:
-        "benchmarks/align/collate/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        extra = "-l 6 -r 100000",
-    threads: 2
-    resources:
-        mem = lambda w, attempt: f"{40 * attempt} GiB",
-        runtime = lambda w, attempt: f"{2 * attempt} d",
-    wrapper:
-        f"{wrapper_ver}/bio/samtools/collate"
-
-
-use rule shard_sort_coord as align_sort_query with:
-    input:
-        unpack(lambda w: get_merge_aln(w, "sort_query")),
-    output:
-        bam = "results/align/sort_query/{sample}_{library}_{read_type_map}.bam",
-    log:
-        "logs/align/sort_query/{sample}_{library}_{read_type_map}.log"
-    benchmark:
-        "benchmarks/align/sort_query/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        extra = "-n",
-        mem_overhead_factor=0.3,
-
-
 rule metadmg_damage:
     input:
-        aln = rules.align_sort_query.output.bam,
+        aln = rules.align_merge.output.bam,
 #        unpack(lambda w: get_merge_aln(w, "metadmg_damage")),
     output:
         dmg = "results/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
@@ -66,7 +33,7 @@ rule metadmg_damage:
 
 rule metadmg_lca:
     input:
-        aln = rules.align_sort_query.output.bam,
+        aln = rules.align_merge.output.bam,
         nodes = config["taxonomy"]["nodes"],
         names = config["taxonomy"]["names"],
         acc2tax = config["taxonomy"]["acc2taxid"],

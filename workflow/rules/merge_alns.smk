@@ -24,41 +24,18 @@ def get_merge_aln(wildcards, rule):
 ### RULES ###
 #############
 
-rule shard_calmd:
-    input:
-        aln = lambda w: get_chunk_aln(w, "calmd"),
-        ref = lambda w: config["ref"][w.ref]["path"],
-        fai = lambda w: config["ref"][w.ref]["path"] + ".fai",
-    output:
-        bam = temp("temp/shard/calmd/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
-#        idx = temp("temp/shard/calmd/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam.csi"),
-    log:
-        "logs/shard/calmd/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
-    benchmark:
-        "benchmarks/shard/calmd/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
-    params:
-        extra = config["align"]["calmd"]["params"],
-    threads: 5
-    resources:
-        mem = lambda w, attempt: f"{10 * attempt} GiB",
-        runtime = lambda w, attempt: f"{12 * attempt} h",
-    wrapper:
-        f"{wrapper_ver}/bio/samtools/calmd"
-
-
 rule align_merge:
     input:
-        lambda w: expand_pandas(get_chunk_aln(w, "merge"), ref_sets, allow_missing=True),
-#        lambda w: expand(get_chunk_aln(w, "merge"), zip, **ref_sets.to_dict("list"), allow_missing=True),
+        lambda w: expand_pandas(rules.chunk_sort_query.output.bam, ref_sets, allow_missing=True),
+#        lambda w: expand(rules.chunk_sort_query.output.bam, zip, **ref_sets.to_dict("list"), allow_missing=True),
     output:
-        bam = temp("temp/align/merge/{sample}_{library}_{read_type_map}.bam"),
-#        idx = temp("temp/align/merge/{sample}_{library}_{read_type_map}.bam.csi"),
+        bam = "results/align/merge/{sample}_{library}_{read_type_map}.bam",
     log:
         "logs/align/merge/{sample}_{library}_{read_type_map}.log"
     benchmark:
         "benchmarks/align/merge/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        extra = "-c -p",
+        extra = "-N -c -p",
     threads: 3
     resources:
         mem = lambda w, input, attempt: f"{(7e-5 * input.size_mb + 40) * attempt} GiB",
@@ -72,7 +49,7 @@ rule align_merge:
 # Re-sorting, since it is required even when merging sorted BAM files (needs similar headers):
 # https://www.biostars.org/p/251721/
 # https://www.biostars.org/p/9509574/
-use rule shard_sort_coord as align_sort_coord with:
+use rule chunk_sort_query as align_sort_coord with:
     input:
         rules.align_merge.output.bam,
     output:
@@ -82,6 +59,11 @@ use rule shard_sort_coord as align_sort_coord with:
         "logs/align/sort_coord/{sample}_{library}_{read_type_map}.log"
     benchmark:
         "benchmarks/align/sort_coord/{sample}_{library}_{read_type_map}.jsonl"
+    params:
+        mem_overhead_factor=0.4,
+    resources:
+        mem = lambda w, attempt, threads, input: f"{15 * threads * attempt} GiB",
+        runtime = lambda w, attempt, input: f"{np.clip(0.0001 * input.size_mb + 1, 0.1, 20) * attempt} h",
 
 
 

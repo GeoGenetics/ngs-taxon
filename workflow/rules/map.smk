@@ -26,7 +26,7 @@ def get_read_group(wildcards):
 
     # Get flowcell
     flowcell = units.loc[(wildcards.sample, wildcards.library, slice(None)), "flowcell"].drop_duplicates().item()
-    rg_info = [f"{wildcards.sample}_{wildcards.library}_{flowcell}_{wildcards.ref}{wildcards.n_chunk}o{wildcards.tot_chunks}", f"SM:{wildcards.sample}", f"LB:{wildcards.library}", f"PU:{flowcell}", f"PG:{wildcards.ref}.{wildcards.n_chunk}-of-{wildcards.tot_chunks}"]
+    rg_info = [f"{wildcards.sample}_{wildcards.library}_{flowcell}_{wildcards.ref}{wildcards.n_chunk}o{wildcards.tot_chunks}", f"SM:{wildcards.sample}", f"LB:{wildcards.library}", f"PU:{flowcell}"]
     # Add extra info to RG
     for key, abv in extra_info.items():
         value = units.loc[(wildcards.sample, wildcards.library, slice(None))].get(key)
@@ -38,22 +38,6 @@ def get_read_group(wildcards):
 
 def is_bt2l(wildcards):
     return config["ref"][wildcards.ref].get("bt2l", True)
-
-
-def get_chunk_aln(wildcards, rule):
-    fall_through = False
-    if rule in ["merge", "cat"] or fall_through:
-        if is_activated("align/calmd"):
-            return rules.shard_calmd.output.bam
-        fall_through = True
-    if rule == "calmd" or fall_through:
-        if is_activated("align/mark_duplicates"):
-            return "temp/shard/mark_duplicates/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"
-        fall_through = True
-    if rule == "mark_duplicates" or fall_through:
-        return rules.shard_sort_coord.output.bam
-        fall_through = True
-    raise ValueError(f"Invalid chunk_aln rule specified: {rule}")
 
 
 
@@ -76,56 +60,75 @@ rule bowtie2:
         sample = get_data,
         idx = get_index,
     output:
-        bam = temp("temp/shard/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
+        bam = temp("temp/chunk/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
     log:
-        "logs/shard/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
+        "logs/chunk/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/shard/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
+        "benchmarks/chunk/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
-        extra = lambda w: f"""--time --rg-id '{"' --rg '".join(get_read_group(w))}' """ + config["align"]["map"]["params"],
+        extra = lambda w: f"""--time --rg-id '{"' --rg '".join(get_read_group(w))}' --rg 'PG:bowtie2' """ + config["align"]["map"]["params"],
     threads: 20
     resources:
         mem = lambda w, attempt, input: "{} GiB".format((0.7 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50) * attempt),
-        runtime = lambda w, attempt: f"{1 * attempt} d",
+        runtime = lambda w, attempt: f"{3 * attempt} d",
         slurm_extra = "--nice=2000",
     wrapper:
         f"{wrapper_ver}/bio/bowtie2/align"
 
 
-import os
 rule bwa_aln:
     input:
         fastq = get_data,
         idx = lambda w: multiext(config["ref"][w.ref]["path"], ".amb", ".ann", ".bwt", ".pac", ".sa"),
     output:
-        bam = temp("temp/shard/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam")
+        sai = temp("temp/chunk/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.sai")
     log:
-        "logs/shard/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
+        "logs/chunk/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/shard/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
+        "benchmarks/chunk/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
-        extra = lambda w: f"""-r '@RG\\tID:{"\\t".join(get_read_group(w))}' """ + config["align"]["map"]["params"],
-        idx_prefix=lambda w, input: os.path.commonprefix(input.idx).rstrip("."),
-    threads: 20
+        extra = lambda w: f"""-r '@RG\\tID:{"\\t".join(get_read_group(w))}\\tPG:bwa_aln' """ + config["align"]["map"]["params"],
+    threads: 10
     resources:
         mem = lambda w, attempt, input: "{} GiB".format((2 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50) * attempt),
         runtime = lambda w, attempt: f"{1 * attempt} d",
         slurm_extra = "--nice=2000",
-    shell:
-        """
-        (/maps/projects/caeg/apps/bwa/bwa alnse -t {threads} {params.extra} {params.idx_prefix} {input.fastq} | samtools view -b > {output.bam}) 2>{log}
-        """
+    wrapper:
+        f"{wrapper_ver}/bio/bwa/aln"
 
 
-rule shard_clean_header:
+rule bwa_samxe:
     input:
-        bam = expand("temp/shard/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam", tool=config["align"]["map"]["tool"], allow_missing=True),
+        fastq = get_data,
+        sai = rules.bwa_aln.output.sai,
+        idx = rules.bwa_aln.input.idx,
     output:
-        bam = temp("temp/shard/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
+        bam = temp("temp/chunk/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
     log:
-        "logs/shard/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
+        "logs/chunk/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/shard/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
+        "benchmarks/chunk/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
+    params:
+        extra = lambda w: f"""-r '@RG\tID:{"\t".join(get_read_group(w))}' """ + config["align"]["map"]["params"],
+        sort = "samtools",
+    threads: 1
+    resources:
+        mem = lambda w, attempt, input: "{} GiB".format((2 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50) * attempt),
+        runtime = lambda w, attempt: f"{1 * attempt} d",
+    wrapper:
+        f"{wrapper_ver}/bio/bwa/samxe"
+
+
+
+rule chunk_clean_header:
+    input:
+        bam = expand("temp/chunk/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam", tool=config["align"]["map"]["tool"], allow_missing=True),
+    output:
+        bam = temp("temp/chunk/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
+    log:
+        "logs/chunk/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
+    benchmark:
+        "benchmarks/chunk/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     threads: 1
     resources:
         mem = lambda w, attempt: f"{20 * attempt} GiB",
@@ -135,17 +138,17 @@ rule shard_clean_header:
 
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c
-rule shard_sort_coord:
+rule chunk_sort_query:
     input:
-        bam = rules.shard_clean_header.output.bam,
+        bam = rules.chunk_clean_header.output.bam,
     output:
-        bam = temp("temp/shard/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
-        idx = temp("temp/shard/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam.csi"),
+        bam = temp("temp/chunk/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.bam"),
     log:
-        "logs/shard/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
+        "logs/chunk/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.log"
     benchmark:
-        "benchmarks/shard/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
+        "benchmarks/chunk/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_chunk}-of-{tot_chunks}.jsonl"
     params:
+        extra="-N",
         mem_overhead_factor=0.1,
     threads: 8
     resources:

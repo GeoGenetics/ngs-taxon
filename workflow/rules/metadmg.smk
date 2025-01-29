@@ -3,9 +3,27 @@
 ### RULES ###
 #############
 
+use rule shard_sort_coord as align_sort_query with:
+    input:
+        unpack(lambda w: get_merge_aln(w, "sort_query")),
+    output:
+        bam = "results/align/sort_query/{sample}_{library}_{read_type_map}.bam",
+    log:
+        "logs/align/sort_query/{sample}_{library}_{read_type_map}.log"
+    benchmark:
+        "benchmarks/align/sort_query/{sample}_{library}_{read_type_map}.jsonl"
+    params:
+        extra = "-N",
+        mem_overhead_factor=0.4,
+    resources:
+        mem = lambda w, attempt, threads, input: f"{15 * threads * attempt} GiB",
+        runtime = lambda w, attempt, input: f"{np.clip(0.0001 * input.size_mb + 1, 0.1, 20) * attempt} h",
+
+
+
 rule metadmg_damage:
     input:
-        aln = rules.align_merge.output.bam,
+        aln = rules.align_sort_query.output.bam,
 #        unpack(lambda w: get_merge_aln(w, "metadmg_damage")),
     output:
         dmg = "results/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
@@ -33,7 +51,7 @@ rule metadmg_damage:
 
 rule metadmg_lca:
     input:
-        aln = rules.align_merge.output.bam,
+        aln = rules.align_sort_query.output.bam,
         nodes = config["taxonomy"]["nodes"],
         names = config["taxonomy"]["names"],
         acc2tax = config["taxonomy"]["acc2taxid"],
@@ -98,7 +116,7 @@ rule metadmg_aggregate:
         nodes = config["taxonomy"]["nodes"],
         names = config["taxonomy"]["names"],
     output:
-        stats = "stats/metadmg/aggregate/{sample}_{library}_{read_type_map}.stat.gz",
+        stats = "results/metadmg/aggregate/{sample}_{library}_{read_type_map}.stat.gz",
     log:
         "logs/metadmg/aggregate/{sample}_{library}_{read_type_map}.log"
     benchmark:
@@ -111,3 +129,28 @@ rule metadmg_aggregate:
         runtime = lambda w, attempt: f"{15 * attempt} m",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp aggregate {input.dmg} --nodes {input.nodes} --names {input.names} --lcastat {input.lca} --dfit {input.dfit} --out_prefix {params.out_prefix} > {log} 2>&1"
+
+
+
+##########
+### QC ###
+##########
+
+# Some stats are only valid on coordinate-sorted BAM files (https://github.com/samtools/samtools/issues/2177):
+# - Coverage distribution.
+# - GC-depth
+rule align_stats:
+    input:
+        aln = rules.align_sort_query.output.bam,
+    output:
+        txt = "stats/aligns/samtools_stats/{sample}_{library}_{read_type_map}.txt",
+    log:
+        "logs/aligns/samtools_stats/{sample}_{library}_{read_type_map}.log",
+    benchmark:
+        "benchmarks/aligns/samtools_stats/{sample}_{library}_{read_type_map}.jsonl",
+    threads: 4
+    resources:
+        mem = lambda w, attempt: f"{10 * attempt} GiB",
+        runtime = lambda w, attempt: f"{10 * attempt} h",
+    wrapper:
+        f"{wrapper_ver}/bio/samtools/stats"

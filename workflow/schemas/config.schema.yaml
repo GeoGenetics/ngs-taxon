@@ -19,14 +19,14 @@ properties:
         properties:
           bt2l:
             type: boolean
-            default: True
-          n_chunks:
+            default: yes
+          n_shards:
             type: integer
             minimum: 1
           path:
             type: string
         required:
-          - n_chunks
+          - n_shards
           - path
     additionalProperties: false
 

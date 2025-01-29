@@ -1,0 +1,56 @@
+
+# - Only tested with Phred33 quality scores
+
+samples: config/samples.tsv
+
+units: config/units.tsv
+
+
+
+#############
+### ALIGN ###
+#############
+ref:
+  refseq_invertebrate:
+    n_shards: 3
+    path: "/projects/caeg/data/db/mikkels/refseq_30Aug2022/invertebrate/invert.{n_shard}"
+  refseq_mitochondrion:
+    bt2l: False
+    n_shards: 1
+    path: "/projects/caeg/data/db/mikkels/refseq_30Aug2022/mitochondrion/mitochondrion.fa"
+
+align:
+  map:
+    tool: bowtie2
+    params: "-k 1000 -D 15 -R 2 -L 22 -i S,1,1.15 --np 1 --mp '1,1' --rdg '0,1' --rfg '0,1' --score-min 'L,0,-0.1' --no-unal"
+
+bam_filter:
+  reassign:
+    activate: false
+    params: "--iters 0 --min-read-ani 94 --min-read-count 3"
+
+  filter:
+    activate: false
+    params: "--min-read-ani 94 --min-read-count 3 --min-expected-breadth-ratio 0.5 --min-normalized-entropy auto --min-normalized-gini auto --min-breadth 0 --min-avg-read-ani 90 --min-coverage-evenness 0.4 --min-coverage-mean 0 --include-low-detection"
+
+  lca:
+    activate: false
+    params: "--lca-rank genus"
+
+taxonomy:
+  nodes: /projects/caeg/data/db/aeDNA-refs/resources/20230825/ncbi/taxonomy/nodes.dmp
+  names: /projects/caeg/data/db/aeDNA-refs/resources/20230825/ncbi/taxonomy/names.dmp
+  acc2taxid: /projects/caeg/data/db/mikkels/combined_accession2taxid_20221112.gz
+
+metadmg:
+  damage:
+    params: "--min_length 30 --print_length 30"
+
+  lca:
+    params: "--fix_ncbi 0 --sim_score_low 0.95 --mmm_length 30"
+
+  dfit:
+    params: "--nopt 10 --nbootstrap 20 --showfits 2"
+
+report:
+  multiqc: "--verbose"

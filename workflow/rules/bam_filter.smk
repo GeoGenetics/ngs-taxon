@@ -9,7 +9,6 @@ rule align_reassign:
         unpack(lambda w: get_merge_aln(w, "align_reassign")),
     output:
         bam = temp("temp/aligns/reassign/{sample}_{library}_{read_type_map}.bam"),
-        idx = temp("temp/aligns/reassign/{sample}_{library}_{read_type_map}.bam.csi"),
     log:
         "logs/aligns/reassign/{sample}_{library}_{read_type_map}.log"
     benchmark:
@@ -27,7 +26,7 @@ rule align_reassign:
 #        tmpdir = "temp/large_temp",
     shell:
 #        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
-        "filterBAM reassign --threads {threads} --sort-memory 10G --max-memory {resources.mem_mb}M --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"
+        "filterBAM reassign --threads {threads} --max-memory {resources.mem_mb}M --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"
 
 
 
@@ -36,7 +35,6 @@ rule align_filter:
         unpack(lambda w: get_merge_aln(w, "align_filter")),
     output:
         bam = temp("temp/aligns/filter/{sample}_{library}_{read_type_map}.bam"),
-        idx = temp("temp/aligns/filter/{sample}_{library}_{read_type_map}.bam.csi"),
         read_len = "stats/aligns/filter/{sample}_{library}_{read_type_map}.read-length-freqs.json",
         read_hits = "stats/aligns/filter/{sample}_{library}_{read_type_map}.read-hits-count.tsv.gz",
         stats = "stats/aligns/filter/{sample}_{library}_{read_type_map}.stats.tsv.gz",
@@ -57,7 +55,7 @@ rule align_filter:
 #        tmpdir = "temp/large_temp",
     shell:
 #        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
-        "filterBAM filter --threads {threads} --sort-memory 10G --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} >{log} 2>&1"
+        "filterBAM filter --threads {threads} --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} >{log} 2>&1"
 
 
 

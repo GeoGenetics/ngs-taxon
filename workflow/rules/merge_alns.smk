@@ -4,11 +4,11 @@ def get_merge_aln(wildcards, rule):
     fall_through = False
     if rule == "sort_query" or fall_through:
         if is_activated("bam_filter/filter"):
-            return {"aln": rules.align_filter.output.bam, "idx": rules.align_filter.output.idx}
+            return {"aln": rules.align_filter.output.bam}
         fall_through = True
     if rule == "align_filter" or fall_through:
         if is_activated("bam_filter/reassign"):
-            return {"aln": rules.align_reassign.output.bam, "idx": rules.align_reassign.output.idx}
+            return {"aln": rules.align_reassign.output.bam}
         fall_through = True
     if rule == "align_reassign" or fall_through:
         if is_activated("bam_filter/filter") or is_activated("bam_filter/reassign"):
@@ -52,12 +52,12 @@ use rule shard_sort_coord as align_sort_coord with:
     input:
         rules.align_merge.output.bam,
     output:
-        bam = temp("temp/align/sort_coord/{sample}_{library}_{read_type_map}.bam"),
-        idx = temp("temp/align/sort_coord/{sample}_{library}_{read_type_map}.bam.csi"),
+        bam = temp("temp/aligns/sort_coord/{sample}_{library}_{read_type_map}.bam"),
+        idx = temp("temp/aligns/sort_coord/{sample}_{library}_{read_type_map}.bam.csi"),
     log:
-        "logs/align/sort_coord/{sample}_{library}_{read_type_map}.log"
+        "logs/aligns/sort_coord/{sample}_{library}_{read_type_map}.log"
     benchmark:
-        "benchmarks/align/sort_coord/{sample}_{library}_{read_type_map}.jsonl"
+        "benchmarks/aligns/sort_coord/{sample}_{library}_{read_type_map}.jsonl"
     resources:
         mem = lambda w, attempt, threads, input: f"{15 * threads * attempt} GiB",
         runtime = lambda w, attempt, input: f"{np.clip(0.0001 * input.size_mb + 1, 0.1, 20) * attempt} h",

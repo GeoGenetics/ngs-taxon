@@ -47,7 +47,7 @@ metadmg:
     params: "--min_length 30 --print_length 30"
 
   lca:
-    params: "--fix_ncbi 0 --sim_score_low 0.95 --mmm_length 30"
+    params: "--fix_ncbi 0 --sim_score_low 0.95 --how_many 30"
 
   dfit:
     params: "--nopt 10 --nbootstrap 20 --showfits 2"

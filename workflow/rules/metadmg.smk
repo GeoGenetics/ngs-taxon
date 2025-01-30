@@ -7,11 +7,11 @@ use rule shard_sort_coord as align_sort_query with:
     input:
         unpack(lambda w: get_merge_aln(w, "sort_query")),
     output:
-        bam = "results/align/sort_query/{sample}_{library}_{read_type_map}.bam",
+        bam = "results/aligns/sort_query/{sample}_{library}_{read_type_map}.bam",
     log:
-        "logs/align/sort_query/{sample}_{library}_{read_type_map}.log"
+        "logs/aligns/sort_query/{sample}_{library}_{read_type_map}.log"
     benchmark:
-        "benchmarks/align/sort_query/{sample}_{library}_{read_type_map}.jsonl"
+        "benchmarks/aligns/sort_query/{sample}_{library}_{read_type_map}.jsonl"
     params:
         extra = "-N",
         mem_overhead_factor=0.4,

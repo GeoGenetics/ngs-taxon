@@ -21,7 +21,7 @@ include: "rules/metadmg.smk"
 rule multiqc:
     input:
         ### Map
-        expand_pandas(expand_pandas(getattr(rules, config["align"]["map"]["tool"]).log, ref_sets, allow_missing=True), units),
+        expand_pandas(expand_pandas("logs/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log", ref_sets, allow_missing=True), units),
         ### Samtools Stats
         expand(expand(rules.align_stats.output.txt, zip, **ref_sets.to_dict("list"), allow_missing=True), zip, **units.to_dict("list")),
         ### metaDMG dfit

@@ -17,36 +17,31 @@ properties:
       "^.+$":
         type: object
         properties:
-          bt2l:
-            type: boolean
-            default: yes
           n_shards:
             type: integer
             minimum: 1
           path:
             type: string
+          map:
+            type: object
+            properties:
+              tool:
+                type: string
+                enum: ["bowtie2", "bwa_aln"]
+              params:
+                type: string
+                pattern: "^((?!\b--?(threads|mm|t|time|q|U|1|2|interleaved|x|b|S|rd-id|rg|r)[ =]).)*$"
+              bt2l:
+                type: boolean
+                default: yes
+            required:
+              - tool
+              - params
         required:
           - n_shards
           - path
+          - map
     additionalProperties: false
-
-  align:
-    type: object
-    properties:
-      map:
-        type: object
-        properties:
-          tool:
-            type: string
-            enum: ["bowtie2", "bwa_aln"]
-          params:
-            type: string
-            pattern: "^((?!\b--?(threads|mm|t|time|q|U|1|2|interleaved|x|b|S|rd-id|rg|r)[ =]).)*$"
-        required:
-          - tool
-          - params
-    required:
-      - map
 
   bam_filter:
     type: object
@@ -148,7 +143,6 @@ required:
   - samples
   - units
   - ref
-  - align
   - taxonomy
   - metadmg
   - report

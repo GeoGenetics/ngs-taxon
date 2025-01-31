@@ -8,6 +8,7 @@ refs = pd.DataFrame.from_dict(config["ref"]).transpose()
 ref_sets = refs.reset_index().rename(columns={"index":"ref", "n_shards":"tot_shards"})
 ref_sets["read_type_map"] = "collapsed"
 ref_sets["n_shard"] = [range(1, tot+1) for tot in ref_sets["tot_shards"]]
+ref_sets = ref_sets.join(pd.json_normalize(ref_sets["map"])).drop("map", axis="columns")
 
 wildcard_constraints:
   read_type_map="|".join(["pe", "se", "singleton", "collapsed"])
@@ -45,7 +46,7 @@ def get_data(wildcards):
 
 
 def get_index(wildcards):
-    if config["ref"][wildcards.ref].get("bt2l", True):
+    if config["ref"][wildcards.ref]["map"].get("bt2l", True):
         return multiext(config["ref"][wildcards.ref]["path"], ".1.bt2l", ".2.bt2l", ".3.bt2l", ".4.bt2l", ".rev.1.bt2l", ".rev.2.bt2l")
     else:
         return multiext(config["ref"][wildcards.ref]["path"], ".1.bt2", ".2.bt2", ".3.bt2", ".4.bt2", ".rev.1.bt2", ".rev.2.bt2")
@@ -61,7 +62,7 @@ rule bowtie2:
     benchmark:
         "benchmarks/shards/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
-        extra = lambda w: f"""--time --rg-id '{"' --rg '".join(get_read_group(w))}' --rg 'PG:bowtie2' """ + config["align"]["map"]["params"],
+        extra = lambda w: f"""--time --rg-id '{"' --rg '".join(get_read_group(w))}' --rg 'PG:bowtie2' """ + config["ref"][w.ref]["map"]["params"],
     threads: 20
     resources:
         mem = lambda w, attempt, input: "{} GiB".format((0.7 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50) * attempt),
@@ -82,7 +83,7 @@ rule bwa_aln:
     benchmark:
         "benchmarks/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
-        extra = lambda w: f"""-r '@RG\\tID:{"\\t".join(get_read_group(w))}\\tPG:bwa_aln' """ + config["align"]["map"]["params"],
+        extra = lambda w: f"""-r '@RG\\tID:{"\\t".join(get_read_group(w))}\\tPG:bwa_aln' """ + config["ref"][w.ref]["map"]["params"],
     threads: 10
     resources:
         mem = lambda w, attempt, input: "{} GiB".format((2 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50) * attempt),
@@ -100,11 +101,11 @@ rule bwa_samxe:
     output:
         bam = temp("temp/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"),
     log:
-        "logs/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log"
+        "logs/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.samxe.log"
     benchmark:
-        "benchmarks/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+        "benchmarks/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.samxe.jsonl"
     params:
-        extra = lambda w: f"""-r '@RG\tID:{"\t".join(get_read_group(w))}' """ + config["align"]["map"]["params"],
+        extra = lambda w: f"""-r '@RG\tID:{"\t".join(get_read_group(w))}' """ + config["ref"][w.ref]["map"]["params"],
         sort = "samtools",
     threads: 1
     resources:
@@ -117,7 +118,7 @@ rule bwa_samxe:
 
 rule shard_clean_header:
     input:
-        bam = expand("temp/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam", tool=config["align"]["map"]["tool"], allow_missing=True),
+        bam = lambda w: expand("temp/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam", tool=config["ref"][w.ref]["map"]["tool"], allow_missing=True),
     output:
         bam = temp("temp/shards/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"),
     log:

@@ -14,15 +14,16 @@ ref:
   refseq_invertebrate:
     n_shards: 3
     path: "/projects/caeg/data/db/mikkels/refseq_30Aug2022/invertebrate/invert.{n_shard}"
+    map: &map_bowtie2_bt2l
+      tool: bowtie2
+      params: "-k 1000 -D 15 -R 2 -L 22 -i S,1,1.15 --np 1 --mp '1,1' --rdg '0,1' --rfg '0,1' --score-min 'L,0,-0.1' --no-unal"
+      bt2l: True
   refseq_mitochondrion:
-    bt2l: False
     n_shards: 1
     path: "/projects/caeg/data/db/mikkels/refseq_30Aug2022/mitochondrion/mitochondrion.fa"
-
-align:
-  map:
-    tool: bowtie2
-    params: "-k 1000 -D 15 -R 2 -L 22 -i S,1,1.15 --np 1 --mp '1,1' --rdg '0,1' --rfg '0,1' --score-min 'L,0,-0.1' --no-unal"
+    map:
+      <<: *map_bowtie2_bt2l
+      bt2l: False
 
 bam_filter:
   reassign:

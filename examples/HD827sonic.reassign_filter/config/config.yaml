@@ -11,18 +11,19 @@ units: config/units.tsv
 ### ALIGN ###
 #############
 ref:
-  refseq_invertebrate:
-    n_shards: 3
-    path: "/projects/caeg/data/db/mikkels/refseq_30Aug2022/invertebrate/invert.{n_shard}"
-    map: &map_bowtie2_bt2l
+  wgs_eukaryota:
+    n_shards: 2
+    path: "/projects/caeg/data/db/ncbi/20250205/data/wgs_eukaryota.{n_shard}.fas.gz"
+    map:
       tool: bowtie2
-      params: "-k 1000 -D 15 -R 2 -L 22 -i S,1,1.15 --np 1 --mp '1,1' --rdg '0,1' --rfg '0,1' --score-min 'L,0,-0.1' --no-unal"
+      params: "-k 100 -L 22 -i S,1,1.15 --mp 1,1 --rdg 0,1 --rfg 0,1 --score-min L,0,-0.1 --no-unal"
       bt2l: True
   refseq_mitochondrion:
     n_shards: 1
-    path: "/projects/caeg/data/db/mikkels/refseq_30Aug2022/mitochondrion/mitochondrion.fa"
+    path: "/projects/caeg/data/db/ncbi/20250205/data/refseq_mitochondrion.genomic.fas.gz"
     map:
-      <<: *map_bowtie2_bt2l
+      tool: bowtie2
+      params: "-k 50 -L 22 -i S,1,1.15 --mp 1,1 --rdg 0,1 --rfg 0,1 --score-min L,0,-0.1 --no-unal"
       bt2l: False
 
 bam_filter:
@@ -39,16 +40,16 @@ bam_filter:
     params: "--lca-rank genus"
 
 taxonomy:
-  nodes: /projects/caeg/data/db/aeDNA-refs/resources/20230825/ncbi/taxonomy/nodes.dmp
-  names: /projects/caeg/data/db/aeDNA-refs/resources/20230825/ncbi/taxonomy/names.dmp
+  nodes: /projects/caeg/data/db/taxonomy/20250210/nodes.dmp
+  names: /projects/caeg/data/db/taxonomy/20250210/names.dmp
   acc2taxid: /projects/caeg/data/db/mikkels/combined_accession2taxid_20221112.gz
 
 metadmg:
   damage:
-    params: "--min_length 30 --print_length 30"
+    params: "--min_length 30 --print_length 15"
 
   lca:
-    params: "--fix_ncbi 0 --sim_score_low 0.95 --how_many 30"
+    params: "--fix_ncbi 0 --sim_score_low 0.95 --how_many 15"
 
   dfit:
     params: "--nopt 10 --nbootstrap 20 --showfits 2"

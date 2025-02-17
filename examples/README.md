@@ -1,4 +1,4 @@
-# HD827sonic - two samples (one with two libraries)
+# HD827sonic - two samples (no reassign and no filter)
 <details><summary>Rulegraph</summary>
 
 ![rulegraph.svg](HD827sonic.none/rulegraph.svg)

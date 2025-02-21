@@ -37,10 +37,13 @@ properties:
             required:
               - tool
               - params
+          acc2taxid:
+            type: string
         required:
           - n_shards
           - path
           - map
+          - acc2taxid
     additionalProperties: false
 
   bam_filter:
@@ -91,12 +94,9 @@ properties:
         type: string
       nodes:
         type: string
-      acc2taxid:
-        type: string
     required:
       - names
       - nodes
-      - acc2taxid
 
   metadmg:
     type: object

@@ -65,7 +65,7 @@ rule align_lca:
         stats = rules.align_filter.output.stats_filt,
         nodes = config["taxonomy"]["nodes"],
         names = config["taxonomy"]["names"],
-        acc2tax = config["taxonomy"]["acc2taxid"],
+        acc2tax = [config["ref"][ref]["acc2taxid"] for ref in config["ref"]],
     output:
         stats = temp("temp/aligns/bam_filter_lca/{sample}_{library}_{read_type_map}.summary"),
     log:
@@ -84,4 +84,4 @@ rule align_lca:
 #        tmpdir = "temp/large_temp",
     shell:
 #        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
-        "filterBAM lca --threads {threads} --sort-memory 10G --bam {input.aln} --stats {input.stats} --names {input.names} --nodes {input.nodes} --acc2taxid {input.acc2tax} {params.extra} --lca-summary {output.stats} >{log} 2>&1"
+        "filterBAM lca --threads {threads} --sort-memory 10G --bam {input.aln} --stats {input.stats} --names {input.names} --nodes {input.nodes} --acc2taxid <(cat {input.acc2tax}) {params.extra} --lca-summary {output.stats} >{log} 2>&1"

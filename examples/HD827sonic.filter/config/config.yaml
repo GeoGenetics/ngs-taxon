@@ -18,6 +18,7 @@ ref:
       tool: bowtie2
       params: "-k 100 -L 22 -i S,1,1.15 --mp 1,1 --rdg 0,1 --rfg 0,1 --score-min L,0,-0.1 --no-unal"
       bt2l: True
+    acc2taxid: /projects/caeg/data/db/ncbi/20250205/wgs_eukaryota.acc2taxid.gz
   refseq_mitochondrion:
     n_shards: 1
     path: "/projects/caeg/data/db/ncbi/20250205/data/refseq_mitochondrion.genomic.fas.gz"
@@ -25,6 +26,7 @@ ref:
       tool: bowtie2
       params: "-k 50 -L 22 -i S,1,1.15 --mp 1,1 --rdg 0,1 --rfg 0,1 --score-min L,0,-0.1 --no-unal"
       bt2l: False
+    acc2taxid: /projects/caeg/data/db/ncbi/20250205/refseq_mitochondrion.genomic.acc2taxid.gz
 
 bam_filter:
   reassign:
@@ -42,7 +44,6 @@ bam_filter:
 taxonomy:
   nodes: /projects/caeg/data/db/taxonomy/20250210/nodes.dmp
   names: /projects/caeg/data/db/taxonomy/20250210/names.dmp
-  acc2taxid: /projects/caeg/data/db/mikkels/combined_accession2taxid_20221112.gz
 
 metadmg:
   damage:

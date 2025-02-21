@@ -54,7 +54,7 @@ rule metadmg_lca:
         aln = rules.align_sort_query.output.bam,
         nodes = config["taxonomy"]["nodes"],
         names = config["taxonomy"]["names"],
-        acc2tax = config["taxonomy"]["acc2taxid"],
+        acc2tax = [config["ref"][ref]["acc2taxid"] for ref in config["ref"]],
     output:
         dmg = "results/metadmg/lca/{sample}_{library}_{read_type_map}.bdamage.gz",
         lca = "results/metadmg/lca/{sample}_{library}_{read_type_map}.lca.gz",
@@ -73,7 +73,7 @@ rule metadmg_lca:
         runtime = lambda w, attempt, input: f"{1e-4 * input.size_mb * attempt} h",
     shell:
         """
-        /projects/caeg/apps/metaDMG-cpp/metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax {input.acc2tax} {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1
+        /projects/caeg/apps/metaDMG-cpp/metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2tax}) {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1
         mv {params.out_prefix}.stat.gz {output.stats};
         mv {params.out_prefix}.rlens.gz {output.rlen};
         """

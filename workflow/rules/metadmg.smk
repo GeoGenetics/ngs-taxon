@@ -54,7 +54,7 @@ rule metadmg_lca:
         aln = rules.align_sort_query.output.bam,
         nodes = config["taxonomy"]["nodes"],
         names = config["taxonomy"]["names"],
-        acc2tax = [config["ref"][ref]["acc2taxid"] for ref in config["ref"]],
+        acc2tax = [config["ref"][ref]["acc2taxid"] for ref in config["ref"] if config["ref"][ref]["acc2taxid"]],
     output:
         dmg = "results/metadmg/lca/{sample}_{library}_{read_type_map}.bdamage.gz",
         lca = "results/metadmg/lca/{sample}_{library}_{read_type_map}.lca.gz",

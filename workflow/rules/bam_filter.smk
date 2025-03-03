@@ -65,7 +65,7 @@ rule align_lca:
         stats = rules.align_filter.output.stats_filt,
         nodes = config["taxonomy"]["nodes"],
         names = config["taxonomy"]["names"],
-        acc2tax = [config["ref"][ref]["acc2taxid"] for ref in config["ref"]],
+        acc2tax = [config["ref"][ref]["acc2taxid"] for ref in config["ref"] if config["ref"][ref]["acc2taxid"]],
     output:
         stats = temp("temp/aligns/bam_filter_lca/{sample}_{library}_{read_type_map}.summary"),
     log:

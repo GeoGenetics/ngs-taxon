@@ -83,7 +83,7 @@ rule bwa_aln:
     benchmark:
         "benchmarks/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
-        extra = lambda w: f"""-r '@RG\\tID:{"\\t".join(get_read_group(w))}\\tPG:bwa_aln' """ + config["ref"][w.ref]["map"]["params"],
+        extra = lambda w: config["ref"][w.ref]["map"]["params"],
     threads: 10
     resources:
         mem = lambda w, attempt, input: "{} GiB".format((2 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50) * attempt),
@@ -105,7 +105,7 @@ rule bwa_samxe:
     benchmark:
         "benchmarks/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.samxe.jsonl"
     params:
-        extra = lambda w: f"""-r '@RG\tID:{"\t".join(get_read_group(w))}' """ + config["ref"][w.ref]["map"]["params"],
+        extra = lambda w: f"""-r '@RG\tID:{"\\t".join(get_read_group(w))}\\tPG:bwa_aln' """,
         sort = "samtools",
     threads: 1
     resources:

@@ -46,6 +46,14 @@ properties:
           - acc2taxid
     additionalProperties: false
 
+  saturated_reads:
+    type: object
+    properties:
+      n_alns:
+        type: integer
+    required:
+      - n_alns
+
   bam_filter:
     type: object
     properties:
@@ -143,6 +151,7 @@ required:
   - samples
   - units
   - ref
+  - saturated_reads
   - taxonomy
   - metadmg
   - report

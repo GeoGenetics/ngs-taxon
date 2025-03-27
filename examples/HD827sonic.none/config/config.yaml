@@ -28,6 +28,9 @@ ref:
       bt2l: False
     acc2taxid: /datasets/caeg_dataset/references/ncbi/20250205/refseq_mitochondrion.genomic.acc2taxid.gz
 
+saturated_reads:
+  n_alns: 100
+
 bam_filter:
   reassign:
     activate: false

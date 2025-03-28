@@ -1,46 +1,47 @@
-
 #############
 ### RULES ###
 #############
+
 
 use rule shard_sort_coord as align_sort_query with:
     input:
         unpack(lambda w: get_merge_aln(w, "sort_query")),
     output:
-        bam = "results/aligns/sort_query/{sample}_{library}_{read_type_map}.bam",
+        bam="results/aligns/sort_query/{sample}_{library}_{read_type_map}.bam",
     log:
-        "logs/aligns/sort_query/{sample}_{library}_{read_type_map}.log"
+        "logs/aligns/sort_query/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "benchmarks/aligns/sort_query/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        extra = "-N",
+        extra="-N",
         mem_overhead_factor=0.4,
     resources:
-        mem = lambda w, attempt, threads, input: f"{15 * threads * attempt} GiB",
-        runtime = lambda w, attempt, input: f"{np.clip(0.0001 * input.size_mb + 1, 0.1, 20) * attempt} h",
-
+        mem=lambda w, attempt, threads, input: f"{15* threads* attempt} GiB",
+        runtime=lambda w, attempt, input: f"{np.clip(0.0001* input.size_mb+1,0.1,20)* attempt} h",
 
 
 rule metadmg_damage:
     input:
-        aln = rules.align_sort_query.output.bam,
-#        unpack(lambda w: get_merge_aln(w, "metadmg_damage")),
+        aln=rules.align_sort_query.output.bam,
+    #        unpack(lambda w: get_merge_aln(w, "metadmg_damage")),
     output:
-        dmg = "results/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
-        res = "results/metadmg/damage/{sample}_{library}_{read_type_map}.res.gz",
-        stats = "stats/metadmg/damage/{sample}_{library}_{read_type_map}.stat.gz",
-        rlen = "stats/metadmg/damage/{sample}_{library}_{read_type_map}.rlens.gz",
+        dmg="results/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
+        res="results/metadmg/damage/{sample}_{library}_{read_type_map}.res.gz",
+        stats="stats/metadmg/damage/{sample}_{library}_{read_type_map}.stat.gz",
+        rlen="stats/metadmg/damage/{sample}_{library}_{read_type_map}.rlens.gz",
     log:
-        "logs/metadmg/damage/{sample}_{library}_{read_type_map}.log"
+        "logs/metadmg/damage/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "benchmarks/metadmg/damage/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        out_prefix = lambda w, output: str(Path(output.dmg.removesuffix(".gz")).with_suffix("")),
-        extra = config["metadmg"]["damage"]["params"],
+        out_prefix=lambda w, output: str(
+            Path(output.dmg.removesuffix(".gz")).with_suffix("")
+        ),
+        extra=config["metadmg"]["damage"]["params"],
     threads: 4
     resources:
-        mem = lambda w, attempt: f"{10 * attempt} GiB",
-        runtime = lambda w, attempt: f"{2 * attempt} d",
+        mem=lambda w, attempt: f"{10* attempt} GiB",
+        runtime=lambda w, attempt: f"{2* attempt} d",
     shell:
         """
         /projects/caeg/apps/metaDMG-cpp/metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.aln} > {log} 2>&1;
@@ -51,26 +52,32 @@ rule metadmg_damage:
 
 rule metadmg_lca:
     input:
-        aln = rules.align_sort_query.output.bam,
-        nodes = config["taxonomy"]["nodes"],
-        names = config["taxonomy"]["names"],
-        acc2tax = [config["ref"][ref]["acc2taxid"] for ref in config["ref"] if config["ref"][ref]["acc2taxid"]],
+        aln=rules.align_sort_query.output.bam,
+        nodes=config["taxonomy"]["nodes"],
+        names=config["taxonomy"]["names"],
+        acc2tax=[
+            config["ref"][ref]["acc2taxid"]
+            for ref in config["ref"]
+            if config["ref"][ref]["acc2taxid"]
+        ],
     output:
-        dmg = "results/metadmg/lca/{sample}_{library}_{read_type_map}.bdamage.gz",
-        lca = "results/metadmg/lca/{sample}_{library}_{read_type_map}.lca.gz",
-        stats = "stats/metadmg/lca/{sample}_{library}_{read_type_map}.stat.gz",
-        rlen = "stats/metadmg/lca/{sample}_{library}_{read_type_map}.rlens.gz",
+        dmg="results/metadmg/lca/{sample}_{library}_{read_type_map}.bdamage.gz",
+        lca="results/metadmg/lca/{sample}_{library}_{read_type_map}.lca.gz",
+        stats="stats/metadmg/lca/{sample}_{library}_{read_type_map}.stat.gz",
+        rlen="stats/metadmg/lca/{sample}_{library}_{read_type_map}.rlens.gz",
     log:
-        "logs/metadmg/lca/{sample}_{library}_{read_type_map}.log"
+        "logs/metadmg/lca/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "benchmarks/metadmg/lca/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        out_prefix = lambda w, output: str(Path(output.dmg.removesuffix(".gz")).with_suffix("")),
-        extra = config["metadmg"]["lca"]["params"],
+        out_prefix=lambda w, output: str(
+            Path(output.dmg.removesuffix(".gz")).with_suffix("")
+        ),
+        extra=config["metadmg"]["lca"]["params"],
     threads: 4
     resources:
-        mem = lambda w, attempt, input: f"{30 * attempt} GiB",
-        runtime = lambda w, attempt, input: f"{1e-4 * input.size_mb * attempt} h",
+        mem=lambda w, attempt, input: f"{30* attempt} GiB",
+        runtime=lambda w, attempt, input: f"{1e-4* input.size_mb* attempt} h",
     shell:
         """
         /projects/caeg/apps/metaDMG-cpp/metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2tax}) {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1
@@ -79,78 +86,86 @@ rule metadmg_lca:
         """
 
 
-
 def _get_library_type(wildcards):
-    """ Get library typ (ss or ds) """
-    return units.loc[(wildcards.sample, wildcards.library, slice(None)), "library_type"].drop_duplicates().item()
+    """Get library typ (ss or ds)"""
+    return (
+        units.loc[(wildcards.sample, wildcards.library, slice(None)), "library_type"]
+        .drop_duplicates()
+        .item()
+    )
+
 
 rule metadmg_dfit:
     input:
-        dmg = rules.metadmg_lca.output.dmg,
-        nodes = config["taxonomy"]["nodes"],
-        names = config["taxonomy"]["names"],
+        dmg=rules.metadmg_lca.output.dmg,
+        nodes=config["taxonomy"]["nodes"],
+        names=config["taxonomy"]["names"],
     output:
-        dfit = "results/metadmg/dfit/{sample}_{library}_{read_type_map}.dfit.gz",
-        boot = "results/metadmg/dfit/{sample}_{library}_{read_type_map}.boot.stat.gz",
+        dfit="results/metadmg/dfit/{sample}_{library}_{read_type_map}.dfit.gz",
+        boot="results/metadmg/dfit/{sample}_{library}_{read_type_map}.boot.stat.gz",
     log:
-        "logs/metadmg/dfit/{sample}_{library}_{read_type_map}.log"
+        "logs/metadmg/dfit/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "benchmarks/metadmg/dfit/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        out_prefix = lambda w, output: str(Path(output.dfit.removesuffix(".gz")).with_suffix("")),
-        extra = lambda w: f"--doboot 1 --lib {_get_library_type(w)} " + config["metadmg"]["dfit"]["params"],
+        out_prefix=lambda w, output: str(
+            Path(output.dfit.removesuffix(".gz")).with_suffix("")
+        ),
+        extra=lambda w: f"--doboot 1 --lib {_get_library_type(w)} "
+        + config["metadmg"]["dfit"]["params"],
     threads: 4
     resources:
-        mem = lambda w, attempt: f"{25 * attempt} GiB",
-        runtime = lambda w, attempt, input: f"{7 * attempt} h",
+        mem=lambda w, attempt: f"{25* attempt} GiB",
+        runtime=lambda w, attempt, input: f"{7* attempt} h",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed $RANDOM --out_prefix {params.out_prefix} > {log} 2>&1"
 
 
-
 rule metadmg_aggregate:
     input:
-        dmg = rules.metadmg_lca.output.dmg,
-        lca = rules.metadmg_lca.output.stats,
-        dfit = rules.metadmg_dfit.output.dfit,
-        nodes = config["taxonomy"]["nodes"],
-        names = config["taxonomy"]["names"],
+        dmg=rules.metadmg_lca.output.dmg,
+        lca=rules.metadmg_lca.output.stats,
+        dfit=rules.metadmg_dfit.output.dfit,
+        nodes=config["taxonomy"]["nodes"],
+        names=config["taxonomy"]["names"],
     output:
-        stats = "results/metadmg/aggregate/{sample}_{library}_{read_type_map}.stat.gz",
+        stats="results/metadmg/aggregate/{sample}_{library}_{read_type_map}.stat.gz",
     log:
-        "logs/metadmg/aggregate/{sample}_{library}_{read_type_map}.log"
+        "logs/metadmg/aggregate/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "benchmarks/metadmg/aggregate/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        out_prefix = lambda w, output: str(Path(output.stats.removesuffix(".gz")).with_suffix("")),
+        out_prefix=lambda w, output: str(
+            Path(output.stats.removesuffix(".gz")).with_suffix("")
+        ),
     threads: 1
     resources:
-        mem = lambda w, attempt: f"{25 * attempt} GiB",
-        runtime = lambda w, attempt: f"{15 * attempt} m",
+        mem=lambda w, attempt: f"{25* attempt} GiB",
+        runtime=lambda w, attempt: f"{15* attempt} m",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp aggregate {input.dmg} --nodes {input.nodes} --names {input.names} --lcastat {input.lca} --dfit {input.dfit} --out_prefix {params.out_prefix} > {log} 2>&1"
-
 
 
 ##########
 ### QC ###
 ##########
 
+
 # Some stats are only valid on coordinate-sorted BAM files (https://github.com/samtools/samtools/issues/2177):
 # - Coverage distribution.
 # - GC-depth
 rule align_stats:
     input:
-        aln = rules.align_sort_query.output.bam,
+        aln=rules.align_sort_query.output.bam,
     output:
-        txt = "stats/aligns/samtools_stats/{sample}_{library}_{read_type_map}.txt",
+        txt="stats/aligns/samtools_stats/{sample}_{library}_{read_type_map}.txt",
     log:
         "logs/aligns/samtools_stats/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/aligns/samtools_stats/{sample}_{library}_{read_type_map}.jsonl",
+        "benchmarks/aligns/samtools_stats/{sample}_{library}_{read_type_map}.jsonl"
     threads: 4
     resources:
-        mem = lambda w, attempt: f"{10 * attempt} GiB",
-        runtime = lambda w, attempt: f"{10 * attempt} h",
+        mem=lambda w, attempt: f"{10* attempt} GiB",
+        runtime=lambda w, attempt: f"{10* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/stats"

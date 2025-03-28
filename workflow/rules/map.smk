@@ -1,32 +1,42 @@
-
 #################
 ### FUNCTIONS ###
 #################
 
 
 refs = pd.DataFrame.from_dict(config["ref"]).transpose()
-ref_sets = refs.reset_index().rename(columns={"index":"ref", "n_shards":"tot_shards"})
+ref_sets = refs.reset_index().rename(columns={"index": "ref", "n_shards": "tot_shards"})
 ref_sets["read_type_map"] = "collapsed"
-ref_sets["n_shard"] = [range(1, tot+1) for tot in ref_sets["tot_shards"]]
+ref_sets["n_shard"] = [range(1, tot + 1) for tot in ref_sets["tot_shards"]]
 ref_sets = ref_sets.join(pd.json_normalize(ref_sets["map"])).drop("map", axis="columns")
 
+
 wildcard_constraints:
-  read_type_map="|".join(["pe", "se", "singleton", "collapsed"])
+    read_type_map="|".join(["pe", "se", "singleton", "collapsed"]),
 
 
 # https://gatk.broadinstitute.org/hc/en-us/articles/360035890671-Read-groups
 def get_read_group(wildcards):
     """Denote sample name and platform in read group."""
 
-    extra_info = {"center": "CN",
-                  "date": "DT",
-                  "platform": "PL",
-                  "platform_model": "PM",
-                 }
+    extra_info = {
+        "center": "CN",
+        "date": "DT",
+        "platform": "PL",
+        "platform_model": "PM",
+    }
 
     # Get flowcell
-    flowcell = units.loc[(wildcards.sample, wildcards.library, slice(None)), "flowcell"].drop_duplicates().item()
-    rg_info = [f"{wildcards.sample}_{wildcards.library}_{flowcell}_{wildcards.ref}{wildcards.n_shard}o{wildcards.tot_shards}", f"SM:{wildcards.sample}", f"LB:{wildcards.library}", f"PU:{flowcell}"]
+    flowcell = (
+        units.loc[(wildcards.sample, wildcards.library, slice(None)), "flowcell"]
+        .drop_duplicates()
+        .item()
+    )
+    rg_info = [
+        f"{wildcards.sample}_{wildcards.library}_{flowcell}_{wildcards.ref}{wildcards.n_shard}o{wildcards.tot_shards}",
+        f"SM:{wildcards.sample}",
+        f"LB:{wildcards.library}",
+        f"PU:{flowcell}",
+    ]
     # Add extra info to RG
     for key, abv in extra_info.items():
         value = units.loc[(wildcards.sample, wildcards.library, slice(None))].get(key)
@@ -36,99 +46,143 @@ def get_read_group(wildcards):
     return rg_info
 
 
-
 #############
 ### RULES ###
 #############
 
+
 def get_data(wildcards):
-    return expand("results/reads/low_complexity/{sample}_{library}_{read_type_trim}.fastq.gz", read_type_trim = get_read_type_trim(wildcards.read_type_map), allow_missing = True)
+    return expand(
+        "results/reads/low_complexity/{sample}_{library}_{read_type_trim}.fastq.gz",
+        read_type_trim=get_read_type_trim(wildcards.read_type_map),
+        allow_missing=True,
+    )
 
 
 def get_index(wildcards):
     if config["ref"][wildcards.ref]["map"].get("bt2l", True):
-        return multiext(config["ref"][wildcards.ref]["path"], ".1.bt2l", ".2.bt2l", ".3.bt2l", ".4.bt2l", ".rev.1.bt2l", ".rev.2.bt2l")
+        return multiext(
+            config["ref"][wildcards.ref]["path"],
+            ".1.bt2l",
+            ".2.bt2l",
+            ".3.bt2l",
+            ".4.bt2l",
+            ".rev.1.bt2l",
+            ".rev.2.bt2l",
+        )
     else:
-        return multiext(config["ref"][wildcards.ref]["path"], ".1.bt2", ".2.bt2", ".3.bt2", ".4.bt2", ".rev.1.bt2", ".rev.2.bt2")
+        return multiext(
+            config["ref"][wildcards.ref]["path"],
+            ".1.bt2",
+            ".2.bt2",
+            ".3.bt2",
+            ".4.bt2",
+            ".rev.1.bt2",
+            ".rev.2.bt2",
+        )
+
 
 rule bowtie2:
     input:
-        sample = get_data,
-        idx = get_index,
+        sample=get_data,
+        idx=get_index,
     output:
-        bam = temp("temp/shards/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"),
+        bam=temp(
+            "temp/shards/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+        ),
     log:
-        "logs/shards/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log"
+        "logs/shards/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
         "benchmarks/shards/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
-        extra = lambda w: f"""--time --rg-id '{"' --rg '".join(get_read_group(w))}' --rg 'PG:bowtie2' """ + config["ref"][w.ref]["map"]["params"],
+        extra=lambda w: f"""--time --rg-id '{"' --rg '".join(get_read_group(w))}' --rg 'PG:bowtie2' """
+        + config["ref"][w.ref]["map"]["params"],
     threads: 20
     resources:
-        mem = lambda w, attempt, input: "{} GiB".format((0.7 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50) * attempt),
-        runtime = lambda w, attempt: f"{10 * attempt} h",
-        slurm_extra = "--nice=2000",
+        mem=lambda w, attempt, input: "{} GiB".format(
+            (0.7 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50)
+            * attempt
+        ),
+        runtime=lambda w, attempt: f"{10* attempt} h",
+        slurm_extra="--nice=2000",
     wrapper:
         f"{wrapper_ver}/bio/bowtie2/align"
 
 
 rule bwa_aln:
     input:
-        fastq = get_data,
-        idx = lambda w: multiext(config["ref"][w.ref]["path"], ".amb", ".ann", ".bwt", ".pac", ".sa"),
+        fastq=get_data,
+        idx=lambda w: multiext(
+            config["ref"][w.ref]["path"], ".amb", ".ann", ".bwt", ".pac", ".sa"
+        ),
     output:
-        sai = temp("temp/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.sai")
+        sai=temp(
+            "temp/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.sai"
+        ),
     log:
-        "logs/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log"
+        "logs/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
         "benchmarks/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
-        extra = lambda w: config["ref"][w.ref]["map"]["params"],
+        extra=lambda w: config["ref"][w.ref]["map"]["params"],
     threads: 10
     resources:
-        mem = lambda w, attempt, input: "{} GiB".format((2 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50) * attempt),
-        runtime = lambda w, attempt: f"{1 * attempt} d",
-        slurm_extra = "--nice=2000",
+        mem=lambda w, attempt, input: "{} GiB".format(
+            (2 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50)
+            * attempt
+        ),
+        runtime=lambda w, attempt: f"{1* attempt} d",
+        slurm_extra="--nice=2000",
     wrapper:
         f"{wrapper_ver}/bio/bwa/aln"
 
 
 rule bwa_samxe:
     input:
-        fastq = get_data,
-        sai = rules.bwa_aln.output.sai,
-        idx = rules.bwa_aln.input.idx,
+        fastq=get_data,
+        sai=rules.bwa_aln.output.sai,
+        idx=rules.bwa_aln.input.idx,
     output:
-        bam = temp("temp/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"),
+        bam=temp(
+            "temp/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+        ),
     log:
-        "logs/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.samxe.log"
+        "logs/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.samxe.log",
     benchmark:
         "benchmarks/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.samxe.jsonl"
     params:
-        extra = lambda w: f"""-r '@RG\tID:{"\\t".join(get_read_group(w))}\\tPG:bwa_aln' """,
-        sort = "samtools",
+        extra=lambda w: f"""-r '@RG\tID:{"\\t".join(get_read_group(w))}\\tPG:bwa_aln' """,
+        sort="samtools",
     threads: 1
     resources:
-        mem = lambda w, attempt, input: "{} GiB".format((2 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50) * attempt),
-        runtime = lambda w, attempt: f"{1 * attempt} d",
+        mem=lambda w, attempt, input: "{} GiB".format(
+            (2 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50)
+            * attempt
+        ),
+        runtime=lambda w, attempt: f"{1* attempt} d",
     wrapper:
         f"{wrapper_ver}/bio/bwa/samxe"
 
 
-
 rule shard_clean_header:
     input:
-        bam = lambda w: expand("temp/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam", tool=config["ref"][w.ref]["map"]["tool"], allow_missing=True),
+        bam=lambda w: expand(
+            "temp/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam",
+            tool=config["ref"][w.ref]["map"]["tool"],
+            allow_missing=True,
+        ),
     output:
-        bam = temp("temp/shards/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"),
+        bam=temp(
+            "temp/shards/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+        ),
     log:
-        "logs/shards/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log"
+        "logs/shards/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
         "benchmarks/shards/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     threads: 2
     resources:
-        mem = lambda w, attempt: f"{20 * attempt} GiB",
-        runtime = lambda w, attempt: f"{2 * attempt} h",
+        mem=lambda w, attempt: f"{20* attempt} GiB",
+        runtime=lambda w, attempt: f"{2* attempt} h",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/misc/compressbam --threads {threads} --input {input.bam} --output {output.bam} >{log} 2>&1"
 
@@ -136,18 +190,20 @@ rule shard_clean_header:
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c
 rule shard_sort_coord:
     input:
-        bam = rules.shard_clean_header.output.bam,
+        bam=rules.shard_clean_header.output.bam,
     output:
-        bam = temp("temp/shards/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"),
+        bam=temp(
+            "temp/shards/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+        ),
     log:
-        "logs/shards/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log"
+        "logs/shards/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
         "benchmarks/shards/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
         mem_overhead_factor=0.1,
     threads: 8
     resources:
-        mem = lambda w, attempt, threads, input: f"{10 * threads * attempt} GiB",
-        runtime = lambda w, attempt, input: f"{np.clip(0.0001 * input.size_mb + 1, 0.1, 20) * attempt} h",
+        mem=lambda w, attempt, threads, input: f"{10* threads* attempt} GiB",
+        runtime=lambda w, attempt, input: f"{np.clip(0.0001* input.size_mb+1,0.1,20)* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/sort"

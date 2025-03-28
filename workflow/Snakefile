@@ -1,4 +1,5 @@
 import numpy as np
+
 snakemake.utils.min_version("8.11.2")
 
 # Define wrapper versions
@@ -13,45 +14,99 @@ include: "rules/bam_filter.smk"
 include: "rules/metadmg.smk"
 
 
-
 ###########################
 ### Taxonomy assignment ###
 ###########################
 
+
 rule multiqc:
     input:
         ### Map
-        expand_pandas(expand_pandas("logs/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log", ref_sets, allow_missing=True), units),
+        expand_pandas(
+            expand_pandas(
+                "logs/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+                ref_sets,
+                allow_missing=True,
+            ),
+            units,
+        ),
         ### Samtools Stats
-        expand(expand(rules.align_stats.output.txt, zip, **ref_sets.to_dict("list"), allow_missing=True), zip, **units.to_dict("list")),
+        expand(
+            expand(
+                rules.align_stats.output.txt,
+                zip,
+                **ref_sets.to_dict("list"),
+                allow_missing=True,
+            ),
+            zip,
+            **units.to_dict("list"),
+        ),
         ### metaDMG dfit
-        expand(rules.metadmg_dfit.output.dfit, zip, **units.assign(read_type_map="collapsed").to_dict("list")),
+        expand(
+            rules.metadmg_dfit.output.dfit,
+            zip,
+            **units.assign(read_type_map="collapsed").to_dict("list"),
+        ),
         ### metaDMG LCA Aggregated Stats
-        expand(rules.metadmg_aggregate.output.stats, zip, **units.assign(read_type_map="collapsed").to_dict("list")),
+        expand(
+            rules.metadmg_aggregate.output.stats,
+            zip,
+            **units.assign(read_type_map="collapsed").to_dict("list"),
+        ),
     output:
-        html = "reports/multiqc.html",
-        data = "reports/multiqc_data.zip",
+        html="reports/multiqc.html",
+        data="reports/multiqc_data.zip",
     log:
-        "logs/reports/multiqc.log"
+        "logs/reports/multiqc.log",
     benchmark:
         "benchmarks/reports/multiqc.log"
     params:
-        extra = "--force --clean-up " + config["report"]["multiqc"],
+        extra="--force --clean-up " + config["report"]["multiqc"],
     localrule: True
     threads: 1
     resources:
-        mem = lambda w, attempt: f"{10 * attempt} GiB",
-        runtime = lambda w, attempt: f"{30 * attempt} m",
+        mem=lambda w, attempt: f"{10* attempt} GiB",
+        runtime=lambda w, attempt: f"{30* attempt} m",
     wrapper:
         f"{wrapper_ver}/bio/multiqc"
 
+
 rule all:
     input:
-        qc = rules.multiqc.output.html,
-        res = [expand(expand(rules.metadmg_aggregate.output.stats, read_type_map="collapsed", allow_missing=True), zip, **units.to_dict("list")),
-               expand(expand(rules.metadmg_damage.output.stats, read_type_map="collapsed", allow_missing=True), zip, **units.to_dict("list")),
-               expand(expand(rules.align_lca.output.stats, read_type_map="collapsed", allow_missing=True), zip, **units.to_dict("list")) if is_activated("bam_filter/lca") else [],
-               ],
+        qc=rules.multiqc.output.html,
+        res=[
+            expand(
+                expand(
+                    rules.metadmg_aggregate.output.stats,
+                    read_type_map="collapsed",
+                    allow_missing=True,
+                ),
+                zip,
+                **units.to_dict("list"),
+            ),
+            expand(
+                expand(
+                    rules.metadmg_damage.output.stats,
+                    read_type_map="collapsed",
+                    allow_missing=True,
+                ),
+                zip,
+                **units.to_dict("list"),
+            ),
+            (
+                expand(
+                    expand(
+                        rules.align_lca.output.stats,
+                        read_type_map="collapsed",
+                        allow_missing=True,
+                    ),
+                    zip,
+                    **units.to_dict("list"),
+                )
+                if is_activated("bam_filter/lca")
+                else []
+            ),
+        ],
     message:
         "Read mapping finished successfully!"
     default_target: True

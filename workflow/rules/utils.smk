@@ -11,6 +11,7 @@ from snakemake.io import Namedlist
 
 ### General
 
+
 def flatten(list_of_lists: List) -> List:
     """Flatten an irregular list of lists recursively
 
@@ -61,8 +62,8 @@ def get_tmp(large: bool = False) -> str:
     return str(path) + "/"
 
 
-
 ### Config
+
 
 def _item_or_sample(row, item):
     i = getattr(row, item, None)
@@ -80,12 +81,14 @@ def is_activated(xpath):
 
 ### Samples
 
+
 def get_rule_stats(rule_name):
     r = re.compile("^stats/")
     return set(filter(r.match, getattr(rules, rule_name).output))
 
 
 ### Units
+
 
 def get_read_type_trim(read_type_map):
     if read_type_map == "pe":

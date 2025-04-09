@@ -32,7 +32,7 @@ rule align_merge:
         ),
     # lambda w: expand(rules.shard_sort_query.output.bam, zip, **ref_sets.to_dict("list"), allow_missing=True),
     output:
-        bam=temp("temp/aligns/merge/{sample}_{library}_{read_type_map}.bam"),
+        bam="results/aligns/merge/{sample}_{library}_{read_type_map}.bam",
     log:
         "logs/aligns/merge/{sample}_{library}_{read_type_map}.log",
     benchmark:

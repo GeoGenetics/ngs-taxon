@@ -17,7 +17,7 @@ use rule shard_sort_coord as align_sort_query with:
         mem_overhead_factor=0.4,
     resources:
         mem=lambda w, attempt, threads, input: f"{15* threads* attempt} GiB",
-        runtime=lambda w, attempt, input: f"{np.clip(0.0001* input.size_mb+1,0.1,20)* attempt} h",
+        runtime=lambda w, attempt, input: f"{max(0.0001* input.size_mb+1,0.1)* attempt} h",
 
 
 rule metadmg_damage:
@@ -77,7 +77,7 @@ rule metadmg_lca:
     threads: 4
     resources:
         mem=lambda w, attempt, input: f"{30* attempt} GiB",
-        runtime=lambda w, attempt, input: f"{1e-4* input.size_mb* attempt} h",
+        runtime=lambda w, attempt, input: f"{max(1e-4* input.size_mb,0.1)* attempt} h",
     shell:
         """
         /projects/caeg/apps/metaDMG-cpp/metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2tax}) {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1

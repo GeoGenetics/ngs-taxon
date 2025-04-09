@@ -26,9 +26,9 @@ rule align_reassign:
         * attempt
         * 1024,
         runtime=lambda w, attempt: f"{2* attempt} d",
-    #        tmpdir = "temp/large_temp",
+    #    tmpdir = "temp/large_temp",
     shell:
-        #        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
+        #"MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
         "filterBAM reassign --threads {threads} --max-memory {resources.mem_mb}M --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"
 
 
@@ -54,9 +54,9 @@ rule align_filter:
     resources:
         mem=lambda w, attempt, input, threads: f"{np.clip(2* input.size_mb/1024,10* threads,70* threads)* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} d",
-    #        tmpdir = "temp/large_temp",
+    #    tmpdir = "temp/large_temp",
     shell:
-        #        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
+        #"MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
         "filterBAM filter --threads {threads} --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} >{log} 2>&1"
 
 
@@ -88,7 +88,7 @@ rule align_lca:
     resources:
         mem=lambda w, attempt, input, threads: f"{np.clip(2* input.size_mb/1024,20* threads,70* threads)* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} d",
-    #        tmpdir = "temp/large_temp",
+    #    tmpdir = "temp/large_temp",
     shell:
-        #        "MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
+        #"MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
         "filterBAM lca --threads {threads} --sort-memory 10G --bam {input.aln} --stats {input.stats} --names {input.names} --nodes {input.nodes} --acc2taxid <(cat {input.acc2tax}) {params.extra} --lca-summary {output.stats} >{log} 2>&1"

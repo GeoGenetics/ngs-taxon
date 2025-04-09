@@ -204,6 +204,6 @@ rule shard_sort_coord:
     threads: 8
     resources:
         mem=lambda w, attempt, threads, input: f"{10* threads* attempt} GiB",
-        runtime=lambda w, attempt, input: f"{np.clip(0.0001* input.size_mb+1,0.1,20)* attempt} h",
+        runtime=lambda w, attempt, input: f"{max(0.0001* input.size_mb+1,0.1)* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/sort"

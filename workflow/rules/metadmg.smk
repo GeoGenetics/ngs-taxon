@@ -77,7 +77,7 @@ rule metadmg_lca:
     threads: 4
     resources:
         mem=lambda w, attempt, input: f"{30* attempt} GiB",
-        runtime=lambda w, attempt, input: f"{max(1e-4* input.size_mb, 0.1)* attempt} h",
+        runtime=lambda w, attempt, input: f"{max(1e-4* input.size_mb,0.1)* attempt} h",
     shell:
         """
         /projects/caeg/apps/metaDMG-cpp/metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2tax}) {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1

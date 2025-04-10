@@ -126,28 +126,3 @@ rule metadmg_aggregate:
         runtime=lambda w, attempt: f"{15* attempt} m",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp aggregate {input.dmg} --nodes {input.nodes} --names {input.names} --lcastat {input.lca} --dfit {input.dfit} --out_prefix {params.out_prefix} > {log} 2>&1"
-
-
-##########
-### QC ###
-##########
-
-
-# Some stats are only valid on coordinate-sorted BAM files (https://github.com/samtools/samtools/issues/2177):
-# - Coverage distribution.
-# - GC-depth
-rule align_stats:
-    input:
-        aln=rules.align_merge.output.bam,
-    output:
-        txt="stats/aligns/samtools_stats/{sample}_{library}_{read_type_map}.txt",
-    log:
-        "logs/aligns/samtools_stats/{sample}_{library}_{read_type_map}.log",
-    benchmark:
-        "benchmarks/aligns/samtools_stats/{sample}_{library}_{read_type_map}.jsonl"
-    threads: 4
-    resources:
-        mem=lambda w, attempt: f"{10* attempt} GiB",
-        runtime=lambda w, attempt: f"{10* attempt} h",
-    wrapper:
-        f"{wrapper_ver}/bio/samtools/stats"

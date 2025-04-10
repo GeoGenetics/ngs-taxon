@@ -46,3 +46,25 @@ rule align_merge:
         tmpdir=get_tmp(),
     wrapper:
         f"{wrapper_ver}/bio/samtools/merge"
+
+
+##########
+### QC ###
+##########
+
+
+rule align_stats:
+    input:
+        aln=rules.align_merge.output.bam,
+    output:
+        txt="stats/aligns/samtools_stats/{sample}_{library}_{read_type_map}.txt",
+    log:
+        "logs/aligns/samtools_stats/{sample}_{library}_{read_type_map}.log",
+    benchmark:
+        "benchmarks/aligns/samtools_stats/{sample}_{library}_{read_type_map}.jsonl"
+    threads: 4
+    resources:
+        mem=lambda w, attempt: f"{10* attempt} GiB",
+        runtime=lambda w, attempt: f"{10* attempt} h",
+    wrapper:
+        f"{wrapper_ver}/bio/samtools/stats"

@@ -203,7 +203,7 @@ rule shard_saturated_reads_get:
     benchmark:
         "benchmarks/shards/saturated_reads/get/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        extra="""--headerless-tsv-output cat then filter '$n_aligns >= {}' then uniq -g read_id then cut -f read_id""".format(
+        extra="--headerless-tsv-output cat then filter '$n_aligns >= {}' then uniq -g read_id then cut -f read_id".format(
             config["saturated_reads"]["n_alns"]
         ),
     threads: 4
@@ -211,7 +211,7 @@ rule shard_saturated_reads_get:
         mem=lambda w, attempt: f"{1* attempt} GiB",
         runtime=lambda w, attempt: f"{1* attempt} h",
     wrapper:
-        f"miller/utils/miller"
+        f"{wrapper_ver}/utils/miller"
 
 
 rule shard_saturated_reads_remove:

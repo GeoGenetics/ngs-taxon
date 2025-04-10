@@ -3,27 +3,9 @@
 #############
 
 
-use rule shard_sort_coord as align_sort_query with:
-    input:
-        unpack(lambda w: get_merge_aln(w, "sort_query")),
-    output:
-        bam="results/aligns/sort_query/{sample}_{library}_{read_type_map}.bam",
-    log:
-        "logs/aligns/sort_query/{sample}_{library}_{read_type_map}.log",
-    benchmark:
-        "benchmarks/aligns/sort_query/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        extra="-N",
-        mem_overhead_factor=0.4,
-    resources:
-        mem=lambda w, attempt, threads, input: f"{15* threads* attempt} GiB",
-        runtime=lambda w, attempt, input: f"{max(0.0001* input.size_mb+1,0.1)* attempt} h",
-
-
 rule metadmg_damage:
     input:
-        aln=rules.align_sort_query.output.bam,
-    #        unpack(lambda w: get_merge_aln(w, "metadmg_damage")),
+        unpack(lambda w: get_merge_aln(w, "metadmg_damage")),
     output:
         dmg="results/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
         res="results/metadmg/damage/{sample}_{library}_{read_type_map}.res.gz",
@@ -52,7 +34,7 @@ rule metadmg_damage:
 
 rule metadmg_lca:
     input:
-        aln=rules.align_sort_query.output.bam,
+        unpack(lambda w: get_merge_aln(w, "metadmg_lca")),
         nodes=config["taxonomy"]["nodes"],
         names=config["taxonomy"]["names"],
         acc2tax=[
@@ -156,7 +138,7 @@ rule metadmg_aggregate:
 # - GC-depth
 rule align_stats:
     input:
-        aln=rules.align_sort_query.output.bam,
+        aln=rules.align_merge.output.bam,
     output:
         txt="stats/aligns/samtools_stats/{sample}_{library}_{read_type_map}.txt",
     log:

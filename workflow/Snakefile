@@ -1,6 +1,6 @@
 import numpy as np
 
-snakemake.utils.min_version("9.1.3")
+snakemake.utils.min_version("9.0.0")
 
 # Define wrapper versions
 wrapper_ver = "v5.10.0"

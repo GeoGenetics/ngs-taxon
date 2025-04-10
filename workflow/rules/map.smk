@@ -188,18 +188,19 @@ rule shard_clean_header:
 
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c
-rule shard_sort_coord:
+rule shard_sort_query:
     input:
         bam=rules.shard_clean_header.output.bam,
     output:
         bam=temp(
-            "temp/shards/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+            "temp/shards/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
         ),
     log:
-        "logs/shards/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+        "logs/shards/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
-        "benchmarks/shards/sort_coord/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+        "benchmarks/shards/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
+        extra="-n",
         mem_overhead_factor=0.1,
     threads: 8
     resources:

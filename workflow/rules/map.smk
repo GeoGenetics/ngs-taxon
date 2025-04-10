@@ -166,17 +166,23 @@ rule bwa_samxe:
 
 rule shard_count_alns:
     input:
-        bam = lambda w: expand("temp/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam", tool=config["ref"][w.ref]["map"]["tool"], allow_missing=True),
+        bam=lambda w: expand(
+            "temp/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam",
+            tool=config["ref"][w.ref]["map"]["tool"],
+            allow_missing=True,
+        ),
     output:
-        counts = temp("temp/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv"),
+        counts=temp(
+            "temp/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv"
+        ),
     log:
-        "logs/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log"
+        "logs/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
         "benchmarks/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     threads: 1
     resources:
-        mem = lambda w, attempt: f"{5 * attempt} GiB",
-        runtime = lambda w, attempt: f"{2 * attempt} h",
+        mem=lambda w, attempt: f"{5* attempt} GiB",
+        runtime=lambda w, attempt: f"{2* attempt} h",
     shell:
         """
         (samtools view {input.bam} | awk 'BEGIN{{print "read_id\tn_aligns"}} {{x[$1]++}} END{{for(read_id in x){{print read_id"\t"x[read_id]}}}}') > {output.counts} 2> {log}
@@ -185,46 +191,58 @@ rule shard_count_alns:
 
 rule shard_saturated_reads_get:
     input:
-        counts = expand_pandas(rules.shard_count_alns.output.counts, ref_sets, allow_missing=True),
+        counts=expand_pandas(
+            rules.shard_count_alns.output.counts, ref_sets, allow_missing=True
+        ),
     output:
-        read_id = temp("temp/shards/saturated_reads/get/{sample}_{library}_{read_type_map}.tsv"),
+        read_id=temp(
+            "temp/shards/saturated_reads/get/{sample}_{library}_{read_type_map}.tsv"
+        ),
     log:
-        "logs/shards/saturated_reads/get/{sample}_{library}_{read_type_map}.log"
+        "logs/shards/saturated_reads/get/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "benchmarks/shards/saturated_reads/get/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        extra="""--headerless-tsv-output cat then filter '$n_aligns >= {}' then uniq -g read_id then cut -f read_id""".format(config["saturated_reads"]["n_alns"]),
+        extra="""--headerless-tsv-output cat then filter '$n_aligns >= {}' then uniq -g read_id then cut -f read_id""".format(
+            config["saturated_reads"]["n_alns"]
+        ),
     threads: 4
     resources:
-        mem = lambda w, attempt: f"{1 * attempt} GiB",
-        runtime = lambda w, attempt: f"{1 * attempt} h",
+        mem=lambda w, attempt: f"{1* attempt} GiB",
+        runtime=lambda w, attempt: f"{1* attempt} h",
     wrapper:
         f"miller/utils/miller"
 
 
 rule shard_saturated_reads_remove:
     input:
-        bam = lambda w: expand("temp/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam", tool=config["ref"][w.ref]["map"]["tool"], allow_missing=True),
-        read_id = rules.shard_saturated_reads_get.output.read_id,
+        bam=lambda w: expand(
+            "temp/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam",
+            tool=config["ref"][w.ref]["map"]["tool"],
+            allow_missing=True,
+        ),
+        read_id=rules.shard_saturated_reads_get.output.read_id,
     output:
-        bam = temp("temp/shards/saturated_reads/remove/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"),
+        bam=temp(
+            "temp/shards/saturated_reads/remove/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+        ),
     log:
-        "logs/shards/saturated_reads/remove/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log"
+        "logs/shards/saturated_reads/remove/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
         "benchmarks/shards/saturated_reads/remove/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
         extra=lambda w, input: f"--qname-file ^{input.read_id}",
     threads: 2
     resources:
-        mem = lambda w, attempt, threads, input: f"{10 * threads * attempt} GiB",
-        runtime = lambda w, attempt, input: f"{np.clip(0.0001 * input.size_mb + 1, 0.1, 20) * attempt} h",
+        mem=lambda w, attempt, threads, input: f"{10* threads* attempt} GiB",
+        runtime=lambda w, attempt, input: f"{np.clip(0.0001* input.size_mb+1,0.1,20)* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/view"
 
 
 rule shard_clean_header:
     input:
-        bam = rules.shard_saturated_reads_remove.output.bam,
+        bam=rules.shard_saturated_reads_remove.output.bam,
     output:
         bam=temp(
             "temp/shards/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"

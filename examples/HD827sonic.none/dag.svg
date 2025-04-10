@@ -33,7 +33,7 @@
 <path fill="none" stroke="#70d856" stroke-width="2" d="M301,-661C301,-661 194,-661 194,-661 188,-661 182,-655 182,-649 182,-649 182,-588 182,-588 182,-582 188,-576 194,-576 194,-576 301,-576 301,-576 307,-576 313,-582 313,-588 313,-588 313,-649 313,-649 313,-655 307,-661 301,-661"/>
 <text text-anchor="middle" x="247.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
 <text text-anchor="middle" x="247.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib1</text>
-<text text-anchor="middle" x="247.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 1</text>
+<text text-anchor="middle" x="247.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 2</text>
 <text text-anchor="middle" x="247.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
 <text text-anchor="middle" x="247.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: wgs_eukaryota</text>
 <text text-anchor="middle" x="247.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_2</text>
@@ -45,359 +45,359 @@
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M278.9497,-575.8111C300.2043,-547.8568 326.9533,-514.6075 341.5,-504 376.6431,-478.3735 398.8732,-495.5861 432.5,-468 491.4024,-419.6787 491.8458,-392.3509 525.5,-324 563.0058,-247.8265 544.1469,-215.7787 589.5,-144 596.0729,-133.5972 604.9777,-123.6397 613.6595,-115.1718"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="616.2612,-117.5305 621.1674,-108.1401 611.4761,-112.4214 616.2612,-117.5305"/>
 </g>
-<!-- 26 -->
-<g id="node27" class="node">
-<title>26</title>
+<!-- 22 -->
+<g id="node23" class="node">
+<title>22</title>
 <path fill="none" stroke="#5692d8" stroke-width="2" d="M282.5,-540C282.5,-540 202.5,-540 202.5,-540 196.5,-540 190.5,-534 190.5,-528 190.5,-528 190.5,-516 190.5,-516 190.5,-510 196.5,-504 202.5,-504 202.5,-504 282.5,-504 282.5,-504 288.5,-504 294.5,-510 294.5,-516 294.5,-516 294.5,-528 294.5,-528 294.5,-534 288.5,-540 282.5,-540"/>
 <text text-anchor="middle" x="242.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
 </g>
-<!-- 2&#45;&gt;26 -->
-<g id="edge45" class="edge">
-<title>2&#45;&gt;26</title>
+<!-- 2&#45;&gt;22 -->
+<g id="edge41" class="edge">
+<title>2&#45;&gt;22</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M245.2924,-575.8928C244.8463,-567.2842 244.3877,-558.4327 243.9743,-550.4546"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="247.457,-550.0273 243.4441,-540.2218 240.4664,-550.3895 247.457,-550.0273"/>
 </g>
 <!-- 3 -->
 <g id="node4" class="node">
 <title>3</title>
-<path fill="none" stroke="#70d856" stroke-width="2" d="M781,-661C781,-661 674,-661 674,-661 668,-661 662,-655 662,-649 662,-649 662,-588 662,-588 662,-582 668,-576 674,-576 674,-576 781,-576 781,-576 787,-576 793,-582 793,-588 793,-588 793,-649 793,-649 793,-655 787,-661 781,-661"/>
-<text text-anchor="middle" x="727.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="727.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib1</text>
-<text text-anchor="middle" x="727.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 1</text>
-<text text-anchor="middle" x="727.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="727.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: wgs_eukaryota</text>
-<text text-anchor="middle" x="727.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_1</text>
-<text text-anchor="middle" x="727.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 2</text>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M119,-661C119,-661 12,-661 12,-661 6,-661 0,-655 0,-649 0,-649 0,-588 0,-588 0,-582 6,-576 12,-576 12,-576 119,-576 119,-576 125,-576 131,-582 131,-588 131,-588 131,-649 131,-649 131,-655 125,-661 119,-661"/>
+<text text-anchor="middle" x="65.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="65.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib1</text>
+<text text-anchor="middle" x="65.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 1</text>
+<text text-anchor="middle" x="65.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="65.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_mitochondrion</text>
+<text text-anchor="middle" x="65.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_2</text>
+<text text-anchor="middle" x="65.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 1</text>
 </g>
 <!-- 3&#45;&gt;1 -->
 <g id="edge9" class="edge">
 <title>3&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M759.0427,-575.9367C780.341,-548.0416 807.1042,-514.8114 821.5,-504 853.9782,-479.6085 879.7402,-499.404 905.5,-468 931.4274,-436.3918 924.5,-418.8816 924.5,-378 924.5,-378 924.5,-378 924.5,-234 924.5,-179.7674 756.6313,-123.344 680.3904,-100.5147"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="681.281,-97.1283 670.6988,-97.6462 679.2942,-103.8405 681.281,-97.1283"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M51.9646,-575.6903C42.4831,-541.9161 31.5,-493.4217 31.5,-450 31.5,-450 31.5,-450 31.5,-306 31.5,-212.8436 82.6506,-188.4836 164.5,-144 240.676,-102.5998 507.3297,-92.8414 606.2229,-90.6254"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="606.4236,-94.1221 616.3476,-90.4121 606.276,-87.1236 606.4236,-94.1221"/>
 </g>
-<!-- 18 -->
-<g id="node19" class="node">
-<title>18</title>
-<path fill="none" stroke="#5692d8" stroke-width="2" d="M762.5,-540C762.5,-540 682.5,-540 682.5,-540 676.5,-540 670.5,-534 670.5,-528 670.5,-528 670.5,-516 670.5,-516 670.5,-510 676.5,-504 682.5,-504 682.5,-504 762.5,-504 762.5,-504 768.5,-504 774.5,-510 774.5,-516 774.5,-516 774.5,-528 774.5,-528 774.5,-534 768.5,-540 762.5,-540"/>
-<text text-anchor="middle" x="722.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
+<!-- 24 -->
+<g id="node25" class="node">
+<title>24</title>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M157.5,-540C157.5,-540 77.5,-540 77.5,-540 71.5,-540 65.5,-534 65.5,-528 65.5,-528 65.5,-516 65.5,-516 65.5,-510 71.5,-504 77.5,-504 77.5,-504 157.5,-504 157.5,-504 163.5,-504 169.5,-510 169.5,-516 169.5,-516 169.5,-528 169.5,-528 169.5,-534 163.5,-540 157.5,-540"/>
+<text text-anchor="middle" x="117.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
 </g>
-<!-- 3&#45;&gt;18 -->
-<g id="edge35" class="edge">
-<title>3&#45;&gt;18</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M725.2924,-575.8928C724.8463,-567.2842 724.3877,-558.4327 723.9743,-550.4546"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="727.457,-550.0273 723.4441,-540.2218 720.4664,-550.3895 727.457,-550.0273"/>
+<!-- 3&#45;&gt;24 -->
+<g id="edge43" class="edge">
+<title>3&#45;&gt;24</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M88.4593,-575.8928C93.3617,-566.7951 98.4103,-557.426 102.8951,-549.1034"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="106.0184,-550.6854 107.681,-540.2218 99.8561,-547.3647 106.0184,-550.6854"/>
 </g>
 <!-- 4 -->
 <g id="node5" class="node">
 <title>4</title>
-<path fill="none" stroke="#70d856" stroke-width="2" d="M1276,-661C1276,-661 1169,-661 1169,-661 1163,-661 1157,-655 1157,-649 1157,-649 1157,-588 1157,-588 1157,-582 1163,-576 1169,-576 1169,-576 1276,-576 1276,-576 1282,-576 1288,-582 1288,-588 1288,-588 1288,-649 1288,-649 1288,-655 1282,-661 1276,-661"/>
-<text text-anchor="middle" x="1222.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="1222.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib2</text>
-<text text-anchor="middle" x="1222.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 2</text>
-<text text-anchor="middle" x="1222.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="1222.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: wgs_eukaryota</text>
-<text text-anchor="middle" x="1222.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_2</text>
-<text text-anchor="middle" x="1222.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 2</text>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M781,-661C781,-661 674,-661 674,-661 668,-661 662,-655 662,-649 662,-649 662,-588 662,-588 662,-582 668,-576 674,-576 674,-576 781,-576 781,-576 787,-576 793,-582 793,-588 793,-588 793,-649 793,-649 793,-655 787,-661 781,-661"/>
+<text text-anchor="middle" x="727.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="727.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib2</text>
+<text text-anchor="middle" x="727.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 2</text>
+<text text-anchor="middle" x="727.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="727.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: wgs_eukaryota</text>
+<text text-anchor="middle" x="727.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_2</text>
+<text text-anchor="middle" x="727.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 2</text>
 </g>
 <!-- 4&#45;&gt;1 -->
 <g id="edge10" class="edge">
 <title>4&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1199.5618,-575.7322C1185.297,-552.2269 1165.1772,-523.892 1141.5,-504 1112.8832,-479.958 1088.5351,-497.4333 1065.5,-468 971.9502,-348.4658 1088.3079,-221.0018 957.5,-144 872.495,-93.9607 835.6315,-125.1827 738.5,-108 719.4313,-104.6267 698.2574,-100.6385 680.7477,-97.2745"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="681.3873,-93.8335 670.9053,-95.3754 680.061,-100.7067 681.3873,-93.8335"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M759.0427,-575.9367C780.341,-548.0416 807.1042,-514.8114 821.5,-504 853.9782,-479.6085 879.7402,-499.404 905.5,-468 931.4274,-436.3918 924.5,-418.8816 924.5,-378 924.5,-378 924.5,-378 924.5,-234 924.5,-179.7674 756.6313,-123.344 680.3904,-100.5147"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="681.281,-97.1283 670.6988,-97.6462 679.2942,-103.8405 681.281,-97.1283"/>
 </g>
 <!-- 30 -->
 <g id="node31" class="node">
 <title>30</title>
-<path fill="none" stroke="#5692d8" stroke-width="2" d="M1280.5,-540C1280.5,-540 1200.5,-540 1200.5,-540 1194.5,-540 1188.5,-534 1188.5,-528 1188.5,-528 1188.5,-516 1188.5,-516 1188.5,-510 1194.5,-504 1200.5,-504 1200.5,-504 1280.5,-504 1280.5,-504 1286.5,-504 1292.5,-510 1292.5,-516 1292.5,-516 1292.5,-528 1292.5,-528 1292.5,-534 1286.5,-540 1280.5,-540"/>
-<text text-anchor="middle" x="1240.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M762.5,-540C762.5,-540 682.5,-540 682.5,-540 676.5,-540 670.5,-534 670.5,-528 670.5,-528 670.5,-516 670.5,-516 670.5,-510 676.5,-504 682.5,-504 682.5,-504 762.5,-504 762.5,-504 768.5,-504 774.5,-510 774.5,-516 774.5,-516 774.5,-528 774.5,-528 774.5,-534 768.5,-540 762.5,-540"/>
+<text text-anchor="middle" x="722.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
 </g>
 <!-- 4&#45;&gt;30 -->
 <g id="edge51" class="edge">
 <title>4&#45;&gt;30</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1230.4475,-575.8928C1232.0715,-567.1864 1233.7418,-558.2315 1235.2431,-550.183"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1238.708,-550.694 1237.1011,-540.2218 1231.8267,-549.4104 1238.708,-550.694"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M725.2924,-575.8928C724.8463,-567.2842 724.3877,-558.4327 723.9743,-550.4546"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="727.457,-550.0273 723.4441,-540.2218 720.4664,-550.3895 727.457,-550.0273"/>
 </g>
 <!-- 5 -->
 <g id="node6" class="node">
 <title>5</title>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M621,-661C621,-661 514,-661 514,-661 508,-661 502,-655 502,-649 502,-649 502,-588 502,-588 502,-582 508,-576 514,-576 514,-576 621,-576 621,-576 627,-576 633,-582 633,-588 633,-588 633,-649 633,-649 633,-655 627,-661 621,-661"/>
+<text text-anchor="middle" x="567.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="567.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib2</text>
+<text text-anchor="middle" x="567.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 1</text>
+<text text-anchor="middle" x="567.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="567.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_mitochondrion</text>
+<text text-anchor="middle" x="567.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_2</text>
+<text text-anchor="middle" x="567.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 1</text>
+</g>
+<!-- 5&#45;&gt;1 -->
+<g id="edge11" class="edge">
+<title>5&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M549.5965,-575.9874C545.5221,-564.5049 541.7381,-551.9465 539.5,-540 533.6053,-508.5351 537.9445,-500.0093 537.5,-468 537.2778,-452.0015 535.7278,-447.9016 537.5,-432 539.3167,-415.6985 595.5776,-158.8701 602.5,-144 607.0455,-134.2357 613.5795,-124.5528 620.0997,-116.1405"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="622.9619,-118.1678 626.5413,-108.1959 617.5246,-113.7592 622.9619,-118.1678"/>
+</g>
+<!-- 32 -->
+<g id="node33" class="node">
+<title>32</title>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M640.5,-540C640.5,-540 560.5,-540 560.5,-540 554.5,-540 548.5,-534 548.5,-528 548.5,-528 548.5,-516 548.5,-516 548.5,-510 554.5,-504 560.5,-504 560.5,-504 640.5,-504 640.5,-504 646.5,-504 652.5,-510 652.5,-516 652.5,-516 652.5,-528 652.5,-528 652.5,-534 646.5,-540 640.5,-540"/>
+<text text-anchor="middle" x="600.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
+</g>
+<!-- 5&#45;&gt;32 -->
+<g id="edge53" class="edge">
+<title>5&#45;&gt;32</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M582.0703,-575.8928C585.0811,-567.0886 588.1788,-558.0302 590.9549,-549.9121"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="594.3446,-550.8164 594.2687,-540.2218 587.7212,-548.5513 594.3446,-550.8164"/>
+</g>
+<!-- 6 -->
+<g id="node7" class="node">
+<title>6</title>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M1276,-661C1276,-661 1169,-661 1169,-661 1163,-661 1157,-655 1157,-649 1157,-649 1157,-588 1157,-588 1157,-582 1163,-576 1169,-576 1169,-576 1276,-576 1276,-576 1282,-576 1288,-582 1288,-588 1288,-588 1288,-649 1288,-649 1288,-655 1282,-661 1276,-661"/>
+<text text-anchor="middle" x="1222.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="1222.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib1</text>
+<text text-anchor="middle" x="1222.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 2</text>
+<text text-anchor="middle" x="1222.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="1222.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: wgs_eukaryota</text>
+<text text-anchor="middle" x="1222.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_1</text>
+<text text-anchor="middle" x="1222.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 2</text>
+</g>
+<!-- 6&#45;&gt;1 -->
+<g id="edge12" class="edge">
+<title>6&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1199.5618,-575.7322C1185.297,-552.2269 1165.1772,-523.892 1141.5,-504 1112.8832,-479.958 1088.5351,-497.4333 1065.5,-468 971.9502,-348.4658 1088.3079,-221.0018 957.5,-144 872.495,-93.9607 835.6315,-125.1827 738.5,-108 719.4313,-104.6267 698.2574,-100.6385 680.7477,-97.2745"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="681.3873,-93.8335 670.9053,-95.3754 680.061,-100.7067 681.3873,-93.8335"/>
+</g>
+<!-- 14 -->
+<g id="node15" class="node">
+<title>14</title>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M1280.5,-540C1280.5,-540 1200.5,-540 1200.5,-540 1194.5,-540 1188.5,-534 1188.5,-528 1188.5,-528 1188.5,-516 1188.5,-516 1188.5,-510 1194.5,-504 1200.5,-504 1200.5,-504 1280.5,-504 1280.5,-504 1286.5,-504 1292.5,-510 1292.5,-516 1292.5,-516 1292.5,-528 1292.5,-528 1292.5,-534 1286.5,-540 1280.5,-540"/>
+<text text-anchor="middle" x="1240.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
+</g>
+<!-- 6&#45;&gt;14 -->
+<g id="edge31" class="edge">
+<title>6&#45;&gt;14</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1230.4475,-575.8928C1232.0715,-567.1864 1233.7418,-558.2315 1235.2431,-550.183"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1238.708,-550.694 1237.1011,-540.2218 1231.8267,-549.4104 1238.708,-550.694"/>
+</g>
+<!-- 7 -->
+<g id="node8" class="node">
+<title>7</title>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M1433,-661C1433,-661 1326,-661 1326,-661 1320,-661 1314,-655 1314,-649 1314,-649 1314,-588 1314,-588 1314,-582 1320,-576 1326,-576 1326,-576 1433,-576 1433,-576 1439,-576 1445,-582 1445,-588 1445,-588 1445,-649 1445,-649 1445,-655 1439,-661 1433,-661"/>
+<text text-anchor="middle" x="1379.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="1379.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib1</text>
+<text text-anchor="middle" x="1379.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 1</text>
+<text text-anchor="middle" x="1379.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="1379.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_mitochondrion</text>
+<text text-anchor="middle" x="1379.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_1</text>
+<text text-anchor="middle" x="1379.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 1</text>
+</g>
+<!-- 7&#45;&gt;1 -->
+<g id="edge13" class="edge">
+<title>7&#45;&gt;1</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1406.603,-575.6231C1412.8594,-564.3561 1418.9934,-551.9923 1423.5,-540 1437.8811,-501.7313 1442.5,-490.8816 1442.5,-450 1442.5,-450 1442.5,-450 1442.5,-234 1442.5,-142.5643 1345.617,-168.4108 1257.5,-144 1147.872,-113.63 796.8275,-96.4586 680.9849,-91.5105"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="680.9763,-88.0071 670.8378,-91.0828 680.6814,-95.0009 680.9763,-88.0071"/>
+</g>
+<!-- 16 -->
+<g id="node17" class="node">
+<title>16</title>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M1402.5,-540C1402.5,-540 1322.5,-540 1322.5,-540 1316.5,-540 1310.5,-534 1310.5,-528 1310.5,-528 1310.5,-516 1310.5,-516 1310.5,-510 1316.5,-504 1322.5,-504 1322.5,-504 1402.5,-504 1402.5,-504 1408.5,-504 1414.5,-510 1414.5,-516 1414.5,-516 1414.5,-528 1414.5,-528 1414.5,-534 1408.5,-540 1402.5,-540"/>
+<text text-anchor="middle" x="1362.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
+</g>
+<!-- 7&#45;&gt;16 -->
+<g id="edge33" class="edge">
+<title>7&#45;&gt;16</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1371.9941,-575.8928C1370.4603,-567.1864 1368.8827,-558.2315 1367.4649,-550.183"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1370.892,-549.4629 1365.7101,-540.2218 1363.9982,-550.6774 1370.892,-549.4629"/>
+</g>
+<!-- 8 -->
+<g id="node9" class="node">
+<title>8</title>
 <path fill="none" stroke="#70d856" stroke-width="2" d="M461,-661C461,-661 354,-661 354,-661 348,-661 342,-655 342,-649 342,-649 342,-588 342,-588 342,-582 348,-576 354,-576 354,-576 461,-576 461,-576 467,-576 473,-582 473,-588 473,-588 473,-649 473,-649 473,-655 467,-661 461,-661"/>
 <text text-anchor="middle" x="407.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
 <text text-anchor="middle" x="407.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib1</text>
 <text text-anchor="middle" x="407.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 1</text>
 <text text-anchor="middle" x="407.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="407.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_mitochondrion</text>
+<text text-anchor="middle" x="407.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: wgs_eukaryota</text>
 <text text-anchor="middle" x="407.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_2</text>
-<text text-anchor="middle" x="407.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 1</text>
-</g>
-<!-- 5&#45;&gt;1 -->
-<g id="edge11" class="edge">
-<title>5&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M447.9117,-575.9526C472.5078,-552.0804 505.6339,-523.3068 539.5,-504 583.4553,-478.9415 615.3556,-507.0735 647.5,-468 729.4879,-368.3386 676.261,-308.7887 684.5,-180 685.5215,-164.0326 689.6044,-159.1639 684.5,-144 681.1203,-133.9596 675.0495,-124.3047 668.5975,-116.0052"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="671.1879,-113.6461 662.104,-108.1933 665.8048,-118.1208 671.1879,-113.6461"/>
-</g>
-<!-- 24 -->
-<g id="node25" class="node">
-<title>24</title>
-<path fill="none" stroke="#5692d8" stroke-width="2" d="M442.5,-540C442.5,-540 362.5,-540 362.5,-540 356.5,-540 350.5,-534 350.5,-528 350.5,-528 350.5,-516 350.5,-516 350.5,-510 356.5,-504 362.5,-504 362.5,-504 442.5,-504 442.5,-504 448.5,-504 454.5,-510 454.5,-516 454.5,-516 454.5,-528 454.5,-528 454.5,-534 448.5,-540 442.5,-540"/>
-<text text-anchor="middle" x="402.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
-</g>
-<!-- 5&#45;&gt;24 -->
-<g id="edge43" class="edge">
-<title>5&#45;&gt;24</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M405.2924,-575.8928C404.8463,-567.2842 404.3877,-558.4327 403.9743,-550.4546"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="407.457,-550.0273 403.4441,-540.2218 400.4664,-550.3895 407.457,-550.0273"/>
-</g>
-<!-- 6 -->
-<g id="node7" class="node">
-<title>6</title>
-<path fill="none" stroke="#70d856" stroke-width="2" d="M1433,-661C1433,-661 1326,-661 1326,-661 1320,-661 1314,-655 1314,-649 1314,-649 1314,-588 1314,-588 1314,-582 1320,-576 1326,-576 1326,-576 1433,-576 1433,-576 1439,-576 1445,-582 1445,-588 1445,-588 1445,-649 1445,-649 1445,-655 1439,-661 1433,-661"/>
-<text text-anchor="middle" x="1379.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="1379.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib2</text>
-<text text-anchor="middle" x="1379.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 1</text>
-<text text-anchor="middle" x="1379.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="1379.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_mitochondrion</text>
-<text text-anchor="middle" x="1379.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_2</text>
-<text text-anchor="middle" x="1379.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 1</text>
-</g>
-<!-- 6&#45;&gt;1 -->
-<g id="edge12" class="edge">
-<title>6&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1406.603,-575.6231C1412.8594,-564.3561 1418.9934,-551.9923 1423.5,-540 1437.8811,-501.7313 1442.5,-490.8816 1442.5,-450 1442.5,-450 1442.5,-450 1442.5,-234 1442.5,-142.5643 1345.617,-168.4108 1257.5,-144 1147.872,-113.63 796.8275,-96.4586 680.9849,-91.5105"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="680.9763,-88.0071 670.8378,-91.0828 680.6814,-95.0009 680.9763,-88.0071"/>
-</g>
-<!-- 32 -->
-<g id="node33" class="node">
-<title>32</title>
-<path fill="none" stroke="#5692d8" stroke-width="2" d="M1402.5,-540C1402.5,-540 1322.5,-540 1322.5,-540 1316.5,-540 1310.5,-534 1310.5,-528 1310.5,-528 1310.5,-516 1310.5,-516 1310.5,-510 1316.5,-504 1322.5,-504 1322.5,-504 1402.5,-504 1402.5,-504 1408.5,-504 1414.5,-510 1414.5,-516 1414.5,-516 1414.5,-528 1414.5,-528 1414.5,-534 1408.5,-540 1402.5,-540"/>
-<text text-anchor="middle" x="1362.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
-</g>
-<!-- 6&#45;&gt;32 -->
-<g id="edge53" class="edge">
-<title>6&#45;&gt;32</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1371.9941,-575.8928C1370.4603,-567.1864 1368.8827,-558.2315 1367.4649,-550.183"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1370.892,-549.4629 1365.7101,-540.2218 1363.9982,-550.6774 1370.892,-549.4629"/>
-</g>
-<!-- 7 -->
-<g id="node8" class="node">
-<title>7</title>
-<path fill="none" stroke="#70d856" stroke-width="2" d="M940,-661C940,-661 833,-661 833,-661 827,-661 821,-655 821,-649 821,-649 821,-588 821,-588 821,-582 827,-576 833,-576 833,-576 940,-576 940,-576 946,-576 952,-582 952,-588 952,-588 952,-649 952,-649 952,-655 946,-661 940,-661"/>
-<text text-anchor="middle" x="886.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="886.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib1</text>
-<text text-anchor="middle" x="886.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 1</text>
-<text text-anchor="middle" x="886.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="886.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: refseq_mitochondrion</text>
-<text text-anchor="middle" x="886.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_1</text>
-<text text-anchor="middle" x="886.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 1</text>
-</g>
-<!-- 7&#45;&gt;1 -->
-<g id="edge13" class="edge">
-<title>7&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M922.5234,-575.667C930.4123,-564.5971 938.0299,-552.3135 943.5,-540 960.097,-502.6389 962.5,-490.8816 962.5,-450 962.5,-450 962.5,-450 962.5,-234 962.5,-172.5364 912.0774,-172.2681 857.5,-144 826.8781,-128.1395 733.5199,-107.886 680.7873,-97.2584"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="681.3051,-93.7928 670.8131,-95.2654 679.9334,-100.6571 681.3051,-93.7928"/>
-</g>
-<!-- 16 -->
-<g id="node17" class="node">
-<title>16</title>
-<path fill="none" stroke="#5692d8" stroke-width="2" d="M922.5,-540C922.5,-540 842.5,-540 842.5,-540 836.5,-540 830.5,-534 830.5,-528 830.5,-528 830.5,-516 830.5,-516 830.5,-510 836.5,-504 842.5,-504 842.5,-504 922.5,-504 922.5,-504 928.5,-504 934.5,-510 934.5,-516 934.5,-516 934.5,-528 934.5,-528 934.5,-534 928.5,-540 922.5,-540"/>
-<text text-anchor="middle" x="882.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
-</g>
-<!-- 7&#45;&gt;16 -->
-<g id="edge33" class="edge">
-<title>7&#45;&gt;16</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M884.7339,-575.8928C884.3771,-567.2842 884.0102,-558.4327 883.6795,-550.4546"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="887.1666,-550.0682 883.2553,-540.2218 880.1726,-550.3582 887.1666,-550.0682"/>
-</g>
-<!-- 8 -->
-<g id="node9" class="node">
-<title>8</title>
-<path fill="none" stroke="#70d856" stroke-width="2" d="M621,-661C621,-661 514,-661 514,-661 508,-661 502,-655 502,-649 502,-649 502,-588 502,-588 502,-582 508,-576 514,-576 514,-576 621,-576 621,-576 627,-576 633,-582 633,-588 633,-588 633,-649 633,-649 633,-655 627,-661 621,-661"/>
-<text text-anchor="middle" x="567.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="567.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib1</text>
-<text text-anchor="middle" x="567.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 2</text>
-<text text-anchor="middle" x="567.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="567.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: wgs_eukaryota</text>
-<text text-anchor="middle" x="567.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_1</text>
-<text text-anchor="middle" x="567.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 2</text>
+<text text-anchor="middle" x="407.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 2</text>
 </g>
 <!-- 8&#45;&gt;1 -->
 <g id="edge14" class="edge">
 <title>8&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M549.5965,-575.9874C545.5221,-564.5049 541.7381,-551.9465 539.5,-540 533.6053,-508.5351 537.9445,-500.0093 537.5,-468 537.2778,-452.0015 535.7278,-447.9016 537.5,-432 539.3167,-415.6985 595.5776,-158.8701 602.5,-144 607.0455,-134.2357 613.5795,-124.5528 620.0997,-116.1405"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="622.9619,-118.1678 626.5413,-108.1959 617.5246,-113.7592 622.9619,-118.1678"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M447.9117,-575.9526C472.5078,-552.0804 505.6339,-523.3068 539.5,-504 583.4553,-478.9415 615.3556,-507.0735 647.5,-468 729.4879,-368.3386 676.261,-308.7887 684.5,-180 685.5215,-164.0326 689.6044,-159.1639 684.5,-144 681.1203,-133.9596 675.0495,-124.3047 668.5975,-116.0052"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="671.1879,-113.6461 662.104,-108.1933 665.8048,-118.1208 671.1879,-113.6461"/>
 </g>
-<!-- 14 -->
-<g id="node15" class="node">
-<title>14</title>
-<path fill="none" stroke="#5692d8" stroke-width="2" d="M640.5,-540C640.5,-540 560.5,-540 560.5,-540 554.5,-540 548.5,-534 548.5,-528 548.5,-528 548.5,-516 548.5,-516 548.5,-510 554.5,-504 560.5,-504 560.5,-504 640.5,-504 640.5,-504 646.5,-504 652.5,-510 652.5,-516 652.5,-516 652.5,-528 652.5,-528 652.5,-534 646.5,-540 640.5,-540"/>
-<text text-anchor="middle" x="600.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
+<!-- 26 -->
+<g id="node27" class="node">
+<title>26</title>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M442.5,-540C442.5,-540 362.5,-540 362.5,-540 356.5,-540 350.5,-534 350.5,-528 350.5,-528 350.5,-516 350.5,-516 350.5,-510 356.5,-504 362.5,-504 362.5,-504 442.5,-504 442.5,-504 448.5,-504 454.5,-510 454.5,-516 454.5,-516 454.5,-528 454.5,-528 454.5,-534 448.5,-540 442.5,-540"/>
+<text text-anchor="middle" x="402.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
 </g>
-<!-- 8&#45;&gt;14 -->
-<g id="edge31" class="edge">
-<title>8&#45;&gt;14</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M582.0703,-575.8928C585.0811,-567.0886 588.1788,-558.0302 590.9549,-549.9121"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="594.3446,-550.8164 594.2687,-540.2218 587.7212,-548.5513 594.3446,-550.8164"/>
+<!-- 8&#45;&gt;26 -->
+<g id="edge45" class="edge">
+<title>8&#45;&gt;26</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M405.2924,-575.8928C404.8463,-567.2842 404.3877,-558.4327 403.9743,-550.4546"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="407.457,-550.0273 403.4441,-540.2218 400.4664,-550.3895 407.457,-550.0273"/>
 </g>
 <!-- 9 -->
 <g id="node10" class="node">
 <title>9</title>
-<path fill="none" stroke="#70d856" stroke-width="2" d="M119,-661C119,-661 12,-661 12,-661 6,-661 0,-655 0,-649 0,-649 0,-588 0,-588 0,-582 6,-576 12,-576 12,-576 119,-576 119,-576 125,-576 131,-582 131,-588 131,-588 131,-649 131,-649 131,-655 125,-661 119,-661"/>
-<text text-anchor="middle" x="65.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="65.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib1</text>
-<text text-anchor="middle" x="65.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 2</text>
-<text text-anchor="middle" x="65.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="65.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: wgs_eukaryota</text>
-<text text-anchor="middle" x="65.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_2</text>
-<text text-anchor="middle" x="65.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 2</text>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M1111,-661C1111,-661 1004,-661 1004,-661 998,-661 992,-655 992,-649 992,-649 992,-588 992,-588 992,-582 998,-576 1004,-576 1004,-576 1111,-576 1111,-576 1117,-576 1123,-582 1123,-588 1123,-588 1123,-649 1123,-649 1123,-655 1117,-661 1111,-661"/>
+<text text-anchor="middle" x="1057.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="1057.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib1</text>
+<text text-anchor="middle" x="1057.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 1</text>
+<text text-anchor="middle" x="1057.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="1057.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: wgs_eukaryota</text>
+<text text-anchor="middle" x="1057.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_1</text>
+<text text-anchor="middle" x="1057.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 2</text>
 </g>
 <!-- 9&#45;&gt;1 -->
 <g id="edge15" class="edge">
 <title>9&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M51.9646,-575.6903C42.4831,-541.9161 31.5,-493.4217 31.5,-450 31.5,-450 31.5,-450 31.5,-306 31.5,-212.8436 82.6506,-188.4836 164.5,-144 240.676,-102.5998 507.3297,-92.8414 606.2229,-90.6254"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="606.4236,-94.1221 616.3476,-90.4121 606.276,-87.1236 606.4236,-94.1221"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1034.4802,-575.8462C1018.6606,-542.5574 1000.5,-494.6244 1000.5,-450 1000.5,-450 1000.5,-450 1000.5,-234 1000.5,-177.4315 960.3462,-170.7462 910.5,-144 905.4234,-141.276 753.2963,-111.396 680.9851,-97.2913"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="681.4073,-93.8078 670.9224,-95.3299 680.068,-100.6785 681.4073,-93.8078"/>
 </g>
-<!-- 22 -->
-<g id="node23" class="node">
-<title>22</title>
-<path fill="none" stroke="#5692d8" stroke-width="2" d="M157.5,-540C157.5,-540 77.5,-540 77.5,-540 71.5,-540 65.5,-534 65.5,-528 65.5,-528 65.5,-516 65.5,-516 65.5,-510 71.5,-504 77.5,-504 77.5,-504 157.5,-504 157.5,-504 163.5,-504 169.5,-510 169.5,-516 169.5,-516 169.5,-528 169.5,-528 169.5,-534 163.5,-540 157.5,-540"/>
-<text text-anchor="middle" x="117.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
+<!-- 18 -->
+<g id="node19" class="node">
+<title>18</title>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M1120.5,-540C1120.5,-540 1040.5,-540 1040.5,-540 1034.5,-540 1028.5,-534 1028.5,-528 1028.5,-528 1028.5,-516 1028.5,-516 1028.5,-510 1034.5,-504 1040.5,-504 1040.5,-504 1120.5,-504 1120.5,-504 1126.5,-504 1132.5,-510 1132.5,-516 1132.5,-516 1132.5,-528 1132.5,-528 1132.5,-534 1126.5,-540 1120.5,-540"/>
+<text text-anchor="middle" x="1080.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
 </g>
-<!-- 9&#45;&gt;22 -->
-<g id="edge41" class="edge">
-<title>9&#45;&gt;22</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M88.4593,-575.8928C93.3617,-566.7951 98.4103,-557.426 102.8951,-549.1034"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="106.0184,-550.6854 107.681,-540.2218 99.8561,-547.3647 106.0184,-550.6854"/>
+<!-- 9&#45;&gt;18 -->
+<g id="edge35" class="edge">
+<title>9&#45;&gt;18</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1067.6551,-575.8928C1069.7302,-567.1864 1071.8645,-558.2315 1073.7828,-550.183"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1077.2431,-550.7608 1076.157,-540.2218 1070.4338,-549.1378 1077.2431,-550.7608"/>
 </g>
 <!-- 10 -->
 <g id="node11" class="node">
 <title>10</title>
-<path fill="none" stroke="#70d856" stroke-width="2" d="M1111,-661C1111,-661 1004,-661 1004,-661 998,-661 992,-655 992,-649 992,-649 992,-588 992,-588 992,-582 998,-576 1004,-576 1004,-576 1111,-576 1111,-576 1117,-576 1123,-582 1123,-588 1123,-588 1123,-649 1123,-649 1123,-655 1117,-661 1111,-661"/>
-<text text-anchor="middle" x="1057.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
-<text text-anchor="middle" x="1057.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib2</text>
-<text text-anchor="middle" x="1057.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 1</text>
-<text text-anchor="middle" x="1057.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
-<text text-anchor="middle" x="1057.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: wgs_eukaryota</text>
-<text text-anchor="middle" x="1057.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_2</text>
-<text text-anchor="middle" x="1057.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 2</text>
+<path fill="none" stroke="#70d856" stroke-width="2" d="M940,-661C940,-661 833,-661 833,-661 827,-661 821,-655 821,-649 821,-649 821,-588 821,-588 821,-582 827,-576 833,-576 833,-576 940,-576 940,-576 946,-576 952,-582 952,-588 952,-588 952,-649 952,-649 952,-655 946,-661 940,-661"/>
+<text text-anchor="middle" x="886.5" y="-649" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
+<text text-anchor="middle" x="886.5" y="-638" font-family="sans" font-size="10.00" fill="#000000">library: lib2</text>
+<text text-anchor="middle" x="886.5" y="-627" font-family="sans" font-size="10.00" fill="#000000">n_shard: 1</text>
+<text text-anchor="middle" x="886.5" y="-616" font-family="sans" font-size="10.00" fill="#000000">read_type_map: collapsed</text>
+<text text-anchor="middle" x="886.5" y="-605" font-family="sans" font-size="10.00" fill="#000000">ref: wgs_eukaryota</text>
+<text text-anchor="middle" x="886.5" y="-594" font-family="sans" font-size="10.00" fill="#000000">sample: HD827sonic_2</text>
+<text text-anchor="middle" x="886.5" y="-583" font-family="sans" font-size="10.00" fill="#000000">tot_shards: 2</text>
 </g>
 <!-- 10&#45;&gt;1 -->
 <g id="edge16" class="edge">
 <title>10&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1034.4802,-575.8462C1018.6606,-542.5574 1000.5,-494.6244 1000.5,-450 1000.5,-450 1000.5,-450 1000.5,-234 1000.5,-177.4315 960.3462,-170.7462 910.5,-144 905.4234,-141.276 753.2963,-111.396 680.9851,-97.2913"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="681.4073,-93.8078 670.9224,-95.3299 680.068,-100.6785 681.4073,-93.8078"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M922.5234,-575.667C930.4123,-564.5971 938.0299,-552.3135 943.5,-540 960.097,-502.6389 962.5,-490.8816 962.5,-450 962.5,-450 962.5,-450 962.5,-234 962.5,-172.5364 912.0774,-172.2681 857.5,-144 826.8781,-128.1395 733.5199,-107.886 680.7873,-97.2584"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="681.3051,-93.7928 670.8131,-95.2654 679.9334,-100.6571 681.3051,-93.7928"/>
 </g>
 <!-- 34 -->
 <g id="node35" class="node">
 <title>34</title>
-<path fill="none" stroke="#5692d8" stroke-width="2" d="M1120.5,-540C1120.5,-540 1040.5,-540 1040.5,-540 1034.5,-540 1028.5,-534 1028.5,-528 1028.5,-528 1028.5,-516 1028.5,-516 1028.5,-510 1034.5,-504 1040.5,-504 1040.5,-504 1120.5,-504 1120.5,-504 1126.5,-504 1132.5,-510 1132.5,-516 1132.5,-516 1132.5,-528 1132.5,-528 1132.5,-534 1126.5,-540 1120.5,-540"/>
-<text text-anchor="middle" x="1080.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
+<path fill="none" stroke="#5692d8" stroke-width="2" d="M922.5,-540C922.5,-540 842.5,-540 842.5,-540 836.5,-540 830.5,-534 830.5,-528 830.5,-528 830.5,-516 830.5,-516 830.5,-510 836.5,-504 842.5,-504 842.5,-504 922.5,-504 922.5,-504 928.5,-504 934.5,-510 934.5,-516 934.5,-516 934.5,-528 934.5,-528 934.5,-534 928.5,-540 922.5,-540"/>
+<text text-anchor="middle" x="882.5" y="-519.5" font-family="sans" font-size="10.00" fill="#000000">shard_clean_header</text>
 </g>
 <!-- 10&#45;&gt;34 -->
 <g id="edge55" class="edge">
 <title>10&#45;&gt;34</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1067.6551,-575.8928C1069.7302,-567.1864 1071.8645,-558.2315 1073.7828,-550.183"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1077.2431,-550.7608 1076.157,-540.2218 1070.4338,-549.1378 1077.2431,-550.7608"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M884.7339,-575.8928C884.3771,-567.2842 884.0102,-558.4327 883.6795,-550.4546"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="887.1666,-550.0682 883.2553,-540.2218 880.1726,-550.3582 887.1666,-550.0682"/>
 </g>
 <!-- 11 -->
 <g id="node12" class="node">
 <title>11</title>
-<path fill="none" stroke="#afd856" stroke-width="2" d="M663.5,-180C663.5,-180 623.5,-180 623.5,-180 617.5,-180 611.5,-174 611.5,-168 611.5,-168 611.5,-156 611.5,-156 611.5,-150 617.5,-144 623.5,-144 623.5,-144 663.5,-144 663.5,-144 669.5,-144 675.5,-150 675.5,-156 675.5,-156 675.5,-168 675.5,-168 675.5,-174 669.5,-180 663.5,-180"/>
-<text text-anchor="middle" x="643.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">align_stats</text>
+<path fill="none" stroke="#afd856" stroke-width="2" d="M1118.5,-252C1118.5,-252 1078.5,-252 1078.5,-252 1072.5,-252 1066.5,-246 1066.5,-240 1066.5,-240 1066.5,-228 1066.5,-228 1066.5,-222 1072.5,-216 1078.5,-216 1078.5,-216 1118.5,-216 1118.5,-216 1124.5,-216 1130.5,-222 1130.5,-228 1130.5,-228 1130.5,-240 1130.5,-240 1130.5,-246 1124.5,-252 1118.5,-252"/>
+<text text-anchor="middle" x="1098.5" y="-231.5" font-family="sans" font-size="10.00" fill="#000000">align_stats</text>
 </g>
 <!-- 11&#45;&gt;1 -->
 <g id="edge17" class="edge">
 <title>11&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M643.5,-143.8314C643.5,-136.131 643.5,-126.9743 643.5,-118.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="647.0001,-118.4132 643.5,-108.4133 640.0001,-118.4133 647.0001,-118.4132"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1094.5665,-215.8081C1089.0128,-194.8485 1076.7255,-161.1048 1052.5,-144 993.0439,-102.0201 770.2091,-92.6609 680.8819,-90.5863"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="680.7428,-87.0826 670.6701,-90.3677 680.5929,-94.081 680.7428,-87.0826"/>
 </g>
 <!-- 12 -->
 <g id="node13" class="node">
 <title>12</title>
-<path fill="none" stroke="#d88d56" stroke-width="2" d="M625,-396C625,-396 580,-396 580,-396 574,-396 568,-390 568,-384 568,-384 568,-372 568,-372 568,-366 574,-360 580,-360 580,-360 625,-360 625,-360 631,-360 637,-366 637,-372 637,-372 637,-384 637,-384 637,-390 631,-396 625,-396"/>
-<text text-anchor="middle" x="602.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">align_merge</text>
+<path fill="none" stroke="#d88d56" stroke-width="2" d="M1251,-396C1251,-396 1206,-396 1206,-396 1200,-396 1194,-390 1194,-384 1194,-384 1194,-372 1194,-372 1194,-366 1200,-360 1206,-360 1206,-360 1251,-360 1251,-360 1257,-360 1263,-366 1263,-372 1263,-372 1263,-384 1263,-384 1263,-390 1257,-396 1251,-396"/>
+<text text-anchor="middle" x="1228.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">align_merge</text>
 </g>
 <!-- 12&#45;&gt;11 -->
 <g id="edge26" class="edge">
 <title>12&#45;&gt;11</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M605.9251,-359.9555C613.07,-322.3144 629.6081,-235.1867 638.1615,-190.1246"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="641.6295,-190.6224 640.0558,-180.1451 634.7523,-189.3169 641.6295,-190.6224"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1211.2823,-359.5911C1201.5984,-349.1907 1189.317,-335.923 1178.5,-324 1159.01,-302.5172 1137.1464,-277.8834 1121.2074,-259.8249"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1123.5696,-257.2117 1114.3309,-252.0254 1118.3189,-261.8411 1123.5696,-257.2117"/>
 </g>
 <!-- 36 -->
 <g id="node37" class="node">
 <title>36</title>
-<path fill="none" stroke="#56c9d8" stroke-width="2" d="M505,-324C505,-324 454,-324 454,-324 448,-324 442,-318 442,-312 442,-312 442,-300 442,-300 442,-294 448,-288 454,-288 454,-288 505,-288 505,-288 511,-288 517,-294 517,-300 517,-300 517,-312 517,-312 517,-318 511,-324 505,-324"/>
-<text text-anchor="middle" x="479.5" y="-303.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_lca</text>
+<path fill="none" stroke="#56c9d8" stroke-width="2" d="M1250,-324C1250,-324 1199,-324 1199,-324 1193,-324 1187,-318 1187,-312 1187,-312 1187,-300 1187,-300 1187,-294 1193,-288 1199,-288 1199,-288 1250,-288 1250,-288 1256,-288 1262,-294 1262,-300 1262,-300 1262,-312 1262,-312 1262,-318 1256,-324 1250,-324"/>
+<text text-anchor="middle" x="1224.5" y="-303.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_lca</text>
 </g>
 <!-- 12&#45;&gt;36 -->
 <g id="edge57" class="edge">
 <title>12&#45;&gt;36</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M571.4619,-359.8314C555.7295,-350.6221 536.4389,-339.3301 519.5956,-329.4706"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="520.9265,-326.1941 510.5282,-324.1628 517.3902,-332.2352 520.9265,-326.1941"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1227.4906,-359.8314C1227.0628,-352.131 1226.5541,-342.9743 1226.0787,-334.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1229.5724,-334.2037 1225.523,-324.4133 1222.5831,-334.592 1229.5724,-334.2037"/>
 </g>
 <!-- 44 -->
 <g id="node45" class="node">
 <title>44</title>
-<path fill="none" stroke="#56d8a9" stroke-width="2" d="M300,-108C300,-108 227,-108 227,-108 221,-108 215,-102 215,-96 215,-96 215,-84 215,-84 215,-78 221,-72 227,-72 227,-72 300,-72 300,-72 306,-72 312,-78 312,-84 312,-84 312,-96 312,-96 312,-102 306,-108 300,-108"/>
-<text text-anchor="middle" x="263.5" y="-87.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_damage</text>
+<path fill="none" stroke="#56d8a9" stroke-width="2" d="M1196,-108C1196,-108 1123,-108 1123,-108 1117,-108 1111,-102 1111,-96 1111,-96 1111,-84 1111,-84 1111,-78 1117,-72 1123,-72 1123,-72 1196,-72 1196,-72 1202,-72 1208,-78 1208,-84 1208,-84 1208,-96 1208,-96 1208,-102 1202,-108 1196,-108"/>
+<text text-anchor="middle" x="1159.5" y="-87.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_damage</text>
 </g>
 <!-- 12&#45;&gt;44 -->
 <g id="edge68" class="edge">
 <title>12&#45;&gt;44</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M567.8127,-375.6679C474.3977,-369.0752 222.7377,-349.1381 195.5,-324 135.8454,-268.944 123.0616,-213.8047 164.5,-144 173.7733,-128.3788 189.3303,-116.9874 205.3977,-108.8117"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="207.3094,-111.7808 214.8733,-104.362 204.3339,-105.4446 207.3094,-111.7808"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1247.9956,-359.9663C1257.0103,-350.2894 1266.7551,-337.5757 1271.5,-324 1287.0701,-279.4517 1299.8593,-208.3666 1257.5,-144 1247.8142,-129.2821 1232.6903,-118.2148 1217.1974,-110.0588"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1218.5912,-106.8442 1208.0712,-105.5875 1215.5114,-113.1303 1218.5912,-106.8442"/>
 </g>
 <!-- 13 -->
 <g id="node14" class="node">
 <title>13</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M626.5,-468C626.5,-468 558.5,-468 558.5,-468 552.5,-468 546.5,-462 546.5,-456 546.5,-456 546.5,-444 546.5,-444 546.5,-438 552.5,-432 558.5,-432 558.5,-432 626.5,-432 626.5,-432 632.5,-432 638.5,-438 638.5,-444 638.5,-444 638.5,-456 638.5,-456 638.5,-462 632.5,-468 626.5,-468"/>
-<text text-anchor="middle" x="592.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
+<path fill="none" stroke="#5673d8" stroke-width="2" d="M1266.5,-468C1266.5,-468 1198.5,-468 1198.5,-468 1192.5,-468 1186.5,-462 1186.5,-456 1186.5,-456 1186.5,-444 1186.5,-444 1186.5,-438 1192.5,-432 1198.5,-432 1198.5,-432 1266.5,-432 1266.5,-432 1272.5,-432 1278.5,-438 1278.5,-444 1278.5,-444 1278.5,-456 1278.5,-456 1278.5,-462 1272.5,-468 1266.5,-468"/>
+<text text-anchor="middle" x="1232.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
 </g>
 <!-- 13&#45;&gt;12 -->
 <g id="edge27" class="edge">
 <title>13&#45;&gt;12</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M595.0234,-431.8314C596.0929,-424.131 597.3647,-414.9743 598.5532,-406.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="602.0336,-406.7997 599.9426,-396.4133 595.1001,-405.8367 602.0336,-406.7997"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1231.4906,-431.8314C1231.0628,-424.131 1230.5541,-414.9743 1230.0787,-406.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1233.5724,-406.2037 1229.523,-396.4133 1226.5831,-406.592 1233.5724,-406.2037"/>
 </g>
 <!-- 14&#45;&gt;13 -->
 <g id="edge30" class="edge">
 <title>14&#45;&gt;13</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M598.4813,-503.8314C597.6257,-496.131 596.6083,-486.9743 595.6574,-478.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="599.1289,-477.9656 594.5459,-468.4133 592.1717,-478.7386 599.1289,-477.9656"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1238.4813,-503.8314C1237.6257,-496.131 1236.6083,-486.9743 1235.6574,-478.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1239.1289,-477.9656 1234.5459,-468.4133 1232.1717,-478.7386 1239.1289,-477.9656"/>
 </g>
 <!-- 15 -->
 <g id="node16" class="node">
 <title>15</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M884.5,-468C884.5,-468 816.5,-468 816.5,-468 810.5,-468 804.5,-462 804.5,-456 804.5,-456 804.5,-444 804.5,-444 804.5,-438 810.5,-432 816.5,-432 816.5,-432 884.5,-432 884.5,-432 890.5,-432 896.5,-438 896.5,-444 896.5,-444 896.5,-456 896.5,-456 896.5,-462 890.5,-468 884.5,-468"/>
-<text text-anchor="middle" x="850.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
+<path fill="none" stroke="#5673d8" stroke-width="2" d="M1386.5,-468C1386.5,-468 1318.5,-468 1318.5,-468 1312.5,-468 1306.5,-462 1306.5,-456 1306.5,-456 1306.5,-444 1306.5,-444 1306.5,-438 1312.5,-432 1318.5,-432 1318.5,-432 1386.5,-432 1386.5,-432 1392.5,-432 1398.5,-438 1398.5,-444 1398.5,-444 1398.5,-456 1398.5,-456 1398.5,-462 1392.5,-468 1386.5,-468"/>
+<text text-anchor="middle" x="1352.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
 </g>
 <!-- 15&#45;&gt;12 -->
 <g id="edge28" class="edge">
 <title>15&#45;&gt;12</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M804.3326,-434.7295C801.3479,-433.7922 798.3843,-432.875 795.5,-432 744.8089,-416.6215 686.1499,-400.4356 646.929,-389.8418"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="647.7128,-386.4283 637.1466,-387.2066 645.892,-393.1873 647.7128,-386.4283"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1321.2096,-431.8314C1305.2023,-422.5368 1285.5414,-411.1208 1268.4506,-401.1971"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1270.1858,-398.1575 1259.7804,-396.1628 1266.6708,-404.211 1270.1858,-398.1575"/>
 </g>
 <!-- 16&#45;&gt;15 -->
 <g id="edge32" class="edge">
 <title>16&#45;&gt;15</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M874.425,-503.8314C870.8898,-495.8771 866.664,-486.369 862.7544,-477.5723"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="865.9435,-476.1299 858.6837,-468.4133 859.5468,-478.9729 865.9435,-476.1299"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1359.9766,-503.8314C1358.9071,-496.131 1357.6353,-486.9743 1356.4468,-478.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1359.8999,-477.8367 1355.0574,-468.4133 1352.9664,-478.7997 1359.8999,-477.8367"/>
 </g>
 <!-- 17 -->
 <g id="node18" class="node">
 <title>17</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M774.5,-468C774.5,-468 706.5,-468 706.5,-468 700.5,-468 694.5,-462 694.5,-456 694.5,-456 694.5,-444 694.5,-444 694.5,-438 700.5,-432 706.5,-432 706.5,-432 774.5,-432 774.5,-432 780.5,-432 786.5,-438 786.5,-444 786.5,-444 786.5,-456 786.5,-456 786.5,-462 780.5,-468 774.5,-468"/>
-<text text-anchor="middle" x="740.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
+<path fill="none" stroke="#5673d8" stroke-width="2" d="M1154.5,-468C1154.5,-468 1086.5,-468 1086.5,-468 1080.5,-468 1074.5,-462 1074.5,-456 1074.5,-456 1074.5,-444 1074.5,-444 1074.5,-438 1080.5,-432 1086.5,-432 1086.5,-432 1154.5,-432 1154.5,-432 1160.5,-432 1166.5,-438 1166.5,-444 1166.5,-444 1166.5,-456 1166.5,-456 1166.5,-462 1160.5,-468 1154.5,-468"/>
+<text text-anchor="middle" x="1120.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
 </g>
 <!-- 17&#45;&gt;12 -->
 <g id="edge29" class="edge">
 <title>17&#45;&gt;12</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M705.6768,-431.8314C687.6989,-422.4516 665.5797,-410.9112 646.4384,-400.9244"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="647.7969,-397.6855 637.3121,-396.1628 644.5589,-403.8916 647.7969,-397.6855"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1147.753,-431.8314C1161.4389,-422.7074 1178.1915,-411.539 1192.8827,-401.7449"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1194.8767,-404.6221 1201.2558,-396.1628 1190.9938,-398.7977 1194.8767,-404.6221"/>
 </g>
 <!-- 18&#45;&gt;17 -->
 <g id="edge34" class="edge">
 <title>18&#45;&gt;17</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M727.0422,-503.8314C728.9884,-496.0463 731.3068,-486.7729 733.4663,-478.1347"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="736.8668,-478.9636 735.8967,-468.4133 730.0758,-477.2658 736.8668,-478.9636"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1090.5937,-503.8314C1095.0597,-495.7925 1100.4075,-486.1666 1105.3379,-477.2918"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1108.4735,-478.8546 1110.2704,-468.4133 1102.3544,-475.4551 1108.4735,-478.8546"/>
 </g>
 <!-- 19 -->
 <g id="node20" class="node">
@@ -450,194 +450,194 @@
 <!-- 21 -->
 <g id="node22" class="node">
 <title>21</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M158.5,-468C158.5,-468 90.5,-468 90.5,-468 84.5,-468 78.5,-462 78.5,-456 78.5,-456 78.5,-444 78.5,-444 78.5,-438 84.5,-432 90.5,-432 90.5,-432 158.5,-432 158.5,-432 164.5,-432 170.5,-438 170.5,-444 170.5,-444 170.5,-456 170.5,-456 170.5,-462 164.5,-468 158.5,-468"/>
-<text text-anchor="middle" x="124.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
+<path fill="none" stroke="#5673d8" stroke-width="2" d="M276.5,-468C276.5,-468 208.5,-468 208.5,-468 202.5,-468 196.5,-462 196.5,-456 196.5,-456 196.5,-444 196.5,-444 196.5,-438 202.5,-432 208.5,-432 208.5,-432 276.5,-432 276.5,-432 282.5,-432 288.5,-438 288.5,-444 288.5,-444 288.5,-456 288.5,-456 288.5,-462 282.5,-468 276.5,-468"/>
+<text text-anchor="middle" x="242.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
 </g>
 <!-- 21&#45;&gt;20 -->
 <g id="edge37" class="edge">
 <title>21&#45;&gt;20</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M154.2764,-431.8314C169.3693,-422.6221 187.8757,-411.3301 204.0343,-401.4706"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="206.0198,-404.3593 212.7331,-396.1628 202.3737,-398.3838 206.0198,-404.3593"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M242.5,-431.8314C242.5,-424.131 242.5,-414.9743 242.5,-406.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="246.0001,-406.4132 242.5,-396.4133 239.0001,-406.4133 246.0001,-406.4132"/>
 </g>
 <!-- 22&#45;&gt;21 -->
 <g id="edge40" class="edge">
 <title>22&#45;&gt;21</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M119.2664,-503.8314C120.015,-496.131 120.9053,-486.9743 121.7373,-478.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="125.2256,-478.7051 122.7098,-468.4133 118.2585,-478.0276 125.2256,-478.7051"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M242.5,-503.8314C242.5,-496.131 242.5,-486.9743 242.5,-478.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="246.0001,-478.4132 242.5,-468.4133 239.0001,-478.4133 246.0001,-478.4132"/>
 </g>
 <!-- 23 -->
 <g id="node24" class="node">
 <title>23</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M411.5,-468C411.5,-468 343.5,-468 343.5,-468 337.5,-468 331.5,-462 331.5,-456 331.5,-456 331.5,-444 331.5,-444 331.5,-438 337.5,-432 343.5,-432 343.5,-432 411.5,-432 411.5,-432 417.5,-432 423.5,-438 423.5,-444 423.5,-444 423.5,-456 423.5,-456 423.5,-462 417.5,-468 411.5,-468"/>
-<text text-anchor="middle" x="377.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
+<path fill="none" stroke="#5673d8" stroke-width="2" d="M158.5,-468C158.5,-468 90.5,-468 90.5,-468 84.5,-468 78.5,-462 78.5,-456 78.5,-456 78.5,-444 78.5,-444 78.5,-438 84.5,-432 90.5,-432 90.5,-432 158.5,-432 158.5,-432 164.5,-432 170.5,-438 170.5,-444 170.5,-444 170.5,-456 170.5,-456 170.5,-462 164.5,-468 158.5,-468"/>
+<text text-anchor="middle" x="124.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
 </g>
 <!-- 23&#45;&gt;20 -->
 <g id="edge38" class="edge">
 <title>23&#45;&gt;20</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M343.4338,-431.8314C325.8467,-422.4516 304.2084,-410.9112 285.4832,-400.9244"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="287.0259,-397.7805 276.5553,-396.1628 283.7318,-403.957 287.0259,-397.7805"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M154.2764,-431.8314C169.3693,-422.6221 187.8757,-411.3301 204.0343,-401.4706"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="206.0198,-404.3593 212.7331,-396.1628 202.3737,-398.3838 206.0198,-404.3593"/>
 </g>
 <!-- 24&#45;&gt;23 -->
 <g id="edge42" class="edge">
 <title>24&#45;&gt;23</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M396.1914,-503.8314C393.4883,-496.0463 390.2684,-486.7729 387.269,-478.1347"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="390.48,-476.7119 383.8935,-468.4133 383.8673,-479.0081 390.48,-476.7119"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M119.2664,-503.8314C120.015,-496.131 120.9053,-486.9743 121.7373,-478.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="125.2256,-478.7051 122.7098,-468.4133 118.2585,-478.0276 125.2256,-478.7051"/>
 </g>
 <!-- 25 -->
 <g id="node26" class="node">
 <title>25</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M276.5,-468C276.5,-468 208.5,-468 208.5,-468 202.5,-468 196.5,-462 196.5,-456 196.5,-456 196.5,-444 196.5,-444 196.5,-438 202.5,-432 208.5,-432 208.5,-432 276.5,-432 276.5,-432 282.5,-432 288.5,-438 288.5,-444 288.5,-444 288.5,-456 288.5,-456 288.5,-462 282.5,-468 276.5,-468"/>
-<text text-anchor="middle" x="242.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
+<path fill="none" stroke="#5673d8" stroke-width="2" d="M411.5,-468C411.5,-468 343.5,-468 343.5,-468 337.5,-468 331.5,-462 331.5,-456 331.5,-456 331.5,-444 331.5,-444 331.5,-438 337.5,-432 343.5,-432 343.5,-432 411.5,-432 411.5,-432 417.5,-432 423.5,-438 423.5,-444 423.5,-444 423.5,-456 423.5,-456 423.5,-462 417.5,-468 411.5,-468"/>
+<text text-anchor="middle" x="377.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
 </g>
 <!-- 25&#45;&gt;20 -->
 <g id="edge39" class="edge">
 <title>25&#45;&gt;20</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M242.5,-431.8314C242.5,-424.131 242.5,-414.9743 242.5,-406.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="246.0001,-406.4132 242.5,-396.4133 239.0001,-406.4133 246.0001,-406.4132"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M343.4338,-431.8314C325.8467,-422.4516 304.2084,-410.9112 285.4832,-400.9244"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="287.0259,-397.7805 276.5553,-396.1628 283.7318,-403.957 287.0259,-397.7805"/>
 </g>
 <!-- 26&#45;&gt;25 -->
 <g id="edge44" class="edge">
 <title>26&#45;&gt;25</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M242.5,-503.8314C242.5,-496.131 242.5,-486.9743 242.5,-478.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="246.0001,-478.4132 242.5,-468.4133 239.0001,-478.4133 246.0001,-478.4132"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M396.1914,-503.8314C393.4883,-496.0463 390.2684,-486.7729 387.269,-478.1347"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="390.48,-476.7119 383.8935,-468.4133 383.8673,-479.0081 390.48,-476.7119"/>
 </g>
 <!-- 27 -->
 <g id="node28" class="node">
 <title>27</title>
-<path fill="none" stroke="#afd856" stroke-width="2" d="M1118.5,-252C1118.5,-252 1078.5,-252 1078.5,-252 1072.5,-252 1066.5,-246 1066.5,-240 1066.5,-240 1066.5,-228 1066.5,-228 1066.5,-222 1072.5,-216 1078.5,-216 1078.5,-216 1118.5,-216 1118.5,-216 1124.5,-216 1130.5,-222 1130.5,-228 1130.5,-228 1130.5,-240 1130.5,-240 1130.5,-246 1124.5,-252 1118.5,-252"/>
-<text text-anchor="middle" x="1098.5" y="-231.5" font-family="sans" font-size="10.00" fill="#000000">align_stats</text>
+<path fill="none" stroke="#afd856" stroke-width="2" d="M663.5,-180C663.5,-180 623.5,-180 623.5,-180 617.5,-180 611.5,-174 611.5,-168 611.5,-168 611.5,-156 611.5,-156 611.5,-150 617.5,-144 623.5,-144 623.5,-144 663.5,-144 663.5,-144 669.5,-144 675.5,-150 675.5,-156 675.5,-156 675.5,-168 675.5,-168 675.5,-174 669.5,-180 663.5,-180"/>
+<text text-anchor="middle" x="643.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">align_stats</text>
 </g>
 <!-- 27&#45;&gt;1 -->
 <g id="edge19" class="edge">
 <title>27&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1094.5665,-215.8081C1089.0128,-194.8485 1076.7255,-161.1048 1052.5,-144 993.0439,-102.0201 770.2091,-92.6609 680.8819,-90.5863"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="680.7428,-87.0826 670.6701,-90.3677 680.5929,-94.081 680.7428,-87.0826"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M643.5,-143.8314C643.5,-136.131 643.5,-126.9743 643.5,-118.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="647.0001,-118.4132 643.5,-108.4133 640.0001,-118.4133 647.0001,-118.4132"/>
 </g>
 <!-- 28 -->
 <g id="node29" class="node">
 <title>28</title>
-<path fill="none" stroke="#d88d56" stroke-width="2" d="M1251,-396C1251,-396 1206,-396 1206,-396 1200,-396 1194,-390 1194,-384 1194,-384 1194,-372 1194,-372 1194,-366 1200,-360 1206,-360 1206,-360 1251,-360 1251,-360 1257,-360 1263,-366 1263,-372 1263,-372 1263,-384 1263,-384 1263,-390 1257,-396 1251,-396"/>
-<text text-anchor="middle" x="1228.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">align_merge</text>
+<path fill="none" stroke="#d88d56" stroke-width="2" d="M625,-396C625,-396 580,-396 580,-396 574,-396 568,-390 568,-384 568,-384 568,-372 568,-372 568,-366 574,-360 580,-360 580,-360 625,-360 625,-360 631,-360 637,-366 637,-372 637,-372 637,-384 637,-384 637,-390 631,-396 625,-396"/>
+<text text-anchor="middle" x="602.5" y="-375.5" font-family="sans" font-size="10.00" fill="#000000">align_merge</text>
 </g>
 <!-- 28&#45;&gt;27 -->
 <g id="edge46" class="edge">
 <title>28&#45;&gt;27</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1211.2823,-359.5911C1201.5984,-349.1907 1189.317,-335.923 1178.5,-324 1159.01,-302.5172 1137.1464,-277.8834 1121.2074,-259.8249"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1123.5696,-257.2117 1114.3309,-252.0254 1118.3189,-261.8411 1123.5696,-257.2117"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M605.9251,-359.9555C613.07,-322.3144 629.6081,-235.1867 638.1615,-190.1246"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="641.6295,-190.6224 640.0558,-180.1451 634.7523,-189.3169 641.6295,-190.6224"/>
 </g>
 <!-- 40 -->
 <g id="node41" class="node">
 <title>40</title>
-<path fill="none" stroke="#56c9d8" stroke-width="2" d="M1250,-324C1250,-324 1199,-324 1199,-324 1193,-324 1187,-318 1187,-312 1187,-312 1187,-300 1187,-300 1187,-294 1193,-288 1199,-288 1199,-288 1250,-288 1250,-288 1256,-288 1262,-294 1262,-300 1262,-300 1262,-312 1262,-312 1262,-318 1256,-324 1250,-324"/>
-<text text-anchor="middle" x="1224.5" y="-303.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_lca</text>
+<path fill="none" stroke="#56c9d8" stroke-width="2" d="M505,-324C505,-324 454,-324 454,-324 448,-324 442,-318 442,-312 442,-312 442,-300 442,-300 442,-294 448,-288 454,-288 454,-288 505,-288 505,-288 511,-288 517,-294 517,-300 517,-300 517,-312 517,-312 517,-318 511,-324 505,-324"/>
+<text text-anchor="middle" x="479.5" y="-303.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_lca</text>
 </g>
 <!-- 28&#45;&gt;40 -->
 <g id="edge61" class="edge">
 <title>28&#45;&gt;40</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1227.4906,-359.8314C1227.0628,-352.131 1226.5541,-342.9743 1226.0787,-334.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1229.5724,-334.2037 1225.523,-324.4133 1222.5831,-334.592 1229.5724,-334.2037"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M571.4619,-359.8314C555.7295,-350.6221 536.4389,-339.3301 519.5956,-329.4706"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="520.9265,-326.1941 510.5282,-324.1628 517.3902,-332.2352 520.9265,-326.1941"/>
 </g>
 <!-- 46 -->
 <g id="node47" class="node">
 <title>46</title>
-<path fill="none" stroke="#56d8a9" stroke-width="2" d="M1196,-108C1196,-108 1123,-108 1123,-108 1117,-108 1111,-102 1111,-96 1111,-96 1111,-84 1111,-84 1111,-78 1117,-72 1123,-72 1123,-72 1196,-72 1196,-72 1202,-72 1208,-78 1208,-84 1208,-84 1208,-96 1208,-96 1208,-102 1202,-108 1196,-108"/>
-<text text-anchor="middle" x="1159.5" y="-87.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_damage</text>
+<path fill="none" stroke="#56d8a9" stroke-width="2" d="M300,-108C300,-108 227,-108 227,-108 221,-108 215,-102 215,-96 215,-96 215,-84 215,-84 215,-78 221,-72 227,-72 227,-72 300,-72 300,-72 306,-72 312,-78 312,-84 312,-84 312,-96 312,-96 312,-102 306,-108 300,-108"/>
+<text text-anchor="middle" x="263.5" y="-87.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_damage</text>
 </g>
 <!-- 28&#45;&gt;46 -->
 <g id="edge70" class="edge">
 <title>28&#45;&gt;46</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1247.9956,-359.9663C1257.0103,-350.2894 1266.7551,-337.5757 1271.5,-324 1287.0701,-279.4517 1299.8593,-208.3666 1257.5,-144 1247.8142,-129.2821 1232.6903,-118.2148 1217.1974,-110.0588"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1218.5912,-106.8442 1208.0712,-105.5875 1215.5114,-113.1303 1218.5912,-106.8442"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M567.8127,-375.6679C474.3977,-369.0752 222.7377,-349.1381 195.5,-324 135.8454,-268.944 123.0616,-213.8047 164.5,-144 173.7733,-128.3788 189.3303,-116.9874 205.3977,-108.8117"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="207.3094,-111.7808 214.8733,-104.362 204.3339,-105.4446 207.3094,-111.7808"/>
 </g>
 <!-- 29 -->
 <g id="node30" class="node">
 <title>29</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M1266.5,-468C1266.5,-468 1198.5,-468 1198.5,-468 1192.5,-468 1186.5,-462 1186.5,-456 1186.5,-456 1186.5,-444 1186.5,-444 1186.5,-438 1192.5,-432 1198.5,-432 1198.5,-432 1266.5,-432 1266.5,-432 1272.5,-432 1278.5,-438 1278.5,-444 1278.5,-444 1278.5,-456 1278.5,-456 1278.5,-462 1272.5,-468 1266.5,-468"/>
-<text text-anchor="middle" x="1232.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
+<path fill="none" stroke="#5673d8" stroke-width="2" d="M774.5,-468C774.5,-468 706.5,-468 706.5,-468 700.5,-468 694.5,-462 694.5,-456 694.5,-456 694.5,-444 694.5,-444 694.5,-438 700.5,-432 706.5,-432 706.5,-432 774.5,-432 774.5,-432 780.5,-432 786.5,-438 786.5,-444 786.5,-444 786.5,-456 786.5,-456 786.5,-462 780.5,-468 774.5,-468"/>
+<text text-anchor="middle" x="740.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
 </g>
 <!-- 29&#45;&gt;28 -->
 <g id="edge47" class="edge">
 <title>29&#45;&gt;28</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1231.4906,-431.8314C1231.0628,-424.131 1230.5541,-414.9743 1230.0787,-406.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1233.5724,-406.2037 1229.523,-396.4133 1226.5831,-406.592 1233.5724,-406.2037"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M705.6768,-431.8314C687.6989,-422.4516 665.5797,-410.9112 646.4384,-400.9244"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="647.7969,-397.6855 637.3121,-396.1628 644.5589,-403.8916 647.7969,-397.6855"/>
 </g>
 <!-- 30&#45;&gt;29 -->
 <g id="edge50" class="edge">
 <title>30&#45;&gt;29</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1238.4813,-503.8314C1237.6257,-496.131 1236.6083,-486.9743 1235.6574,-478.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1239.1289,-477.9656 1234.5459,-468.4133 1232.1717,-478.7386 1239.1289,-477.9656"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M727.0422,-503.8314C728.9884,-496.0463 731.3068,-486.7729 733.4663,-478.1347"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="736.8668,-478.9636 735.8967,-468.4133 730.0758,-477.2658 736.8668,-478.9636"/>
 </g>
 <!-- 31 -->
 <g id="node32" class="node">
 <title>31</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M1386.5,-468C1386.5,-468 1318.5,-468 1318.5,-468 1312.5,-468 1306.5,-462 1306.5,-456 1306.5,-456 1306.5,-444 1306.5,-444 1306.5,-438 1312.5,-432 1318.5,-432 1318.5,-432 1386.5,-432 1386.5,-432 1392.5,-432 1398.5,-438 1398.5,-444 1398.5,-444 1398.5,-456 1398.5,-456 1398.5,-462 1392.5,-468 1386.5,-468"/>
-<text text-anchor="middle" x="1352.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
+<path fill="none" stroke="#5673d8" stroke-width="2" d="M626.5,-468C626.5,-468 558.5,-468 558.5,-468 552.5,-468 546.5,-462 546.5,-456 546.5,-456 546.5,-444 546.5,-444 546.5,-438 552.5,-432 558.5,-432 558.5,-432 626.5,-432 626.5,-432 632.5,-432 638.5,-438 638.5,-444 638.5,-444 638.5,-456 638.5,-456 638.5,-462 632.5,-468 626.5,-468"/>
+<text text-anchor="middle" x="592.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
 </g>
 <!-- 31&#45;&gt;28 -->
 <g id="edge48" class="edge">
 <title>31&#45;&gt;28</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1321.2096,-431.8314C1305.2023,-422.5368 1285.5414,-411.1208 1268.4506,-401.1971"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1270.1858,-398.1575 1259.7804,-396.1628 1266.6708,-404.211 1270.1858,-398.1575"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M595.0234,-431.8314C596.0929,-424.131 597.3647,-414.9743 598.5532,-406.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="602.0336,-406.7997 599.9426,-396.4133 595.1001,-405.8367 602.0336,-406.7997"/>
 </g>
 <!-- 32&#45;&gt;31 -->
 <g id="edge52" class="edge">
 <title>32&#45;&gt;31</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1359.9766,-503.8314C1358.9071,-496.131 1357.6353,-486.9743 1356.4468,-478.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1359.8999,-477.8367 1355.0574,-468.4133 1352.9664,-478.7997 1359.8999,-477.8367"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M598.4813,-503.8314C597.6257,-496.131 596.6083,-486.9743 595.6574,-478.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="599.1289,-477.9656 594.5459,-468.4133 592.1717,-478.7386 599.1289,-477.9656"/>
 </g>
 <!-- 33 -->
 <g id="node34" class="node">
 <title>33</title>
-<path fill="none" stroke="#5673d8" stroke-width="2" d="M1154.5,-468C1154.5,-468 1086.5,-468 1086.5,-468 1080.5,-468 1074.5,-462 1074.5,-456 1074.5,-456 1074.5,-444 1074.5,-444 1074.5,-438 1080.5,-432 1086.5,-432 1086.5,-432 1154.5,-432 1154.5,-432 1160.5,-432 1166.5,-438 1166.5,-444 1166.5,-444 1166.5,-456 1166.5,-456 1166.5,-462 1160.5,-468 1154.5,-468"/>
-<text text-anchor="middle" x="1120.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
+<path fill="none" stroke="#5673d8" stroke-width="2" d="M884.5,-468C884.5,-468 816.5,-468 816.5,-468 810.5,-468 804.5,-462 804.5,-456 804.5,-456 804.5,-444 804.5,-444 804.5,-438 810.5,-432 816.5,-432 816.5,-432 884.5,-432 884.5,-432 890.5,-432 896.5,-438 896.5,-444 896.5,-444 896.5,-456 896.5,-456 896.5,-462 890.5,-468 884.5,-468"/>
+<text text-anchor="middle" x="850.5" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">shard_sort_query</text>
 </g>
 <!-- 33&#45;&gt;28 -->
 <g id="edge49" class="edge">
 <title>33&#45;&gt;28</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1147.753,-431.8314C1161.4389,-422.7074 1178.1915,-411.539 1192.8827,-401.7449"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1194.8767,-404.6221 1201.2558,-396.1628 1190.9938,-398.7977 1194.8767,-404.6221"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M804.3326,-434.7295C801.3479,-433.7922 798.3843,-432.875 795.5,-432 744.8089,-416.6215 686.1499,-400.4356 646.929,-389.8418"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="647.7128,-386.4283 637.1466,-387.2066 645.892,-393.1873 647.7128,-386.4283"/>
 </g>
 <!-- 34&#45;&gt;33 -->
 <g id="edge54" class="edge">
 <title>34&#45;&gt;33</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1090.5937,-503.8314C1095.0597,-495.7925 1100.4075,-486.1666 1105.3379,-477.2918"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1108.4735,-478.8546 1110.2704,-468.4133 1102.3544,-475.4551 1108.4735,-478.8546"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M874.425,-503.8314C870.8898,-495.8771 866.664,-486.369 862.7544,-477.5723"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="865.9435,-476.1299 858.6837,-468.4133 859.5468,-478.9729 865.9435,-476.1299"/>
 </g>
 <!-- 35 -->
 <g id="node36" class="node">
 <title>35</title>
-<path fill="none" stroke="#56d8c9" stroke-width="2" d="M505.5,-252C505.5,-252 453.5,-252 453.5,-252 447.5,-252 441.5,-246 441.5,-240 441.5,-240 441.5,-228 441.5,-228 441.5,-222 447.5,-216 453.5,-216 453.5,-216 505.5,-216 505.5,-216 511.5,-216 517.5,-222 517.5,-228 517.5,-228 517.5,-240 517.5,-240 517.5,-246 511.5,-252 505.5,-252"/>
-<text text-anchor="middle" x="479.5" y="-231.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_dfit</text>
+<path fill="none" stroke="#56d8c9" stroke-width="2" d="M1212.5,-252C1212.5,-252 1160.5,-252 1160.5,-252 1154.5,-252 1148.5,-246 1148.5,-240 1148.5,-240 1148.5,-228 1148.5,-228 1148.5,-222 1154.5,-216 1160.5,-216 1160.5,-216 1212.5,-216 1212.5,-216 1218.5,-216 1224.5,-222 1224.5,-228 1224.5,-228 1224.5,-240 1224.5,-240 1224.5,-246 1218.5,-252 1212.5,-252"/>
+<text text-anchor="middle" x="1186.5" y="-231.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_dfit</text>
 </g>
 <!-- 35&#45;&gt;1 -->
 <g id="edge20" class="edge">
 <title>35&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M486.2672,-215.646C494.3817,-195.787 509.6747,-164.2538 531.5,-144 552.9599,-124.0853 583.1169,-110.1153 606.7325,-101.3807"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="608.1495,-104.592 616.4086,-97.9558 605.8138,-97.9932 608.1495,-104.592"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1167.6146,-215.6266C1142.7605,-191.8736 1099.9543,-152.5353 1080.5,-144 1008.9536,-112.6101 773.0547,-96.9202 680.8763,-91.871"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="680.7954,-88.3617 670.6223,-91.321 680.4204,-95.3517 680.7954,-88.3617"/>
 </g>
 <!-- 41 -->
 <g id="node42" class="node">
 <title>41</title>
-<path fill="none" stroke="#56d892" stroke-width="2" d="M467,-180C467,-180 386,-180 386,-180 380,-180 374,-174 374,-168 374,-168 374,-156 374,-156 374,-150 380,-144 386,-144 386,-144 467,-144 467,-144 473,-144 479,-150 479,-156 479,-156 479,-168 479,-168 479,-174 473,-180 467,-180"/>
-<text text-anchor="middle" x="426.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_aggregate</text>
+<path fill="none" stroke="#56d892" stroke-width="2" d="M1236,-180C1236,-180 1155,-180 1155,-180 1149,-180 1143,-174 1143,-168 1143,-168 1143,-156 1143,-156 1143,-150 1149,-144 1155,-144 1155,-144 1236,-144 1236,-144 1242,-144 1248,-150 1248,-156 1248,-156 1248,-168 1248,-168 1248,-174 1242,-180 1236,-180"/>
+<text text-anchor="middle" x="1195.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_aggregate</text>
 </g>
 <!-- 35&#45;&gt;41 -->
 <g id="edge63" class="edge">
 <title>35&#45;&gt;41</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M466.1259,-215.8314C460.0838,-207.6232 452.8237,-197.7606 446.1779,-188.7323"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="448.8011,-186.3918 440.0542,-180.4133 443.1637,-190.5415 448.8011,-186.3918"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1188.7711,-215.8314C1189.7336,-208.131 1190.8782,-198.9743 1191.9479,-190.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1195.4309,-190.7702 1193.1983,-180.4133 1188.4849,-189.9019 1195.4309,-190.7702"/>
 </g>
 <!-- 36&#45;&gt;35 -->
 <g id="edge56" class="edge">
 <title>36&#45;&gt;35</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M479.5,-287.8314C479.5,-280.131 479.5,-270.9743 479.5,-262.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="483.0001,-262.4132 479.5,-252.4133 476.0001,-262.4133 483.0001,-262.4132"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1214.911,-287.8314C1210.6683,-279.7925 1205.5879,-270.1666 1200.904,-261.2918"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1203.9811,-259.6235 1196.2181,-252.4133 1197.7904,-262.8908 1203.9811,-259.6235"/>
 </g>
 <!-- 36&#45;&gt;41 -->
 <g id="edge62" class="edge">
 <title>36&#45;&gt;41</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M458.1288,-287.6607C448.5174,-278.089 438.0946,-265.5568 432.5,-252 424.4103,-232.397 423.2004,-208.3487 423.8553,-190.0438"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="427.3527,-190.1872 424.4185,-180.0068 420.3637,-189.795 427.3527,-190.1872"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1230.4508,-287.9744C1235.6036,-269.4858 1241.1306,-240.1027 1233.5,-216 1230.4185,-206.2664 1224.8817,-196.7695 1218.9711,-188.5228"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1221.6248,-186.2316 1212.7635,-180.4239 1216.069,-190.49 1221.6248,-186.2316"/>
 </g>
 <!-- 37 -->
 <g id="node38" class="node">
@@ -678,50 +678,50 @@
 <!-- 39 -->
 <g id="node40" class="node">
 <title>39</title>
-<path fill="none" stroke="#56d8c9" stroke-width="2" d="M1212.5,-252C1212.5,-252 1160.5,-252 1160.5,-252 1154.5,-252 1148.5,-246 1148.5,-240 1148.5,-240 1148.5,-228 1148.5,-228 1148.5,-222 1154.5,-216 1160.5,-216 1160.5,-216 1212.5,-216 1212.5,-216 1218.5,-216 1224.5,-222 1224.5,-228 1224.5,-228 1224.5,-240 1224.5,-240 1224.5,-246 1218.5,-252 1212.5,-252"/>
-<text text-anchor="middle" x="1186.5" y="-231.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_dfit</text>
+<path fill="none" stroke="#56d8c9" stroke-width="2" d="M505.5,-252C505.5,-252 453.5,-252 453.5,-252 447.5,-252 441.5,-246 441.5,-240 441.5,-240 441.5,-228 441.5,-228 441.5,-222 447.5,-216 453.5,-216 453.5,-216 505.5,-216 505.5,-216 511.5,-216 517.5,-222 517.5,-228 517.5,-228 517.5,-240 517.5,-240 517.5,-246 511.5,-252 505.5,-252"/>
+<text text-anchor="middle" x="479.5" y="-231.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_dfit</text>
 </g>
 <!-- 39&#45;&gt;1 -->
 <g id="edge22" class="edge">
 <title>39&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1167.6146,-215.6266C1142.7605,-191.8736 1099.9543,-152.5353 1080.5,-144 1008.9536,-112.6101 773.0547,-96.9202 680.8763,-91.871"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="680.7954,-88.3617 670.6223,-91.321 680.4204,-95.3517 680.7954,-88.3617"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M486.2672,-215.646C494.3817,-195.787 509.6747,-164.2538 531.5,-144 552.9599,-124.0853 583.1169,-110.1153 606.7325,-101.3807"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="608.1495,-104.592 616.4086,-97.9558 605.8138,-97.9932 608.1495,-104.592"/>
 </g>
 <!-- 43 -->
 <g id="node44" class="node">
 <title>43</title>
-<path fill="none" stroke="#56d892" stroke-width="2" d="M1236,-180C1236,-180 1155,-180 1155,-180 1149,-180 1143,-174 1143,-168 1143,-168 1143,-156 1143,-156 1143,-150 1149,-144 1155,-144 1155,-144 1236,-144 1236,-144 1242,-144 1248,-150 1248,-156 1248,-156 1248,-168 1248,-168 1248,-174 1242,-180 1236,-180"/>
-<text text-anchor="middle" x="1195.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_aggregate</text>
+<path fill="none" stroke="#56d892" stroke-width="2" d="M467,-180C467,-180 386,-180 386,-180 380,-180 374,-174 374,-168 374,-168 374,-156 374,-156 374,-150 380,-144 386,-144 386,-144 467,-144 467,-144 473,-144 479,-150 479,-156 479,-156 479,-168 479,-168 479,-174 473,-180 467,-180"/>
+<text text-anchor="middle" x="426.5" y="-159.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_aggregate</text>
 </g>
 <!-- 39&#45;&gt;43 -->
 <g id="edge67" class="edge">
 <title>39&#45;&gt;43</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1188.7711,-215.8314C1189.7336,-208.131 1190.8782,-198.9743 1191.9479,-190.4166"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1195.4309,-190.7702 1193.1983,-180.4133 1188.4849,-189.9019 1195.4309,-190.7702"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M466.1259,-215.8314C460.0838,-207.6232 452.8237,-197.7606 446.1779,-188.7323"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="448.8011,-186.3918 440.0542,-180.4133 443.1637,-190.5415 448.8011,-186.3918"/>
 </g>
 <!-- 40&#45;&gt;39 -->
 <g id="edge60" class="edge">
 <title>40&#45;&gt;39</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1214.911,-287.8314C1210.6683,-279.7925 1205.5879,-270.1666 1200.904,-261.2918"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1203.9811,-259.6235 1196.2181,-252.4133 1197.7904,-262.8908 1203.9811,-259.6235"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M479.5,-287.8314C479.5,-280.131 479.5,-270.9743 479.5,-262.4166"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="483.0001,-262.4132 479.5,-252.4133 476.0001,-262.4133 483.0001,-262.4132"/>
 </g>
 <!-- 40&#45;&gt;43 -->
 <g id="edge66" class="edge">
 <title>40&#45;&gt;43</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1230.4508,-287.9744C1235.6036,-269.4858 1241.1306,-240.1027 1233.5,-216 1230.4185,-206.2664 1224.8817,-196.7695 1218.9711,-188.5228"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1221.6248,-186.2316 1212.7635,-180.4239 1216.069,-190.49 1221.6248,-186.2316"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M458.1288,-287.6607C448.5174,-278.089 438.0946,-265.5568 432.5,-252 424.4103,-232.397 423.2004,-208.3487 423.8553,-190.0438"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="427.3527,-190.1872 424.4185,-180.0068 420.3637,-189.795 427.3527,-190.1872"/>
 </g>
 <!-- 41&#45;&gt;0 -->
 <g id="edge2" class="edge">
 <title>41&#45;&gt;0</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M426.5,-143.7623C426.5,-119.201 426.5,-75.2474 426.5,-46.3541"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="430.0001,-46.0896 426.5,-36.0896 423.0001,-46.0897 430.0001,-46.0896"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1142.7064,-149.4675C1134.2894,-147.5703 1125.6663,-145.6859 1117.5,-144 868.6841,-92.6343 567.1829,-41.4206 463.5541,-24.1333"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="464.0267,-20.6639 453.5876,-22.4736 462.8768,-27.5688 464.0267,-20.6639"/>
 </g>
 <!-- 41&#45;&gt;1 -->
 <g id="edge23" class="edge">
 <title>41&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M479.0296,-144.5708C518.4161,-131.5025 571.3532,-113.9381 606.4058,-102.3078"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="607.8441,-105.5182 616.2331,-99.0471 605.6397,-98.8744 607.8441,-105.5182"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1142.6406,-147.0051C1137.8801,-145.8957 1133.1157,-144.8718 1128.5,-144 963.1791,-112.7758 762.4996,-97.5001 680.7982,-92.2186"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="680.7286,-88.7072 670.527,-91.5671 680.2854,-95.6932 680.7286,-88.7072"/>
 </g>
 <!-- 42&#45;&gt;0 -->
 <g id="edge3" class="edge">
@@ -738,20 +738,20 @@
 <!-- 43&#45;&gt;0 -->
 <g id="edge4" class="edge">
 <title>43&#45;&gt;0</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1142.7064,-149.4675C1134.2894,-147.5703 1125.6663,-145.6859 1117.5,-144 868.6841,-92.6343 567.1829,-41.4206 463.5541,-24.1333"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="464.0267,-20.6639 453.5876,-22.4736 462.8768,-27.5688 464.0267,-20.6639"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M426.5,-143.7623C426.5,-119.201 426.5,-75.2474 426.5,-46.3541"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="430.0001,-46.0896 426.5,-36.0896 423.0001,-46.0897 430.0001,-46.0896"/>
 </g>
 <!-- 43&#45;&gt;1 -->
 <g id="edge25" class="edge">
 <title>43&#45;&gt;1</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1142.6406,-147.0051C1137.8801,-145.8957 1133.1157,-144.8718 1128.5,-144 963.1791,-112.7758 762.4996,-97.5001 680.7982,-92.2186"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="680.7286,-88.7072 670.527,-91.5671 680.2854,-95.6932 680.7286,-88.7072"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M479.0296,-144.5708C518.4161,-131.5025 571.3532,-113.9381 606.4058,-102.3078"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="607.8441,-105.5182 616.2331,-99.0471 605.6397,-98.8744 607.8441,-105.5182"/>
 </g>
 <!-- 44&#45;&gt;0 -->
 <g id="edge5" class="edge">
 <title>44&#45;&gt;0</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M304.6318,-71.8314C330.8909,-60.2323 364.6299,-45.3291 389.948,-34.1457"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="391.4728,-37.2984 399.206,-30.0563 388.6444,-30.8953 391.4728,-37.2984"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1110.8382,-85.2201C973.6662,-71.7462 585.9233,-33.6596 463.8097,-21.6648"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="464.1165,-18.1782 453.8222,-20.6838 463.4321,-25.1446 464.1165,-18.1782"/>
 </g>
 <!-- 45&#45;&gt;0 -->
 <g id="edge6" class="edge">
@@ -762,8 +762,8 @@
 <!-- 46&#45;&gt;0 -->
 <g id="edge7" class="edge">
 <title>46&#45;&gt;0</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1110.8382,-85.2201C973.6662,-71.7462 585.9233,-33.6596 463.8097,-21.6648"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="464.1165,-18.1782 453.8222,-20.6838 463.4321,-25.1446 464.1165,-18.1782"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M304.6318,-71.8314C330.8909,-60.2323 364.6299,-45.3291 389.948,-34.1457"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="391.4728,-37.2984 399.206,-30.0563 388.6444,-30.8953 391.4728,-37.2984"/>
 </g>
 </g>
 </svg>

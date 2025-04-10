@@ -95,7 +95,7 @@
 <polygon fill="none" stroke="#74d957" stroke-width="2" points="1,-2511 1,-2641 926,-2641 926,-2511 1,-2511"/>
 </g>
 <!-- 2&#45;&gt;1 -->
-<g id="edge5" class="edge">
+<g id="edge4" class="edge">
 <title>2&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M265.1567,-2509.9745C251.6111,-2499.6521 239.4268,-2487.7405 229.5,-2474 175.3975,-2399.1119 210.5,-2359.3867 210.5,-2267 210.5,-2267 210.5,-2267 210.5,-1178 210.5,-1030.7982 292.2909,-892.6601 384.1109,-783.9623"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="386.9149,-786.0681 390.7383,-776.1872 381.5875,-781.5272 386.9149,-786.0681"/>
@@ -129,7 +129,7 @@
 <text text-anchor="start" x="246.5" y="-1811.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="250.5" y="-1811.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
 <text text-anchor="start" x="303.5" y="-1811.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="246.5" y="-1792" font-family="monospace" font-size="10.00" fill="#000000">temp/aligns/merge/{sample}_{library}_{read_type_map}.bam</text>
+<text text-anchor="start" x="246.5" y="-1792" font-family="monospace" font-size="10.00" fill="#000000">results/aligns/merge/{sample}_{library}_{read_type_map}.bam</text>
 <text text-anchor="start" x="946.5" y="-1771.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="950.5" y="-1771.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
 <text text-anchor="start" x="1011.5" y="-1771.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
@@ -148,17 +148,17 @@
 <g id="node5" class="node">
 <title>4</title>
 <text text-anchor="start" x="665" y="-2153.6" font-family="sans" font-weight="bold" font-size="18.00" fill="#000000">align_merge</text>
-<text text-anchor="start" x="363.5" y="-2129.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="367.5" y="-2129.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
-<text text-anchor="start" x="420.5" y="-2129.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="363.5" y="-2110" font-family="monospace" font-size="10.00" fill="#000000">&lt;input function&gt;</text>
-<text text-anchor="start" x="1003.5" y="-2089.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="1007.5" y="-2089.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
-<text text-anchor="start" x="1068.5" y="-2089.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="363.5" y="-2070" font-family="monospace" font-size="10.00" fill="#000000">temp/aligns/merge/{sample,HD827sonic_1|HD827sonic_2}_{library,lib1|lib2}_{read_type_map,pe|se|singleton|collapsed}.bam</text>
-<polygon fill="#d99157" stroke="#d99157" points="357.5,-2144 357.5,-2144 1079.5,-2144 1079.5,-2144 357.5,-2144"/>
-<polygon fill="#d99157" stroke="#d99157" points="357.5,-2104 357.5,-2104 1079.5,-2104 1079.5,-2104 357.5,-2104"/>
-<polygon fill="none" stroke="#d99157" stroke-width="2" points="357,-2061 357,-2173 1078,-2173 1078,-2061 357,-2061"/>
+<text text-anchor="start" x="354.5" y="-2129.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="358.5" y="-2129.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
+<text text-anchor="start" x="411.5" y="-2129.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="354.5" y="-2110" font-family="monospace" font-size="10.00" fill="#000000">&lt;input function&gt;</text>
+<text text-anchor="start" x="1012.5" y="-2089.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="1016.5" y="-2089.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
+<text text-anchor="start" x="1077.5" y="-2089.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="354.5" y="-2070" font-family="monospace" font-size="10.00" fill="#000000">results/aligns/merge/{sample,HD827sonic_1|HD827sonic_2}_{library,lib1|lib2}_{read_type_map,pe|se|singleton|collapsed}.bam</text>
+<polygon fill="#d99157" stroke="#d99157" points="348.5,-2144 348.5,-2144 1088.5,-2144 1088.5,-2144 348.5,-2144"/>
+<polygon fill="#d99157" stroke="#d99157" points="348.5,-2104 348.5,-2104 1088.5,-2104 1088.5,-2104 348.5,-2104"/>
+<polygon fill="none" stroke="#d99157" stroke-width="2" points="348,-2061 348,-2173 1087,-2173 1087,-2061 348,-2061"/>
 </g>
 <!-- 4&#45;&gt;3 -->
 <g id="edge8" class="edge">
@@ -173,7 +173,7 @@
 <text text-anchor="start" x="890.5" y="-1979.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="894.5" y="-1979.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
 <text text-anchor="start" x="947.5" y="-1979.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="890.5" y="-1960" font-family="monospace" font-size="10.00" fill="#000000">temp/aligns/merge/{sample}_{library}_{read_type_map}.bam</text>
+<text text-anchor="start" x="890.5" y="-1960" font-family="monospace" font-size="10.00" fill="#000000">results/aligns/merge/{sample}_{library}_{read_type_map}.bam</text>
 <text text-anchor="start" x="1584.5" y="-1939.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="1588.5" y="-1939.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
 <text text-anchor="start" x="1649.5" y="-1939.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
@@ -237,7 +237,7 @@
 <polygon fill="none" stroke="#57d9ca" stroke-width="2" points="433,-1095 433,-1261 1226,-1261 1226,-1095 433,-1095"/>
 </g>
 <!-- 7&#45;&gt;1 -->
-<g id="edge7" class="edge">
+<g id="edge5" class="edge">
 <title>7&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M681.563,-1093.8379C671.004,-1083.0024 661.7013,-1071.0667 654.5,-1058 619.4328,-994.3709 605.101,-919.0434 601.7472,-846.2848"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="605.2346,-845.8921 601.3459,-836.0367 598.24,-846.1661 605.2346,-845.8921"/>
@@ -263,7 +263,7 @@
 <polygon fill="none" stroke="#57d990" stroke-width="2" points="665,-873 665,-1057 1458,-1057 1458,-873 665,-873"/>
 </g>
 <!-- 7&#45;&gt;12 -->
-<g id="edge18" class="edge">
+<g id="edge17" class="edge">
 <title>7&#45;&gt;12</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M921.1925,-1093.8168C931.4863,-1084.366 942.0475,-1074.6698 952.5318,-1065.0441"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="955.1482,-1067.3933 960.1475,-1058.0521 950.4141,-1062.2369 955.1482,-1067.3933"/>
@@ -279,7 +279,7 @@
 <text text-anchor="start" x="874.5" y="-1456" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/references/ncbi/20250205/wgs_eukaryota.acc2taxid.gz</text>
 <text text-anchor="start" x="874.5" y="-1438" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/taxonomy/20250210/names.dmp</text>
 <text text-anchor="start" x="874.5" y="-1420" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/taxonomy/20250210/nodes.dmp</text>
-<text text-anchor="start" x="874.5" y="-1402" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7fec3c223060&gt;</text>
+<text text-anchor="start" x="874.5" y="-1402" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7efdce71ade0&gt;</text>
 <text text-anchor="start" x="1568.5" y="-1381.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="1572.5" y="-1381.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
 <text text-anchor="start" x="1633.5" y="-1381.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
@@ -298,7 +298,7 @@
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="989.2238,-1263.968 978.7933,-1262.1089 985.7878,-1270.0668 989.2238,-1263.968"/>
 </g>
 <!-- 8&#45;&gt;12 -->
-<g id="edge17" class="edge">
+<g id="edge18" class="edge">
 <title>8&#45;&gt;12</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1271.6012,-1297.785C1274.5914,-1233.6703 1268.9016,-1155.5439 1235.5,-1094 1230.0893,-1084.0305 1223.5379,-1074.6194 1216.1898,-1065.7736"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1218.747,-1063.3807 1209.5359,-1058.1456 1213.4719,-1067.9822 1218.747,-1063.3807"/>
@@ -310,7 +310,7 @@
 <text text-anchor="start" x="1029.5" y="-1661.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="1033.5" y="-1661.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
 <text text-anchor="start" x="1086.5" y="-1661.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="1029.5" y="-1642" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7fec3c22f9c0&gt;</text>
+<text text-anchor="start" x="1029.5" y="-1642" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7efdce727880&gt;</text>
 <text text-anchor="start" x="1723.5" y="-1621.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="1727.5" y="-1621.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
 <text text-anchor="start" x="1788.5" y="-1621.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
@@ -333,7 +333,7 @@
 <text text-anchor="start" x="1291.5" y="-1217.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="1295.5" y="-1217.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
 <text text-anchor="start" x="1348.5" y="-1217.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="1291.5" y="-1198" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7fec3c222fc0&gt;</text>
+<text text-anchor="start" x="1291.5" y="-1198" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7efdce7189a0&gt;</text>
 <text text-anchor="start" x="2003.5" y="-1177.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="2007.5" y="-1177.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
 <text text-anchor="start" x="2068.5" y="-1177.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
@@ -358,7 +358,7 @@
 <text text-anchor="start" x="1047.5" y="-1811.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="1051.5" y="-1811.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
 <text text-anchor="start" x="1104.5" y="-1811.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="1047.5" y="-1792" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7fec3c22f560&gt;</text>
+<text text-anchor="start" x="1047.5" y="-1792" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7efdce727420&gt;</text>
 <text text-anchor="start" x="1705.5" y="-1771.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="1709.5" y="-1771.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
 <text text-anchor="start" x="1770.5" y="-1771.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
@@ -386,7 +386,7 @@
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1065.0001,-246.2756 1061.5,-236.2757 1058.0001,-246.2757 1065.0001,-246.2756"/>
 </g>
 <!-- 12&#45;&gt;1 -->
-<g id="edge4" class="edge">
+<g id="edge7" class="edge">
 <title>12&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M965.1002,-871.9945C941.4428,-849.1702 915.0117,-823.6697 887.6895,-797.3096"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="889.9716,-794.648 880.3448,-790.2235 885.1113,-799.6856 889.9716,-794.648"/>

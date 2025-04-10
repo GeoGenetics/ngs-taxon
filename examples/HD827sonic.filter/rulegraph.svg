@@ -22,7 +22,7 @@
 <text text-anchor="middle" x="80" y="-87.5" font-family="sans" font-size="10.00" fill="#000000">multiqc</text>
 </g>
 <!-- 1&#45;&gt;0 -->
-<g id="edge1" class="edge">
+<g id="edge2" class="edge">
 <title>1&#45;&gt;0</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M100.4397,-71.8314C110.3205,-63.0485 122.3324,-52.3712 133.045,-42.8489"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="135.418,-45.4224 140.5668,-36.1628 130.7674,-40.1906 135.418,-45.4224"/>
@@ -34,7 +34,7 @@
 <text text-anchor="middle" x="40" y="-807.5" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
 </g>
 <!-- 2&#45;&gt;1 -->
-<g id="edge5" class="edge">
+<g id="edge6" class="edge">
 <title>2&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M31.517,-791.81C19.7754,-764.9218 0,-712.7039 0,-666 0,-666 0,-666 0,-234 0,-187.9277 31.6802,-142.8164 55.1688,-115.7014"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="57.8025,-118.0067 61.8468,-108.2141 52.5785,-113.3474 57.8025,-118.0067"/>
@@ -58,7 +58,7 @@
 <text text-anchor="middle" x="70" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">align_stats</text>
 </g>
 <!-- 3&#45;&gt;1 -->
-<g id="edge6" class="edge">
+<g id="edge7" class="edge">
 <title>3&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M63.2136,-431.6497C53.8203,-404.5619 38,-352.0977 38,-306 38,-306 38,-306 38,-234 38,-192.0688 54.6152,-145.918 66.9448,-117.4435"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="70.2152,-118.7032 71.0929,-108.1447 63.8225,-115.8513 70.2152,-118.7032"/>
@@ -190,19 +190,19 @@
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="159.9309,-478.7702 157.6983,-468.4133 152.9849,-477.9019 159.9309,-478.7702"/>
 </g>
 <!-- 12&#45;&gt;0 -->
-<g id="edge2" class="edge">
+<g id="edge3" class="edge">
 <title>12&#45;&gt;0</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M161,-143.7623C161,-119.201 161,-75.2474 161,-46.3541"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="164.5001,-46.0896 161,-36.0896 157.5001,-46.0897 164.5001,-46.0896"/>
 </g>
 <!-- 12&#45;&gt;1 -->
-<g id="edge7" class="edge">
+<g id="edge5" class="edge">
 <title>12&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M140.5603,-143.8314C130.6795,-135.0485 118.6676,-124.3712 107.955,-114.8489"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="110.2326,-112.1906 100.4332,-108.1628 105.582,-117.4224 110.2326,-112.1906"/>
 </g>
 <!-- 13&#45;&gt;0 -->
-<g id="edge3" class="edge">
+<g id="edge1" class="edge">
 <title>13&#45;&gt;0</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M242.9552,-215.7645C238.6374,-197.3625 231.1624,-168.275 222,-144 208.7586,-108.9178 189.3207,-70.3552 175.9652,-45.2506"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="178.9854,-43.4766 171.17,-36.3233 172.8186,-46.789 178.9854,-43.4766"/>

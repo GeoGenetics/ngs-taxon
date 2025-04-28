@@ -77,6 +77,15 @@ rule all:
         res=[
             expand(
                 expand(
+                    rules.shard_saturated_reads_extract.output.fq,
+                    read_type_map="collapsed",
+                    allow_missing=True,
+                ),
+                zip,
+                **units.to_dict("list"),
+            ),
+            expand(
+                expand(
                     rules.metadmg_aggregate.output.stats,
                     read_type_map="collapsed",
                     allow_missing=True,

@@ -234,10 +234,32 @@ rule shard_saturated_reads_remove:
         extra=lambda w, input: f"--qname-file ^{input.read_id}",
     threads: 2
     resources:
-        mem=lambda w, attempt, threads, input: f"{10* threads* attempt} GiB",
-        runtime=lambda w, attempt, input: f"{np.clip(0.0001* input.size_mb+1,0.1,20)* attempt} h",
+        mem=lambda w, attempt: f"{10* attempt} GiB",
+        runtime=lambda w, attempt: f"{30* attempt} m",
     wrapper:
         f"{wrapper_ver}/bio/samtools/view"
+
+
+rule shard_saturated_reads_extract:
+    input:
+        fastq=get_data,
+        read_id=rules.shard_saturated_reads_get.output.read_id,
+    output:
+        fq="results/reads/saturated/{sample}_{library}_{read_type_map}.fastq.gz",
+    log:
+        "logs/shards/saturated_reads/extract/{sample}_{library}_{read_type_map}.log",
+    benchmark:
+        "benchmarks/shards/saturated_reads/extract/{sample}_{library}_{read_type_map}.jsonl"
+    params:
+        command="subseq",
+        compress_lvl=9,
+        extra="",
+    threads: 4
+    resources:
+        mem=lambda w, attempt: f"{1* attempt} GiB",
+        runtime=lambda w, attempt: f"{30* attempt} m",
+    wrapper:
+        f"{wrapper_ver}/bio/seqtk"
 
 
 rule shard_clean_header:
@@ -276,7 +298,7 @@ rule shard_sort_query:
         mem_overhead_factor=0.1,
     threads: 8
     resources:
-        mem=lambda w, attempt, threads, input: f"{10* threads* attempt} GiB",
+        mem=lambda w, attempt, threads: f"{10* threads* attempt} GiB",
         runtime=lambda w, attempt, input: f"{max(0.0001* input.size_mb+1,0.1)* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/sort"

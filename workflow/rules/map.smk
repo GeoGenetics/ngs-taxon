@@ -104,7 +104,6 @@ rule bowtie2:
             * attempt
         ),
         runtime=lambda w, attempt: f"{10* attempt} h",
-        slurm_extra="--nice=2000",
     wrapper:
         f"{wrapper_ver}/bio/bowtie2/align"
 
@@ -131,8 +130,7 @@ rule bwa_aln:
             (2 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50)
             * attempt
         ),
-        runtime=lambda w, attempt: f"{1* attempt} d",
-        slurm_extra="--nice=2000",
+        runtime=lambda w, attempt: f"{10* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/bwa/aln"
 
@@ -159,7 +157,7 @@ rule bwa_samxe:
             (2 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50)
             * attempt
         ),
-        runtime=lambda w, attempt: f"{1* attempt} d",
+        runtime=lambda w, attempt: f"{10* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/bwa/samxe"
 

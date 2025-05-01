@@ -43,7 +43,6 @@ rule align_merge:
     resources:
         mem=lambda w, input, attempt: f"{np.clip(7e-5* input.size_mb,40,300)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{max(5e-5* input.size_mb* attempt,0.5)} h",
-        tmpdir=get_tmp(),
     wrapper:
         f"{wrapper_ver}/bio/samtools/merge"
 

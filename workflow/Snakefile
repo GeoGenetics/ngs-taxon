@@ -3,11 +3,20 @@ import numpy as np
 snakemake.utils.min_version("9.0.0")
 
 # Define wrapper versions
-wrapper_ver = "v5.10.0"
+wrapper_ver = "v6.0.1"
+
+units = config["units"]
+snakemake.utils.validate(
+    units.drop(columns=["read_type_raw", "read_type_trim"]),
+    schema=Path(workflow.current_basedir) / "schemas/units.schema.yaml",
+)
+config = config["cfg"]
+snakemake.utils.validate(
+    config, schema=Path(workflow.current_basedir) / "schemas/config.schema.yaml"
+)
 
 
 include: "rules/utils.smk"
-include: "rules/setup.smk"
 include: "rules/map.smk"
 include: "rules/merge_alns.smk"
 include: "rules/bam_filter.smk"
@@ -18,11 +27,10 @@ include: "rules/metadmg.smk"
 ### Taxonomy assignment ###
 ###########################
 
-
 rule multiqc:
     input:
         ### Map
-        expand_pandas(
+        expand_pd(
             expand_pandas(
                 "logs/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
                 ref_sets,
@@ -61,7 +69,7 @@ rule multiqc:
     benchmark:
         "benchmarks/reports/multiqc.log"
     params:
-        extra="--force --clean-up " + config["report"]["multiqc"],
+        extra="--force --clean-up " + config.get("report", {}).get("multiqc", ""),
     localrule: True
     threads: 1
     resources:

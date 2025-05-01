@@ -5,12 +5,6 @@ description: Read taxonomic assignment configuration file
 type: object
 properties:
 
-  samples:
-    type: string
-
-  units:
-    type: string
-
   ref:
     type: object
     patternProperties:
@@ -156,10 +150,7 @@ properties:
       - multiqc
 
 required:
-  - samples
-  - units
   - ref
   - filter
   - taxonomy
   - metadmg
-  - report

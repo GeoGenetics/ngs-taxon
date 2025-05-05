@@ -1,12 +1,6 @@
 
 # - Only tested with Phred33 quality scores
 
-samples: config/samples.tsv
-
-units: config/units.tsv
-
-
-
 #############
 ### ALIGN ###
 #############

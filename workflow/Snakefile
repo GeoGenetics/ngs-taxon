@@ -1,16 +1,30 @@
 import numpy as np
+import pandas as pd
 
 snakemake.utils.min_version("9.0.0")
 
 # Define wrapper versions
 wrapper_ver = "v6.0.1"
 
-units = config["units"]
+# Default value for testing purposes
+units = config.get(
+    "units",
+    pd.read_table("config/units.tsv", comment="#")
+    .set_index(["sample", "library", "lane"], drop=False)
+    .assign(
+        read_type_raw=lambda x: [["R1", "R2"]] * 4,
+        read_type_trim=lambda x: [
+            ["R1", "R2", "singleton", "collapsed", "collapsedtrunc"]
+        ]
+        * 4,
+    ),
+)
 snakemake.utils.validate(
     units.drop(columns=["read_type_raw", "read_type_trim"]),
     schema=Path(workflow.current_basedir) / "schemas/units.schema.yaml",
 )
-config = config["cfg"]
+# Default value for testing purposes
+config = config.get("cfg", config)
 snakemake.utils.validate(
     config, schema=Path(workflow.current_basedir) / "schemas/config.schema.yaml"
 )
@@ -26,6 +40,7 @@ include: "rules/metadmg.smk"
 ###########################
 ### Taxonomy assignment ###
 ###########################
+
 
 rule multiqc:
     input:

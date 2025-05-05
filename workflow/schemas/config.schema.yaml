@@ -46,13 +46,21 @@ properties:
           - acc2taxid
     additionalProperties: false
 
-  saturated_reads:
+  filter:
     type: object
     properties:
-      n_alns:
-        type: integer
+      saturated_reads:
+        type: object
+        properties:
+          activate:
+            type: boolean
+          n_alns:
+            type: integer
+        required:
+          - activate
+          - n_alns
     required:
-      - n_alns
+      - saturated_reads
 
   bam_filter:
     type: object
@@ -151,7 +159,7 @@ required:
   - samples
   - units
   - ref
-  - saturated_reads
+  - filter
   - taxonomy
   - metadmg
   - report

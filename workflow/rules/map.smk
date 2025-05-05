@@ -204,7 +204,7 @@ rule shard_saturated_reads_get:
         "benchmarks/shards/saturated_reads/get/{sample}_{library}_{read_type_map}.jsonl"
     params:
         extra="--headerless-tsv-output cat then filter '$n_aligns >= {}' then uniq -g read_id then cut -f read_id".format(
-            config["saturated_reads"]["n_alns"]
+            config["filter"]["saturated_reads"]["n_alns"]
         ),
     threads: 4
     resources:
@@ -216,11 +216,7 @@ rule shard_saturated_reads_get:
 
 rule shard_saturated_reads_remove:
     input:
-        bam=lambda w: expand(
-            "temp/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam",
-            tool=config["ref"][w.ref]["map"]["tool"],
-            allow_missing=True,
-        ),
+        bam=rules.shard_count_alns.input.bam,
         read_id=rules.shard_saturated_reads_get.output.read_id,
     output:
         bam=temp(
@@ -264,7 +260,11 @@ rule shard_saturated_reads_extract:
 
 rule shard_clean_header:
     input:
-        bam=rules.shard_saturated_reads_remove.output.bam,
+        bam=(
+            rules.shard_saturated_reads_remove.output.bam
+            if is_activated("filter/saturated_reads")
+            else rules.shard_count_aln.input.bam
+        ),
     output:
         bam=temp(
             "temp/shards/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"

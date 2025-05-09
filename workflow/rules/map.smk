@@ -179,7 +179,7 @@ rule shard_count_alns:
         "benchmarks/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     threads: 1
     resources:
-        mem=lambda w, attempt: f"{5* attempt} GiB",
+        mem=lambda w, attempt: f"{10* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} h",
     shell:
         """
@@ -206,8 +206,8 @@ rule shard_saturated_reads_get:
         ),
     threads: 4
     resources:
-        mem=lambda w, attempt: f"{1* attempt} GiB",
-        runtime=lambda w, attempt: f"{1* attempt} h",
+        mem=lambda w, attempt: f"{5* attempt} GiB",
+        runtime=lambda w, attempt: f"{15* attempt} m",
     wrapper:
         f"{wrapper_ver}/utils/miller"
 
@@ -261,7 +261,7 @@ rule shard_clean_header:
         bam=(
             rules.shard_saturated_reads_remove.output.bam
             if is_activated("filter/saturated_reads")
-            else rules.shard_count_aln.input.bam
+            else rules.shard_count_alns.input.bam
         ),
     output:
         bam=temp(

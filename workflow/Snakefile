@@ -4,12 +4,16 @@ import pandas as pd
 snakemake.utils.min_version("9.0.0")
 
 # Define wrapper versions
-wrapper_ver = "v6.0.1"
+wrapper_ver = "v7.0.0"
 
 # Default value for testing purposes
 units = config.get(
     "units",
-    pd.read_table("config/units.tsv", comment="#")
+    pd.read_table(
+        "config/units.tsv",
+        converters={"seq_type": (lambda x: x.casefold())},
+        comment="#",
+    )
     .set_index(["sample", "library", "lane"], drop=False)
     .assign(
         read_type_raw=lambda x: [["R1", "R2"]] * 4,
@@ -99,41 +103,25 @@ rule all:
         qc=rules.multiqc.output.html,
         res=[
             expand(
-                expand(
-                    rules.shard_saturated_reads_extract.output.fq,
-                    read_type_map="collapsed",
-                    allow_missing=True,
-                ),
+                rules.shard_saturated_reads_extract.output.fq,
                 zip,
-                **units.to_dict("list"),
+                **units.assign(read_type_map="collapsed").to_dict("list"),
             ),
             expand(
-                expand(
-                    rules.metadmg_aggregate.output.stats,
-                    read_type_map="collapsed",
-                    allow_missing=True,
-                ),
+                rules.metadmg_aggregate.output.stats,
                 zip,
-                **units.to_dict("list"),
+                **units.assign(read_type_map="collapsed").to_dict("list"),
             ),
             expand(
-                expand(
-                    rules.metadmg_damage.output.stats,
-                    read_type_map="collapsed",
-                    allow_missing=True,
-                ),
+                rules.metadmg_damage.output.stats,
                 zip,
-                **units.to_dict("list"),
+                **units.assign(read_type_map="collapsed").to_dict("list"),
             ),
             (
                 expand(
-                    expand(
-                        rules.align_lca.output.stats,
-                        read_type_map="collapsed",
-                        allow_missing=True,
-                    ),
+                    rules.align_lca.output.stats,
                     zip,
-                    **units.to_dict("list"),
+                    **units.assign(read_type_map="collapsed").to_dict("list"),
                 )
                 if is_activated("bam_filter/lca")
                 else []

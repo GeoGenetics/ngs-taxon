@@ -24,6 +24,7 @@ def expand_pandas(string: List, df: pd.DataFrame, allow_missing=False) -> List:
 def expand_pd(string: List, df: pd.DataFrame, allow_missing=False) -> List:
     return set(expand(string, zip, **df.to_dict("list"), allow_missing=allow_missing))
 
+
 ### Config
 
 

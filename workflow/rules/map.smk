@@ -50,11 +50,14 @@ def get_read_group(wildcards):
 ### RULES ###
 #############
 
+
 def get_data(wildcards):
     read_type_trim = {"pe": ["R1", "R2"], "se": ["R"]}
     return expand(
         "results/reads/low_complexity/{sample}_{library}_{read_type_trim}.fastq.gz",
-        read_type_trim= read_type_trim.get(wildcards.read_type_map, wildcards.read_type_map),
+        read_type_trim=read_type_trim.get(
+            wildcards.read_type_map, wildcards.read_type_map
+        ),
         allow_missing=True,
     )
 
@@ -251,7 +254,7 @@ rule shard_saturated_reads_extract:
     threads: 4
     resources:
         mem=lambda w, attempt: f"{1* attempt} GiB",
-        runtime=lambda w, attempt: f"{30* attempt} m",
+        runtime=lambda w, attempt: f"{1* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/seqtk"
 

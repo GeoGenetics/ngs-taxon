@@ -98,7 +98,7 @@ rule metadmg_dfit:
     threads: 4
     resources:
         mem=lambda w, attempt: f"{25* attempt} GiB",
-        runtime=lambda w, attempt, input: f"{7* attempt} h",
+        runtime=lambda w, attempt, input: f"{10* attempt} h",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed $RANDOM --out_prefix {params.out_prefix} > {log} 2>&1"
 

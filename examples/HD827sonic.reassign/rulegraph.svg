@@ -34,7 +34,7 @@
 <text text-anchor="middle" x="56" y="-1023.5" font-family="sans" font-size="10.00" fill="#000000">bowtie2</text>
 </g>
 <!-- 2&#45;&gt;1 -->
-<g id="edge7" class="edge">
+<g id="edge6" class="edge">
 <title>2&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M43.8488,-1007.7857C27.3788,-981.2865 0,-930.0148 0,-882 0,-882 0,-882 0,-234 0,-187.4968 33.281,-142.8088 58.193,-115.8723"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="60.9206,-118.0835 65.2856,-108.4296 55.8531,-113.2543 60.9206,-118.0835"/>
@@ -70,7 +70,7 @@
 <text text-anchor="middle" x="63" y="-447.5" font-family="sans" font-size="10.00" fill="#000000">align_stats</text>
 </g>
 <!-- 3&#45;&gt;1 -->
-<g id="edge6" class="edge">
+<g id="edge7" class="edge">
 <title>3&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M57.82,-431.9889C50.4973,-404.8949 38,-351.9269 38,-306 38,-306 38,-306 38,-234 38,-191.6562 56.5932,-145.6118 70.3906,-117.273"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="73.6755,-118.5304 75.0325,-108.0228 67.4191,-115.3907 73.6755,-118.5304"/>
@@ -166,7 +166,7 @@
 <text text-anchor="middle" x="104" y="-231.5" font-family="sans" font-size="10.00" fill="#000000">metadmg_dfit</text>
 </g>
 <!-- 10&#45;&gt;1 -->
-<g id="edge8" class="edge">
+<g id="edge5" class="edge">
 <title>10&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M101.5936,-215.7623C98.3529,-191.201 92.5535,-147.2474 88.7412,-118.3541"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="92.1649,-117.5458 87.3868,-108.0896 85.2251,-118.4616 92.1649,-117.5458"/>
@@ -250,7 +250,7 @@
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="217.8472,-46.6666 218.4627,-36.0896 211.3857,-43.9742 217.8472,-46.6666"/>
 </g>
 <!-- 15&#45;&gt;1 -->
-<g id="edge5" class="edge">
+<g id="edge8" class="edge">
 <title>15&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M145.5603,-143.8314C135.6795,-135.0485 123.6676,-124.3712 112.955,-114.8489"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="115.2326,-112.1906 105.4332,-108.1628 110.582,-117.4224 115.2326,-112.1906"/>

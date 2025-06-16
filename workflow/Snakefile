@@ -1,13 +1,40 @@
 import numpy as np
+import pandas as pd
 
 snakemake.utils.min_version("9.0.0")
 
 # Define wrapper versions
-wrapper_ver = "v5.10.0"
+wrapper_ver = "v7.0.0"
+
+# Default value for testing purposes
+units = config.get(
+    "units",
+    pd.read_table(
+        "config/units.tsv",
+        converters={"seq_type": (lambda x: x.casefold())},
+        comment="#",
+    )
+    .set_index(["sample", "library", "lane"], drop=False)
+    .assign(
+        read_type_raw=lambda x: [["R1", "R2"]] * 4,
+        read_type_trim=lambda x: [
+            ["R1", "R2", "singleton", "collapsed", "collapsedtrunc"]
+        ]
+        * 4,
+    ),
+)
+snakemake.utils.validate(
+    units.drop(columns=["read_type_raw", "read_type_trim"]),
+    schema=Path(workflow.current_basedir) / "schemas/units.schema.yaml",
+)
+# Default value for testing purposes
+config = config.get("cfg", config)
+snakemake.utils.validate(
+    config, schema=Path(workflow.current_basedir) / "schemas/config.schema.yaml"
+)
 
 
 include: "rules/utils.smk"
-include: "rules/setup.smk"
 include: "rules/map.smk"
 include: "rules/merge_alns.smk"
 include: "rules/bam_filter.smk"
@@ -22,7 +49,7 @@ include: "rules/metadmg.smk"
 rule multiqc:
     input:
         ### Map
-        expand_pandas(
+        expand_pd(
             expand_pandas(
                 "logs/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
                 ref_sets,
@@ -61,7 +88,7 @@ rule multiqc:
     benchmark:
         "benchmarks/reports/multiqc.log"
     params:
-        extra="--force --clean-up " + config["report"]["multiqc"],
+        extra="--force --clean-up " + config.get("report", {}).get("multiqc", ""),
     localrule: True
     threads: 1
     resources:
@@ -76,41 +103,25 @@ rule all:
         qc=rules.multiqc.output.html,
         res=[
             expand(
-                expand(
-                    rules.shard_saturated_reads_extract.output.fq,
-                    read_type_map="collapsed",
-                    allow_missing=True,
-                ),
+                rules.shard_saturated_reads_extract.output.fq,
                 zip,
-                **units.to_dict("list"),
+                **units.assign(read_type_map="collapsed").to_dict("list"),
             ),
             expand(
-                expand(
-                    rules.metadmg_aggregate.output.stats,
-                    read_type_map="collapsed",
-                    allow_missing=True,
-                ),
+                rules.metadmg_aggregate.output.stats,
                 zip,
-                **units.to_dict("list"),
+                **units.assign(read_type_map="collapsed").to_dict("list"),
             ),
             expand(
-                expand(
-                    rules.metadmg_damage.output.stats,
-                    read_type_map="collapsed",
-                    allow_missing=True,
-                ),
+                rules.metadmg_damage.output.stats,
                 zip,
-                **units.to_dict("list"),
+                **units.assign(read_type_map="collapsed").to_dict("list"),
             ),
             (
                 expand(
-                    expand(
-                        rules.align_lca.output.stats,
-                        read_type_map="collapsed",
-                        allow_missing=True,
-                    ),
+                    rules.align_lca.output.stats,
                     zip,
-                    **units.to_dict("list"),
+                    **units.assign(read_type_map="collapsed").to_dict("list"),
                 )
                 if is_activated("bam_filter/lca")
                 else []

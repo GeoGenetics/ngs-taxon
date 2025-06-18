@@ -56,9 +56,7 @@ rule align_reassign:
         extra=config["bam_filter"]["reassign"]["params"],
     conda:
         urlunparse(
-            baseurl._replace(
-                path=str(Path(baseurl.path) / ".." / "envs" / "bam_filter.yaml")
-            )
+            baseurl._replace(path=str(Path(baseurl.path) / "envs" / "bam_filter.yaml"))
         )
     threads: 10
     resources:
@@ -92,9 +90,7 @@ rule align_filter:
         extra=config["bam_filter"]["filter"]["params"],
     conda:
         urlunparse(
-            baseurl._replace(
-                path=str(Path(baseurl.path) / ".." / "envs" / "bam_filter.yaml")
-            )
+            baseurl._replace(path=str(Path(baseurl.path) / "envs" / "bam_filter.yaml"))
         )
     threads: 10
     resources:
@@ -129,9 +125,7 @@ rule align_lca:
         extra=config["bam_filter"]["lca"]["params"],
     conda:
         urlunparse(
-            baseurl._replace(
-                path=str(Path(baseurl.path) / ".." / "envs" / "bam_filter.yaml")
-            )
+            baseurl._replace(path=str(Path(baseurl.path) / "envs" / "bam_filter.yaml"))
         )
     threads: 10
     resources:

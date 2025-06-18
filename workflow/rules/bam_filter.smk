@@ -55,7 +55,11 @@ rule align_reassign:
         mem_overhead=0.5,
         extra=config["bam_filter"]["reassign"]["params"],
     conda:
-        Path(workflow.current_basedir) / ".." / "envs" / "bam_filter.yaml"
+        urlunparse(
+            baseurl._replace(
+                path=str(Path(baseurl.path) / ".." / "envs" / "bam_filter.yaml")
+            )
+        )
     threads: 10
     resources:
         mem=lambda w, attempt, input, threads: f"{np.clip(2* input.size_mb/1024,10* threads,100* threads)* attempt} GiB",
@@ -87,7 +91,11 @@ rule align_filter:
         mem_overhead=0.2,
         extra=config["bam_filter"]["filter"]["params"],
     conda:
-        Path(workflow.current_basedir) / ".." / "envs" / "bam_filter.yaml"
+        urlunparse(
+            baseurl._replace(
+                path=str(Path(baseurl.path) / ".." / "envs" / "bam_filter.yaml")
+            )
+        )
     threads: 10
     resources:
         mem=lambda w, attempt, input, threads: f"{np.clip(2* input.size_mb/1024,10* threads,70* threads)* attempt} GiB",
@@ -120,7 +128,11 @@ rule align_lca:
         mem_overhead=0.2,
         extra=config["bam_filter"]["lca"]["params"],
     conda:
-        Path(workflow.current_basedir) / ".." / "envs" / "bam_filter.yaml"
+        urlunparse(
+            baseurl._replace(
+                path=str(Path(baseurl.path) / ".." / "envs" / "bam_filter.yaml")
+            )
+        )
     threads: 10
     resources:
         mem=lambda w, attempt, input, threads: f"{np.clip(2* input.size_mb/1024,20* threads,70* threads)* attempt} GiB",

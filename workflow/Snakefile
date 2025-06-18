@@ -6,7 +6,13 @@ snakemake.utils.min_version("9.0.0")
 # Define wrapper versions
 wrapper_ver = "v7.0.0"
 
-# Default value for testing purposes
+######################
+### Validate Input ###
+######################
+from urllib.parse import urlparse, urlunparse
+
+baseurl = urlparse(workflow.current_basedir.get_path_or_uri())
+# Units (default value for testing purposes)
 units = config.get(
     "units",
     pd.read_table(
@@ -25,25 +31,30 @@ units = config.get(
 )
 snakemake.utils.validate(
     units.drop(columns=["read_type_raw", "read_type_trim"]),
-    schema=Path(workflow.current_basedir) / "schemas/units.schema.yaml",
+    schema=urlunparse(
+        baseurl._replace(path=str(Path(baseurl.path) / "schemas" / "units.schema.yaml"))
+    ),
 )
-# Default value for testing purposes
+# Config (default value for testing purposes)
 config = config.get("cfg", config)
 snakemake.utils.validate(
-    config, schema=Path(workflow.current_basedir) / "schemas/config.schema.yaml"
+    config,
+    schema=urlunparse(
+        baseurl._replace(
+            path=str(Path(baseurl.path) / "schemas" / "config.schema.yaml")
+        )
+    ),
 )
-
-
-include: "rules/utils.smk"
-include: "rules/map.smk"
-include: "rules/merge_alns.smk"
-include: "rules/bam_filter.smk"
-include: "rules/metadmg.smk"
 
 
 ###########################
 ### Taxonomy assignment ###
 ###########################
+include: "rules/utils.smk"
+include: "rules/map.smk"
+include: "rules/merge_alns.smk"
+include: "rules/bam_filter.smk"
+include: "rules/metadmg.smk"
 
 
 rule multiqc:

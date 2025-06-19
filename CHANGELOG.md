@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.1](https://github.com/GeoGenetics/ngs-taxon/compare/v0.9.0...v0.9.1) (2025-06-19)
+
+
+### Bug Fixes
+
+* validation URL and schema ([#11](https://github.com/GeoGenetics/ngs-taxon/issues/11)) ([f9a81d5](https://github.com/GeoGenetics/ngs-taxon/commit/f9a81d547def9fa1e8dc7be2a957e0d7a1f0c4ca))
+
 ## [0.9.0](https://github.com/GeoGenetics/ngs-taxon/compare/v0.8.1...v0.9.0) (2025-06-17)
 
 

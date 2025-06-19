@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.2](https://github.com/GeoGenetics/ngs-taxon/compare/v0.9.1...v0.9.2) (2025-06-19)
+
+
+### Bug Fixes
+
+* increase bam_filter resources and comment param ([#13](https://github.com/GeoGenetics/ngs-taxon/issues/13)) ([32a00fe](https://github.com/GeoGenetics/ngs-taxon/commit/32a00fe8ca72401a52e13c6f7d6a6ce6665764e5))
+
 ## [0.9.1](https://github.com/GeoGenetics/ngs-taxon/compare/v0.9.0...v0.9.1) (2025-06-19)
 
 

@@ -152,5 +152,6 @@ properties:
 required:
   - ref
   - filter
+  - bam_filter
   - taxonomy
   - metadmg

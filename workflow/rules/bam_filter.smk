@@ -37,9 +37,6 @@ use rule shard_sort_query as align_sort_coord with:
         "benchmarks/aligns/sort_coord/{sample}_{library}_{read_type_map}.jsonl"
     params:
         extra="",
-    resources:
-        mem=lambda w, attempt, threads, input: f"{15* threads* attempt} GiB",
-        runtime=lambda w, attempt, input: f"{np.clip(0.0001* input.size_mb+1,0.1,20)* attempt} h",
 
 
 rule align_reassign:
@@ -60,9 +57,9 @@ rule align_reassign:
         )
     threads: 10
     resources:
-        mem=lambda w, attempt, input, threads: f"{np.clip(10* input.size_mb/1024,10* threads,100* threads)* attempt} GiB",
+        mem=lambda w, attempt, input, threads: f"{np.clip(2* threads* input.size_mb/1024,10* threads,100* threads)* attempt} GiB",
         mem_mb=lambda w, attempt, input, threads: np.clip(
-            10 * input.size_mb / 1024, 10 * threads, 100 * threads
+            2 * threads * input.size_mb / 1024, 10 * threads, 100 * threads
         )
         * attempt
         * 1024,
@@ -94,7 +91,7 @@ rule align_filter:
         )
     threads: 10
     resources:
-        mem=lambda w, attempt, input, threads: f"{np.clip(10* input.size_mb/1024,10* threads,70* threads)* attempt} GiB",
+        mem=lambda w, attempt, input, threads: f"{np.clip(2* threads* input.size_mb/1024,10* threads,70* threads)* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} d",
     shell:
         #"MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
@@ -129,14 +126,14 @@ rule align_lca:
         )
     threads: 10
     resources:
-        mem=lambda w, attempt, input, threads: f"{np.clip(10* input.size_mb/1024,20* threads,70* threads)* attempt} GiB",
+        mem=lambda w, attempt, input, threads: f"{np.clip(2* threads* input.size_mb/1024,20* threads,70* threads)* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} d",
     shell:
         #"MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
         "filterBAM lca --threads {threads} --sort-memory 10G --bam {input.aln} --stats {input.stats} --names {input.names} --nodes {input.nodes} --acc2taxid <(cat {input.acc2tax}) {params.extra} --lca-summary {output.stats} >{log} 2>&1"
 
 
-use rule align_sort_coord as align_sort_query with:
+use rule shard_sort_query as align_sort_query with:
     input:
         unpack(lambda w: get_filter_aln(w, "sort_coord")),
     output:
@@ -146,8 +143,3 @@ use rule align_sort_coord as align_sort_query with:
         "logs/aligns/sort_query/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "benchmarks/aligns/sort_query/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        extra="",
-    resources:
-        mem=lambda w, attempt, threads, input: f"{15* threads* attempt} GiB",
-        runtime=lambda w, attempt, input: f"{np.clip(0.0001* input.size_mb+1,0.1,20)* attempt} h",

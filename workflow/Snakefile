@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 
 snakemake.utils.min_version("9.0.0")
 
@@ -9,6 +8,7 @@ wrapper_ver = "v7.0.0"
 ######################
 ### Validate Input ###
 ######################
+import pandas as pd
 from urllib.parse import urlparse, urlunparse
 
 baseurl = urlparse(workflow.current_basedir.get_path_or_uri())

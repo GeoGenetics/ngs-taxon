@@ -1,7 +1,7 @@
 #################
 ### FUNCTIONS ###
 #################
-
+import pandas as pd
 
 refs = pd.DataFrame.from_dict(config["ref"]).transpose()
 ref_sets = refs.reset_index().rename(columns={"index": "ref", "n_shards": "tot_shards"})
@@ -106,7 +106,7 @@ rule bowtie2:
             (0.7 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50)
             * attempt
         ),
-        runtime=lambda w, attempt: f"{10* attempt} h",
+        runtime=lambda w, attempt: f"{1* attempt} d",
     wrapper:
         f"{wrapper_ver}/bio/bowtie2/align"
 
@@ -296,10 +296,10 @@ rule shard_sort_query:
         "benchmarks/shards/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
         extra="-n",
-        mem_overhead_factor=0.1,
+        mem_overhead_factor=0.2,
     threads: 8
     resources:
         mem=lambda w, attempt, threads: f"{10* threads* attempt} GiB",
-        runtime=lambda w, attempt, input: f"{max(0.0001* input.size_mb+1,0.1)* attempt} h",
+        runtime=lambda w, attempt, input: f"{np.clip(0.0001* input.size_mb+1,0.1,20)* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/sort"

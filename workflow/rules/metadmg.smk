@@ -70,7 +70,7 @@ rule metadmg_lca:
         runtime=lambda w, attempt, input: f"{max(1e-4* input.size_mb,0.1)* attempt} h",
     shell:
         """
-        metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1;
+        metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --reallyDump 1 --out_prefix {params.out_prefix} > {log} 2>&1;
         mv {params.out_prefix}.stat.gz {output.stats};
         mv {params.out_prefix}.rlens.gz {output.rlen};
         """

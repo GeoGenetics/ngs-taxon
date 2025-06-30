@@ -20,14 +20,18 @@ rule metadmg_damage:
             Path(output.dmg.removesuffix(".gz")).with_suffix("")
         ),
         extra=config["metadmg"]["damage"]["params"],
+    conda:
+        urlunparse(
+            baseurl._replace(path=str(Path(baseurl.path) / "envs" / "metadmg.yaml"))
+        )
     threads: 4
     resources:
         mem=lambda w, attempt: f"{10* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} d",
     shell:
         """
-        /projects/caeg/apps/metaDMG-cpp/metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.aln} > {log} 2>&1;
-        gzip {params.out_prefix}.stat; mv {params.out_prefix}.stat.gz {output.stats};
+        metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.aln} > {log} 2>&1;
+        mv {params.out_prefix}.stat.gz {output.stats};
         mv {params.out_prefix}.rlens.gz {output.rlen};
         """
 
@@ -37,7 +41,7 @@ rule metadmg_lca:
         unpack(lambda w: get_merge_aln(w, "metadmg_lca")),
         nodes=config["taxonomy"]["nodes"],
         names=config["taxonomy"]["names"],
-        acc2tax=[
+        acc2taxid=[
             config["ref"][ref]["acc2taxid"]
             for ref in config["ref"]
             if config["ref"][ref]["acc2taxid"]
@@ -56,13 +60,17 @@ rule metadmg_lca:
             Path(output.dmg.removesuffix(".gz")).with_suffix("")
         ),
         extra=config["metadmg"]["lca"]["params"],
+    conda:
+        urlunparse(
+            baseurl._replace(path=str(Path(baseurl.path) / "envs" / "metadmg.yaml"))
+        )
     threads: 4
     resources:
         mem=lambda w, attempt, input: f"{30* attempt} GiB",
         runtime=lambda w, attempt, input: f"{max(1e-4* input.size_mb,0.1)* attempt} h",
     shell:
         """
-        /projects/caeg/apps/metaDMG-cpp/metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2tax}) {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1
+        metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --reallyDump 1 --out_prefix {params.out_prefix} > {log} 2>&1;
         mv {params.out_prefix}.stat.gz {output.stats};
         mv {params.out_prefix}.rlens.gz {output.rlen};
         """
@@ -95,12 +103,16 @@ rule metadmg_dfit:
         ),
         extra=lambda w: f"--doboot 1 --lib {_get_library_type(w)} "
         + config["metadmg"]["dfit"]["params"],
+    conda:
+        urlunparse(
+            baseurl._replace(path=str(Path(baseurl.path) / "envs" / "metadmg.yaml"))
+        )
     threads: 4
     resources:
         mem=lambda w, attempt: f"{25* attempt} GiB",
         runtime=lambda w, attempt, input: f"{10* attempt} h",
     shell:
-        "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed $RANDOM --out_prefix {params.out_prefix} > {log} 2>&1"
+        "metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed $RANDOM --out_prefix {params.out_prefix} > {log} 2>&1"
 
 
 rule metadmg_aggregate:
@@ -120,9 +132,13 @@ rule metadmg_aggregate:
         out_prefix=lambda w, output: str(
             Path(output.stats.removesuffix(".gz")).with_suffix("")
         ),
+    conda:
+        urlunparse(
+            baseurl._replace(path=str(Path(baseurl.path) / "envs" / "metadmg.yaml"))
+        )
     threads: 1
     resources:
         mem=lambda w, attempt: f"{25* attempt} GiB",
         runtime=lambda w, attempt: f"{15* attempt} m",
     shell:
-        "/projects/caeg/apps/metaDMG-cpp/metaDMG-cpp aggregate {input.dmg} --nodes {input.nodes} --names {input.names} --lcastat {input.lca} --dfit {input.dfit} --out_prefix {params.out_prefix} > {log} 2>&1"
+        "metaDMG-cpp aggregate {input.dmg} --nodes {input.nodes} --names {input.names} --lcastat {input.lca} --dfit {input.dfit} --out_prefix {params.out_prefix} > {log} 2>&1"

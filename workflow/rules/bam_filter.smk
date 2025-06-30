@@ -138,7 +138,6 @@ use rule shard_sort_query as align_sort_query with:
         unpack(lambda w: get_filter_aln(w, "sort_coord")),
     output:
         bam=temp("temp/aligns/sort_query/{sample}_{library}_{read_type_map}.bam"),
-        idx=temp("temp/aligns/sort_query/{sample}_{library}_{read_type_map}.bam.csi"),
     log:
         "logs/aligns/sort_query/{sample}_{library}_{read_type_map}.log",
     benchmark:

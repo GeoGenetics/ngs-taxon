@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.3](https://github.com/GeoGenetics/ngs-taxon/compare/v0.9.2...v0.9.3) (2025-06-30)
+
+
+### Bug Fixes
+
+* bam_filer query sorting ([#15](https://github.com/GeoGenetics/ngs-taxon/issues/15)) ([a922244](https://github.com/GeoGenetics/ngs-taxon/commit/a92224443bebe7bbd63fb52110d95a3f7dc2bd55))
+* use metadmg conda  ([#17](https://github.com/GeoGenetics/ngs-taxon/issues/17)) ([ee748f4](https://github.com/GeoGenetics/ngs-taxon/commit/ee748f49ff10bc7e99d5fc9b21bf5963678aad1b))
+
 ## [0.9.2](https://github.com/GeoGenetics/ngs-taxon/compare/v0.9.1...v0.9.2) (2025-06-19)
 
 

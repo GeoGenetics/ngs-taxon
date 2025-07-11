@@ -12,23 +12,26 @@ import pandas as pd
 from urllib.parse import urlparse, urlunparse
 
 baseurl = urlparse(workflow.current_basedir.get_path_or_uri())
-# Units (default value for testing purposes)
-units = config.get(
-    "units",
-    pd.read_table(
-        "config/units.tsv",
-        converters={"seq_type": (lambda x: x.casefold())},
-        comment="#",
+# Units
+units = config.get("units")
+if units is None:
+    # Testing
+    units = (
+        pd.read_table(
+            "config/units.tsv",
+            converters={"seq_type": (lambda x: x.casefold())},
+            comment="#",
+        )
+        .set_index(["sample", "library", "lane"], drop=False)
+        .assign(
+            read_type_raw=lambda x: [["R1", "R2"]] * 4,
+            read_type_trim=lambda x: [
+                ["R1", "R2", "singleton", "collapsed", "collapsedtrunc"]
+            ]
+            * 4,
+        )
     )
-    .set_index(["sample", "library", "lane"], drop=False)
-    .assign(
-        read_type_raw=lambda x: [["R1", "R2"]] * 4,
-        read_type_trim=lambda x: [
-            ["R1", "R2", "singleton", "collapsed", "collapsedtrunc"]
-        ]
-        * 4,
-    ),
-)
+
 snakemake.utils.validate(
     units.drop(columns=["read_type_raw", "read_type_trim"]),
     schema=urlunparse(

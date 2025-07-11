@@ -1,6 +1,6 @@
 def get_filter_aln(wildcards, rule):
     fall_through = False
-    if rule == "sort_coord" or fall_through:
+    if rule == "sort_query" or fall_through:
         if is_activated("bam_filter/filter"):
             return {"aln": rules.align_filter.output.bam}
         fall_through = True
@@ -22,9 +22,6 @@ def get_filter_aln(wildcards, rule):
 #############
 
 
-# Re-sorting, since it is required even when merging sorted BAM files (needs similar headers):
-# https://www.biostars.org/p/251721/
-# https://www.biostars.org/p/9509574/
 use rule shard_sort_query as align_sort_coord with:
     input:
         rules.align_merge.output.bam,
@@ -49,7 +46,6 @@ rule align_reassign:
     benchmark:
         "benchmarks/aligns/reassign/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        #mem_overhead=0.5,
         extra=config["bam_filter"]["reassign"]["params"],
     conda:
         urlunparse(
@@ -65,7 +61,6 @@ rule align_reassign:
         * 1024,
         runtime=lambda w, attempt: f"{2* attempt} d",
     shell:
-        #"MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
         "filterBAM reassign --threads {threads} --max-memory {resources.mem_mb}M --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"
 
 
@@ -83,7 +78,6 @@ rule align_filter:
     benchmark:
         "benchmarks/aligns/filter/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        #mem_overhead=0.2,
         extra=config["bam_filter"]["filter"]["params"],
     conda:
         urlunparse(
@@ -94,7 +88,6 @@ rule align_filter:
         mem=lambda w, attempt, input, threads: f"{np.clip(4* threads* input.size_mb/1024,10* threads,70* threads)* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} d",
     shell:
-        #"MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
         "filterBAM filter --threads {threads} --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} >{log} 2>&1"
 
 
@@ -118,7 +111,6 @@ rule align_lca:
     benchmark:
         "benchmarks/aligns/bam_filter_lca/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        #mem_overhead=0.2,
         extra=config["bam_filter"]["lca"]["params"],
     conda:
         urlunparse(
@@ -129,13 +121,12 @@ rule align_lca:
         mem=lambda w, attempt, input, threads: f"{np.clip(4* threads* input.size_mb/1024,20* threads,70* threads)* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} d",
     shell:
-        #"MEM_THREAD=`echo '{resources.mem_mb}*(1-{params.mem_overhead})/{threads}' | bc`M; "
         "filterBAM lca --threads {threads} --sort-memory 10G --bam {input.aln} --stats {input.stats} --names {input.names} --nodes {input.nodes} --acc2taxid <(cat {input.acc2tax}) {params.extra} --lca-summary {output.stats} >{log} 2>&1"
 
 
 use rule shard_sort_query as align_sort_query with:
     input:
-        unpack(lambda w: get_filter_aln(w, "sort_coord")),
+        unpack(lambda w: get_filter_aln(w, "sort_query")),
     output:
         bam=temp("temp/aligns/sort_query/{sample}_{library}_{read_type_map}.bam"),
     log:

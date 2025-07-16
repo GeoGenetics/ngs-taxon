@@ -52,15 +52,15 @@
 # HD827sonic - two samples (both read reassign and filter)
 <details><summary>Rulegraph</summary>
 
-![rulegraph.svg](HD827sonic.reassign_filter/rulegraph.svg)
+![rulegraph.svg](HD827sonic.all/rulegraph.svg)
 </details>
 
 <details><summary>DAG</summary>
 
-![dag.svg](HD827sonic.reassign_filter/dag.svg)
+![dag.svg](HD827sonic.all/dag.svg)
 </details>
 
 <details><summary>Filegraph</summary>
 
-![filegraph.svg](HD827sonic.reassign_filter/filegraph.svg)
+![filegraph.svg](HD827sonic.all/filegraph.svg)
 </details>

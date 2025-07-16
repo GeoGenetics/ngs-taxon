@@ -102,11 +102,13 @@ rule bowtie2:
         + config["ref"][w.ref]["map"]["params"],
     threads: 20
     resources:
-        mem=lambda w, attempt, input: "{} GiB".format(
-            (0.7 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 50)
+        mem=lambda w, input, attempt: "{} GiB".format(
+            (0.7 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 40)
             * attempt
         ),
-        runtime=lambda w, attempt: f"{1* attempt} d",
+        runtime=lambda w, input, attempt: "{} h".format(
+            (sum(Path(f).stat().st_size for f in input.sample) / 1024**3 + 5) * attempt
+        ),
     wrapper:
         f"{wrapper_ver}/bio/bowtie2/align"
 
@@ -182,35 +184,35 @@ rule shard_count_alns:
         "benchmarks/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     threads: 1
     resources:
-        mem=lambda w, attempt: f"{10* attempt} GiB",
-        runtime=lambda w, attempt: f"{2* attempt} h",
+        mem=lambda w, attempt: f"{20* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{0.05* input.size_gb* attempt} h",
     shell:
         """
         (samtools view {input.bam} | awk 'BEGIN{{print "read_id\tn_aligns"}} {{x[$1]++}} END{{for(read_id in x){{print read_id"\t"x[read_id]}}}}') > {output.counts} 2> {log}
         """
 
 
-rule shard_saturated_reads_get:
+rule shard_saturated_reads_filter:
     input:
         counts=expand_pandas(
             rules.shard_count_alns.output.counts, ref_sets, allow_missing=True
         ),
     output:
         read_id=temp(
-            "temp/shards/saturated_reads/get/{sample}_{library}_{read_type_map}.tsv"
+            "temp/shards/saturated_reads/filter/{sample}_{library}_{read_type_map}.tsv"
         ),
     log:
-        "logs/shards/saturated_reads/get/{sample}_{library}_{read_type_map}.log",
+        "logs/shards/saturated_reads/filter/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/shards/saturated_reads/get/{sample}_{library}_{read_type_map}.jsonl"
+        "benchmarks/shards/saturated_reads/filter/{sample}_{library}_{read_type_map}.jsonl"
     params:
         extra="--headerless-tsv-output cat then filter '$n_aligns >= {}' then uniq -g read_id then cut -f read_id".format(
             config["filter"]["saturated_reads"]["n_alns"]
         ),
     threads: 4
     resources:
-        mem=lambda w, attempt: f"{5* attempt} GiB",
-        runtime=lambda w, attempt: f"{15* attempt} m",
+        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+10)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.01* input.size_gb+0.1)* attempt} h",
     wrapper:
         f"{wrapper_ver}/utils/miller"
 
@@ -218,7 +220,7 @@ rule shard_saturated_reads_get:
 rule shard_saturated_reads_remove:
     input:
         bam=rules.shard_count_alns.input.bam,
-        read_id=rules.shard_saturated_reads_get.output.read_id,
+        read_id=rules.shard_saturated_reads_filter.output.read_id,
     output:
         bam=temp(
             "temp/shards/saturated_reads/remove/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
@@ -232,7 +234,7 @@ rule shard_saturated_reads_remove:
     threads: 2
     resources:
         mem=lambda w, attempt: f"{10* attempt} GiB",
-        runtime=lambda w, attempt: f"{30* attempt} m",
+        runtime=lambda w, input, attempt: f"{(0.01* input.size_gb+0.5)* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/view"
 
@@ -240,7 +242,7 @@ rule shard_saturated_reads_remove:
 rule shard_saturated_reads_extract:
     input:
         fastq=get_data,
-        read_id=rules.shard_saturated_reads_get.output.read_id,
+        read_id=rules.shard_saturated_reads_filter.output.read_id,
     output:
         fq="results/reads/saturated/{sample}_{library}_{read_type_map}.fastq.gz",
     log:
@@ -277,7 +279,7 @@ rule shard_clean_header:
     threads: 2
     resources:
         mem=lambda w, attempt: f"{20* attempt} GiB",
-        runtime=lambda w, attempt: f"{2* attempt} h",
+        runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+3)* attempt} h",
     shell:
         "/projects/caeg/apps/metaDMG-cpp/misc/compressbam --threads {threads} --input {input.bam} --output {output.bam} >{log} 2>&1"
 
@@ -299,7 +301,7 @@ rule shard_sort_query:
         mem_overhead_factor=0.2,
     threads: 8
     resources:
-        mem=lambda w, attempt, threads: f"{10* threads* attempt} GiB",
-        runtime=lambda w, attempt, input: f"{np.clip(0.0001* input.size_mb+1,0.1,20)* attempt} h",
+        mem=lambda w, threads, attempt: f"{10* threads* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{max(0.02* input.size_gb+1,20)* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/sort"

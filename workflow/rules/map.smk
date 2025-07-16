@@ -53,12 +53,14 @@ def get_read_group(wildcards):
 
 def get_data(wildcards):
     read_type_trim = {"pe": ["R1", "R2"], "se": ["R"]}
-    return expand(
-        "results/reads/low_complexity/{sample}_{library}_{read_type_trim}.fastq.gz",
-        read_type_trim=read_type_trim.get(
-            wildcards.read_type_map, wildcards.read_type_map
-        ),
-        allow_missing=True,
+    return local(
+        expand(
+            "results/reads/low_complexity/{sample}_{library}_{read_type_trim}.fastq.gz",
+            read_type_trim=read_type_trim.get(
+                wildcards.read_type_map, wildcards.read_type_map
+            ),
+            allow_missing=True,
+        )
     )
 
 

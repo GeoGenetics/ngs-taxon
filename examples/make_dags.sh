@@ -2,7 +2,7 @@
 
 SNAKEMAKE_OPTS="--snakefile ../../workflow/Snakefile --configfile config/config.yaml --forceall $@"
 
-for TEST in HD827sonic.reassign_filter HD827sonic.reassign HD827sonic.filter HD827sonic.none
+for TEST in HD827sonic.all HD827sonic.reassign HD827sonic.filter HD827sonic.none
 do
     cd $TEST/
     snakemake $SNAKEMAKE_OPTS --dryrun

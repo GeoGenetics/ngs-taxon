@@ -76,7 +76,7 @@
 <polygon fill="none" stroke="#57d9b5" stroke-width="2" points="106.5,-345 106.5,-907 593.5,-907 593.5,-345 106.5,-345"/>
 </g>
 <!-- 1&#45;&gt;0 -->
-<g id="edge2" class="edge">
+<g id="edge4" class="edge">
 <title>1&#45;&gt;0</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M594.6788,-418.2871C635.5125,-383.6225 677.3192,-348.1319 716.5063,-314.8651"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="718.9494,-317.3823 724.3078,-308.2423 714.4192,-312.0458 718.9494,-317.3823"/>
@@ -99,7 +99,7 @@
 <polygon fill="none" stroke="#9ed957" stroke-width="2" points="353.5,-2619 353.5,-2749 1062.5,-2749 1062.5,-2619 353.5,-2619"/>
 </g>
 <!-- 2&#45;&gt;1 -->
-<g id="edge5" class="edge">
+<g id="edge8" class="edge">
 <title>2&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M455.8933,-2617.9427C252.4796,-2556.9907 0,-2460.4915 0,-2357 0,-2357 0,-2357 0,-1250 0,-1132.3241 47.934,-1016.2861 108.3238,-916.79"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="111.3889,-918.4869 113.635,-908.1329 105.4223,-914.8264 111.3889,-918.4869"/>
@@ -112,7 +112,7 @@
 <text text-anchor="start" x="516" y="-2201.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
 <text text-anchor="start" x="569" y="-2201.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="512" y="-2182" font-family="monospace" font-size="10.00" fill="#000000">&lt;input function&gt;</text>
-<text text-anchor="start" x="512" y="-2164" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/saturated_reads/get/{sample}_{library}_{read_type_map}.tsv</text>
+<text text-anchor="start" x="512" y="-2164" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/saturated_reads/filter/{sample}_{library}_{read_type_map}.tsv</text>
 <text text-anchor="start" x="1230" y="-2143.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="1234" y="-2143.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
 <text text-anchor="start" x="1295" y="-2143.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
@@ -124,8 +124,8 @@
 <!-- 2&#45;&gt;7 -->
 <g id="edge13" class="edge">
 <title>2&#45;&gt;7</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M708.3716,-2617.833C711.8498,-2533.2047 728.3139,-2385.2634 797,-2282 803.528,-2272.1857 811.1673,-2262.6248 819.3131,-2253.5394"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="822.0425,-2255.7431 826.2615,-2246.0245 816.9027,-2250.9909 822.0425,-2255.7431"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M706.3178,-2617.7227C707.2896,-2532.9763 719.7884,-2384.9091 788,-2282 794.5718,-2272.0853 802.3557,-2262.5572 810.7384,-2253.5772"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="813.4701,-2255.7873 817.9073,-2246.1664 808.4389,-2250.9204 813.4701,-2255.7873"/>
 </g>
 <!-- 9 -->
 <g id="node10" class="node">
@@ -166,7 +166,7 @@
 <polygon fill="none" stroke="#cdd957" stroke-width="2" points="29.5,-1194 29.5,-1306 594.5,-1306 594.5,-1194 29.5,-1194"/>
 </g>
 <!-- 3&#45;&gt;1 -->
-<g id="edge7" class="edge">
+<g id="edge6" class="edge">
 <title>3&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M315.473,-1192.97C319.3334,-1129.5773 325.8639,-1022.3404 332.213,-918.0817"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="335.7123,-918.1973 332.8267,-908.003 328.7253,-917.7718 335.7123,-918.1973"/>
@@ -190,31 +190,31 @@
 <!-- 4&#45;&gt;3 -->
 <g id="edge9" class="edge">
 <title>4&#45;&gt;3</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M682.0039,-1645.9291C658.4741,-1635.7346 635.6388,-1623.8411 615,-1610 498.315,-1531.747 401.6577,-1396.158 350.7818,-1315.5885"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="353.6796,-1313.6215 345.404,-1307.0059 347.7478,-1317.3383 353.6796,-1313.6215"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M644.6437,-1645.992C621.4933,-1635.8756 599.2068,-1623.9811 579,-1610 469.0169,-1533.9022 386.3627,-1397.7116 343.9172,-1316.4219"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="346.8903,-1314.5512 339.1896,-1307.2745 340.6717,-1317.7652 346.8903,-1314.5512"/>
 </g>
 <!-- 11 -->
 <g id="node12" class="node">
 <title>11</title>
 <text text-anchor="start" x="848" y="-1589.6" font-family="sans" font-weight="bold" font-size="18.00" fill="#000000">metadmg_lca</text>
-<text text-anchor="start" x="632" y="-1565.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="636" y="-1565.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
-<text text-anchor="start" x="689" y="-1565.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="632" y="-1546" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/references/ncbi/20250205/refseq_mitochondrion.genomic.acc2taxid.gz</text>
-<text text-anchor="start" x="632" y="-1528" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/references/ncbi/20250205/wgs_eukaryota.acc2taxid.gz</text>
-<text text-anchor="start" x="632" y="-1510" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/taxonomy/20250210/names.dmp</text>
-<text text-anchor="start" x="632" y="-1492" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/taxonomy/20250210/nodes.dmp</text>
-<text text-anchor="start" x="632" y="-1474" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7fa9cba5b240&gt;</text>
-<text text-anchor="start" x="1110" y="-1453.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="1114" y="-1453.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
-<text text-anchor="start" x="1175" y="-1453.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="632" y="-1434" font-family="monospace" font-size="10.00" fill="#000000">results/metadmg/lca/{sample}_{library}_{read_type_map,pe|se|singleton|collapsed}.bdamage.gz</text>
-<text text-anchor="start" x="632" y="-1416" font-family="monospace" font-size="10.00" fill="#000000">results/metadmg/lca/{sample}_{library}_{read_type_map,pe|se|singleton|collapsed}.lca.gz</text>
-<text text-anchor="start" x="632" y="-1398" font-family="monospace" font-size="10.00" fill="#000000">stats/metadmg/lca/{sample}_{library}_{read_type_map,pe|se|singleton|collapsed}.rlens.gz</text>
-<text text-anchor="start" x="632" y="-1380" font-family="monospace" font-size="10.00" fill="#000000">stats/metadmg/lca/{sample}_{library}_{read_type_map,pe|se|singleton|collapsed}.stat.gz</text>
-<polygon fill="#57d99e" stroke="#57d99e" points="626,-1580 626,-1580 1186,-1580 1186,-1580 626,-1580"/>
-<polygon fill="#57d99e" stroke="#57d99e" points="626,-1468 626,-1468 1186,-1468 1186,-1468 626,-1468"/>
-<polygon fill="none" stroke="#57d99e" stroke-width="2" points="625.5,-1371 625.5,-1609 1184.5,-1609 1184.5,-1371 625.5,-1371"/>
+<text text-anchor="start" x="596" y="-1565.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="600" y="-1565.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
+<text text-anchor="start" x="653" y="-1565.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="596" y="-1546" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/references/ncbi/20250205/taxonomy/ncbi/refseq_mitochondrion.genomic.acc2taxid.gz</text>
+<text text-anchor="start" x="596" y="-1528" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/references/ncbi/20250205/taxonomy/ncbi/wgs_eukaryota.acc2taxid.gz</text>
+<text text-anchor="start" x="596" y="-1510" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/taxonomy/ncbi/20250210/names.dmp</text>
+<text text-anchor="start" x="596" y="-1492" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/taxonomy/ncbi/20250210/nodes.dmp</text>
+<text text-anchor="start" x="596" y="-1474" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7f000fae2020&gt;</text>
+<text text-anchor="start" x="1146" y="-1453.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="1150" y="-1453.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
+<text text-anchor="start" x="1211" y="-1453.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="596" y="-1434" font-family="monospace" font-size="10.00" fill="#000000">results/metadmg/lca/{sample}_{library}_{read_type_map,pe|se|singleton|collapsed}.bdamage.gz</text>
+<text text-anchor="start" x="596" y="-1416" font-family="monospace" font-size="10.00" fill="#000000">results/metadmg/lca/{sample}_{library}_{read_type_map,pe|se|singleton|collapsed}.lca.gz</text>
+<text text-anchor="start" x="596" y="-1398" font-family="monospace" font-size="10.00" fill="#000000">stats/metadmg/lca/{sample}_{library}_{read_type_map,pe|se|singleton|collapsed}.rlens.gz</text>
+<text text-anchor="start" x="596" y="-1380" font-family="monospace" font-size="10.00" fill="#000000">stats/metadmg/lca/{sample}_{library}_{read_type_map,pe|se|singleton|collapsed}.stat.gz</text>
+<polygon fill="#57d99e" stroke="#57d99e" points="590,-1580 590,-1580 1222,-1580 1222,-1580 590,-1580"/>
+<polygon fill="#57d99e" stroke="#57d99e" points="590,-1468 590,-1468 1222,-1468 1222,-1468 590,-1468"/>
+<polygon fill="none" stroke="#57d99e" stroke-width="2" points="589.5,-1371 589.5,-1609 1220.5,-1609 1220.5,-1371 589.5,-1371"/>
 </g>
 <!-- 4&#45;&gt;11 -->
 <g id="edge18" class="edge">
@@ -229,7 +229,7 @@
 <text text-anchor="start" x="983" y="-1076.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="987" y="-1076.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
 <text text-anchor="start" x="1040" y="-1076.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="983" y="-1057" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7fa9cba5b1a0&gt;</text>
+<text text-anchor="start" x="983" y="-1057" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7f000fae11c0&gt;</text>
 <text text-anchor="start" x="1479" y="-1036.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="1483" y="-1036.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
 <text text-anchor="start" x="1544" y="-1036.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
@@ -244,8 +244,8 @@
 <!-- 4&#45;&gt;14 -->
 <g id="edge22" class="edge">
 <title>4&#45;&gt;14</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1132.7285,-1645.9025C1161.3193,-1634.89 1184.3106,-1622.772 1195,-1610 1307.8486,-1475.166 1298.8983,-1256.0218 1282.0911,-1131.4542"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1285.5055,-1130.5973 1280.6575,-1121.1767 1278.5727,-1131.5644 1285.5055,-1130.5973"/>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1167.7333,-1646.6021C1196.9633,-1635.7834 1220.1357,-1623.5431 1231,-1610 1340.4365,-1473.5805 1315.8063,-1254.9149 1289.4937,-1130.8803"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1292.8943,-1130.0464 1287.3549,-1121.015 1286.0532,-1131.5296 1292.8943,-1130.0464"/>
 </g>
 <!-- 5 -->
 <g id="node6" class="node">
@@ -300,20 +300,20 @@
 <!-- 8 -->
 <g id="node9" class="node">
 <title>8</title>
-<text text-anchor="start" x="985" y="-2411.6" font-family="sans" font-weight="bold" font-size="18.00" fill="#000000">shard_saturated_reads_get</text>
-<text text-anchor="start" x="813" y="-2387.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="817" y="-2387.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
-<text text-anchor="start" x="870" y="-2387.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="813" y="-2368" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/count_alns/{sample}_{library}_collapsed.refseq_mitochondrion.1&#45;of&#45;1.tsv</text>
-<text text-anchor="start" x="813" y="-2350" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/count_alns/{sample}_{library}_collapsed.wgs_eukaryota.1&#45;of&#45;2.tsv</text>
-<text text-anchor="start" x="813" y="-2332" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/count_alns/{sample}_{library}_collapsed.wgs_eukaryota.2&#45;of&#45;2.tsv</text>
-<text text-anchor="start" x="1321" y="-2311.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="1325" y="-2311.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
-<text text-anchor="start" x="1386" y="-2311.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="813" y="-2292" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/saturated_reads/get/{sample}_{library}_{read_type_map,pe|se|singleton|collapsed}.tsv</text>
-<polygon fill="#579ed9" stroke="#579ed9" points="807,-2402 807,-2402 1397,-2402 1397,-2402 807,-2402"/>
-<polygon fill="#579ed9" stroke="#579ed9" points="807,-2326 807,-2326 1397,-2326 1397,-2326 807,-2326"/>
-<polygon fill="none" stroke="#579ed9" stroke-width="2" points="806.5,-2283 806.5,-2431 1395.5,-2431 1395.5,-2283 806.5,-2283"/>
+<text text-anchor="start" x="979" y="-2411.6" font-family="sans" font-weight="bold" font-size="18.00" fill="#000000">shard_saturated_reads_filter</text>
+<text text-anchor="start" x="804" y="-2387.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="808" y="-2387.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
+<text text-anchor="start" x="861" y="-2387.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="804" y="-2368" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/count_alns/{sample}_{library}_collapsed.refseq_mitochondrion.1&#45;of&#45;1.tsv</text>
+<text text-anchor="start" x="804" y="-2350" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/count_alns/{sample}_{library}_collapsed.wgs_eukaryota.1&#45;of&#45;2.tsv</text>
+<text text-anchor="start" x="804" y="-2332" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/count_alns/{sample}_{library}_collapsed.wgs_eukaryota.2&#45;of&#45;2.tsv</text>
+<text text-anchor="start" x="1330" y="-2311.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="1334" y="-2311.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
+<text text-anchor="start" x="1395" y="-2311.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="804" y="-2292" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/saturated_reads/filter/{sample}_{library}_{read_type_map,pe|se|singleton|collapsed}.tsv</text>
+<polygon fill="#579ed9" stroke="#579ed9" points="798,-2402 798,-2402 1406,-2402 1406,-2402 798,-2402"/>
+<polygon fill="#579ed9" stroke="#579ed9" points="798,-2326 798,-2326 1406,-2326 1406,-2326 798,-2326"/>
+<polygon fill="none" stroke="#579ed9" stroke-width="2" points="797.5,-2283 797.5,-2431 1404.5,-2431 1404.5,-2283 797.5,-2283"/>
 </g>
 <!-- 8&#45;&gt;7 -->
 <g id="edge14" class="edge">
@@ -329,7 +329,7 @@
 <text text-anchor="start" x="1307" y="-2033.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
 <text text-anchor="start" x="1360" y="-2033.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="1303" y="-2014" font-family="monospace" font-size="10.00" fill="#000000">&lt;input function&gt;</text>
-<text text-anchor="start" x="1303" y="-1996" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/saturated_reads/get/{sample}_{library}_{read_type_map}.tsv</text>
+<text text-anchor="start" x="1303" y="-1996" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/saturated_reads/filter/{sample}_{library}_{read_type_map}.tsv</text>
 <text text-anchor="start" x="1793" y="-1975.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="1797" y="-1975.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
 <text text-anchor="start" x="1858" y="-1975.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
@@ -357,8 +357,8 @@
 <text text-anchor="start" x="621" y="-1289.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="625" y="-1289.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
 <text text-anchor="start" x="678" y="-1289.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="621" y="-1270" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/taxonomy/20250210/names.dmp</text>
-<text text-anchor="start" x="621" y="-1252" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/taxonomy/20250210/nodes.dmp</text>
+<text text-anchor="start" x="621" y="-1270" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/taxonomy/ncbi/20250210/names.dmp</text>
+<text text-anchor="start" x="621" y="-1252" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/taxonomy/ncbi/20250210/nodes.dmp</text>
 <text text-anchor="start" x="621" y="-1234" font-family="monospace" font-size="10.00" fill="#000000">results/metadmg/lca/{sample}_{library}_{read_type_map}.bdamage.gz</text>
 <text text-anchor="start" x="1117" y="-1213.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="1121" y="-1213.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
@@ -370,7 +370,7 @@
 <polygon fill="none" stroke="#57d986" stroke-width="2" points="614.5,-1167 614.5,-1333 1191.5,-1333 1191.5,-1167 614.5,-1167"/>
 </g>
 <!-- 10&#45;&gt;1 -->
-<g id="edge8" class="edge">
+<g id="edge7" class="edge">
 <title>10&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M613.133,-1168.0036C610.0754,-1167.3234 607.0303,-1166.6552 604,-1166 552.3619,-1154.8347 404.1621,-1169.4308 369,-1130 353.2435,-1112.3306 347.4089,-1019.642 345.9252,-918.4722"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="349.4232,-918.2925 345.7912,-908.3396 342.4238,-918.3851 349.4232,-918.2925"/>
@@ -382,8 +382,8 @@
 <text text-anchor="start" x="386" y="-1085.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="390" y="-1085.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
 <text text-anchor="start" x="443" y="-1085.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="386" y="-1066" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/taxonomy/20250210/names.dmp</text>
-<text text-anchor="start" x="386" y="-1048" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/taxonomy/20250210/nodes.dmp</text>
+<text text-anchor="start" x="386" y="-1066" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/taxonomy/ncbi/20250210/names.dmp</text>
+<text text-anchor="start" x="386" y="-1048" font-family="monospace" font-size="10.00" fill="#000000">/datasets/caeg_dataset/taxonomy/ncbi/20250210/nodes.dmp</text>
 <text text-anchor="start" x="386" y="-1030" font-family="monospace" font-size="10.00" fill="#000000">results/metadmg/dfit/{sample}_{library}_{read_type_map}.dfit.gz</text>
 <text text-anchor="start" x="386" y="-1012" font-family="monospace" font-size="10.00" fill="#000000">results/metadmg/lca/{sample}_{library}_{read_type_map}.bdamage.gz</text>
 <text text-anchor="start" x="386" y="-994" font-family="monospace" font-size="10.00" fill="#000000">stats/metadmg/lca/{sample}_{library}_{read_type_map}.stat.gz</text>
@@ -414,25 +414,25 @@
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="968.3057,-1126.3118 957.8226,-1127.8465 966.9748,-1133.1841 968.3057,-1126.3118"/>
 </g>
 <!-- 12&#45;&gt;0 -->
-<g id="edge3" class="edge">
+<g id="edge1" class="edge">
 <title>12&#45;&gt;0</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M693.1325,-943.7563C733.2211,-795.0241 812.1723,-502.1085 861.8423,-317.8289"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="865.2568,-318.6093 864.4799,-308.043 858.498,-316.7875 865.2568,-318.6093"/>
 </g>
 <!-- 12&#45;&gt;1 -->
-<g id="edge6" class="edge">
+<g id="edge5" class="edge">
 <title>12&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M596.0396,-943.9945C589.1689,-935.1146 581.9849,-925.8295 574.5701,-916.2463"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="577.177,-913.896 568.2894,-908.1287 571.6406,-918.1796 577.177,-913.896"/>
 </g>
 <!-- 13&#45;&gt;0 -->
-<g id="edge4" class="edge">
+<g id="edge2" class="edge">
 <title>13&#45;&gt;0</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1582.3372,-1945.9966C1582.6275,-1883.4337 1583,-1786.8221 1583,-1703 1583,-1703 1583,-1703 1583,-1037 1583,-719.8495 1304.5433,-446.3115 1104.7976,-290.8927"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1106.8846,-288.0821 1096.835,-284.7271 1102.5989,-293.6169 1106.8846,-288.0821"/>
 </g>
 <!-- 14&#45;&gt;0 -->
-<g id="edge1" class="edge">
+<g id="edge3" class="edge">
 <title>14&#45;&gt;0</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1230.7402,-952.7342C1171.4942,-807.0123 1048.9215,-505.5311 972.4701,-317.4905"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="975.6468,-316.0108 968.6381,-308.0654 969.1622,-318.6473 975.6468,-316.0108"/>

@@ -116,10 +116,14 @@ rule all:
     input:
         qc=rules.multiqc.output.html,
         res=[
-            expand(
-                rules.shard_saturated_reads_extract.output.fq,
-                zip,
-                **units.assign(read_type_map="collapsed").to_dict("list"),
+            (
+                expand(
+                    rules.shard_saturated_reads_extract.output.fq,
+                    zip,
+                    **units.assign(read_type_map="collapsed").to_dict("list"),
+                )
+                if is_activated("filter/saturated_reads")
+                else []
             ),
             expand(
                 rules.metadmg_aggregate.output.stats,

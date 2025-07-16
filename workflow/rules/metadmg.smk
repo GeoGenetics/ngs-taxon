@@ -26,8 +26,8 @@ rule metadmg_damage:
         )
     threads: 4
     resources:
-        mem=lambda w, attempt: f"{10* attempt} GiB",
-        runtime=lambda w, attempt: f"{2* attempt} d",
+        mem=lambda w, input, attempt: f"{(0.04* input.size_gb+5)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{0.03* input.size_gb* attempt} h",
     shell:
         """
         metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.aln} > {log} 2>&1;
@@ -66,8 +66,8 @@ rule metadmg_lca:
         )
     threads: 4
     resources:
-        mem=lambda w, attempt, input: f"{30* attempt} GiB",
-        runtime=lambda w, attempt, input: f"{max(1e-4* input.size_mb,0.1)* attempt} h",
+        mem=lambda w, input, attempt: f"{(0.1* input.size_gb+13)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{max(0.05* input.size_gb+2,0.1)* attempt} h",
     shell:
         """
         metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --reallyDump 1 --out_prefix {params.out_prefix} > {log} 2>&1;
@@ -77,7 +77,7 @@ rule metadmg_lca:
 
 
 def _get_library_type(wildcards):
-    """Get library typ (ss or ds)"""
+    """Get library type (ss or ds)"""
     return (
         units.loc[(wildcards.sample, wildcards.library, slice(None)), "library_type"]
         .drop_duplicates()
@@ -109,8 +109,8 @@ rule metadmg_dfit:
         )
     threads: 4
     resources:
-        mem=lambda w, attempt: f"{25* attempt} GiB",
-        runtime=lambda w, attempt, input: f"{10* attempt} h",
+        mem=lambda w, input, attempt: f"{(input.size_mb+40)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(input.size_mb+40)* attempt} h",
     shell:
         "metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed $RANDOM --out_prefix {params.out_prefix} > {log} 2>&1"
 

@@ -41,8 +41,8 @@ rule align_merge:
         extra="-n -c -p",
     threads: 4
     resources:
-        mem=lambda w, input, attempt: f"{np.clip(7e-5* input.size_mb,40,300)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{max(5e-5* input.size_mb* attempt,1)} h",
+        mem=lambda w, input, attempt: f"{(0.2* input.size_gb+30)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{0.03* input.size_gb* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/merge"
 
@@ -63,7 +63,7 @@ rule align_stats:
         "benchmarks/aligns/samtools_stats/{sample}_{library}_{read_type_map}.jsonl"
     threads: 4
     resources:
-        mem=lambda w, attempt: f"{10* attempt} GiB",
-        runtime=lambda w, attempt: f"{10* attempt} h",
+        mem=lambda w, input, attempt: f"{(0.04* input.size_gb+5)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{0.01* input.size_gb* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/stats"

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.5](https://github.com/GeoGenetics/ngs-taxon/compare/v0.9.4...v0.9.5) (2025-07-18)
+
+
+### Bug Fixes
+
+* resource typo ([#23](https://github.com/GeoGenetics/ngs-taxon/issues/23)) ([4e9e45f](https://github.com/GeoGenetics/ngs-taxon/commit/4e9e45f92894005207a1218b3b24cdb3aec902d3))
+
 ## [0.9.4](https://github.com/GeoGenetics/ngs-taxon/compare/v0.9.3...v0.9.4) (2025-07-18)
 
 

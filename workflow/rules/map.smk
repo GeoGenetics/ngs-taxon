@@ -304,6 +304,6 @@ rule shard_sort_query:
     threads: 8
     resources:
         mem=lambda w, threads, attempt: f"{10* threads* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{max(0.02* input.size_gb+1,20)* attempt} h",
+        runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+1)* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/sort"

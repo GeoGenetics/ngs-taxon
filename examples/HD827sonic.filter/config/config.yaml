@@ -1,6 +1,4 @@
 
-# - Only tested with Phred33 quality scores
-
 #############
 ### ALIGN ###
 #############
@@ -10,7 +8,7 @@ ref:
     path: "/datasets/caeg_dataset/references/ncbi/20250205/data/wgs_eukaryota.{n_shard}.fas.gz"
     map:
       tool: bowtie2
-      params: "-k 100 -L 22 -i S,1,1.15 --mp 1,1 --rdg 0,1 --rfg 0,1 --score-min L,0,-0.1 --no-unal"
+      params: "-k 50 -L 22 -i S,1,1.15 --mp 1,1 --rdg 0,1 --rfg 0,1 --score-min L,0,-0.1 --no-unal"
       bt2l: True
     acc2taxid: "/datasets/caeg_dataset/references/ncbi/20250205/taxonomy/ncbi/wgs_eukaryota.acc2taxid.gz"
   refseq_mitochondrion:

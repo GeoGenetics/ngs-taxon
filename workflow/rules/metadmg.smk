@@ -27,7 +27,7 @@ rule metadmg_damage:
     threads: 4
     resources:
         mem=lambda w, input, attempt: f"{(0.04* input.size_gb+5)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{0.03* input.size_gb* attempt} h",
+        runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.1)* attempt} h",
     shell:
         """
         metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.aln} > {log} 2>&1;
@@ -67,7 +67,7 @@ rule metadmg_lca:
     threads: 4
     resources:
         mem=lambda w, input, attempt: f"{(0.1* input.size_gb+13)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{max(0.05* input.size_gb+2,0.1)* attempt} h",
+        runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+2)* attempt} h",
     shell:
         """
         metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --reallyDump 1 --out_prefix {params.out_prefix} > {log} 2>&1;

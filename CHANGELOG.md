@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.9.4](https://github.com/GeoGenetics/ngs-taxon/compare/v0.9.3...v0.9.4) (2025-07-18)
+
+
+### Bug Fixes
+
+* default test units ([#18](https://github.com/GeoGenetics/ngs-taxon/issues/18)) ([08f28d2](https://github.com/GeoGenetics/ngs-taxon/commit/08f28d240ec22c4c385e6020dbc233a62bdf76d5))
+* minimum runtime ([#21](https://github.com/GeoGenetics/ngs-taxon/issues/21)) ([a304812](https://github.com/GeoGenetics/ngs-taxon/commit/a3048126da6bdc49e39e3fa863a5a6a0141cec21))
+* saturated reads output ([#20](https://github.com/GeoGenetics/ngs-taxon/issues/20)) ([1339b7c](https://github.com/GeoGenetics/ngs-taxon/commit/1339b7ca6d0a5d0a8ebf7ab62ef844297ae16aab))
+
 ## [0.9.3](https://github.com/GeoGenetics/ngs-taxon/compare/v0.9.2...v0.9.3) (2025-06-30)
 
 

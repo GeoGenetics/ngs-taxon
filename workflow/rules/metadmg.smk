@@ -109,8 +109,8 @@ rule metadmg_dfit:
         )
     threads: 4
     resources:
-        mem=lambda w, input, attempt: f"{(input.size_mb+40)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(input.size_mb+40)* attempt} h",
+        mem=lambda w, input, attempt: f"{(1.5* Path(input.dmg).stat().st_size/1024**2+10)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(2* Path(input.dmg).stat().st_size/1024**2+7)* attempt} h",
     shell:
         "metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed $RANDOM --out_prefix {params.out_prefix} > {log} 2>&1"
 

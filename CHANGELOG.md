@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.6](https://github.com/GeoGenetics/ngs-taxon/compare/v0.9.5...v0.9.6) (2025-07-19)
+
+
+### Bug Fixes
+
+* tweak metadmg_dfit resources ([#25](https://github.com/GeoGenetics/ngs-taxon/issues/25)) ([c80c65e](https://github.com/GeoGenetics/ngs-taxon/commit/c80c65e9e3bb603ad2ec0819ebf9383252e0d2a1))
+
 ## [0.9.5](https://github.com/GeoGenetics/ngs-taxon/compare/v0.9.4...v0.9.5) (2025-07-18)
 
 

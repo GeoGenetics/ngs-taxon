@@ -87,7 +87,7 @@ def get_index(wildcards):
         )
 
 
-rule bowtie2:
+rule shard_bowtie2:
     input:
         sample=get_data,
         idx=get_index,
@@ -113,7 +113,7 @@ rule bowtie2:
         f"{wrapper_ver}/bio/bowtie2/align"
 
 
-rule bwa_aln:
+rule shard_bwa_aln:
     input:
         fastq=get_data,
         idx=lambda w: multiext(
@@ -140,11 +140,11 @@ rule bwa_aln:
         f"{wrapper_ver}/bio/bwa/aln"
 
 
-rule bwa_samxe:
+rule shard_bwa_samxe:
     input:
         fastq=get_data,
-        sai=rules.bwa_aln.output.sai,
-        idx=rules.bwa_aln.input.idx,
+        sai=rules.shard_bwa_aln.output.sai,
+        idx=rules.shard_bwa_aln.input.idx,
     output:
         bam=temp(
             "temp/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"

@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.10.0](https://github.com/GeoGenetics/ngs-taxon/compare/v0.9.6...v0.10.0) (2025-07-24)
+
+
+### Features
+
+* Bump metadmg version ([#30](https://github.com/GeoGenetics/ngs-taxon/issues/30)) ([0767200](https://github.com/GeoGenetics/ngs-taxon/commit/0767200c60949e808cf4ac1197e4f024de1d8ccd))
+* replace compressbam with unicorn ([#27](https://github.com/GeoGenetics/ngs-taxon/issues/27)) ([7e63ed1](https://github.com/GeoGenetics/ngs-taxon/commit/7e63ed1d98756e769438dcc633ebfb3a64a65c48))
+
 ## [0.9.6](https://github.com/GeoGenetics/ngs-taxon/compare/v0.9.5...v0.9.6) (2025-07-19)
 
 

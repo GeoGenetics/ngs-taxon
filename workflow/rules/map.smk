@@ -108,9 +108,7 @@ rule bowtie2:
             (0.7 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 40)
             * attempt
         ),
-        runtime=lambda w, input, attempt: "{} h".format(
-            (sum(Path(f).stat().st_size for f in input.sample) / 1024**3 + 5) * attempt
-        ),
+        runtime=lambda w, input, attempt: f"{(Path(input.sample[0]).stat().st_size/1024**3+8)* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/bowtie2/align"
 
@@ -236,7 +234,7 @@ rule shard_saturated_reads_remove:
     threads: 2
     resources:
         mem=lambda w, attempt: f"{10* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.01* input.size_gb+0.5)* attempt} h",
+        runtime=lambda w, input, attempt: f"{(0.01* input.size_gb+1)* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/view"
 
@@ -263,7 +261,7 @@ rule shard_saturated_reads_extract:
         f"{wrapper_ver}/bio/seqtk"
 
 
-rule shard_clean_header:
+rule shard_unicorn:
     input:
         bam=(
             rules.shard_saturated_reads_remove.output.bam
@@ -272,24 +270,31 @@ rule shard_clean_header:
         ),
     output:
         bam=temp(
-            "temp/shards/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+            "temp/shards/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
         ),
+        stats="stats/shards/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv",
     log:
-        "logs/shards/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+        "logs/shards/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
-        "benchmarks/shards/clean_header/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
-    threads: 2
+        "benchmarks/shards/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+    params:
+        extra="--minrefl 0 --minreads 1",
+    conda:
+        urlunparse(
+            baseurl._replace(path=str(Path(baseurl.path) / "envs" / "enhjoerning.yaml"))
+        )
+    threads: 4
     resources:
-        mem=lambda w, attempt: f"{20* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+3)* attempt} h",
+        mem=lambda w, input, attempt: f"{3* input.size_gb* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{3* attempt} h",
     shell:
-        "/projects/caeg/apps/metaDMG-cpp/misc/compressbam --threads {threads} --input {input.bam} --output {output.bam} >{log} 2>&1"
+        "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --outbam {output.bam} --outstat {output.stats} >{log} 2>&1"
 
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c
 rule shard_sort_query:
     input:
-        bam=rules.shard_clean_header.output.bam,
+        bam=rules.shard_unicorn.output.bam,
     output:
         bam=temp(
             "temp/shards/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"

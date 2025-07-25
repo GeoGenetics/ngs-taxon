@@ -285,7 +285,7 @@ rule shard_unicorn:
         )
     threads: 4
     resources:
-        mem=lambda w, input, attempt: f"{3* input.size_gb* attempt} GiB",
+        mem=lambda w, input, attempt: f"{(3* input.size_gb+5)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{3* attempt} h",
     shell:
         "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --outbam {output.bam} --outstat {output.stats} >{log} 2>&1"

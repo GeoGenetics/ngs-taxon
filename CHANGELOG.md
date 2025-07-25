@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.1](https://github.com/GeoGenetics/ngs-taxon/compare/v0.10.0...v0.10.1) (2025-07-25)
+
+
+### Bug Fixes
+
+* revert metadmg ([#31](https://github.com/GeoGenetics/ngs-taxon/issues/31)) ([e6059f5](https://github.com/GeoGenetics/ngs-taxon/commit/e6059f5a5812f7578fd8de8a156ef5213c58454b))
+
 ## [0.10.0](https://github.com/GeoGenetics/ngs-taxon/compare/v0.9.6...v0.10.0) (2025-07-24)
 
 

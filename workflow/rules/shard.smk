@@ -102,6 +102,10 @@ rule shard_bowtie2:
     params:
         extra=lambda w: f"""--time --rg-id '{"' --rg '".join(get_read_group(w))}' --rg 'PG:bowtie2' """
         + config["ref"][w.ref]["map"]["params"],
+    envmodules:
+        "binutils/2.40",
+        "gcc/13.2.0",
+        "bowtie2/2.5.4",
     threads: 20
     resources:
         mem=lambda w, input, attempt: "{} GiB".format(

@@ -311,7 +311,7 @@ rule shard_sort_query:
         mem_overhead_factor=0.2,
     threads: 8
     resources:
-        mem=lambda w, input, attempt: f"{(10* input.size_gb +20)* attempt} GiB",
+        mem=lambda w, input, attempt: f"{(10* input.size_gb+20)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+1)* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/sort"

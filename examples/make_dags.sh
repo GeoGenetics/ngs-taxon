@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SNAKEMAKE_OPTS="--snakefile ../../workflow/Snakefile --configfile config/config.yaml --forceall $@"
+SNAKEMAKE_OPTS="--snakefile ../../workflow/Snakefile --configfile config/config.yaml --software-deployment-method conda --keep-storage-local-copies --forceall $@"
 
 for TEST in HD827sonic.all HD827sonic.reassign HD827sonic.filter HD827sonic.none
 do

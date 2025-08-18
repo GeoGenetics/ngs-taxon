@@ -111,7 +111,7 @@ rule shard_bowtie2:
             * attempt
         ),
         runtime=lambda w, input, attempt: f"{(Path(input.sample[0]).stat().st_size/1024**3+8)* attempt} h",
-        slurm_extra="--cpu-bind=ldoms",
+        slurm_extra="--cpu-bind=ldoms --mem-bind=local",
     wrapper:
         f"{wrapper_ver}/bio/bowtie2/align"
 

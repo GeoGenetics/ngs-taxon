@@ -103,8 +103,6 @@ rule shard_bowtie2:
         extra=lambda w: f"""--time --rg-id '{"' --rg '".join(get_read_group(w))}' --rg 'PG:bowtie2' """
         + config["ref"][w.ref]["map"]["params"],
     envmodules:
-        "binutils/2.40",
-        "gcc/13.2.0",
         "bowtie2/2.5.4",
     threads: 20
     resources:
@@ -113,6 +111,7 @@ rule shard_bowtie2:
             * attempt
         ),
         runtime=lambda w, input, attempt: f"{(Path(input.sample[0]).stat().st_size/1024**3+8)* attempt} h",
+        slurm_extra="--cpu-bind=ldoms",
     wrapper:
         f"{wrapper_ver}/bio/bowtie2/align"
 
@@ -188,8 +187,8 @@ rule shard_count_alns:
         "benchmarks/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     threads: 1
     resources:
-        mem=lambda w, attempt: f"{20* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+0.1)* attempt} h",
+        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+10)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.1)* attempt} h",
     shell:
         """
         (samtools view {input.bam} | awk 'BEGIN{{print "read_id\tn_aligns"}} {{x[$1]++}} END{{for(read_id in x){{print read_id"\t"x[read_id]}}}}') > {output.counts} 2> {log}
@@ -215,8 +214,8 @@ rule shard_saturated_reads_filter:
         ),
     threads: 4
     resources:
-        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+10)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.01* input.size_gb+0.1)* attempt} h",
+        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+8)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.2)* attempt} h",
     wrapper:
         f"{wrapper_ver}/utils/miller"
 
@@ -289,8 +288,8 @@ rule shard_unicorn:
         )
     threads: 4
     resources:
-        mem=lambda w, input, attempt: f"{(3* input.size_gb+5)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{3* attempt} h",
+        mem=lambda w, input, attempt: f"{(4* input.size_gb+20)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+0.1)* attempt} h",
     shell:
         "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --outbam {output.bam} --outstat {output.stats} >{log} 2>&1"
 
@@ -312,7 +311,7 @@ rule shard_sort_query:
         mem_overhead_factor=0.2,
     threads: 8
     resources:
-        mem=lambda w, threads, attempt: f"{10* threads* attempt} GiB",
+        mem=lambda w, input, attempt: f"{(10* input.size_gb +20)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+1)* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/sort"

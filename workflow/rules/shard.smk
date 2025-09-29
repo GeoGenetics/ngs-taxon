@@ -185,6 +185,10 @@ rule shard_count_alns:
         "logs/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
         "benchmarks/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+    conda:
+        urlunparse(
+            baseurl._replace(path=str(Path(baseurl.path) / "envs" / "samtools.yaml"))
+        )
     threads: 1
     resources:
         mem=lambda w, input, attempt: f"{(0.5* input.size_gb+10)* attempt} GiB",

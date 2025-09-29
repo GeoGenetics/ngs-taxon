@@ -138,7 +138,7 @@ rule metadmg_aggregate:
         )
     threads: 1
     resources:
-        mem=lambda w, attempt: f"{(3* input.size_gb+10)* attempt} GiB",
+        mem=lambda w, input, attempt: f"{(3* input.size_gb+10)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{10* attempt} m",
     shell:
         "metaDMG-cpp aggregate {input.dmg} --nodes {input.nodes} --names {input.names} --lcastat {input.lca} --dfit {input.dfit} --out_prefix {params.out_prefix} > {log} 2>&1"

@@ -55,5 +55,8 @@ jobs:
       - name: Set strict conda channel priority
         run: conda config --set channel_priority strict
 
+      - name: restore timestamps
+        uses: chetan/git-restore-mtime-action@v2
+
       - name: Run examples
         run: pixi run -e test env --chdir ./examples/ ./make_dags.sh

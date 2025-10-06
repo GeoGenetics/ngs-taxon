@@ -48,8 +48,6 @@ def test_align_sort_coord(conda_prefix):
                 "conda",
                 "--directory",
                 workdir,
-                "--set-resources",
-                "align_sort_coord:mem_mb=10000",
             ]
             + conda_prefix
         )

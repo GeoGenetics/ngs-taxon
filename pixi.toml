@@ -16,6 +16,7 @@ format = { features = ["format"], no-default-feature = true }
 
 [feature.test.dependencies]
 graphviz = "*"
+gatk4 = ">=4.0.51,<5"
 
 [feature.format.dependencies]
 black = "*"

@@ -104,14 +104,14 @@ rule shard_bowtie2:
         + config["ref"][w.ref]["map"]["params"],
     envmodules:
         "bowtie2/2.5.4",
-    threads: 20
+    threads: 16
     resources:
         mem=lambda w, input, attempt: "{} GiB".format(
             (0.7 * sum(Path(f).stat().st_size for f in input.idx) / 1024**3 + 40)
             * attempt
         ),
         runtime=lambda w, input, attempt: f"{(Path(input.sample[0]).stat().st_size/1024**3+8)* attempt} h",
-        slurm_extra="--cpu-bind=ldoms --mem-bind=local",
+        slurm_extra="--extra-node-info 1",
     wrapper:
         f"{wrapper_ver}/bio/bowtie2/align"
 

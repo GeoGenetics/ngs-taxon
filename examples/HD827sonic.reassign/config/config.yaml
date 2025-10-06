@@ -3,27 +3,19 @@
 ### ALIGN ###
 #############
 ref:
-  wgs_eukaryota:
+  test:
     n_shards: 2
-    path: "/datasets/caeg_dataset/references/ncbi/20250205/data/wgs_eukaryota.{n_shard}.fas.gz"
+    path: "data/test.{n_shard}-of-2.fas.gz"
     map:
       tool: bowtie2
-      params: "-k 50 -L 22 -i S,1,1.15 --mp 1,1 --rdg 0,1 --rfg 0,1 --score-min L,0,-0.1 --no-unal"
-      bt2l: True
-    acc2taxid: "/datasets/caeg_dataset/references/ncbi/20250205/taxonomy/ncbi/wgs_eukaryota.acc2taxid.gz"
-  refseq_mitochondrion:
-    n_shards: 1
-    path: "/datasets/caeg_dataset/references/ncbi/20250205/data/refseq_mitochondrion.genomic.fas.gz"
-    map:
-      tool: bowtie2
-      params: "-k 50 -L 22 -i S,1,1.15 --mp 1,1 --rdg 0,1 --rfg 0,1 --score-min L,0,-0.1 --no-unal"
+      params: "-k 10 -L 22 -i S,1,1.15 --mp 1,1 --rdg 0,1 --rfg 0,1 --score-min L,0,-0.1 --no-unal"
       bt2l: False
-    acc2taxid: "/datasets/caeg_dataset/references/ncbi/20250205/taxonomy/ncbi/refseq_mitochondrion.genomic.acc2taxid.gz"
+    acc2taxid: "data/test.acc2taxid.gz"
 
 filter:
   saturated_reads:
     activate: true
-    n_alns: 50
+    n_alns: 10
 
 bam_filter:
   reassign:
@@ -39,8 +31,8 @@ bam_filter:
     params: "--lca-rank genus"
 
 taxonomy:
-  nodes: "/datasets/caeg_dataset/taxonomy/ncbi/20250210/nodes.dmp"
-  names: "/datasets/caeg_dataset/taxonomy/ncbi/20250210/names.dmp"
+  nodes: "data/taxdump/nodes.dmp"
+  names: "data/taxdump/names.dmp"
 
 metadmg:
   damage:

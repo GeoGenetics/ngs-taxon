@@ -49,7 +49,7 @@ def test_align_sort_coord(conda_prefix):
                 "--directory",
                 workdir,
                 "--set-resources",
-                "shard_sort_query:mem_mb=10000",
+                "shard_sort_coord:mem_mb=10000",
             ]
             + conda_prefix
         )

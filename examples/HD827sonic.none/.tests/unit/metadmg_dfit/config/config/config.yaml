@@ -20,7 +20,7 @@ filter:
 bam_filter:
   reassign:
     activate: false
-    params: "--iters 0 --min-read-ani 92 --min-read-count 3 --scale 0 --squarem-min-improvement 0.001 --squarem-max-step-factor 2.0"
+    params: "--iters 0 --min-read-ani 92 --min-read-count 3 --scale 0"
 
   filter:
     activate: false

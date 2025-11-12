@@ -112,7 +112,7 @@ rule metadmg_dfit:
         mem=lambda w, input, attempt: f"{(0.04* Path(input.dmg).stat().st_size/1024**2+3)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.05* Path(input.dmg).stat().st_size/1024**2+1)* attempt} h",
     shell:
-        "metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed $RANDOM --out_prefix {params.out_prefix} > {log} 2>&1"
+        "metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed 12345 --out_prefix {params.out_prefix} > {log} 2>&1"
 
 
 rule metadmg_aggregate:

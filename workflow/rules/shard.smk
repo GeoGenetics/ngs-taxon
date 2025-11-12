@@ -186,9 +186,7 @@ rule shard_count_alns:
     benchmark:
         "benchmarks/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     conda:
-        urlunparse(
-            baseurl._replace(path=str(Path(baseurl.path) / "envs" / "samtools.yaml"))
-        )
+        f"https://github.com/snakemake/snakemake-wrappers/raw/{wrapper_ver}/bio/samtools/sort/environment.yaml"
     threads: 1
     resources:
         mem=lambda w, input, attempt: f"{(0.5* input.size_gb+10)* attempt} GiB",

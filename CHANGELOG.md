@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.11.0](https://github.com/GeoGenetics/ngs-taxon/compare/v0.10.1...v0.11.0) (2025-11-12)
+
+
+### Features
+
+* add bowtie2 env module to support CPU-specific binaries ([#33](https://github.com/GeoGenetics/ngs-taxon/issues/33)) ([c4b443f](https://github.com/GeoGenetics/ngs-taxon/commit/c4b443f36f81a16790fb7da5362c6873c986c568))
+
+
+### Bug Fixes
+
+* add missing samtools dep, and fix typo ([#36](https://github.com/GeoGenetics/ngs-taxon/issues/36)) ([08273b9](https://github.com/GeoGenetics/ngs-taxon/commit/08273b963258039e7961211aa87f0fa0ff99f0b5))
+
+
+### Performance Improvements
+
+* adjust resources, and bowtie2 exec options ([#35](https://github.com/GeoGenetics/ngs-taxon/issues/35)) ([ceb9daf](https://github.com/GeoGenetics/ngs-taxon/commit/ceb9daf106697a621cbce3a6e15f574288c24b5f))
+* Reduce number of threads and bind to socket ([#38](https://github.com/GeoGenetics/ngs-taxon/issues/38)) ([1716446](https://github.com/GeoGenetics/ngs-taxon/commit/1716446d1c6d9ccaa7bdc2053407b557ee778728))
+
 ## [0.10.1](https://github.com/GeoGenetics/ngs-taxon/compare/v0.10.0...v0.10.1) (2025-07-25)
 
 

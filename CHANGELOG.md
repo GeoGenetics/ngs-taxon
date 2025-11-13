@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/GeoGenetics/ngs-taxon/compare/v0.11.0...v0.11.1) (2025-11-13)
+
+
+### Bug Fixes
+
+* Update pixi env and bump wrapper ver ([#39](https://github.com/GeoGenetics/ngs-taxon/issues/39)) ([613c07d](https://github.com/GeoGenetics/ngs-taxon/commit/613c07d223aa51f2c9278cc2fa56ee4c2aacfbdb))
+
 ## [0.11.0](https://github.com/GeoGenetics/ngs-taxon/compare/v0.10.1...v0.11.0) (2025-11-12)
 
 

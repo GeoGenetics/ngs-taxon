@@ -1,9 +1,9 @@
 import numpy as np
 
-snakemake.utils.min_version("9.0.0")
+snakemake.utils.min_version("9.13.5")
 
 # Define wrapper versions
-wrapper_ver = "v7.6.0"
+wrapper_ver = "v7.9.1"
 
 ######################
 ### Validate Input ###
@@ -11,7 +11,7 @@ wrapper_ver = "v7.6.0"
 import pandas as pd
 from urllib.parse import urlparse, urlunparse
 
-baseurl = urlparse(workflow.current_basedir.get_path_or_uri())
+baseurl = urlparse(workflow.current_basedir.get_path_or_uri(secret_free=True))
 # Units
 units = config.get("units")
 if units is None:

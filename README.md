@@ -1,6 +1,6 @@
 # NGS Taxon - a generic module for read taxonomic asignment
 
-[![Snakemake](https://img.shields.io/badge/snakemake-≥9.0.0-brightgreen.svg)](https://snakemake.readthedocs.io/en/stable/)
+[![Snakemake](https://img.shields.io/badge/snakemake-≥9.13.5-brightgreen.svg)](https://snakemake.readthedocs.io/en/stable/)
 ![CI](https://github.com/GeoGenetics/ngs-taxon/actions/workflows/ci.yml/badge.svg)
 
 This module implements read taxonomic assignment steps:

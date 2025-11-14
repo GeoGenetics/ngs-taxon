@@ -211,7 +211,7 @@ rule shard_saturated_reads_filter:
     benchmark:
         "benchmarks/shards/saturated_reads/filter/{sample}_{library}_{read_type_map}.jsonl"
     params:
-        extra="--headerless-tsv-output cat then filter '$n_aligns >= {}' then uniq -g read_id then cut -f read_id".format(
+        extra="--headerless-tsv-output cat then filter '$n_aligns >= {}' then sort -f read_id then uniq -g read_id then cut -f read_id".format(
             config["filter"]["saturated_reads"]["n_alns"]
         ),
     threads: 4

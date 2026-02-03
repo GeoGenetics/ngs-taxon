@@ -41,6 +41,8 @@ def test_align_merge(conda_prefix):
                 "--show-failed-logs",
                 "-j1",
                 "--target-files-omit-workdir-adjustment",
+                "--allowed-rules",
+                "align_merge",
                 "--configfile",
                 "config/config.yaml",
                 "--software-deployment-method",

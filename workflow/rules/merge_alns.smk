@@ -64,6 +64,6 @@ rule align_stats:
     threads: 4
     resources:
         mem=lambda w, input, attempt: f"{(0.04* input.size_gb+5)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.01* input.size_gb+0.2)* attempt} h",
+        runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.3)* attempt} h",
     wrapper:
         f"{wrapper_ver}/bio/samtools/stats"

@@ -102,8 +102,6 @@ rule shard_bowtie2:
     params:
         extra=lambda w: f"""--time --rg-id '{"' --rg '".join(get_read_group(w))}' --rg 'PG:bowtie2' """
         + config["ref"][w.ref]["map"]["params"],
-    envmodules:
-        "bowtie2/2.5.4",
     threads: 16
     resources:
         mem=lambda w, input, attempt: "{} GiB".format(
@@ -217,7 +215,7 @@ rule shard_saturated_reads_filter:
     threads: 4
     resources:
         mem=lambda w, input, attempt: f"{(0.5* input.size_gb+8)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.2)* attempt} h",
+        runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.3)* attempt} h",
     wrapper:
         f"{wrapper_ver}/utils/miller"
 

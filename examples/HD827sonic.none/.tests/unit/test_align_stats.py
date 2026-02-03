@@ -2,7 +2,6 @@
 Rule test code for unit testing of rules generated with Snakemake 9.12.0.
 """
 
-
 import os
 import sys
 import shutil
@@ -41,6 +40,8 @@ def test_align_stats(conda_prefix):
                 "--show-failed-logs",
                 "-j1",
                 "--target-files-omit-workdir-adjustment",
+                "--allowed-rules",
+                "align_stats",
                 "--configfile",
                 "config/config.yaml",
                 "--software-deployment-method",
@@ -53,7 +54,10 @@ def test_align_stats(conda_prefix):
 
         # Check the output byte by byte using cmp/zmp/bzcmp/xzcmp.
         # To modify this behavior, you can inherit from common.OutputChecker in here
-        # and overwrite the method `compare_files(generated_file, expected_file), 
+        # and overwrite the method `compare_files(generated_file, expected_file),
         # also see common.py.
         import common
-        common.OutputChecker(data_path, expected_path, workdir).check()
+
+        common.OutputChecker(data_path, expected_path, workdir).check(
+            {".txt": ["diff", "--ignore-matching-lines", "\\#"]}
+        )

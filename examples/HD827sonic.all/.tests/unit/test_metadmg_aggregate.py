@@ -41,6 +41,8 @@ def test_metadmg_aggregate(conda_prefix):
                 "--show-failed-logs",
                 "-j1",
                 "--target-files-omit-workdir-adjustment",
+                "--allowed-rules",
+                "metadmg_aggregate",
                 "--configfile",
                 "config/config.yaml",
                 "--software-deployment-method",

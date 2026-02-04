@@ -42,6 +42,8 @@ def test_align_sort_coord(conda_prefix):
                 "--show-failed-logs",
                 "-j1",
                 "--target-files-omit-workdir-adjustment",
+                "--allowed-rules",
+                "align_sort_coord",
                 "--configfile",
                 "config/config.yaml",
                 "--software-deployment-method",

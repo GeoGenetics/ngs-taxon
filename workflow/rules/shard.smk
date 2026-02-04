@@ -184,10 +184,10 @@ rule shard_count_alns:
     benchmark:
         "benchmarks/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     conda:
-        f"https://github.com/snakemake/snakemake-wrappers/raw/v7.9.1/bio/samtools/sort/environment.yaml"
+        f"https://github.com/snakemake/snakemake-wrappers/raw/v7.9.1/bio/samtools/view/environment.yaml"
     threads: 1
     resources:
-        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+10)* attempt} GiB",
+        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+30)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.1)* attempt} h",
     shell:
         """
@@ -288,7 +288,7 @@ rule shard_unicorn:
         )
     threads: 4
     resources:
-        mem=lambda w, input, attempt: f"{(4* input.size_gb+20)* attempt} GiB",
+        mem=lambda w, input, attempt: f"{(4* input.size_gb+50)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+0.1)* attempt} h",
     shell:
         "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --outbam {output.bam} --outstat {output.stats} >{log} 2>&1"

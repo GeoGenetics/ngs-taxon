@@ -63,7 +63,7 @@ rule align_stats:
         "benchmarks/aligns/samtools_stats/{sample}_{library}_{read_type_map}.jsonl"
     threads: 4
     resources:
-        mem=lambda w, input, attempt: f"{(0.04* input.size_gb+5)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.3)* attempt} h",
+        mem=lambda w, input, attempt: f"{5* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.5)* attempt} h",
     wrapper:
-        "v7.9.1/bio/samtools/stats"
+        "v9.0.0/bio/samtools/stats"

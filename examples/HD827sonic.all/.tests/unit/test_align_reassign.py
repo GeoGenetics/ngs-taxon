@@ -41,6 +41,8 @@ def test_align_reassign(conda_prefix):
                 "--show-failed-logs",
                 "-j1",
                 "--target-files-omit-workdir-adjustment",
+                "--allowed-rules",
+                "align_reassign",
                 "--configfile",
                 "config/config.yaml",
                 "--software-deployment-method",

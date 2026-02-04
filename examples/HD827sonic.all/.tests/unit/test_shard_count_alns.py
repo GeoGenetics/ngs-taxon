@@ -41,6 +41,8 @@ def test_shard_count_alns(conda_prefix):
                 "--show-failed-logs",
                 "-j1",
                 "--target-files-omit-workdir-adjustment",
+                "--allowed-rules",
+                "shard_count_alns",
                 "--configfile",
                 "config/config.yaml",
                 "--software-deployment-method",

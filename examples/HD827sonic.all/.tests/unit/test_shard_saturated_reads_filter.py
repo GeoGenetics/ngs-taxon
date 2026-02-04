@@ -41,6 +41,8 @@ def test_shard_saturated_reads_filter(conda_prefix):
                 "--show-failed-logs",
                 "-j1",
                 "--target-files-omit-workdir-adjustment",
+                "--allowed-rules",
+                "shard_saturated_reads_filter",
                 "--configfile",
                 "config/config.yaml",
                 "--software-deployment-method",

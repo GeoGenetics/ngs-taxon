@@ -42,6 +42,8 @@ def test_shard_unicorn(conda_prefix):
                 "--show-failed-logs",
                 "-j1",
                 "--target-files-omit-workdir-adjustment",
+                "--allowed-rules",
+                "shard_unicorn",
                 "--configfile",
                 "config/config.yaml",
                 "--software-deployment-method",

@@ -110,7 +110,7 @@ rule metadmg_dfit:
     threads: 4
     resources:
         mem=lambda w, input, attempt: f"{(0.04* Path(input.dmg).stat().st_size/1024**2+3)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.05* Path(input.dmg).stat().st_size/1024**2+1)* attempt} h",
+        runtime=lambda w, input, attempt: f"{(0.05* Path(input.dmg).stat().st_size/1024**2+2)* attempt} h",
     shell:
         "metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed 12345 --out_prefix {params.out_prefix} > {log} 2>&1"
 
@@ -139,6 +139,6 @@ rule metadmg_aggregate:
     threads: 1
     resources:
         mem=lambda w, input, attempt: f"{(3* input.size_gb+10)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{10* attempt} m",
+        runtime=lambda w, input, attempt: f"{30* attempt} m",
     shell:
         "metaDMG-cpp aggregate {input.dmg} --nodes {input.nodes} --names {input.names} --lcastat {input.lca} --dfit {input.dfit} --out_prefix {params.out_prefix} > {log} 2>&1"

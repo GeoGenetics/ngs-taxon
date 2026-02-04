@@ -102,8 +102,6 @@ rule shard_bowtie2:
     params:
         extra=lambda w: f"""--time --rg-id '{"' --rg '".join(get_read_group(w))}' --rg 'PG:bowtie2' """
         + config["ref"][w.ref]["map"]["params"],
-    envmodules:
-        "bowtie2/2.5.4",
     threads: 16
     resources:
         mem=lambda w, input, attempt: "{} GiB".format(
@@ -113,7 +111,7 @@ rule shard_bowtie2:
         runtime=lambda w, input, attempt: f"{(Path(input.sample[0]).stat().st_size/1024**3+8)* attempt} h",
         slurm_extra="--extra-node-info 1",
     wrapper:
-        f"{wrapper_ver}/bio/bowtie2/align"
+        "v7.9.1/bio/bowtie2/align"
 
 
 rule shard_bwa_aln:
@@ -140,7 +138,7 @@ rule shard_bwa_aln:
         ),
         runtime=lambda w, attempt: f"{10* attempt} h",
     wrapper:
-        f"{wrapper_ver}/bio/bwa/aln"
+        "v7.9.1/bio/bwa/aln"
 
 
 rule shard_bwa_samxe:
@@ -167,7 +165,7 @@ rule shard_bwa_samxe:
         ),
         runtime=lambda w, attempt: f"{10* attempt} h",
     wrapper:
-        f"{wrapper_ver}/bio/bwa/samxe"
+        "v7.9.1/bio/bwa/samxe"
 
 
 rule shard_count_alns:
@@ -186,10 +184,10 @@ rule shard_count_alns:
     benchmark:
         "benchmarks/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     conda:
-        f"https://github.com/snakemake/snakemake-wrappers/raw/{wrapper_ver}/bio/samtools/sort/environment.yaml"
+        f"https://github.com/snakemake/snakemake-wrappers/raw/v7.9.1/bio/samtools/view/environment.yaml"
     threads: 1
     resources:
-        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+10)* attempt} GiB",
+        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+30)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.1)* attempt} h",
     shell:
         """
@@ -217,9 +215,9 @@ rule shard_saturated_reads_filter:
     threads: 4
     resources:
         mem=lambda w, input, attempt: f"{(0.5* input.size_gb+8)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.2)* attempt} h",
+        runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.3)* attempt} h",
     wrapper:
-        f"{wrapper_ver}/utils/miller"
+        "v7.9.1/utils/miller"
 
 
 rule shard_saturated_reads_remove:
@@ -241,7 +239,7 @@ rule shard_saturated_reads_remove:
         mem=lambda w, attempt: f"{10* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.01* input.size_gb+1)* attempt} h",
     wrapper:
-        f"{wrapper_ver}/bio/samtools/view"
+        "v7.9.1/bio/samtools/view"
 
 
 rule shard_saturated_reads_extract:
@@ -263,7 +261,7 @@ rule shard_saturated_reads_extract:
         mem=lambda w, attempt: f"{1* attempt} GiB",
         runtime=lambda w, attempt: f"{1* attempt} h",
     wrapper:
-        f"{wrapper_ver}/bio/seqtk"
+        "v7.9.1/bio/seqtk"
 
 
 rule shard_unicorn:
@@ -290,7 +288,7 @@ rule shard_unicorn:
         )
     threads: 4
     resources:
-        mem=lambda w, input, attempt: f"{(4* input.size_gb+20)* attempt} GiB",
+        mem=lambda w, input, attempt: f"{(4* input.size_gb+50)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+0.1)* attempt} h",
     shell:
         "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --outbam {output.bam} --outstat {output.stats} >{log} 2>&1"
@@ -316,4 +314,4 @@ rule shard_sort_query:
         mem=lambda w, input, attempt: f"{(10* input.size_gb+20)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+1)* attempt} h",
     wrapper:
-        f"{wrapper_ver}/bio/samtools/sort"
+        "v7.9.1/bio/samtools/sort"

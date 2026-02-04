@@ -44,7 +44,7 @@ rule align_merge:
         mem=lambda w, input, attempt: f"{(0.2* input.size_gb+30)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+1)* attempt} h",
     wrapper:
-        f"{wrapper_ver}/bio/samtools/merge"
+        "v7.9.1/bio/samtools/merge"
 
 
 ##########
@@ -63,7 +63,7 @@ rule align_stats:
         "benchmarks/aligns/samtools_stats/{sample}_{library}_{read_type_map}.jsonl"
     threads: 4
     resources:
-        mem=lambda w, input, attempt: f"{(0.04* input.size_gb+5)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.01* input.size_gb+0.2)* attempt} h",
+        mem=lambda w, input, attempt: f"{5* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.5)* attempt} h",
     wrapper:
-        f"{wrapper_ver}/bio/samtools/stats"
+        "v9.0.0/bio/samtools/stats"

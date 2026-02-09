@@ -66,4 +66,4 @@ rule align_stats:
         mem=lambda w, input, attempt: f"{5* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.5)* attempt} h",
     wrapper:
-        "v9.0.0/bio/samtools/stats"
+        "v9.0.1/bio/samtools/stats"

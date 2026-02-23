@@ -24,7 +24,7 @@ rule metadmg_damage:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "metadmg.yaml"))
         )
-    threads: 4
+    threads: 2
     resources:
         mem=lambda w, input, attempt: f"{(0.04* input.size_gb+5)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.1)* attempt} h",
@@ -64,7 +64,7 @@ rule metadmg_lca:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "metadmg.yaml"))
         )
-    threads: 4
+    threads: 2
     resources:
         mem=lambda w, input, attempt: f"{(0.2* input.size_gb+15)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+3)* attempt} h",

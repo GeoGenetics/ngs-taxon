@@ -39,7 +39,7 @@ rule align_merge:
         "benchmarks/aligns/merge/{sample}_{library}_{read_type_map}.jsonl"
     params:
         extra="-n -c -p",
-    threads: 4
+    threads: 3
     resources:
         mem=lambda w, input, attempt: f"{(0.2* input.size_gb+30)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+1)* attempt} h",
@@ -61,9 +61,9 @@ rule align_stats:
         "logs/aligns/samtools_stats/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "benchmarks/aligns/samtools_stats/{sample}_{library}_{read_type_map}.jsonl"
-    threads: 4
+    threads: 2
     resources:
         mem=lambda w, input, attempt: f"{5* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.5)* attempt} h",
     wrapper:
-        "v9.0.1/bio/samtools/stats"
+        "v8.1.1/bio/samtools/stats"

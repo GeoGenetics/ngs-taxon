@@ -8,7 +8,7 @@ version = "0.11.2"
 
 [dependencies]
 snakemake = ">=9.0.1,<10"
-conda = ">=25.1.1,<26"
+conda = ">=25.1.1,<27"
 
 [environments]
 test = { features = ["test"] }

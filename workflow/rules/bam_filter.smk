@@ -54,11 +54,6 @@ rule align_reassign:
     threads: 10
     resources:
         mem=lambda w, attempt, input, threads: f"{np.clip(4* threads* input.size_mb/1024,10* threads,100* threads)* attempt} GiB",
-        mem_mb=lambda w, attempt, input, threads: np.clip(
-            4 * threads * input.size_mb / 1024, 10 * threads, 100 * threads
-        )
-        * attempt
-        * 1024,
         runtime=lambda w, attempt: f"{2* attempt} d",
     shell:
         "filterBAM reassign --threads {threads} --max-memory {resources.mem_mb}M --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"

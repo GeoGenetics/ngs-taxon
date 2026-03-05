@@ -1,6 +1,6 @@
 import numpy as np
 
-snakemake.utils.min_version("9.13.5")
+snakemake.utils.min_version("9.16.3")
 
 ######################
 ### Validate Input ###

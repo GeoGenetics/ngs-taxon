@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.11.2](https://github.com/GeoGenetics/ngs-taxon/compare/v0.11.1...v0.11.2) (2026-03-06)
+
+
+### Bug Fixes
+
+* MultiQC benchmark extension ([#44](https://github.com/GeoGenetics/ngs-taxon/issues/44)) ([5650952](https://github.com/GeoGenetics/ngs-taxon/commit/565095287001cbc90feaded064049ddba50021f3))
+* sort saturated reads to ensure passes unit testing ([#41](https://github.com/GeoGenetics/ngs-taxon/issues/41)) ([281c27e](https://github.com/GeoGenetics/ngs-taxon/commit/281c27e82127e5aa23a72f58f6a10a9a4e8ebfe8))
+
+
+### Performance Improvements
+
+* bump wrappers ([#46](https://github.com/GeoGenetics/ngs-taxon/issues/46)) ([82dd4a4](https://github.com/GeoGenetics/ngs-taxon/commit/82dd4a489ab22a01904ef0e32833b953eb40d4b1))
+* update MultiQC version ([#45](https://github.com/GeoGenetics/ngs-taxon/issues/45)) ([2610adc](https://github.com/GeoGenetics/ngs-taxon/commit/2610adc1ea8c8d96e4a24533133aa5d4486c2e56))
+* Update unicorn and env, and tweak resources and unit tests ([#42](https://github.com/GeoGenetics/ngs-taxon/issues/42)) ([b547900](https://github.com/GeoGenetics/ngs-taxon/commit/b547900c7fe07bd633021539074c440030d336f9))
+
 ## [0.11.1](https://github.com/GeoGenetics/ngs-taxon/compare/v0.11.0...v0.11.1) (2025-11-13)
 
 

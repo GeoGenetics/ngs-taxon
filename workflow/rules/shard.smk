@@ -138,7 +138,7 @@ rule shard_bwa_aln:
         ),
         runtime=lambda w, attempt: f"{10* attempt} h",
     wrapper:
-        "v7.9.1/bio/bwa/aln"
+        "v5.10.0/bio/bwa/aln"
 
 
 rule shard_bwa_samxe:
@@ -185,7 +185,7 @@ rule shard_count_alns:
         "benchmarks/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     conda:
         f"https://github.com/snakemake/snakemake-wrappers/raw/v7.9.1/bio/samtools/view/environment.yaml"
-    threads: 1
+    threads: 2
     resources:
         mem=lambda w, input, attempt: f"{(0.5* input.size_gb+30)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.1)* attempt} h",
@@ -212,7 +212,7 @@ rule shard_saturated_reads_filter:
         extra="--headerless-tsv-output cat then filter '$n_aligns >= {}' then sort -f read_id then uniq -g read_id then cut -f read_id".format(
             config["filter"]["saturated_reads"]["n_alns"]
         ),
-    threads: 4
+    threads: 2
     resources:
         mem=lambda w, input, attempt: f"{(0.5* input.size_gb+8)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.3)* attempt} h",
@@ -261,7 +261,7 @@ rule shard_saturated_reads_extract:
         mem=lambda w, attempt: f"{1* attempt} GiB",
         runtime=lambda w, attempt: f"{1* attempt} h",
     wrapper:
-        "v7.9.1/bio/seqtk"
+        "v7.0.0/bio/seqtk"
 
 
 rule shard_unicorn:
@@ -309,7 +309,7 @@ rule shard_sort_query:
     params:
         extra="-n",
         mem_overhead_factor=0.2,
-    threads: 8
+    threads: 6
     resources:
         mem=lambda w, input, attempt: f"{(10* input.size_gb+20)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+1)* attempt} h",

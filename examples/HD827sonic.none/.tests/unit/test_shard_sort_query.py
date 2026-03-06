@@ -1,7 +1,6 @@
 """
-Rule test code for unit testing of rules generated with Snakemake 9.12.0.
+Rule test code for unit testing of rules generated with Snakemake 9.16.4.dev3.
 """
-
 
 import os
 import sys
@@ -33,7 +32,7 @@ def test_shard_sort_query(conda_prefix):
                 "python",
                 "-m",
                 "snakemake",
-                "temp/shards/sort_query/HD827sonic_1_lib1_collapsed.test.2-of-2.bam",
+                "temp/shards/sort_query/HD827sonic_1_lib1_collapsed.test.1-of-2.bam",
                 "--snakefile",
                 "../../workflow/Snakefile",
                 "-f",
@@ -49,15 +48,14 @@ def test_shard_sort_query(conda_prefix):
                 "conda",
                 "--directory",
                 workdir,
-                "--set-resources",
-                "shard_sort_query:mem_mb=10000",
             ]
             + conda_prefix
         )
 
         # Check the output byte by byte using cmp/zmp/bzcmp/xzcmp.
         # To modify this behavior, you can inherit from common.OutputChecker in here
-        # and overwrite the method `compare_files(generated_file, expected_file), 
+        # and overwrite the method `compare_files(generated_file, expected_file),
         # also see common.py.
         import common
+
         common.OutputChecker(data_path, expected_path, workdir).check()

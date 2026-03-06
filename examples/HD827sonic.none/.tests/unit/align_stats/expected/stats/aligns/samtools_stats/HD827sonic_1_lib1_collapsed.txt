@@ -1,6 +1,6 @@
-# This file was produced by samtools stats (1.22.1+htslib-1.22.1) and can be plotted using plot-bamstats
+# This file was produced by samtools stats (1.23+htslib-1.23) and can be plotted using plot-bamstats
 # This file contains statistics for all reads.
-# The command line was:  stats results/aligns/merge/HD827sonic_1_lib1_collapsed.bam
+# The command line was:  stats --threads 1 results/aligns/merge/HD827sonic_1_lib1_collapsed.bam
 # CHK, Checksum	[2]Read Names	[3]Sequences	[4]Qualities
 # CHK, CRC32 of reads which passed filtering followed by addition (32bit overflow)
 CHK	81328da9	07deac5d	e1f771ad

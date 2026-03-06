@@ -1,5 +1,5 @@
 """
-Rule test code for unit testing of rules generated with Snakemake 9.12.0.
+Rule test code for unit testing of rules generated with Snakemake 9.16.4.dev3.
 """
 
 import os
@@ -59,5 +59,5 @@ def test_align_stats(conda_prefix):
         import common
 
         common.OutputChecker(data_path, expected_path, workdir).check(
-            {".txt": ["diff", "--ignore-matching-lines", "\\#"]}
+            {".txt": ["diff", "--ignore-matching-lines=\\#"]}
         )

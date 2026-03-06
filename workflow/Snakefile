@@ -1,6 +1,6 @@
 import numpy as np
 
-snakemake.utils.min_version("9.13.5")
+snakemake.utils.min_version("9.16.3")
 
 ######################
 ### Validate Input ###
@@ -106,7 +106,7 @@ rule multiqc:
         mem=lambda w, attempt: f"{10* attempt} GiB",
         runtime=lambda w, attempt: f"{30* attempt} m",
     wrapper:
-        "v9.0.0/bio/multiqc"
+        "v8.1.1/bio/multiqc"
 
 
 rule all:

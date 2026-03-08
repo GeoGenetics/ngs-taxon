@@ -15,7 +15,7 @@ wildcard_constraints:
 
 
 # https://gatk.broadinstitute.org/hc/en-us/articles/360035890671-Read-groups
-def get_read_group(wildcards):
+def read_group_get(wildcards, tool):
     """Denote sample name and platform in read group."""
 
     extra_info = {
@@ -31,19 +31,36 @@ def get_read_group(wildcards):
         .drop_duplicates()
         .item()
     )
-    rg_info = [
-        f"{wildcards.sample}_{wildcards.library}_{flowcell}_{wildcards.ref}{wildcards.n_shard}o{wildcards.tot_shards}",
-        f"SM:{wildcards.sample}",
-        f"LB:{wildcards.library}",
-        f"PU:{flowcell}",
-    ]
+    rg_info = {
+        "ID": f"{wildcards.sample}_{wildcards.library}_{flowcell}_{wildcards.ref}{wildcards.n_shard}o{wildcards.tot_shards}",
+        "SM": wildcards.sample,
+        "LB": wildcards.library,
+        "PU": flowcell,
+        "PG": tool,
+    }
     # Add extra info to RG
     for key, abv in extra_info.items():
         value = units.loc[(wildcards.sample, wildcards.library, slice(None))].get(key)
         if value is not None and value.any():
-            rg_info.append(f"{abv}:{value.drop_duplicates().item()}")
+            rg_info[abv] = value.drop_duplicates().item()
 
     return rg_info
+
+
+def read_group_merge(wildcards, tool):
+    rg_info = read_group_get(wildcards, tool)
+    # Get RG ID
+    rg_fmt = [f"{k}:{{{k}}}" for k, v in rg_info.items() if k != "ID"]
+    # Define format string
+    if tool == "bowtie2":
+        rg_fmt = "{ID}' --rg '" + "' --rg '".join(rg_fmt)
+    elif tool == "bwa_aln":
+        rg_fmt = "@RG\\tID:{ID}\\t" + "\\t".join(rg_fmt)
+    else:
+        raise ValueError(f"Tool not supported: {tool}")
+
+    # Format and return
+    return rg_fmt.format(**rg_info)
 
 
 #############
@@ -64,7 +81,7 @@ def get_data(wildcards):
     )
 
 
-def get_index(wildcards):
+def get_bowtie2_index(wildcards):
     if config["ref"][wildcards.ref]["map"].get("bt2l", True):
         return multiext(
             config["ref"][wildcards.ref]["path"],
@@ -90,7 +107,7 @@ def get_index(wildcards):
 rule shard_bowtie2:
     input:
         sample=get_data,
-        idx=get_index,
+        idx=get_bowtie2_index,
     output:
         bam=temp(
             "temp/shards/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
@@ -100,7 +117,7 @@ rule shard_bowtie2:
     benchmark:
         "benchmarks/shards/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
-        extra=lambda w: f"""--time --rg-id '{"' --rg '".join(get_read_group(w))}' --rg 'PG:bowtie2' """
+        extra=lambda w: f"""--time --rg-id '{read_group_merge(w, "bowtie2")}'"""
         + config["ref"][w.ref]["map"]["params"],
     threads: 16
     resources:
@@ -155,7 +172,7 @@ rule shard_bwa_samxe:
     benchmark:
         "benchmarks/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.samxe.jsonl"
     params:
-        extra=lambda w: f"""-r '@RG\tID:{"\\t".join(get_read_group(w))}\\tPG:bwa_aln' """,
+        extra=lambda w: f"""-r '{read_group_merge(w, "bwa_aln")}'""",
         sort="samtools",
     threads: 1
     resources:
@@ -166,6 +183,66 @@ rule shard_bwa_samxe:
         runtime=lambda w, attempt: f"{10* attempt} h",
     wrapper:
         "v7.9.1/bio/bwa/samxe"
+
+
+rule shard_dragen_csv:
+    input:
+        sample=get_data,
+    output:
+        csv=temp(
+            "temp/shards/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.csv"
+        ),
+    localrule: True
+    threads: 1
+    resources:
+        mem=lambda w, attempt: f"{1* attempt} GiB",
+        runtime=lambda w, attempt: f"{10* attempt} m",
+    run:
+
+
+        """
+        rg_info = read_group_get(wildcards, "dragen")
+        print(rg_info)
+        pd.DataFrame([rg_info]).rename(lambda x: f"RG{x}", axis=1).assign(Lane=1,Read1File=snakemake.input.sample,Read2File="").to_csv(snakemake.output.csv)
+        """
+
+
+rule shard_dragen:
+    input:
+        sample=get_data,
+        csv=rules.shard_dragen_csv.output.csv,
+        idx=lambda w: multiext(
+            config["ref"][w.ref]["path"] + "/",
+            "dragen-replay.json",
+            "dragen.metrics.json",
+            "dragen.time_metrics.csv",
+            "hash_table.cfg",
+            "hash_table.cfg.bin",
+            "hash_table.cmp",
+            "hash_table_stats.txt",
+            "ref_index.bin",
+            "reference.bin",
+            "str_table.bin",
+        ),
+    output:
+        bam=temp(
+            "temp/shards/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+        ),
+    log:
+        "logs/shards/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+    benchmark:
+        "benchmarks/shards/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+    params:
+        version="4.4.6",
+        idx_dir=lambda w, input: os.path.commonprefix(input.idx),
+        output_dir=lambda w, output: Path(output.bam).parent,
+        extra=lambda w: config["ref"][w.ref]["map"]["params"],
+    threads: 1
+    resources:
+        mem=lambda w, attempt: f"{10* attempt} GiB",
+        runtime=lambda w, attempt: f"{1* attempt} h",
+    shell:
+        "dragen -r {params.idx_dir} --fastq-list {input.csv} --fastq-list-sample-id accession --output-directory {params.output_dir} --output-file-prefix accession --Aligner.sec-aligns=2000 --Aligner.supp-aligns=0 --Aligner.hard-clips=0 --Mapper.max-seed-freq=256 --Mapper.reduce-seed-ext=1 --Mapper.intvl-target-hits=256 --Mapper.intvl-max-hits=256 --Mapper.intvl-sample-hits=256 --Aligner.sec-score-delta=100 --Mapper.seed-density=1.0 --generate-zs-tags=true --Mapper.edit-seed-num=80 --Mapper.edit-read-len=100 --Mapper.edit-chain-limit=29 --Aligner.global=1 --Aligner.match-score=0 --Aligner.match-n-score=-1 --Aligner.mismatch-pen=4 --Aligner.gap-open-pen=0 --Aligner.gap-ext-pen=4 --Aligner.aln-min-score=0 --Aligner.min-score-coeff=-0.4 --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --force --dump-map-align-registers=true --filter-flags-from-output=4 >{log} 2>&1"
 
 
 rule shard_count_alns:

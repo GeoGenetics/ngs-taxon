@@ -117,7 +117,7 @@ rule shard_bowtie2:
     benchmark:
         "benchmarks/shards/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
-        extra=lambda w: f"""--time --rg-id '{read_group_merge(w, "bowtie2")}'"""
+        extra=lambda w: f"""--time --rg-id '{read_group_merge(w, "bowtie2")}' """
         + config["ref"][w.ref]["map"]["params"],
     threads: 16
     resources:
@@ -172,7 +172,7 @@ rule shard_bwa_samxe:
     benchmark:
         "benchmarks/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.samxe.jsonl"
     params:
-        extra=lambda w: f"""-r '{read_group_merge(w, "bwa_aln")}'""",
+        extra=lambda w: f"""-r '{read_group_merge(w, "bwa_aln")}' """,
         sort="samtools",
     threads: 1
     resources:
@@ -198,8 +198,6 @@ rule shard_dragen_csv:
         mem=lambda w, attempt: f"{1* attempt} GiB",
         runtime=lambda w, attempt: f"{10* attempt} m",
     run:
-
-
         """
         rg_info = read_group_get(wildcards, "dragen")
         print(rg_info)

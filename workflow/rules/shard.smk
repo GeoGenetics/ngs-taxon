@@ -198,6 +198,8 @@ rule shard_dragen_csv:
         mem=lambda w, attempt: f"{1* attempt} GiB",
         runtime=lambda w, attempt: f"{10* attempt} m",
     run:
+
+
         """
         rg_info = read_group_get(wildcards, "dragen")
         print(rg_info)
@@ -240,7 +242,7 @@ rule shard_dragen:
         mem=lambda w, attempt: f"{10* attempt} GiB",
         runtime=lambda w, attempt: f"{1* attempt} h",
     shell:
-        "dragen -r {params.idx_dir} --fastq-list {input.csv} --fastq-list-sample-id accession --output-directory {params.output_dir} --output-file-prefix accession --Aligner.sec-aligns=2000 --Aligner.supp-aligns=0 --Aligner.hard-clips=0 --Mapper.max-seed-freq=256 --Mapper.reduce-seed-ext=1 --Mapper.intvl-target-hits=256 --Mapper.intvl-max-hits=256 --Mapper.intvl-sample-hits=256 --Aligner.sec-score-delta=100 --Mapper.seed-density=1.0 --generate-zs-tags=true --Mapper.edit-seed-num=80 --Mapper.edit-read-len=100 --Mapper.edit-chain-limit=29 --Aligner.global=1 --Aligner.match-score=0 --Aligner.match-n-score=-1 --Aligner.mismatch-pen=4 --Aligner.gap-open-pen=0 --Aligner.gap-ext-pen=4 --Aligner.aln-min-score=0 --Aligner.min-score-coeff=-0.4 --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --force --dump-map-align-registers=true --filter-flags-from-output=4 >{log} 2>&1"
+        "/opt/dragen/{params.version}/dragen -r {params.idx_dir} --fastq-list {input.csv} --fastq-list-sample-id accession --output-directory {params.output_dir} --output-file-prefix accession --Aligner.sec-aligns=2000 --Aligner.supp-aligns=0 --Aligner.hard-clips=0 --Mapper.max-seed-freq=256 --Mapper.reduce-seed-ext=1 --Mapper.intvl-target-hits=256 --Mapper.intvl-max-hits=256 --Mapper.intvl-sample-hits=256 --Aligner.sec-score-delta=100 --Mapper.seed-density=1.0 --generate-zs-tags=true --Mapper.edit-seed-num=80 --Mapper.edit-read-len=100 --Mapper.edit-chain-limit=29 --Aligner.global=1 --Aligner.match-score=0 --Aligner.match-n-score=-1 --Aligner.mismatch-pen=4 --Aligner.gap-open-pen=0 --Aligner.gap-ext-pen=4 --Aligner.aln-min-score=0 --Aligner.min-score-coeff=-0.4 --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --force --dump-map-align-registers=true --filter-flags-from-output=4 >{log} 2>&1"
 
 
 rule shard_count_alns:

@@ -27,7 +27,9 @@ use rule shard_sort_query as align_sort_coord with:
         rules.align_merge.output.bam,
     output:
         bam=temp("<temp>/<aligns>/sort_coord/{sample}_{library}_{read_type_map}.bam"),
-        idx=temp("<temp>/<aligns>/sort_coord/{sample}_{library}_{read_type_map}.bam.csi"),
+        idx=temp(
+            "<temp>/<aligns>/sort_coord/{sample}_{library}_{read_type_map}.bam.csi"
+        ),
     log:
         "<logs>/<aligns>/sort_coord/{sample}_{library}_{read_type_map}.log",
     benchmark:

@@ -64,10 +64,10 @@ rule align_filter:
         unpack(lambda w: get_filter_aln(w, "align_filter")),
     output:
         bam=temp("<temp>/aligns/filter/{sample}_{library}_{read_type_map}.bam"),
-        read_len="stats/aligns/filter/{sample}_{library}_{read_type_map}.read-length-freqs.json",
-        read_hits="stats/aligns/filter/{sample}_{library}_{read_type_map}.read-hits-count.tsv.gz",
-        stats="stats/aligns/filter/{sample}_{library}_{read_type_map}.stats.tsv.gz",
-        stats_filt="stats/aligns/filter/{sample}_{library}_{read_type_map}.stats-filtered.tsv.gz",
+        read_len="<stats>/aligns/filter/{sample}_{library}_{read_type_map}.read-length-freqs.json",
+        read_hits="<stats>/aligns/filter/{sample}_{library}_{read_type_map}.read-hits-count.tsv.gz",
+        stats="<stats>/aligns/filter/{sample}_{library}_{read_type_map}.stats.tsv.gz",
+        stats_filt="<stats>/aligns/filter/{sample}_{library}_{read_type_map}.stats-filtered.tsv.gz",
     log:
         "<logs>/aligns/filter/{sample}_{library}_{read_type_map}.log",
     benchmark:

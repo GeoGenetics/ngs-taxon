@@ -56,11 +56,11 @@ rule align_stats:
     input:
         aln=rules.align_merge.output.bam,
     output:
-        txt="stats/aligns/samtools_stats/{sample}_{library}_{read_type_map}.txt",
+        txt="<stats>/aligns/samtools_stats/{sample}_{library}_{read_type_map}.txt",
     log:
-        "<logs>/aligns/samtools_stats/{sample}_{library}_{read_type_map}.log",
+        "<logs>/aligns/samtools_<stats>/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "<benchmarks>/aligns/samtools_stats/{sample}_{library}_{read_type_map}.jsonl"
+        "<benchmarks>/aligns/samtools_<stats>/{sample}_{library}_{read_type_map}.jsonl"
     threads: 2
     resources:
         mem=lambda w, input, attempt: f"{5* attempt} GiB",

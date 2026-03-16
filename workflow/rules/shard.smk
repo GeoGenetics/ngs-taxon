@@ -352,7 +352,7 @@ rule shard_unicorn:
         bam=temp(
             "<temp>/shards/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
         ),
-        stats="stats/shards/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv",
+        stats="<stats>/shards/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv",
     log:
         "<logs>/shards/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:

@@ -51,7 +51,10 @@ snakemake.utils.validate(
 ### Taxonomy assignment ###
 ###########################
 pathvars:
-    temp="temp"
+    temp="temp",
+    stats="stats",
+    reports="reports",
+
 
 include: "rules/utils.smk"
 include: "rules/shard.smk"

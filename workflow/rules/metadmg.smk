@@ -9,8 +9,8 @@ rule metadmg_damage:
     output:
         dmg="<results>/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
         res="<results>/metadmg/damage/{sample}_{library}_{read_type_map}.res.gz",
-        stats="stats/metadmg/damage/{sample}_{library}_{read_type_map}.stat.gz",
-        rlen="stats/metadmg/damage/{sample}_{library}_{read_type_map}.rlens.gz",
+        stats="<stats>/metadmg/damage/{sample}_{library}_{read_type_map}.stat.gz",
+        rlen="<stats>/metadmg/damage/{sample}_{library}_{read_type_map}.rlens.gz",
     log:
         "<logs>/metadmg/damage/{sample}_{library}_{read_type_map}.log",
     benchmark:
@@ -49,8 +49,8 @@ rule metadmg_lca:
     output:
         dmg="<results>/metadmg/lca/{sample}_{library}_{read_type_map}.bdamage.gz",
         lca="<results>/metadmg/lca/{sample}_{library}_{read_type_map}.lca.gz",
-        stats="stats/metadmg/lca/{sample}_{library}_{read_type_map}.stat.gz",
-        rlen="stats/metadmg/lca/{sample}_{library}_{read_type_map}.rlens.gz",
+        stats="<stats>/metadmg/lca/{sample}_{library}_{read_type_map}.stat.gz",
+        rlen="<stats>/metadmg/lca/{sample}_{library}_{read_type_map}.rlens.gz",
     log:
         "<logs>/metadmg/lca/{sample}_{library}_{read_type_map}.log",
     benchmark:

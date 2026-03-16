@@ -54,6 +54,10 @@ pathvars:
     temp="temp",
     stats="stats",
     reports="reports",
+    reads="reads",
+    shards="shards",
+    aligns="aligns",
+    metadmg="metadmg",
 
 
 include: "rules/utils.smk"
@@ -68,7 +72,7 @@ rule multiqc:
         ### Map
         expand_pd(
             expand_pandas(
-                "<logs>/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+                "<logs>/<shards>/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
                 ref_sets,
                 allow_missing=True,
             ),

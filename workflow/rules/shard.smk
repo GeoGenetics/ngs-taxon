@@ -72,7 +72,7 @@ def get_data(wildcards):
     read_type_trim = {"pe": ["R1", "R2"], "se": ["R"]}
     return local(
         expand(
-            "<results>/reads/low_complexity/{sample}_{library}_{read_type_trim}.fastq.gz",
+            "<results>/<reads>/low_complexity/{sample}_{library}_{read_type_trim}.fastq.gz",
             read_type_trim=read_type_trim.get(
                 wildcards.read_type_map, wildcards.read_type_map
             ),
@@ -110,12 +110,12 @@ rule shard_bowtie2:
         idx=get_bowtie2_index,
     output:
         bam=temp(
-            "<temp>/shards/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+            "<temp>/<shards>/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
         ),
     log:
-        "<logs>/shards/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+        "<logs>/<shards>/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
-        "<benchmarks>/shards/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+        "<benchmarks>/<shards>/bowtie2/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
         extra=lambda w: f"""--time --rg-id '{read_group_merge(w, "bowtie2")}' """
         + config["ref"][w.ref]["map"]["params"],
@@ -139,12 +139,12 @@ rule shard_bwa_aln:
         ),
     output:
         sai=temp(
-            "<temp>/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.sai"
+            "<temp>/<shards>/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.sai"
         ),
     log:
-        "<logs>/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+        "<logs>/<shards>/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
-        "<benchmarks>/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+        "<benchmarks>/<shards>/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
         extra=lambda w: config["ref"][w.ref]["map"]["params"],
     threads: 10
@@ -165,12 +165,12 @@ rule shard_bwa_samxe:
         idx=rules.shard_bwa_aln.input.idx,
     output:
         bam=temp(
-            "<temp>/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+            "<temp>/<shards>/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
         ),
     log:
-        "<logs>/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.samxe.log",
+        "<logs>/<shards>/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.samxe.log",
     benchmark:
-        "<benchmarks>/shards/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.samxe.jsonl"
+        "<benchmarks>/<shards>/bwa_aln/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.samxe.jsonl"
     params:
         extra=lambda w: f"""-r '{read_group_merge(w, "bwa_aln")}' """,
         sort="samtools",
@@ -190,7 +190,7 @@ rule shard_dragen_csv:
         sample=get_data,
     output:
         csv=temp(
-            "<temp>/shards/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.csv"
+            "<temp>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.csv"
         ),
     localrule: True
     threads: 1
@@ -226,12 +226,12 @@ rule shard_dragen:
         ),
     output:
         bam=temp(
-            "<temp>/shards/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+            "<temp>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
         ),
     log:
-        "<logs>/shards/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+        "<logs>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
-        "<benchmarks>/shards/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+        "<benchmarks>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
         version="4.4.6",
         idx_dir=lambda w, input: os.path.commonprefix(input.idx),
@@ -248,18 +248,18 @@ rule shard_dragen:
 rule shard_count_alns:
     input:
         bam=lambda w: expand(
-            "<temp>/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam",
+            "<temp>/<shards>/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam",
             tool=config["ref"][w.ref]["map"]["tool"],
             allow_missing=True,
         ),
     output:
         counts=temp(
-            "<temp>/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv"
+            "<temp>/<shards>/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv"
         ),
     log:
-        "<logs>/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+        "<logs>/<shards>/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
-        "<benchmarks>/shards/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+        "<benchmarks>/<shards>/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     conda:
         f"https://github.com/snakemake/snakemake-wrappers/raw/v7.9.1/bio/samtools/view/environment.yaml"
     threads: 2
@@ -279,12 +279,12 @@ rule shard_saturated_reads_filter:
         ),
     output:
         read_id=temp(
-            "<temp>/shards/saturated_reads/filter/{sample}_{library}_{read_type_map}.tsv"
+            "<temp>/<shards>/saturated_reads/filter/{sample}_{library}_{read_type_map}.tsv"
         ),
     log:
-        "<logs>/shards/saturated_reads/filter/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<shards>/saturated_reads/filter/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "<benchmarks>/shards/saturated_reads/filter/{sample}_{library}_{read_type_map}.jsonl"
+        "<benchmarks>/<shards>/saturated_reads/filter/{sample}_{library}_{read_type_map}.jsonl"
     params:
         extra="--headerless-tsv-output cat then filter '$n_aligns >= {}' then sort -f read_id then uniq -g read_id then cut -f read_id".format(
             config["filter"]["saturated_reads"]["n_alns"]
@@ -303,12 +303,12 @@ rule shard_saturated_reads_remove:
         read_id=rules.shard_saturated_reads_filter.output.read_id,
     output:
         bam=temp(
-            "<temp>/shards/saturated_reads/remove/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+            "<temp>/<shards>/saturated_reads/remove/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
         ),
     log:
-        "<logs>/shards/saturated_reads/remove/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+        "<logs>/<shards>/saturated_reads/remove/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
-        "<benchmarks>/shards/saturated_reads/remove/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+        "<benchmarks>/<shards>/saturated_reads/remove/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
         extra=lambda w, input: f"--qname-file ^{input.read_id}",
     threads: 2
@@ -324,11 +324,11 @@ rule shard_saturated_reads_extract:
         fastq=get_data,
         read_id=rules.shard_saturated_reads_filter.output.read_id,
     output:
-        fq="<results>/reads/saturated/{sample}_{library}_{read_type_map}.fastq.gz",
+        fq="<results>/<reads>/saturated/{sample}_{library}_{read_type_map}.fastq.gz",
     log:
-        "<logs>/shards/saturated_reads/extract/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<shards>/saturated_reads/extract/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "<benchmarks>/shards/saturated_reads/extract/{sample}_{library}_{read_type_map}.jsonl"
+        "<benchmarks>/<shards>/saturated_reads/extract/{sample}_{library}_{read_type_map}.jsonl"
     params:
         command="subseq",
         compress_lvl=9,
@@ -350,13 +350,13 @@ rule shard_unicorn:
         ),
     output:
         bam=temp(
-            "<temp>/shards/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+            "<temp>/<shards>/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
         ),
-        stats="<stats>/shards/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv",
+        stats="<stats>/<shards>/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv",
     log:
-        "<logs>/shards/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+        "<logs>/<shards>/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
-        "<benchmarks>/shards/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+        "<benchmarks>/<shards>/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
         extra="--minrefl 0 --minreads 1",
     conda:
@@ -377,12 +377,12 @@ rule shard_sort_query:
         bam=rules.shard_unicorn.output.bam,
     output:
         bam=temp(
-            "<temp>/shards/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+            "<temp>/<shards>/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
         ),
     log:
-        "<logs>/shards/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+        "<logs>/<shards>/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
-        "<benchmarks>/shards/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+        "<benchmarks>/<shards>/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
         extra="-n",
         mem_overhead_factor=0.2,

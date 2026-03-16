@@ -50,6 +50,9 @@ snakemake.utils.validate(
 ###########################
 ### Taxonomy assignment ###
 ###########################
+pathvars:
+    temp="temp"
+
 include: "rules/utils.smk"
 include: "rules/shard.smk"
 include: "rules/merge_alns.smk"
@@ -62,7 +65,7 @@ rule multiqc:
         ### Map
         expand_pd(
             expand_pandas(
-                "logs/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+                "<logs>/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
                 ref_sets,
                 allow_missing=True,
             ),
@@ -95,9 +98,9 @@ rule multiqc:
         html="reports/multiqc.html",
         data="reports/multiqc_data.zip",
     log:
-        "logs/reports/multiqc.log",
+        "<logs>/reports/multiqc.log",
     benchmark:
-        "benchmarks/reports/multiqc.jsonl"
+        "<benchmarks>/reports/multiqc.jsonl"
     params:
         extra="--force --clean-up " + config.get("report", {}).get("multiqc", ""),
     localrule: True

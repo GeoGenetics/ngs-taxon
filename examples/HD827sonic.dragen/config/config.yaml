@@ -8,7 +8,7 @@ ref:
     path: "data/test.{n_shard}-of-2"
     map:
       tool: dragen
-      params: "--Mapper.edit-mode=0 "
+      params: "--Mapper.edit-mode=0"
     acc2taxid: "data/test.acc2taxid.gz"
 
 filter:

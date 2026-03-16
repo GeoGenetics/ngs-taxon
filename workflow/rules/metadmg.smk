@@ -7,14 +7,14 @@ rule metadmg_damage:
     input:
         unpack(lambda w: get_merge_aln(w, "metadmg_damage")),
     output:
-        dmg="results/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
-        res="results/metadmg/damage/{sample}_{library}_{read_type_map}.res.gz",
+        dmg="<results>/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
+        res="<results>/metadmg/damage/{sample}_{library}_{read_type_map}.res.gz",
         stats="stats/metadmg/damage/{sample}_{library}_{read_type_map}.stat.gz",
         rlen="stats/metadmg/damage/{sample}_{library}_{read_type_map}.rlens.gz",
     log:
-        "logs/metadmg/damage/{sample}_{library}_{read_type_map}.log",
+        "<logs>/metadmg/damage/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/metadmg/damage/{sample}_{library}_{read_type_map}.jsonl"
+        "<benchmarks>/metadmg/damage/{sample}_{library}_{read_type_map}.jsonl"
     params:
         out_prefix=lambda w, output: str(
             Path(output.dmg.removesuffix(".gz")).with_suffix("")
@@ -47,14 +47,14 @@ rule metadmg_lca:
             if config["ref"][ref]["acc2taxid"]
         ],
     output:
-        dmg="results/metadmg/lca/{sample}_{library}_{read_type_map}.bdamage.gz",
-        lca="results/metadmg/lca/{sample}_{library}_{read_type_map}.lca.gz",
+        dmg="<results>/metadmg/lca/{sample}_{library}_{read_type_map}.bdamage.gz",
+        lca="<results>/metadmg/lca/{sample}_{library}_{read_type_map}.lca.gz",
         stats="stats/metadmg/lca/{sample}_{library}_{read_type_map}.stat.gz",
         rlen="stats/metadmg/lca/{sample}_{library}_{read_type_map}.rlens.gz",
     log:
-        "logs/metadmg/lca/{sample}_{library}_{read_type_map}.log",
+        "<logs>/metadmg/lca/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/metadmg/lca/{sample}_{library}_{read_type_map}.jsonl"
+        "<benchmarks>/metadmg/lca/{sample}_{library}_{read_type_map}.jsonl"
     params:
         out_prefix=lambda w, output: str(
             Path(output.dmg.removesuffix(".gz")).with_suffix("")
@@ -91,12 +91,12 @@ rule metadmg_dfit:
         nodes=config["taxonomy"]["nodes"],
         names=config["taxonomy"]["names"],
     output:
-        dfit="results/metadmg/dfit/{sample}_{library}_{read_type_map}.dfit.gz",
-        boot="results/metadmg/dfit/{sample}_{library}_{read_type_map}.boot.stat.gz",
+        dfit="<results>/metadmg/dfit/{sample}_{library}_{read_type_map}.dfit.gz",
+        boot="<results>/metadmg/dfit/{sample}_{library}_{read_type_map}.boot.stat.gz",
     log:
-        "logs/metadmg/dfit/{sample}_{library}_{read_type_map}.log",
+        "<logs>/metadmg/dfit/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/metadmg/dfit/{sample}_{library}_{read_type_map}.jsonl"
+        "<benchmarks>/metadmg/dfit/{sample}_{library}_{read_type_map}.jsonl"
     params:
         out_prefix=lambda w, output: str(
             Path(output.dfit.removesuffix(".gz")).with_suffix("")
@@ -123,11 +123,11 @@ rule metadmg_aggregate:
         nodes=config["taxonomy"]["nodes"],
         names=config["taxonomy"]["names"],
     output:
-        stats="results/metadmg/aggregate/{sample}_{library}_{read_type_map}.stat.gz",
+        stats="<results>/metadmg/aggregate/{sample}_{library}_{read_type_map}.stat.gz",
     log:
-        "logs/metadmg/aggregate/{sample}_{library}_{read_type_map}.log",
+        "<logs>/metadmg/aggregate/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/metadmg/aggregate/{sample}_{library}_{read_type_map}.jsonl"
+        "<benchmarks>/metadmg/aggregate/{sample}_{library}_{read_type_map}.jsonl"
     params:
         out_prefix=lambda w, output: str(
             Path(output.stats.removesuffix(".gz")).with_suffix("")

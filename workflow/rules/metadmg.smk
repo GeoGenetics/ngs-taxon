@@ -15,11 +15,6 @@ rule metadmg_damage:
         "<logs>/<metadmg>/damage/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "<benchmarks>/<metadmg>/damage/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        out_prefix=lambda w, output: str(
-            Path(output.dmg.removesuffix(".gz")).with_suffix("")
-        ),
-        extra=config["metadmg"]["damage"]["params"],
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "metadmg.yaml"))
@@ -28,6 +23,11 @@ rule metadmg_damage:
     resources:
         mem=lambda w, input, attempt: f"{(0.04* input.size_gb+5)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.1)* attempt} h",
+    params:
+        out_prefix=lambda w, output: str(
+            Path(output.dmg.removesuffix(".gz")).with_suffix("")
+        ),
+        extra=config["metadmg"]["damage"]["params"],
     shell:
         """
         metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.aln} > {log} 2>&1;
@@ -55,11 +55,6 @@ rule metadmg_lca:
         "<logs>/<metadmg>/lca/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "<benchmarks>/<metadmg>/lca/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        out_prefix=lambda w, output: str(
-            Path(output.dmg.removesuffix(".gz")).with_suffix("")
-        ),
-        extra=config["metadmg"]["lca"]["params"],
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "metadmg.yaml"))
@@ -68,6 +63,11 @@ rule metadmg_lca:
     resources:
         mem=lambda w, input, attempt: f"{(0.2* input.size_gb+15)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+3)* attempt} h",
+    params:
+        out_prefix=lambda w, output: str(
+            Path(output.dmg.removesuffix(".gz")).with_suffix("")
+        ),
+        extra=config["metadmg"]["lca"]["params"],
     shell:
         """
         metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --reallyDump 1 --out_prefix {params.out_prefix} > {log} 2>&1;
@@ -97,12 +97,6 @@ rule metadmg_dfit:
         "<logs>/<metadmg>/dfit/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "<benchmarks>/<metadmg>/dfit/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        out_prefix=lambda w, output: str(
-            Path(output.dfit.removesuffix(".gz")).with_suffix("")
-        ),
-        extra=lambda w: f"--doboot 1 --lib {_get_library_type(w)} "
-        + config["metadmg"]["dfit"]["params"],
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "metadmg.yaml"))
@@ -111,6 +105,12 @@ rule metadmg_dfit:
     resources:
         mem=lambda w, input, attempt: f"{(0.04* Path(input.dmg).stat().st_size/1024**2+3)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.05* Path(input.dmg).stat().st_size/1024**2+2)* attempt} h",
+    params:
+        out_prefix=lambda w, output: str(
+            Path(output.dfit.removesuffix(".gz")).with_suffix("")
+        ),
+        extra=lambda w: f"--doboot 1 --lib {_get_library_type(w)} "
+        + config["metadmg"]["dfit"]["params"],
     shell:
         "metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed 12345 --out_prefix {params.out_prefix} > {log} 2>&1"
 
@@ -128,10 +128,6 @@ rule metadmg_aggregate:
         "<logs>/<metadmg>/aggregate/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "<benchmarks>/<metadmg>/aggregate/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        out_prefix=lambda w, output: str(
-            Path(output.stats.removesuffix(".gz")).with_suffix("")
-        ),
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "metadmg.yaml"))
@@ -140,5 +136,9 @@ rule metadmg_aggregate:
     resources:
         mem=lambda w, input, attempt: f"{(3* input.size_gb+10)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{30* attempt} m",
+    params:
+        out_prefix=lambda w, output: str(
+            Path(output.stats.removesuffix(".gz")).with_suffix("")
+        ),
     shell:
         "metaDMG-cpp aggregate {input.dmg} --nodes {input.nodes} --names {input.names} --lcastat {input.lca} --dfit {input.dfit} --out_prefix {params.out_prefix} > {log} 2>&1"

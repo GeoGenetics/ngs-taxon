@@ -37,12 +37,12 @@ rule align_merge:
         "<logs>/<aligns>/merge/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "<benchmarks>/<aligns>/merge/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        extra="-n -c -p",
     threads: 3
     resources:
         mem=lambda w, input, attempt: f"{(0.2* input.size_gb+30)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+1)* attempt} h",
+    params:
+        extra="-n -c -p",
     wrapper:
         "v7.9.1/bio/samtools/merge"
 

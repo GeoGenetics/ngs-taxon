@@ -47,8 +47,6 @@ rule align_reassign:
         "<logs>/<aligns>/reassign/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "<benchmarks>/<aligns>/reassign/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        extra=config["bam_filter"]["reassign"]["params"],
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "bam_filter.yaml"))
@@ -57,6 +55,8 @@ rule align_reassign:
     resources:
         mem=lambda w, attempt, input, threads: f"{np.clip(4* threads* input.size_mb/1024,10* threads,100* threads)* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} d",
+    params:
+        extra=config["bam_filter"]["reassign"]["params"],
     shell:
         "filterBAM reassign --threads {threads} --max-memory {resources.mem_mb}M --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"
 
@@ -74,8 +74,6 @@ rule align_filter:
         "<logs>/<aligns>/filter/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "<benchmarks>/<aligns>/filter/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        extra=config["bam_filter"]["filter"]["params"],
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "bam_filter.yaml"))
@@ -84,6 +82,8 @@ rule align_filter:
     resources:
         mem=lambda w, attempt, input, threads: f"{np.clip(4* threads* input.size_mb/1024,10* threads,70* threads)* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} d",
+    params:
+        extra=config["bam_filter"]["filter"]["params"],
     shell:
         "filterBAM filter --threads {threads} --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} >{log} 2>&1"
 
@@ -107,8 +107,6 @@ rule align_lca:
         "<logs>/<aligns>/bam_filter_lca/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "<benchmarks>/<aligns>/bam_filter_lca/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        extra=config["bam_filter"]["lca"]["params"],
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "bam_filter.yaml"))
@@ -117,6 +115,8 @@ rule align_lca:
     resources:
         mem=lambda w, attempt, input, threads: f"{np.clip(4* threads* input.size_mb/1024,20* threads,70* threads)* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} d",
+    params:
+        extra=config["bam_filter"]["lca"]["params"],
     shell:
         "filterBAM lca --threads {threads} --sort-memory 10G --bam {input.aln} --stats {input.stats} --names {input.names} --nodes {input.nodes} --acc2taxid <(cat {input.acc2tax}) {params.extra} --lca-summary {output.stats} >{log} 2>&1"
 

@@ -17,7 +17,7 @@ format = { features = ["format"], no-default-feature = true }
 [feature.test.dependencies]
 pytest = ">=9.0.2"
 graphviz = ">=12.2.1"
-gatk4 = ">=4.0.51,<5"
+picard-slim = ">=3.4.0,<4"
 
 [feature.format.dependencies]
 ruff = ">=0.15.1"

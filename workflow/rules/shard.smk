@@ -56,6 +56,10 @@ def read_group_merge(wildcards, tool):
         rg_fmt = "{ID}' --rg '" + "' --rg '".join(rg_fmt)
     elif tool == "bwa_aln":
         rg_fmt = "@RG\\tID:{ID}\\t" + "\\t".join(rg_fmt)
+    elif tool == "dragen":
+        rg_fmt = " ".join(
+            [f"--RG{k} '{{{k}}}'" for k, v in rg_info.items() if k != "PG"]
+        )
     else:
         raise ValueError(f"Tool not supported: {tool}")
 
@@ -160,7 +164,7 @@ rule shard_bwa_aln:
 
 rule shard_bwa_samxe:
     input:
-        fastq=get_data,
+        fastq=rules.shard_bwa_aln.input.fastq,
         sai=rules.shard_bwa_aln.output.sai,
         idx=rules.shard_bwa_aln.input.idx,
     output:
@@ -185,6 +189,7 @@ rule shard_bwa_samxe:
         "v7.9.1/bio/bwa/samxe"
 
 
+# Rule currently not used.
 rule shard_dragen_csv:
     input:
         sample=get_data,
@@ -198,51 +203,69 @@ rule shard_dragen_csv:
         mem=lambda w, attempt: f"{1* attempt} GiB",
         runtime=lambda w, attempt: f"{10* attempt} m",
     run:
-
-
-        """
         rg_info = read_group_get(wildcards, "dragen")
-        print(rg_info)
-        pd.DataFrame([rg_info]).rename(lambda x: f"RG{x}", axis=1).assign(Lane=1,Read1File=snakemake.input.sample,Read2File="").to_csv(snakemake.output.csv)
-        """
+        pd.DataFrame([rg_info]).rename(lambda x: f"RG{x}", axis=1).assign(
+            Lane=1, Read1File=input.sample, Read2File=""
+        ).to_csv(output.csv, index=False)
 
 
 rule shard_dragen:
     input:
-        sample=get_data,
-        csv=rules.shard_dragen_csv.output.csv,
-        idx=lambda w: multiext(
-            config["ref"][w.ref]["path"] + "/",
-            "dragen-replay.json",
-            "dragen.metrics.json",
-            "dragen.time_metrics.csv",
-            "hash_table.cfg",
-            "hash_table.cfg.bin",
-            "hash_table.cmp",
-            "hash_table_stats.txt",
-            "ref_index.bin",
-            "reference.bin",
-            "str_table.bin",
-        ),
+        sample=rules.shard_dragen_csv.input.sample,
+        #idx=lambda w: multiext(
+        #    config["ref"][w.ref]["path"] + "/",
+        #    "dragen-replay.json",
+        #    "dragen.metrics.json",
+        #    "dragen.time_metrics.csv",
+        #    "hash_table.cfg",
+        #    "hash_table.cfg.bin",
+        #    "hash_table.cmp",
+        #    "hash_table_stats.txt",
+        #    "ref_index.bin",
+        #    "reference.bin",
+        #    "str_table.bin",
+        #),
     output:
         bam=temp(
             "<temp>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
         ),
+        md5=temp(
+            "<temp>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam.md5sum"
+        ),
+        replay="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}-replay.json",
+        stats_json="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.metrics.json",
+        stats_fastqc="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.fastqc_metrics.csv",
+        stats_trimmer="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.trimmer_metrics.csv",
+        stats_map="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.mapping_metrics.csv",
+        stats_ploidy="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.ploidy_estimation_metrics.csv",
+        stats_time="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.time_metrics.csv",
     log:
         "<logs>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+        "<logs>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.usage.txt",
     benchmark:
         "<benchmarks>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     params:
         version="4.4.6",
-        idx_dir=lambda w, input: os.path.commonprefix(input.idx),
-        output_dir=lambda w, output: Path(output.bam).parent,
+        idx_dir=lambda w: expand(config["ref"][w.ref]["path"], **w),
+        #idx_dir=lambda w, input: os.path.commonprefix(input.idx),
+        output_dir=lambda w, output: str(Path(output.bam).parent),
+        output_prefix=lambda w, output: Path(output.bam).with_suffix("").name,
+        stats_dir=lambda w, output: str(Path(output.stats_time).parent),
+        rg=lambda w: read_group_merge(w, "dragen"),
         extra=lambda w: config["ref"][w.ref]["map"]["params"],
     threads: 1
     resources:
-        mem=lambda w, attempt: f"{10* attempt} GiB",
+        mem=lambda w, attempt: f"{20* attempt} GiB",
         runtime=lambda w, attempt: f"{1* attempt} h",
+        constraint=lambda w: f"idx{int(w.n_shard)%2:02d}",
     shell:
-        "/opt/dragen/{params.version}/dragen -r {params.idx_dir} --fastq-list {input.csv} --fastq-list-sample-id accession --output-directory {params.output_dir} --output-file-prefix accession --Aligner.sec-aligns=2000 --Aligner.supp-aligns=0 --Aligner.hard-clips=0 --Mapper.max-seed-freq=256 --Mapper.reduce-seed-ext=1 --Mapper.intvl-target-hits=256 --Mapper.intvl-max-hits=256 --Mapper.intvl-sample-hits=256 --Aligner.sec-score-delta=100 --Mapper.seed-density=1.0 --generate-zs-tags=true --Mapper.edit-seed-num=80 --Mapper.edit-read-len=100 --Mapper.edit-chain-limit=29 --Aligner.global=1 --Aligner.match-score=0 --Aligner.match-n-score=-1 --Aligner.mismatch-pen=4 --Aligner.gap-open-pen=0 --Aligner.gap-ext-pen=4 --Aligner.aln-min-score=0 --Aligner.min-score-coeff=-0.4 --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --force --dump-map-align-registers=true --filter-flags-from-output=4 >{log} 2>&1"
+        """(
+        /opt/dragen/{params.version}/bin/dragen -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --force --output-directory {params.output_dir} --output-file-prefix {params.output_prefix} &&
+        mv --verbose {params.output_dir}/{params.output_prefix}*.json {params.stats_dir}/. &&
+        mv --verbose {params.output_dir}/{params.output_prefix}*.csv {params.stats_dir}/. &&
+        mv --verbose {params.output_dir}/*_usage.txt {log[1]}
+        ) >{log[0]} 2>&1;
+        """
 
 
 rule shard_count_alns:

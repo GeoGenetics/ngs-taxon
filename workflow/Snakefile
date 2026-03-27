@@ -50,6 +50,16 @@ snakemake.utils.validate(
 ###########################
 ### Taxonomy assignment ###
 ###########################
+pathvars:
+    temp="temp",
+    stats="stats",
+    reports="reports",
+    reads="reads",
+    shards="shards",
+    aligns="aligns",
+    metadmg="metadmg",
+
+
 include: "rules/utils.smk"
 include: "rules/shard.smk"
 include: "rules/merge_alns.smk"
@@ -62,7 +72,7 @@ rule multiqc:
         ### Map
         expand_pd(
             expand_pandas(
-                "logs/shards/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+                "<logs>/<shards>/{tool}/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
                 ref_sets,
                 allow_missing=True,
             ),
@@ -92,24 +102,25 @@ rule multiqc:
             **units.assign(read_type_map="collapsed").to_dict("list"),
         ),
     output:
-        html="reports/multiqc.html",
-        data="reports/multiqc_data.zip",
+        html="<reports>/multiqc.html",
+        data="<reports>/multiqc_data.zip",
     log:
-        "logs/reports/multiqc.log",
+        "<logs>/<reports>/multiqc.log",
     benchmark:
-        "benchmarks/reports/multiqc.jsonl"
-    params:
-        extra="--force --clean-up " + config.get("report", {}).get("multiqc", ""),
+        "<benchmarks>/<reports>/multiqc.jsonl"
     localrule: True
     threads: 1
     resources:
         mem=lambda w, attempt: f"{10* attempt} GiB",
         runtime=lambda w, attempt: f"{30* attempt} m",
+    params:
+        extra="--force --clean-up " + config.get("report", {}).get("multiqc", ""),
     wrapper:
         "v8.1.1/bio/multiqc"
 
 
 rule all:
+    default_target: True
     input:
         qc=rules.multiqc.output.html,
         res=[
@@ -144,4 +155,3 @@ rule all:
         ],
     message:
         "Read mapping finished successfully!"
-    default_target: True

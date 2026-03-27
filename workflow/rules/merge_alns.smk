@@ -32,17 +32,17 @@ rule align_merge:
         ),
     # lambda w: expand(rules.shard_sort_query.output.bam, zip, **ref_sets.to_dict("list"), allow_missing=True),
     output:
-        bam="results/aligns/merge/{sample}_{library}_{read_type_map}.bam",
+        bam="<results>/<aligns>/merge/{sample}_{library}_{read_type_map}.bam",
     log:
-        "logs/aligns/merge/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<aligns>/merge/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/aligns/merge/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        extra="-n -c -p",
+        "<benchmarks>/<aligns>/merge/{sample}_{library}_{read_type_map}.jsonl"
     threads: 3
     resources:
         mem=lambda w, input, attempt: f"{(0.2* input.size_gb+30)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+1)* attempt} h",
+    params:
+        extra="-n -c -p",
     wrapper:
         "v7.9.1/bio/samtools/merge"
 
@@ -56,11 +56,11 @@ rule align_stats:
     input:
         aln=rules.align_merge.output.bam,
     output:
-        txt="stats/aligns/samtools_stats/{sample}_{library}_{read_type_map}.txt",
+        txt="<stats>/<aligns>/samtools_stats/{sample}_{library}_{read_type_map}.txt",
     log:
-        "logs/aligns/samtools_stats/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<aligns>/samtools_<stats>/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/aligns/samtools_stats/{sample}_{library}_{read_type_map}.jsonl"
+        "<benchmarks>/<aligns>/samtools_<stats>/{sample}_{library}_{read_type_map}.jsonl"
     threads: 2
     resources:
         mem=lambda w, input, attempt: f"{5* attempt} GiB",

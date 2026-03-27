@@ -7,19 +7,14 @@ rule metadmg_damage:
     input:
         unpack(lambda w: get_merge_aln(w, "metadmg_damage")),
     output:
-        dmg="results/metadmg/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
-        res="results/metadmg/damage/{sample}_{library}_{read_type_map}.res.gz",
-        stats="stats/metadmg/damage/{sample}_{library}_{read_type_map}.stat.gz",
-        rlen="stats/metadmg/damage/{sample}_{library}_{read_type_map}.rlens.gz",
+        dmg="<results>/<metadmg>/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
+        res="<results>/<metadmg>/damage/{sample}_{library}_{read_type_map}.res.gz",
+        stats="<stats>/<metadmg>/damage/{sample}_{library}_{read_type_map}.stat.gz",
+        rlen="<stats>/<metadmg>/damage/{sample}_{library}_{read_type_map}.rlens.gz",
     log:
-        "logs/metadmg/damage/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<metadmg>/damage/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/metadmg/damage/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        out_prefix=lambda w, output: str(
-            Path(output.dmg.removesuffix(".gz")).with_suffix("")
-        ),
-        extra=config["metadmg"]["damage"]["params"],
+        "<benchmarks>/<metadmg>/damage/{sample}_{library}_{read_type_map}.jsonl"
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "metadmg.yaml"))
@@ -28,6 +23,11 @@ rule metadmg_damage:
     resources:
         mem=lambda w, input, attempt: f"{(0.04* input.size_gb+5)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.1)* attempt} h",
+    params:
+        out_prefix=lambda w, output: str(
+            Path(output.dmg.removesuffix(".gz")).with_suffix("")
+        ),
+        extra=config["metadmg"]["damage"]["params"],
     shell:
         """
         metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.aln} > {log} 2>&1;
@@ -47,19 +47,14 @@ rule metadmg_lca:
             if config["ref"][ref]["acc2taxid"]
         ],
     output:
-        dmg="results/metadmg/lca/{sample}_{library}_{read_type_map}.bdamage.gz",
-        lca="results/metadmg/lca/{sample}_{library}_{read_type_map}.lca.gz",
-        stats="stats/metadmg/lca/{sample}_{library}_{read_type_map}.stat.gz",
-        rlen="stats/metadmg/lca/{sample}_{library}_{read_type_map}.rlens.gz",
+        dmg="<results>/<metadmg>/lca/{sample}_{library}_{read_type_map}.bdamage.gz",
+        lca="<results>/<metadmg>/lca/{sample}_{library}_{read_type_map}.lca.gz",
+        stats="<stats>/<metadmg>/lca/{sample}_{library}_{read_type_map}.stat.gz",
+        rlen="<stats>/<metadmg>/lca/{sample}_{library}_{read_type_map}.rlens.gz",
     log:
-        "logs/metadmg/lca/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<metadmg>/lca/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/metadmg/lca/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        out_prefix=lambda w, output: str(
-            Path(output.dmg.removesuffix(".gz")).with_suffix("")
-        ),
-        extra=config["metadmg"]["lca"]["params"],
+        "<benchmarks>/<metadmg>/lca/{sample}_{library}_{read_type_map}.jsonl"
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "metadmg.yaml"))
@@ -68,6 +63,11 @@ rule metadmg_lca:
     resources:
         mem=lambda w, input, attempt: f"{(0.2* input.size_gb+15)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+3)* attempt} h",
+    params:
+        out_prefix=lambda w, output: str(
+            Path(output.dmg.removesuffix(".gz")).with_suffix("")
+        ),
+        extra=config["metadmg"]["lca"]["params"],
     shell:
         """
         metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --reallyDump 1 --out_prefix {params.out_prefix} > {log} 2>&1;
@@ -91,18 +91,12 @@ rule metadmg_dfit:
         nodes=config["taxonomy"]["nodes"],
         names=config["taxonomy"]["names"],
     output:
-        dfit="results/metadmg/dfit/{sample}_{library}_{read_type_map}.dfit.gz",
-        boot="results/metadmg/dfit/{sample}_{library}_{read_type_map}.boot.stat.gz",
+        dfit="<results>/<metadmg>/dfit/{sample}_{library}_{read_type_map}.dfit.gz",
+        boot="<results>/<metadmg>/dfit/{sample}_{library}_{read_type_map}.boot.stat.gz",
     log:
-        "logs/metadmg/dfit/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<metadmg>/dfit/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/metadmg/dfit/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        out_prefix=lambda w, output: str(
-            Path(output.dfit.removesuffix(".gz")).with_suffix("")
-        ),
-        extra=lambda w: f"--doboot 1 --lib {_get_library_type(w)} "
-        + config["metadmg"]["dfit"]["params"],
+        "<benchmarks>/<metadmg>/dfit/{sample}_{library}_{read_type_map}.jsonl"
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "metadmg.yaml"))
@@ -111,6 +105,12 @@ rule metadmg_dfit:
     resources:
         mem=lambda w, input, attempt: f"{(0.04* Path(input.dmg).stat().st_size/1024**2+3)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.05* Path(input.dmg).stat().st_size/1024**2+2)* attempt} h",
+    params:
+        out_prefix=lambda w, output: str(
+            Path(output.dfit.removesuffix(".gz")).with_suffix("")
+        ),
+        extra=lambda w: f"--doboot 1 --lib {_get_library_type(w)} "
+        + config["metadmg"]["dfit"]["params"],
     shell:
         "metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed 12345 --out_prefix {params.out_prefix} > {log} 2>&1"
 
@@ -123,15 +123,11 @@ rule metadmg_aggregate:
         nodes=config["taxonomy"]["nodes"],
         names=config["taxonomy"]["names"],
     output:
-        stats="results/metadmg/aggregate/{sample}_{library}_{read_type_map}.stat.gz",
+        stats="<results>/<metadmg>/aggregate/{sample}_{library}_{read_type_map}.stat.gz",
     log:
-        "logs/metadmg/aggregate/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<metadmg>/aggregate/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/metadmg/aggregate/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        out_prefix=lambda w, output: str(
-            Path(output.stats.removesuffix(".gz")).with_suffix("")
-        ),
+        "<benchmarks>/<metadmg>/aggregate/{sample}_{library}_{read_type_map}.jsonl"
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "metadmg.yaml"))
@@ -140,5 +136,9 @@ rule metadmg_aggregate:
     resources:
         mem=lambda w, input, attempt: f"{(3* input.size_gb+10)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{30* attempt} m",
+    params:
+        out_prefix=lambda w, output: str(
+            Path(output.stats.removesuffix(".gz")).with_suffix("")
+        ),
     shell:
         "metaDMG-cpp aggregate {input.dmg} --nodes {input.nodes} --names {input.names} --lcastat {input.lca} --dfit {input.dfit} --out_prefix {params.out_prefix} > {log} 2>&1"

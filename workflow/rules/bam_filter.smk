@@ -26,12 +26,14 @@ use rule shard_sort_query as align_sort_coord with:
     input:
         rules.align_merge.output.bam,
     output:
-        bam=temp("temp/aligns/sort_coord/{sample}_{library}_{read_type_map}.bam"),
-        idx=temp("temp/aligns/sort_coord/{sample}_{library}_{read_type_map}.bam.csi"),
+        bam=temp("<temp>/<aligns>/sort_coord/{sample}_{library}_{read_type_map}.bam"),
+        idx=temp(
+            "<temp>/<aligns>/sort_coord/{sample}_{library}_{read_type_map}.bam.csi"
+        ),
     log:
-        "logs/aligns/sort_coord/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<aligns>/sort_coord/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/aligns/sort_coord/{sample}_{library}_{read_type_map}.jsonl"
+        "<benchmarks>/<aligns>/sort_coord/{sample}_{library}_{read_type_map}.jsonl"
     params:
         extra="",
 
@@ -40,13 +42,11 @@ rule align_reassign:
     input:
         unpack(lambda w: get_filter_aln(w, "align_reassign")),
     output:
-        bam=temp("temp/aligns/reassign/{sample}_{library}_{read_type_map}.bam"),
+        bam=temp("<temp>/<aligns>/reassign/{sample}_{library}_{read_type_map}.bam"),
     log:
-        "logs/aligns/reassign/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<aligns>/reassign/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/aligns/reassign/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        extra=config["bam_filter"]["reassign"]["params"],
+        "<benchmarks>/<aligns>/reassign/{sample}_{library}_{read_type_map}.jsonl"
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "bam_filter.yaml"))
@@ -55,6 +55,8 @@ rule align_reassign:
     resources:
         mem=lambda w, attempt, input, threads: f"{np.clip(4* threads* input.size_mb/1024,10* threads,100* threads)* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} d",
+    params:
+        extra=config["bam_filter"]["reassign"]["params"],
     shell:
         "filterBAM reassign --threads {threads} --max-memory {resources.mem_mb}M --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --out-bam {output.bam}  >{log} 2>&1"
 
@@ -63,17 +65,15 @@ rule align_filter:
     input:
         unpack(lambda w: get_filter_aln(w, "align_filter")),
     output:
-        bam=temp("temp/aligns/filter/{sample}_{library}_{read_type_map}.bam"),
-        read_len="stats/aligns/filter/{sample}_{library}_{read_type_map}.read-length-freqs.json",
-        read_hits="stats/aligns/filter/{sample}_{library}_{read_type_map}.read-hits-count.tsv.gz",
-        stats="stats/aligns/filter/{sample}_{library}_{read_type_map}.stats.tsv.gz",
-        stats_filt="stats/aligns/filter/{sample}_{library}_{read_type_map}.stats-filtered.tsv.gz",
+        bam=temp("<temp>/<aligns>/filter/{sample}_{library}_{read_type_map}.bam"),
+        read_len="<stats>/<aligns>/filter/{sample}_{library}_{read_type_map}.read-length-freqs.json",
+        read_hits="<stats>/<aligns>/filter/{sample}_{library}_{read_type_map}.read-hits-count.tsv.gz",
+        stats="<stats>/<aligns>/filter/{sample}_{library}_{read_type_map}.stats.tsv.gz",
+        stats_filt="<stats>/<aligns>/filter/{sample}_{library}_{read_type_map}.stats-filtered.tsv.gz",
     log:
-        "logs/aligns/filter/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<aligns>/filter/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/aligns/filter/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        extra=config["bam_filter"]["filter"]["params"],
+        "<benchmarks>/<aligns>/filter/{sample}_{library}_{read_type_map}.jsonl"
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "bam_filter.yaml"))
@@ -82,6 +82,8 @@ rule align_filter:
     resources:
         mem=lambda w, attempt, input, threads: f"{np.clip(4* threads* input.size_mb/1024,10* threads,70* threads)* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} d",
+    params:
+        extra=config["bam_filter"]["filter"]["params"],
     shell:
         "filterBAM filter --threads {threads} --bam {input.aln} {params.extra} --tmp-dir {resources.tmpdir} --bam-filtered {output.bam} --stats {output.stats} --stats-filtered {output.stats_filt} --read-length-freqs {output.read_len} --read-hits-count {output.read_hits} >{log} 2>&1"
 
@@ -99,14 +101,12 @@ rule align_lca:
         ],
     output:
         stats=temp(
-            "temp/aligns/bam_filter_lca/{sample}_{library}_{read_type_map}.summary"
+            "<temp>/<aligns>/bam_filter_lca/{sample}_{library}_{read_type_map}.summary"
         ),
     log:
-        "logs/aligns/bam_filter_lca/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<aligns>/bam_filter_lca/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/aligns/bam_filter_lca/{sample}_{library}_{read_type_map}.jsonl"
-    params:
-        extra=config["bam_filter"]["lca"]["params"],
+        "<benchmarks>/<aligns>/bam_filter_lca/{sample}_{library}_{read_type_map}.jsonl"
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "bam_filter.yaml"))
@@ -115,6 +115,8 @@ rule align_lca:
     resources:
         mem=lambda w, attempt, input, threads: f"{np.clip(4* threads* input.size_mb/1024,20* threads,70* threads)* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} d",
+    params:
+        extra=config["bam_filter"]["lca"]["params"],
     shell:
         "filterBAM lca --threads {threads} --sort-memory 10G --bam {input.aln} --stats {input.stats} --names {input.names} --nodes {input.nodes} --acc2taxid <(cat {input.acc2tax}) {params.extra} --lca-summary {output.stats} >{log} 2>&1"
 
@@ -123,8 +125,8 @@ use rule shard_sort_query as align_sort_query with:
     input:
         unpack(lambda w: get_filter_aln(w, "sort_query")),
     output:
-        bam=temp("temp/aligns/sort_query/{sample}_{library}_{read_type_map}.bam"),
+        bam=temp("<temp>/<aligns>/sort_query/{sample}_{library}_{read_type_map}.bam"),
     log:
-        "logs/aligns/sort_query/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<aligns>/sort_query/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "benchmarks/aligns/sort_query/{sample}_{library}_{read_type_map}.jsonl"
+        "<benchmarks>/<aligns>/sort_query/{sample}_{library}_{read_type_map}.jsonl"

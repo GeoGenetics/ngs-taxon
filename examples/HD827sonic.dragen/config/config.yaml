@@ -1,0 +1,47 @@
+
+#############
+### ALIGN ###
+#############
+ref:
+  test:
+    n_shards: 2
+    path: "data/test.{n_shard}-of-2"
+    map:
+      tool: dragen
+      params: "--Mapper.edit-mode=0"
+    acc2taxid: "data/test.acc2taxid.gz"
+
+filter:
+  saturated_reads:
+    activate: true
+    n_alns: 10
+
+bam_filter:
+  reassign:
+    activate: false
+    params: "--iters 0 --min-read-ani 92 --min-read-count 3 --scale 0"
+
+  filter:
+    activate: false
+    params: "--min-read-ani 92 --min-read-count 3 --min-normalized-entropy 0.6 --min-normalized-gini 0.4 --min-avg-read-ani 92"
+
+  lca:
+    activate: false
+    params: "--lca-rank genus"
+
+taxonomy:
+  nodes: "data/taxdump/nodes.dmp"
+  names: "data/taxdump/names.dmp"
+
+metadmg:
+  damage:
+    params: "--print_length 15"
+
+  lca:
+    params: "--fix_ncbi 0 --how_many 15 --sim_score_low 0.95 --weight_type 0 --lca_rank genus"
+
+  dfit:
+    params: "--nopt 5 --showfits 2 --seed 12345"
+
+report:
+  multiqc: "--verbose"

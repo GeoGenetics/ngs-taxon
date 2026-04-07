@@ -49,7 +49,8 @@ rule metadmg_lca:
     output:
         dmg="<results>/<metadmg>/lca/{sample}_{library}_{read_type_map}.bdamage.gz",
         lca="<results>/<metadmg>/lca/{sample}_{library}_{read_type_map}.lca.gz",
-        bam="<results>/<metadmg>/lca/{sample}_{library}_{read_type_map}.famout.bam",
+        bam_fam="<results>/<metadmg>/lca/{sample}_{library}_{read_type_map}.family.bam",
+        bam_used="<results>/<metadmg>/lca/{sample}_{library}_{read_type_map}.used.bam",
         stats="<stats>/<metadmg>/lca/{sample}_{library}_{read_type_map}.stat.gz",
         rlen="<stats>/<metadmg>/lca/{sample}_{library}_{read_type_map}.rlens.gz",
     log:
@@ -71,7 +72,9 @@ rule metadmg_lca:
         extra=config["metadmg"]["lca"]["params"],
     shell:
         """
-        metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --reallyDump 1 --out_prefix {params.out_prefix} > {log} 2>&1;
+        metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --out_prefix {params.out_prefix} > {log} 2>&1;
+        mv {params.out_prefix}.famoutreads.bam {output.bam_fam};
+        mv {params.out_prefix}.usedreads.bam {output.bam_used};
         mv {params.out_prefix}.stat.gz {output.stats};
         mv {params.out_prefix}.rlens.gz {output.rlen};
         """

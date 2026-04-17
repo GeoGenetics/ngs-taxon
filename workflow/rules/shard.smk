@@ -189,29 +189,9 @@ rule shard_bwa_samxe:
         "v7.9.1/bio/bwa/samxe"
 
 
-# Rule currently not used.
-rule shard_dragen_csv:
-    input:
-        sample=get_data,
-    output:
-        csv=temp(
-            "<temp>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.csv"
-        ),
-    localrule: True
-    threads: 1
-    resources:
-        mem=lambda w, attempt: f"{1* attempt} GiB",
-        runtime=lambda w, attempt: f"{10* attempt} m",
-    run:
-        rg_info = read_group_get(wildcards, "dragen")
-        pd.DataFrame([rg_info]).rename(lambda x: f"RG{x}", axis=1).assign(
-            Lane=1, Read1File=input.sample, Read2File=""
-        ).to_csv(output.csv, index=False)
-
-
 rule shard_dragen:
     input:
-        sample=rules.shard_dragen_csv.input.sample,
+        sample=get_data,
         #idx=lambda w: multiext(
         #    config["ref"][w.ref]["path"] + "/",
         #    "dragen-replay.json",
@@ -233,20 +213,21 @@ rule shard_dragen:
             "<temp>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam.md5sum"
         ),
         replay="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}-replay.json",
-        stats_json="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.metrics.json",
-        stats_fastqc="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.fastqc_metrics.csv",
-        stats_trimmer="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.trimmer_metrics.csv",
-        stats_map="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.mapping_metrics.csv",
-        stats_ploidy="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.ploidy_estimation_metrics.csv",
-        stats_time="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.time_metrics.csv",
+        stats_json="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.json",
+        stats_fastqc="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.fastqc.csv",
+        stats_trimmer="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.trim.csv",
+        stats_map=touch(
+            "<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.map.csv"
+        ),
+        stats_ploidy="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.ploidy.csv",
+        stats_time="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.time.csv",
     log:
         "<logs>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
-        "<logs>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.usage.txt",
     benchmark:
         "<benchmarks>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
-    threads: 1
+    threads: 10
     resources:
-        mem=lambda w, attempt: f"{20* attempt} GiB",
+        mem=lambda w, attempt: f"{100* attempt} GiB",
         runtime=lambda w, attempt: f"{1* attempt} h",
         constraint=lambda w: f"idx{int(w.n_shard)%2:02d}",
     params:
@@ -260,10 +241,15 @@ rule shard_dragen:
         extra=lambda w: config["ref"][w.ref]["map"]["params"],
     shell:
         """(
-        /opt/dragen/{params.version}/bin/dragen -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --force --output-directory {params.output_dir} --output-file-prefix {params.output_prefix} &&
-        mv --verbose {params.output_dir}/{params.output_prefix}*.json {params.stats_dir}/. &&
-        mv --verbose {params.output_dir}/{params.output_prefix}*.csv {params.stats_dir}/. &&
-        mv --verbose {params.output_dir}/*_usage.txt {log[1]}
+        /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --force --output-directory {params.output_dir} --output-file-prefix {params.output_prefix} &&
+        mv --verbose {params.output_dir}/{params.output_prefix}-replay.json {output.replay} &&
+        mv --verbose {params.output_dir}/{params.output_prefix}.metrics.json {output.stats_json} &&
+        mv --verbose {params.output_dir}/{params.output_prefix}.fastqc_metrics.csv {output.stats_fastqc} &&
+        mv --verbose {params.output_dir}/{params.output_prefix}.trimmer_metrics.csv {output.stats_trimmer} &&
+        [ ! -f {params.output_dir}/{params.output_prefix}.mapping_metrics.csv ] || mv --verbose {params.output_dir}/{params.output_prefix}.mapping_metrics.csv {output.stats_map} &&
+        mv --verbose {params.output_dir}/{params.output_prefix}.ploidy_estimation_metrics.csv {output.stats_ploidy} &&
+        mv --verbose {params.output_dir}/{params.output_prefix}.time_metrics.csv {output.stats_time} &&
+        rm -f --verbose {params.output_dir}/*_usage.txt
         ) >{log[0]} 2>&1;
         """
 

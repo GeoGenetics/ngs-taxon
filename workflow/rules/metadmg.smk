@@ -79,6 +79,7 @@ rule metadmg_lca:
         mv {params.out_prefix}.rlens.gz {output.rlen};
         """
 
+
 def _get_library_type(wildcards):
     """Get library type (ss or ds)"""
     return (

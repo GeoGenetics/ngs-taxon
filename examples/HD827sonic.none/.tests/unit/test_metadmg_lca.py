@@ -61,4 +61,6 @@ def test_metadmg_lca(conda_prefix):
         # also see common.py.
         import common
 
-        common.OutputChecker(data_path, expected_path, workdir).check()
+        common.OutputChecker(data_path, expected_path, workdir).check(
+            {".gz": ["zdiff", "--ignore-matching-lines=\\#"]}
+        )

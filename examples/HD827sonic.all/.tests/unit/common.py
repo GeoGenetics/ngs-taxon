@@ -55,7 +55,7 @@ class OutputChecker:
 
     def compare_files(self, expected_file, generated_file, cmp_cmds):
         check_output(
-            cmp_cmds.get(expected_file.suffix, ["cmp"])
+            cmp_cmds.get(expected_file.suffix, ["diff"])
             + [expected_file, generated_file],
             stderr=PIPE,
         )

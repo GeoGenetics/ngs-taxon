@@ -114,7 +114,7 @@ rule metadmg_dfit:
         extra=lambda w: f"--lib {_get_library_type(w)} "
         + config["metadmg"]["dfit"]["params"],
     shell:
-        "metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed 12345 --out_prefix {params.out_prefix} > {log} 2>&1"
+        "metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --out_prefix {params.out_prefix} > {log} 2>&1"
 
 
 rule metadmg_aggregate:

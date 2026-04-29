@@ -8,9 +8,9 @@ from subprocess import check_output, PIPE
 
 
 cmp_cmds = {
-    ".gz": ["zcmp"],
-    ".bz2": ["bzcmp"],
-    ".xz": ["xzcmp"],
+    ".gz": ["zdiff"],
+    ".bz2": ["bzdiff"],
+    ".xz": ["xzdiff"],
     ".bam": ["picard", "CompareSAMs", "--LENIENT_HEADER"],
 }
 

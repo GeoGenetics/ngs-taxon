@@ -35,7 +35,6 @@ def test_metadmg_dfit(conda_prefix):
                 "-m",
                 "snakemake",
                 "results/metadmg/dfit/HD827sonic_1_lib1_collapsed.dfit.gz",
-                "results/metadmg/dfit/HD827sonic_1_lib1_collapsed.boot.stat.gz",
                 "--snakefile",
                 "../../workflow/Snakefile",
                 "-f",

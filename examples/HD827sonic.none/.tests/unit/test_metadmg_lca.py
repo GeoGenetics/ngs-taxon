@@ -36,6 +36,8 @@ def test_metadmg_lca(conda_prefix):
                 "snakemake",
                 "results/metadmg/lca/HD827sonic_1_lib1_collapsed.bdamage.gz",
                 "results/metadmg/lca/HD827sonic_1_lib1_collapsed.lca.gz",
+                "results/metadmg/lca/HD827sonic_1_lib1_collapsed.family.bam",
+                "results/metadmg/lca/HD827sonic_1_lib1_collapsed.used.bam",
                 "stats/metadmg/lca/HD827sonic_1_lib1_collapsed.stat.gz",
                 "stats/metadmg/lca/HD827sonic_1_lib1_collapsed.rlens.gz",
                 "--snakefile",

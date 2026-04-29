@@ -33,7 +33,6 @@ def test_metadmg_damage(conda_prefix):
                 "-m",
                 "snakemake",
                 "results/metadmg/damage/HD827sonic_1_lib1_collapsed.bdamage.gz",
-                "results/metadmg/damage/HD827sonic_1_lib1_collapsed.res.gz",
                 "stats/metadmg/damage/HD827sonic_1_lib1_collapsed.stat.gz",
                 "stats/metadmg/damage/HD827sonic_1_lib1_collapsed.rlens.gz",
                 "--snakefile",

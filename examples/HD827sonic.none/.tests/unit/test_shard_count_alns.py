@@ -1,5 +1,5 @@
 """
-Rule test code for unit testing of rules generated with Snakemake 9.16.4.dev3.
+Rule test code for unit testing of rules generated with Snakemake 9.19.0.
 """
 
 import os
@@ -32,7 +32,7 @@ def test_shard_count_alns(conda_prefix):
                 "python",
                 "-m",
                 "snakemake",
-                "temp/shards/count_alns/HD827sonic_1_lib1_collapsed.test.2-of-2.tsv",
+                "temp/shards/count_alns/HD827sonic_1_lib1_collapsed.test.1-of-2.tsv",
                 "--snakefile",
                 "../../workflow/Snakefile",
                 "-f",
@@ -57,5 +57,4 @@ def test_shard_count_alns(conda_prefix):
         # and overwrite the method `compare_files(generated_file, expected_file),
         # also see common.py.
         import common
-
         common.OutputChecker(data_path, expected_path, workdir).check()

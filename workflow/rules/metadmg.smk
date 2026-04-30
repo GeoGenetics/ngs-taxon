@@ -8,7 +8,6 @@ rule metadmg_damage:
         unpack(lambda w: get_merge_aln(w, "metadmg_damage")),
     output:
         dmg="<results>/<metadmg>/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
-        res="<results>/<metadmg>/damage/{sample}_{library}_{read_type_map}.res.gz",
         stats="<stats>/<metadmg>/damage/{sample}_{library}_{read_type_map}.stat.gz",
         rlen="<stats>/<metadmg>/damage/{sample}_{library}_{read_type_map}.rlens.gz",
     log:
@@ -49,6 +48,8 @@ rule metadmg_lca:
     output:
         dmg="<results>/<metadmg>/lca/{sample}_{library}_{read_type_map}.bdamage.gz",
         lca="<results>/<metadmg>/lca/{sample}_{library}_{read_type_map}.lca.gz",
+        bam_fam="<results>/<metadmg>/lca/{sample}_{library}_{read_type_map}.family.bam",
+        bam_used="<results>/<metadmg>/lca/{sample}_{library}_{read_type_map}.used.bam",
         stats="<stats>/<metadmg>/lca/{sample}_{library}_{read_type_map}.stat.gz",
         rlen="<stats>/<metadmg>/lca/{sample}_{library}_{read_type_map}.rlens.gz",
     log:
@@ -70,7 +71,9 @@ rule metadmg_lca:
         extra=config["metadmg"]["lca"]["params"],
     shell:
         """
-        metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --reallyDump 1 --out_prefix {params.out_prefix} > {log} 2>&1;
+        metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --famout 1 --out_prefix {params.out_prefix} > {log} 2>&1;
+        mv {params.out_prefix}.famoutreads.bam {output.bam_fam};
+        mv {params.out_prefix}.usedreads.bam {output.bam_used};
         mv {params.out_prefix}.stat.gz {output.stats};
         mv {params.out_prefix}.rlens.gz {output.rlen};
         """
@@ -92,7 +95,6 @@ rule metadmg_dfit:
         names=config["taxonomy"]["names"],
     output:
         dfit="<results>/<metadmg>/dfit/{sample}_{library}_{read_type_map}.dfit.gz",
-        boot="<results>/<metadmg>/dfit/{sample}_{library}_{read_type_map}.boot.stat.gz",
     log:
         "<logs>/<metadmg>/dfit/{sample}_{library}_{read_type_map}.log",
     benchmark:
@@ -109,10 +111,10 @@ rule metadmg_dfit:
         out_prefix=lambda w, output: str(
             Path(output.dfit.removesuffix(".gz")).with_suffix("")
         ),
-        extra=lambda w: f"--doboot 1 --lib {_get_library_type(w)} "
+        extra=lambda w: f"--lib {_get_library_type(w)} "
         + config["metadmg"]["dfit"]["params"],
     shell:
-        "metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --seed 12345 --out_prefix {params.out_prefix} > {log} 2>&1"
+        "metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --out_prefix {params.out_prefix} > {log} 2>&1"
 
 
 rule metadmg_aggregate:

@@ -1,11 +1,10 @@
 """
-Rule test code for unit testing of rules generated with Snakemake 9.16.4.dev3.
+Rule test code for unit testing of rules generated with Snakemake 9.19.0.
 """
 
 import os
 import sys
 import shutil
-import pytest
 import tempfile
 from pathlib import Path
 from subprocess import check_output
@@ -13,7 +12,6 @@ from subprocess import check_output
 sys.path.insert(0, os.path.dirname(__file__))
 
 
-@pytest.mark.skip(reason="results are not deterministic")
 def test_metadmg_lca(conda_prefix):
 
     with tempfile.TemporaryDirectory() as tmpdir:
@@ -64,7 +62,6 @@ def test_metadmg_lca(conda_prefix):
         # and overwrite the method `compare_files(generated_file, expected_file),
         # also see common.py.
         import common
-
         common.OutputChecker(data_path, expected_path, workdir).check(
             {".gz": ["zdiff", "--ignore-matching-lines=\\#"]}
         )

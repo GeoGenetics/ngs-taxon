@@ -56,47 +56,6 @@ properties:
     required:
       - saturated_reads
 
-  bam_filter:
-    type: object
-    properties:
-      reassign:
-        type: object
-        properties:
-          activate:
-            type: boolean
-          params:
-            type: string
-            pattern: "^((?!\b--?(t|threads|bam|m|sort-memory|N|sort-by-name|r|reference-lengths|p|prefix)[ =]).)*$"
-        required:
-          - activate
-          - params
-      filter:
-        type: object
-        properties:
-          activate:
-            type: boolean
-          params:
-            type: string
-            pattern: "^((?!\b--?(t|threads|bam|low-memory|m|sort-memory|N|sort-by-name|disable-sort|r|reference-lengths|tmp-dir|bam-filtered|stats|stats-filtered|read-length-freqs|read-hits-count|only-stats|only-stats-filtered|knee-plot|plot|p|prefix)[ =]).)*$"
-        required:
-          - activate
-          - params
-      lca:
-        type: object
-        properties:
-          activate:
-            type: boolean
-          params:
-            type: string
-            pattern: "^((?!\b--?(t|threads|bam|names|nodes|acc2taxid|m|sort-memory|custom|stats|r|reference-lengths|lca-summary|p|prefix)[ =]).)*$"
-        required:
-          - activate
-          - params
-    required:
-      - reassign
-      - filter
-      - lca
-
   taxonomy:
     type: object
     properties:
@@ -152,6 +111,5 @@ properties:
 required:
   - ref
   - filter
-  - bam_filter
   - taxonomy
   - metadmg

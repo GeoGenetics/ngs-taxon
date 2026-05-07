@@ -17,19 +17,6 @@ filter:
     activate: true
     n_alns: 10
 
-bam_filter:
-  reassign:
-    activate: true
-    params: "--iters 0 --min-read-ani 92 --min-read-count 3 --scale 0"
-
-  filter:
-    activate: true
-    params: "--min-read-ani 92 --min-read-count 3 --min-normalized-entropy 0.6 --min-normalized-gini 0.4 --min-avg-read-ani 92"
-
-  lca:
-    activate: false
-    params: "--lca-rank genus"
-
 taxonomy:
   nodes: "data/taxdump/nodes.dmp"
   names: "data/taxdump/names.dmp"

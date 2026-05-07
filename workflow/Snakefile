@@ -63,7 +63,6 @@ pathvars:
 include: "rules/utils.smk"
 include: "rules/shard.smk"
 include: "rules/merge_alns.smk"
-include: "rules/bam_filter.smk"
 include: "rules/metadmg.smk"
 
 

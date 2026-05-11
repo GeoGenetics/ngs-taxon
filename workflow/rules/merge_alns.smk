@@ -67,3 +67,35 @@ rule align_stats:
         runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.5)* attempt} h",
     wrapper:
         "v8.1.1/bio/samtools/stats"
+
+
+rule shard_unicorn_tidstats:
+    input:
+        aln=rules.align_merge.output.bam,
+        nodes=config["taxonomy"]["nodes"],
+        names=config["taxonomy"]["names"],
+        acc2taxid=[
+            config["ref"][ref]["acc2taxid"]
+            for ref in config["ref"]
+            if config["ref"][ref]["acc2taxid"]
+        ],
+    output:
+        stats="<stats>/<shards>/unicorn/tidstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv",
+    log:
+        "<logs>/<shards>/unicorn/tidstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+    benchmark:
+        "<benchmarks>/<shards>/unicorn/tidstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+    conda:
+        urlunparse(
+            baseurl._replace(
+                path=str(Path(baseurl.path) / "envs" / "enhjoerning.yaml")
+            )
+        )
+    threads: 4
+    resources:
+        mem=lambda w, input, attempt: f"{(4* input.size_gb+50)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+0.1)* attempt} h",
+    params:
+        extra=config["unicorn"]["tidstats"]["params"],
+    shell:
+        "unicorn tidstats --threads {threads} -b {input.bam} {params.extra} --names {input.names} --nodes {input.nodes} --acc2tax {input.acc2taxid} > {output.stats} 2>{log}"

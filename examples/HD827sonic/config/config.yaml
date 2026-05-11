@@ -2,6 +2,10 @@
 #############
 ### ALIGN ###
 #############
+taxonomy:
+  nodes: "data/taxdump/nodes.dmp"
+  names: "data/taxdump/names.dmp"
+
 ref:
   test:
     n_shards: 2
@@ -17,9 +21,11 @@ filter:
     activate: true
     n_alns: 10
 
-taxonomy:
-  nodes: "data/taxdump/nodes.dmp"
-  names: "data/taxdump/names.dmp"
+unicorn:
+  refstats:
+    params: "--minrefl 0 --minreads 1"
+  tidstats:
+    params: "--rank genus"
 
 metadmg:
   damage:

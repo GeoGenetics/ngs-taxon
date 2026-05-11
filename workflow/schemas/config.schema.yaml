@@ -5,6 +5,17 @@ description: Read taxonomic assignment configuration file
 type: object
 properties:
 
+  taxonomy:
+    type: object
+    properties:
+      names:
+        type: string
+      nodes:
+        type: string
+    required:
+      - names
+      - nodes
+
   ref:
     type: object
     patternProperties:
@@ -56,16 +67,28 @@ properties:
     required:
       - saturated_reads
 
-  taxonomy:
+  unicorn:
     type: object
     properties:
-      names:
-        type: string
-      nodes:
-        type: string
+      refstats:
+        type: object
+        properties:
+          params:
+            type: string
+            pattern: "^((?!\b--?(h|t|threads|b|n|names|d|nodes|a|acc2taxid|outbam|o|outstat)[ =]).)*$"
+        required:
+          - params
+      tidstats:
+        type: object
+        properties:
+          params:
+            type: string
+            pattern: "^((?!\b--?(h|t|threads|b|filelist|n|names|d|nodes|a|acc2taxid|outbam|o|outstat)[ =]).)*$"
+        required:
+          - params
     required:
-      - names
-      - nodes
+      - refstats
+      - tidstats
 
   metadmg:
     type: object
@@ -109,7 +132,8 @@ properties:
       - multiqc
 
 required:
+  - taxonomy
   - ref
   - filter
-  - taxonomy
+  - unicorn
   - metadmg

@@ -350,7 +350,7 @@ rule shard_saturated_reads_extract:
         "v7.0.0/bio/seqtk"
 
 
-rule shard_unicorn:
+rule shard_unicorn_refstats:
     input:
         bam=(
             rules.shard_saturated_reads_remove.output.bam
@@ -359,13 +359,13 @@ rule shard_unicorn:
         ),
     output:
         bam=temp(
-            "<temp>/<shards>/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+            "<temp>/<shards>/unicorn/refstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
         ),
-        stats="<stats>/<shards>/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv",
+        stats="<stats>/<shards>/unicorn/refstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv",
     log:
-        "<logs>/<shards>/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+        "<logs>/<shards>/unicorn/refstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
-        "<benchmarks>/<shards>/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+        "<benchmarks>/<shards>/unicorn/refstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     conda:
         urlunparse(
             baseurl._replace(
@@ -377,7 +377,7 @@ rule shard_unicorn:
         mem=lambda w, input, attempt: f"{(4* input.size_gb+50)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+0.1)* attempt} h",
     params:
-        extra="--minrefl 0 --minreads 1",
+        extra=config["unicorn"]["refstats"]["params"].
     shell:
         "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --outbam {output.bam} --outstat {output.stats} >{log} 2>&1"
 

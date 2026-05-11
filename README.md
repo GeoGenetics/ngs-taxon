@@ -9,7 +9,6 @@ This module implements read taxonomic assignment steps:
 - Remove saturated reads
 - Reference stats and clean header (for unused references)
   - [unicorn](https://github.com/GeoGenetics/unicorn)
-- Clean header for unused references
 - Taxonomic assignment
   - [metaDMG](https://github.com/metaDMG-dev)
 

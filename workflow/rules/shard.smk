@@ -385,7 +385,7 @@ rule shard_unicorn_refstats:
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c
 rule shard_sort_query:
     input:
-        bam=rules.shard_unicorn.output.bam,
+        bam=rules.shard_unicorn_refstats.output.bam,
     output:
         bam=temp(
             "<temp>/<shards>/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"

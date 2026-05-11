@@ -88,6 +88,12 @@ rule multiqc:
             zip,
             **units.to_dict("list"),
         ),
+        ### Unicorn tidstats
+        expand(
+            rules.unicorn_tidstas.output.stats,
+            zip,
+            **units.assign(read_type_map="collapsed").to_dict("list"),
+        ),
         ### metaDMG dfit
         expand(
             rules.metadmg_dfit.output.dfit,
@@ -141,15 +147,6 @@ rule all:
                 rules.metadmg_damage.output.stats,
                 zip,
                 **units.assign(read_type_map="collapsed").to_dict("list"),
-            ),
-            (
-                expand(
-                    rules.align_lca.output.stats,
-                    zip,
-                    **units.assign(read_type_map="collapsed").to_dict("list"),
-                )
-                if is_activated("bam_filter/lca")
-                else []
             ),
         ],
     message:

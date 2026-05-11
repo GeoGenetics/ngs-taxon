@@ -80,7 +80,7 @@ rule multiqc:
         ### Samtools Stats
         expand(
             expand(
-                rules.align_stats.output.txt,
+                rules.align_samtools_stats.output[0],
                 zip,
                 **ref_sets.to_dict("list"),
                 allow_missing=True,
@@ -90,7 +90,7 @@ rule multiqc:
         ),
         ### Unicorn tidstats
         expand(
-            rules.unicorn_tidstas.output.stats,
+            rules.align_unicorn_tidstats.output.stats,
             zip,
             **units.assign(read_type_map="collapsed").to_dict("list"),
         ),

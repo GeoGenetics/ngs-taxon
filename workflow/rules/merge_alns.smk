@@ -52,15 +52,15 @@ rule align_merge:
 ##########
 
 
-rule align_stats:
+rule align_samtools_stats:
     input:
-        aln=rules.align_merge.output.bam,
+        bam=rules.align_merge.output.bam,
     output:
-        txt="<stats>/<aligns>/samtools_stats/{sample}_{library}_{read_type_map}.txt",
+        "<stats>/<aligns>/samtools/stats/{sample}_{library}_{read_type_map}.txt",
     log:
-        "<logs>/<aligns>/samtools_<stats>/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<aligns>/samtools/stats/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "<benchmarks>/<aligns>/samtools_<stats>/{sample}_{library}_{read_type_map}.jsonl"
+        "<benchmarks>/<aligns>/samtools/stats/{sample}_{library}_{read_type_map}.jsonl"
     threads: 2
     resources:
         mem=lambda w, input, attempt: f"{5* attempt} GiB",
@@ -69,9 +69,9 @@ rule align_stats:
         "v8.1.1/bio/samtools/stats"
 
 
-rule shard_unicorn_tidstats:
+rule align_unicorn_tidstats:
     input:
-        aln=rules.align_merge.output.bam,
+        bam=rules.align_merge.output.bam,
         nodes=config["taxonomy"]["nodes"],
         names=config["taxonomy"]["names"],
         acc2taxid=[
@@ -80,11 +80,11 @@ rule shard_unicorn_tidstats:
             if config["ref"][ref]["acc2taxid"]
         ],
     output:
-        stats="<stats>/<shards>/unicorn/tidstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv",
+        stats="<stats>/<shards>/unicorn/tidstats/{sample}_{library}_{read_type_map}.tsv",
     log:
-        "<logs>/<shards>/unicorn/tidstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+        "<logs>/<shards>/unicorn/tidstats/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "<benchmarks>/<shards>/unicorn/tidstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+        "<benchmarks>/<shards>/unicorn/tidstats/{sample}_{library}_{read_type_map}.jsonl"
     conda:
         urlunparse(
             baseurl._replace(

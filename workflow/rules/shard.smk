@@ -377,7 +377,7 @@ rule shard_unicorn_refstats:
         mem=lambda w, input, attempt: f"{(4* input.size_gb+50)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+0.1)* attempt} h",
     params:
-        extra=config["unicorn"]["refstats"]["params"].
+        extra=config["unicorn"]["refstats"]["params"],
     shell:
         "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --outbam {output.bam} --outstat {output.stats} >{log} 2>&1"
 

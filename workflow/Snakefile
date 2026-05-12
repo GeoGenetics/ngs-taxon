@@ -88,9 +88,9 @@ rule multiqc:
             zip,
             **units.to_dict("list"),
         ),
-        ### Unicorn tidstats
+        ### Unicorn taxstats
         expand(
-            rules.align_unicorn_tidstats.output.stats,
+            rules.align_unicorn_taxstats.output.stats,
             zip,
             **units.assign(read_type_map="collapsed").to_dict("list"),
         ),

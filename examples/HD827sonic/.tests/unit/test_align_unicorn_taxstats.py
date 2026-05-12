@@ -12,13 +12,13 @@ from subprocess import check_output
 sys.path.insert(0, os.path.dirname(__file__))
 
 
-def test_align_unicorn_tidstats(conda_prefix):
+def test_align_unicorn_taxstats(conda_prefix):
 
     with tempfile.TemporaryDirectory() as tmpdir:
         workdir = Path(tmpdir) / "workdir"
-        config_path = Path(".tests/unit/align_unicorn_tidstats/config")
-        data_path = Path(".tests/unit/align_unicorn_tidstats/data")
-        expected_path = Path(".tests/unit/align_unicorn_tidstats/expected")
+        config_path = Path(".tests/unit/align_unicorn_taxstats/config")
+        data_path = Path(".tests/unit/align_unicorn_taxstats/data")
+        expected_path = Path(".tests/unit/align_unicorn_taxstats/expected")
 
         # Copy config to the temporary workdir.
         shutil.copytree(config_path, workdir)
@@ -32,7 +32,7 @@ def test_align_unicorn_tidstats(conda_prefix):
                 "python",
                 "-m",
                 "snakemake",
-                "stats/aligns/unicorn/tidstats/HD827sonic_1_lib1_collapsed.tsv",
+                "stats/aligns/unicorn/taxstats/HD827sonic_1_lib1_collapsed.tsv",
                 "--snakefile",
                 "../../workflow/Snakefile",
                 "-f",
@@ -41,7 +41,7 @@ def test_align_unicorn_tidstats(conda_prefix):
                 "-j1",
                 "--target-files-omit-workdir-adjustment",
                 "--allowed-rules",
-                "align_unicorn_tidstats",
+                "align_unicorn_taxstats",
                 "--configfile",
                 "config/config.yaml",
                 "--software-deployment-method",

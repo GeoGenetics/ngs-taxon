@@ -69,7 +69,7 @@ rule align_samtools_stats:
         "v8.1.1/bio/samtools/stats"
 
 
-rule align_unicorn_tidstats:
+rule align_unicorn_taxstats:
     input:
         bam=rules.align_merge.output.bam,
         nodes=config["taxonomy"]["nodes"],
@@ -80,11 +80,11 @@ rule align_unicorn_tidstats:
             if config["ref"][ref]["acc2taxid"]
         ],
     output:
-        stats="<stats>/<aligns>/unicorn/tidstats/{sample}_{library}_{read_type_map}.tsv",
+        stats="<stats>/<aligns>/unicorn/taxstats/{sample}_{library}_{read_type_map}.tsv",
     log:
-        "<logs>/<aligns>/unicorn/tidstats/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<aligns>/unicorn/taxstats/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "<benchmarks>/<aligns>/unicorn/tidstats/{sample}_{library}_{read_type_map}.jsonl"
+        "<benchmarks>/<aligns>/unicorn/taxstats/{sample}_{library}_{read_type_map}.jsonl"
     conda:
         urlunparse(
             baseurl._replace(
@@ -96,6 +96,6 @@ rule align_unicorn_tidstats:
         mem=lambda w, input, attempt: f"{(4* input.size_gb+50)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+0.1)* attempt} h",
     params:
-        extra=config["unicorn"]["tidstats"]["params"],
+        extra=config["unicorn"]["taxstats"]["params"],
     shell:
-        "unicorn tidstats --threads {threads} -b {input.bam} {params.extra} --names {input.names} --nodes {input.nodes} --acc2tax {input.acc2taxid} > {output.stats} 2>{log}"
+        "unicorn taxstats --threads {threads} -b {input.bam} {params.extra} --names {input.names} --nodes {input.nodes} --acc2tax {input.acc2taxid} > {output.stats} 2>{log}"

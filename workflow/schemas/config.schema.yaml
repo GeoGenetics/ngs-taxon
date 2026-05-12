@@ -78,7 +78,7 @@ properties:
             pattern: "^((?!\b--?(h|t|threads|b|n|names|d|nodes|a|acc2taxid|outbam|o|outstat)[ =]).)*$"
         required:
           - params
-      tidstats:
+      taxstats:
         type: object
         properties:
           params:
@@ -88,7 +88,7 @@ properties:
           - params
     required:
       - refstats
-      - tidstats
+      - taxstats
 
   metadmg:
     type: object

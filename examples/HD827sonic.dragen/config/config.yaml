@@ -23,7 +23,7 @@ filter:
 unicorn:
   refstats:
     params: "--minrefl 0 --minreads 1"
-  tidstats:
+  taxstats:
     params: "--rank genus"
 
 metadmg:

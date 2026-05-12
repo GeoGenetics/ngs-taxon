@@ -80,11 +80,11 @@ rule align_unicorn_tidstats:
             if config["ref"][ref]["acc2taxid"]
         ],
     output:
-        stats="<stats>/<shards>/unicorn/tidstats/{sample}_{library}_{read_type_map}.tsv",
+        stats="<stats>/<aligns>/unicorn/tidstats/{sample}_{library}_{read_type_map}.tsv",
     log:
-        "<logs>/<shards>/unicorn/tidstats/{sample}_{library}_{read_type_map}.log",
+        "<logs>/<aligns>/unicorn/tidstats/{sample}_{library}_{read_type_map}.log",
     benchmark:
-        "<benchmarks>/<shards>/unicorn/tidstats/{sample}_{library}_{read_type_map}.jsonl"
+        "<benchmarks>/<aligns>/unicorn/tidstats/{sample}_{library}_{read_type_map}.jsonl"
     conda:
         urlunparse(
             baseurl._replace(

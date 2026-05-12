@@ -32,7 +32,7 @@ def test_align_unicorn_tidstats(conda_prefix):
                 "python",
                 "-m",
                 "snakemake",
-                "stats/shards/unicorn/tidstats/HD827sonic_1_lib1_collapsed.tsv",
+                "stats/aligns/unicorn/tidstats/HD827sonic_1_lib1_collapsed.tsv",
                 "--snakefile",
                 "../../workflow/Snakefile",
                 "-f",

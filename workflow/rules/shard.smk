@@ -225,7 +225,7 @@ rule shard_dragen:
         "<benchmarks>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     threads: 10
     resources:
-        mem=lambda w, attempt: f"{10* attempt} GiB",
+        mem=lambda w, attempt: f"{32* attempt} GiB",
         runtime=lambda w, attempt: f"{1* attempt} h",
         constraint=lambda w: f"idx{int(w.n_shard)%2:02d}",
     params:

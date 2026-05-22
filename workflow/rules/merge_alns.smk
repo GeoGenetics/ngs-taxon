@@ -46,10 +46,15 @@ rule align_merge:
         mem=lambda w, input, attempt: f"{(0.2* input.size_gb+30)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+1)* attempt} h",
     params:
-        extra="",
+        extra="-noTrimHeader",
+        in_bam=lambda w, input, output: [str(Path(file).relative_to(Path(output.bam).parent, walk_up=True)) for file in input],
+        out_dir=lambda w, output: str(Path(output.bam).parent),
+        out_name=lambda w, output: Path(output.bam).name,
     shell:
-        "onebam bamsort -T {threads} -m $(({resources.mem_mb}/{threads}))M -P {resources.tmpdir} -noTrimHeader -o {output.bam} {input} > {log} 2>&1"
-
+        """
+        cd {params.out_dir} && onebam bamsort -T {threads} -m $(({resources.mem_mb}/{threads}))M -P {resources.tmpdir} {params.extra} -o {params.out_name} {params.in_bam} > ../../../{log} 2>&1;
+        """
+        #"onebam bamsort -T {threads} -m $(({resources.mem_mb}/{threads}))M -P {resources.tmpdir} {params.extra} -o {output.bam} {input} > {log} 2>&1"
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c
 rule align_sort_taxon:

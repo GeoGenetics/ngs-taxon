@@ -52,9 +52,7 @@ rule align_sort_taxon:
     input:
         bam=rules.align_merge.output.bam,
     output:
-        bam=temp(
-            "<temp>/<aligns>/sort_taxon/{sample}_{library}_{read_type_map}.bam"
-        ),
+        bam=temp("<temp>/<aligns>/sort_taxon/{sample}_{library}_{read_type_map}.bam"),
     log:
         "<logs>/<aligns>/sort_taxon/{sample}_{library}_{read_type_map}.log",
     benchmark:
@@ -68,7 +66,6 @@ rule align_sort_taxon:
         mem_overhead_factor=0.2,
     wrapper:
         "v9.4.2/bio/samtools/sort"
-
 
 
 ##########

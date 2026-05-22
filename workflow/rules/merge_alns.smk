@@ -47,6 +47,30 @@ rule align_merge:
         "v7.9.1/bio/samtools/merge"
 
 
+# https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c
+rule align_sort_taxon:
+    input:
+        bam=rules.align_merge.output.bam,
+    output:
+        bam=temp(
+            "<temp>/<aligns>/sort_taxon/{sample}_{library}_{read_type_map}.bam"
+        ),
+    log:
+        "<logs>/<aligns>/sort_taxon/{sample}_{library}_{read_type_map}.log",
+    benchmark:
+        "<benchmarks>/<aligns>/sort_taxon/{sample}_{library}_{read_type_map}.jsonl"
+    threads: 6
+    resources:
+        mem=lambda w, input, attempt: f"{(10* input.size_gb+20)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+1)* attempt} h",
+    params:
+        extra="-t XR",
+        mem_overhead_factor=0.2,
+    wrapper:
+        "v9.4.2/bio/samtools/sort"
+
+
+
 ##########
 ### QC ###
 ##########
@@ -71,7 +95,7 @@ rule align_samtools_stats:
 
 rule align_unicorn_taxstats:
     input:
-        bam=rules.align_merge.output.bam,
+        bam=rules.align_sort_taxon.output.bam,
         nodes=config["taxonomy"]["nodes"],
         names=config["taxonomy"]["names"],
         acc2taxid=[

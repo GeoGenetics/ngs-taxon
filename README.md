@@ -5,7 +5,7 @@
 
 This module implements read taxonomic assignment steps:
 - Map reads agains reference collection
-  - [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) / [BWA_aln](https://github.com/lh3/bwa)
+  - [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) / [BWA_aln](https://github.com/lh3/bwa) / [DRAGEN](https://www.illumina.com/products/by-type/informatics-products/dragen-secondary-analysis.html)
 - Remove saturated reads
 - Reference stats and clean header (for unused references)
   - [unicorn](https://github.com/GeoGenetics/unicorn)

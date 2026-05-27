@@ -239,7 +239,7 @@ rule shard_dragen:
         extra=lambda w: config["ref"][w.ref]["map"]["params"],
     shell:
         """(
-        /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --filter-flags-from-output=4 --force --output-directory {resources.tmpdir} --output-file-prefix {params.output_prefix} &&
+        /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --preserve-map-align-order=true --filter-flags-from-output=4 --force --output-directory {resources.tmpdir} --output-file-prefix {params.output_prefix} &&
         touch {resources.tmpdir}/{params.output_prefix}.mapping_metrics.csv &&
         mv --verbose {resources.tmpdir}/{params.output_prefix}.bam {output.bam} &&
         mv --verbose {resources.tmpdir}/{params.output_prefix}.bam.md5 {output.md5} &&

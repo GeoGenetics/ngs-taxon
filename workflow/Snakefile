@@ -1,6 +1,6 @@
 import numpy as np
 
-snakemake.utils.min_version("9.16.3")
+snakemake.utils.min_version("9.22.0")
 
 ######################
 ### Validate Input ###
@@ -51,9 +51,6 @@ snakemake.utils.validate(
 ### Taxonomy assignment ###
 ###########################
 pathvars:
-    temp="temp",
-    stats="stats",
-    reports="reports",
     reads="reads",
     shards="shards",
     aligns="aligns",

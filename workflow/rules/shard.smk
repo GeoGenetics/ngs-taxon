@@ -234,9 +234,9 @@ rule shard_dragen:
         version="4.4.6",
         idx_dir=lambda w: expand(config["ref"][w.ref]["path"], **w),
         #idx_dir=lambda w, input: os.path.commonprefix(input.idx),
-        output_dir=lambda w, output: str(Path(output.bam).parent),
+        output_dir=lambda w, output: Path(output.bam).parent,
         output_prefix=lambda w, output: Path(output.bam).with_suffix("").name,
-        stats_dir=lambda w, output: str(Path(output.stats_time).parent),
+        stats_dir=lambda w, output: Path(output.stats_time).parent,
         rg=lambda w: read_group_merge(w, "dragen"),
         extra=lambda w: config["ref"][w.ref]["map"]["params"],
     shell:
@@ -357,6 +357,9 @@ rule shard_unicorn_refstats:
             if is_activated("filter/saturated_reads")
             else rules.shard_count_alns.input.bam
         ),
+        nodes=config["taxonomy"]["nodes"],
+        names=config["taxonomy"]["names"],
+        acc2taxid=lambda w: config["ref"][w.ref]["acc2taxid"],
     output:
         bam=temp(
             "<temp>/<shards>/unicorn/refstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
@@ -379,7 +382,7 @@ rule shard_unicorn_refstats:
     params:
         extra=config["unicorn"]["refstats"]["params"],
     shell:
-        "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --outbam {output.bam} --outstat {output.stats} >{log} 2>&1"
+        "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --names {input.names} --nodes {input.nodes} --acc2tax {input.acc2taxid} --outbam {output.bam} --outstat {output.stats} >{log} 2>&1"
 
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c

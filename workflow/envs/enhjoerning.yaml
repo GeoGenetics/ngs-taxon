@@ -3,4 +3,4 @@ channels:
   - bioconda
   - nodefaults
 dependencies:
-  - enhjoerning =2.4.0
+  - enhjoerning =2.5.0

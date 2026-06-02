@@ -95,11 +95,6 @@ rule align_unicorn_taxstats:
         bam=rules.align_sort_taxon.output.bam,
         nodes=config["taxonomy"]["nodes"],
         names=config["taxonomy"]["names"],
-        acc2taxid=[
-            config["ref"][ref]["acc2taxid"]
-            for ref in config["ref"]
-            if config["ref"][ref]["acc2taxid"]
-        ],
     output:
         stats="<stats>/<aligns>/unicorn/taxstats/{sample}_{library}_{read_type_map}.tsv",
     log:
@@ -119,4 +114,4 @@ rule align_unicorn_taxstats:
     params:
         extra=config["unicorn"]["taxstats"]["params"],
     shell:
-        "unicorn taxstats --threads {threads} -b {input.bam} {params.extra} --names {input.names} --nodes {input.nodes} --acc2tax {input.acc2taxid} > {output.stats} 2>{log}"
+        "unicorn taxstats --threads {threads} -b {input.bam} --names {input.names} --nodes {input.nodes} {params.extra} > {output.stats} 2>{log}"

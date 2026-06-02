@@ -23,9 +23,9 @@ filter:
 
 unicorn:
   refstats:
-    params: "--minrefl 0 --minreads 1"
+    params: "--minrefl 0 --minreads 1 --rank genus"
   taxstats:
-    params: "--rank genus"
+    params: ""
 
 metadmg:
   damage:

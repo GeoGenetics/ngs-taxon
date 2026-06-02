@@ -5,6 +5,7 @@ Rule test code for unit testing of rules generated with Snakemake 9.22.0.
 import os
 import sys
 import shutil
+import pytest
 import tempfile
 from pathlib import Path
 from subprocess import check_output
@@ -12,6 +13,7 @@ from subprocess import check_output
 sys.path.insert(0, os.path.dirname(__file__))
 
 
+@pytest.mark.skip(reason="picard does not support comparison of un-sorted SAM/BAM files")
 def test_align_sort_taxon(conda_prefix):
 
     with tempfile.TemporaryDirectory() as tmpdir:

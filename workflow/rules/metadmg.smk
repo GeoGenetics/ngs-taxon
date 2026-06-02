@@ -29,9 +29,9 @@ rule metadmg_damage:
         extra=config["metadmg"]["damage"]["params"],
     shell:
         """
-        metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.aln} > {log} 2>&1;
-        mv {params.out_prefix}.stat.gz {output.stats};
-        mv {params.out_prefix}.rlens.gz {output.rlen};
+        metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.aln} >{log} 2>&1
+        mv {params.out_prefix}.stat.gz {output.stats}
+        mv {params.out_prefix}.rlens.gz {output.rlen}
         """
 
 
@@ -71,11 +71,11 @@ rule metadmg_lca:
         extra=config["metadmg"]["lca"]["params"],
     shell:
         """
-        metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --famout 1 --out_prefix {params.out_prefix} > {log} 2>&1;
-        mv {params.out_prefix}.famoutreads.bam {output.bam_fam};
-        mv {params.out_prefix}.usedreads.bam {output.bam_used};
-        mv {params.out_prefix}.stat.gz {output.stats};
-        mv {params.out_prefix}.rlens.gz {output.rlen};
+        metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --famout 1 --out_prefix {params.out_prefix} >{log} 2>&1
+        mv {params.out_prefix}.famoutreads.bam {output.bam_fam}
+        mv {params.out_prefix}.usedreads.bam {output.bam_used}
+        mv {params.out_prefix}.stat.gz {output.stats}
+        mv {params.out_prefix}.rlens.gz {output.rlen}
         """
 
 

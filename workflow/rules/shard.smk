@@ -240,17 +240,18 @@ rule shard_dragen:
         rg=lambda w: read_group_merge(w, "dragen"),
         extra=lambda w: config["ref"][w.ref]["map"]["params"],
     shell:
-        """(
-        /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --force --output-directory {params.output_dir} --output-file-prefix {params.output_prefix} &&
-        mv --verbose {params.output_dir}/{params.output_prefix}-replay.json {output.replay} &&
-        mv --verbose {params.output_dir}/{params.output_prefix}.metrics.json {output.stats_json} &&
-        mv --verbose {params.output_dir}/{params.output_prefix}.fastqc_metrics.csv {output.stats_fastqc} &&
-        mv --verbose {params.output_dir}/{params.output_prefix}.trimmer_metrics.csv {output.stats_trimmer} &&
-        [ ! -f {params.output_dir}/{params.output_prefix}.mapping_metrics.csv ] || mv --verbose {params.output_dir}/{params.output_prefix}.mapping_metrics.csv {output.stats_map} &&
-        mv --verbose {params.output_dir}/{params.output_prefix}.ploidy_estimation_metrics.csv {output.stats_ploidy} &&
-        mv --verbose {params.output_dir}/{params.output_prefix}.time_metrics.csv {output.stats_time} &&
-        rm -f --verbose {params.output_dir}/*_usage.txt
-        ) >{log[0]} 2>&1;
+        """
+        (
+            /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --force --output-directory {params.output_dir} --output-file-prefix {params.output_prefix} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}-replay.json {output.replay} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.metrics.json {output.stats_json} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.fastqc_metrics.csv {output.stats_fastqc} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.trimmer_metrics.csv {output.stats_trimmer} \
+                && [ ! -f {params.output_dir}/{params.output_prefix}.mapping_metrics.csv ] || mv --verbose {params.output_dir}/{params.output_prefix}.mapping_metrics.csv {output.stats_map} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.ploidy_estimation_metrics.csv {output.stats_ploidy} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.time_metrics.csv {output.stats_time} \
+                && rm -f --verbose {params.output_dir}/*_usage.txt
+        ) >{log[0]} 2>&1
         """
 
 
@@ -277,7 +278,7 @@ rule shard_count_alns:
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.1)* attempt} h",
     shell:
         """
-        (samtools view {input.bam} | awk 'BEGIN{{print "read_id\tn_aligns"}} {{x[$1]++}} END{{for(read_id in x){{print read_id"\t"x[read_id]}}}}') > {output.counts} 2> {log}
+        (samtools view {input.bam} | awk 'BEGIN{{print "read_id\tn_aligns"}} {{x[$1]++}} END{{for(read_id in x){{print read_id"\t"x[read_id]}}}}') >{output.counts} 2>{log}
         """
 
 

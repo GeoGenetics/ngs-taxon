@@ -1,0 +1,41 @@
+
+#############
+### ALIGN ###
+#############
+taxonomy:
+  nodes: "data/taxdump/nodes.dmp"
+  names: "data/taxdump/names.dmp"
+
+ref:
+  test:
+    n_shards: 2
+    path: "data/test.{n_shard}-of-2.fas.gz"
+    map:
+      tool: bowtie2
+      params: "-k 10 -L 22 -i S,1,1.15 --mp 1,1 --rdg 0,1 --rfg 0,1 --score-min L,0,-0.1 --no-unal"
+      bt2l: False
+    acc2taxid: "data/test.acc2taxid.gz"
+
+filter:
+  saturated_reads:
+    activate: true
+    n_alns: 10
+
+unicorn:
+  refstats:
+    params: "--minrefl 0 --minreads 1"
+  taxstats:
+    params: "--rank genus"
+
+metadmg:
+  damage:
+    params: "--print_length 15"
+
+  lca:
+    params: "--fix_ncbi 0 --how_many 15 --sim_score_low 0.95 --weight_type 0 --lca_rank genus"
+
+  dfit:
+    params: "--nopt 5 --showfits 2 --seed 12345"
+
+report:
+  multiqc: "--verbose"

@@ -114,4 +114,4 @@ rule align_unicorn_taxstats:
     params:
         extra=config["unicorn"]["taxstats"]["params"],
     shell:
-        "unicorn taxstats --threads {threads} -b {input.bam} --names {input.names} --nodes {input.nodes} {params.extra} > {output.stats} 2>{log}"
+        "unicorn taxstats --threads {threads} -b {input.bam} --names {input.names} --nodes {input.nodes} --qsize 10000 {params.extra} --outstat {output.stats} > {log} 2>&1"

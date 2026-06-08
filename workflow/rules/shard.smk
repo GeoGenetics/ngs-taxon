@@ -278,7 +278,7 @@ rule shard_count_alns:
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.1)* attempt} h",
     shell:
         """
-        (samtools view {input.bam} | awk 'BEGIN{{print "read_id\tn_aligns"}} {{x[$1]++}} END{{for(read_id in x){{print read_id"\t"x[read_id]}}}}') >{output.counts} 2>{log}
+        (samtools view {input.bam} | awk 'BEGIN{{print "read_id\tn_aligns"}} {{x[$1]++}} END{{for(read_id in x){{print read_id"\t"x[read_id]}}}}') > {output.counts} 2> {log}
         """
 
 
@@ -383,7 +383,7 @@ rule shard_unicorn_refstats:
     params:
         extra=config["unicorn"]["refstats"]["params"],
     shell:
-        "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --names {input.names} --nodes {input.nodes} --acc2tax {input.acc2taxid} --outbam {output.bam} --outstat {output.stats} >{log} 2>&1"
+        "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --names {input.names} --nodes {input.nodes} --acc2tax {input.acc2taxid} --outbam {output.bam} --outstat {output.stats} > {log} 2>&1"
 
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c

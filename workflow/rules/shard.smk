@@ -234,23 +234,24 @@ rule shard_dragen:
         version="4.4.6",
         idx_dir=lambda w: expand(config["ref"][w.ref]["path"], **w),
         #idx_dir=lambda w, input: os.path.commonprefix(input.idx),
-        output_dir=lambda w, output: str(Path(output.bam).parent),
+        output_dir=lambda w, output: Path(output.bam).parent,
         output_prefix=lambda w, output: Path(output.bam).with_suffix("").name,
-        stats_dir=lambda w, output: str(Path(output.stats_time).parent),
+        stats_dir=lambda w, output: Path(output.stats_time).parent,
         rg=lambda w: read_group_merge(w, "dragen"),
         extra=lambda w: config["ref"][w.ref]["map"]["params"],
     shell:
-        """(
-        /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --force --output-directory {params.output_dir} --output-file-prefix {params.output_prefix} &&
-        mv --verbose {params.output_dir}/{params.output_prefix}-replay.json {output.replay} &&
-        mv --verbose {params.output_dir}/{params.output_prefix}.metrics.json {output.stats_json} &&
-        mv --verbose {params.output_dir}/{params.output_prefix}.fastqc_metrics.csv {output.stats_fastqc} &&
-        mv --verbose {params.output_dir}/{params.output_prefix}.trimmer_metrics.csv {output.stats_trimmer} &&
-        [ ! -f {params.output_dir}/{params.output_prefix}.mapping_metrics.csv ] || mv --verbose {params.output_dir}/{params.output_prefix}.mapping_metrics.csv {output.stats_map} &&
-        mv --verbose {params.output_dir}/{params.output_prefix}.ploidy_estimation_metrics.csv {output.stats_ploidy} &&
-        mv --verbose {params.output_dir}/{params.output_prefix}.time_metrics.csv {output.stats_time} &&
-        rm -f --verbose {params.output_dir}/*_usage.txt
-        ) >{log[0]} 2>&1;
+        """
+        (
+            /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --force --output-directory {params.output_dir} --output-file-prefix {params.output_prefix} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}-replay.json {output.replay} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.metrics.json {output.stats_json} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.fastqc_metrics.csv {output.stats_fastqc} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.trimmer_metrics.csv {output.stats_trimmer} \
+                && [ ! -f {params.output_dir}/{params.output_prefix}.mapping_metrics.csv ] || mv --verbose {params.output_dir}/{params.output_prefix}.mapping_metrics.csv {output.stats_map} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.ploidy_estimation_metrics.csv {output.stats_ploidy} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.time_metrics.csv {output.stats_time} \
+                && rm -f --verbose {params.output_dir}/*_usage.txt
+        ) >{log[0]} 2>&1
         """
 
 
@@ -277,7 +278,7 @@ rule shard_count_alns:
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.1)* attempt} h",
     shell:
         """
-        (samtools view {input.bam} | awk 'BEGIN{{print "read_id\tn_aligns"}} {{x[$1]++}} END{{for(read_id in x){{print read_id"\t"x[read_id]}}}}') > {output.counts} 2> {log}
+        (samtools view {input.bam} | awk 'BEGIN{{print "read_id\tn_aligns"}} {{x[$1]++}} END{{for(read_id in x){{print read_id"\t"x[read_id]}}}}') >{output.counts} 2>{log}
         """
 
 
@@ -350,22 +351,25 @@ rule shard_saturated_reads_extract:
         "v7.0.0/bio/seqtk"
 
 
-rule shard_unicorn:
+rule shard_unicorn_refstats:
     input:
         bam=(
             rules.shard_saturated_reads_remove.output.bam
             if is_activated("filter/saturated_reads")
             else rules.shard_count_alns.input.bam
         ),
+        nodes=config["taxonomy"]["nodes"],
+        names=config["taxonomy"]["names"],
+        acc2taxid=lambda w: config["ref"][w.ref]["acc2taxid"],
     output:
         bam=temp(
-            "<temp>/<shards>/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
+            "<temp>/<shards>/unicorn/refstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
         ),
-        stats="<stats>/<shards>/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv",
+        stats="<stats>/<shards>/unicorn/refstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.tsv",
     log:
-        "<logs>/<shards>/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
+        "<logs>/<shards>/unicorn/refstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
-        "<benchmarks>/<shards>/unicorn/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
+        "<benchmarks>/<shards>/unicorn/refstats/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     conda:
         urlunparse(
             baseurl._replace(
@@ -377,15 +381,15 @@ rule shard_unicorn:
         mem=lambda w, input, attempt: f"{(4* input.size_gb+50)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+0.1)* attempt} h",
     params:
-        extra="--minrefl 0 --minreads 1",
+        extra=config["unicorn"]["refstats"]["params"],
     shell:
-        "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --outbam {output.bam} --outstat {output.stats} >{log} 2>&1"
+        "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --names {input.names} --nodes {input.nodes} --acc2tax {input.acc2taxid} --outbam {output.bam} --outstat {output.stats} > {log} 2>&1"
 
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c
 rule shard_sort_query:
     input:
-        bam=rules.shard_unicorn.output.bam,
+        bam=rules.shard_unicorn_refstats.output.bam,
     output:
         bam=temp(
             "<temp>/<shards>/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"

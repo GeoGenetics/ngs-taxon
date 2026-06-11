@@ -1,6 +1,6 @@
 # NGS Taxon - a generic module for read taxonomic asignment
 
-[![Snakemake](https://img.shields.io/badge/snakemake-≥9.16.3-brightgreen.svg)](https://snakemake.readthedocs.io/en/stable/)
+[![Snakemake](https://img.shields.io/badge/snakemake-≥9.22.0-brightgreen.svg)](https://snakemake.readthedocs.io/en/stable/)
 ![CI](https://github.com/GeoGenetics/ngs-taxon/actions/workflows/ci.yml/badge.svg)
 
 This module implements read taxonomic assignment steps:
@@ -9,7 +9,6 @@ This module implements read taxonomic assignment steps:
 - Remove saturated reads
 - Reference stats and clean header (for unused references)
   - [unicorn](https://github.com/GeoGenetics/unicorn)
-- Clean header for unused references
 - Taxonomic assignment
   - [metaDMG](https://github.com/metaDMG-dev)
 

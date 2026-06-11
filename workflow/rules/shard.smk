@@ -238,19 +238,20 @@ rule shard_dragen:
         rg=lambda w: read_group_merge(w, "dragen"),
         extra=lambda w: config["ref"][w.ref]["map"]["params"],
     shell:
-        """(
-        /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --preserve-map-align-order=true --filter-flags-from-output=4 --force --output-directory {resources.tmpdir} --output-file-prefix {params.output_prefix} &&
-        touch {resources.tmpdir}/{params.output_prefix}.mapping_metrics.csv &&
-        mv --verbose {resources.tmpdir}/{params.output_prefix}.bam {output.bam} &&
-        mv --verbose {resources.tmpdir}/{params.output_prefix}.bam.md5 {output.md5} &&
-        mv --verbose {resources.tmpdir}/{params.output_prefix}-replay.json {output.replay} &&
-        mv --verbose {resources.tmpdir}/{params.output_prefix}.metrics.json {output.stats_json} &&
-        mv --verbose {resources.tmpdir}/{params.output_prefix}.fastqc_metrics.csv {output.stats_fastqc} &&
-        mv --verbose {resources.tmpdir}/{params.output_prefix}.trimmer_metrics.csv {output.stats_trimmer} &&
-        mv --verbose {resources.tmpdir}/{params.output_prefix}.mapping_metrics.csv {output.stats_map} &&
-        mv --verbose {resources.tmpdir}/{params.output_prefix}.ploidy_estimation_metrics.csv {output.stats_ploidy} &&
-        mv --verbose {resources.tmpdir}/{params.output_prefix}.time_metrics.csv {output.stats_time} &&
-        ) >{log[0]} 2>&1;
+        """
+        (
+            /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --preserve-map-align-order=true --filter-flags-from-output=4 --force --output-directory {resources.tmpdir} --output-file-prefix {params.output_prefix} \
+                && touch {resources.tmpdir}/{params.output_prefix}.mapping_metrics.csv \
+                && mv --verbose {resources.tmpdir}/{params.output_prefix}.bam {output.bam} \
+                && mv --verbose {resources.tmpdir}/{params.output_prefix}.bam.md5 {output.md5} \
+                && mv --verbose {resources.tmpdir}/{params.output_prefix}-replay.json {output.replay} \
+                && mv --verbose {resources.tmpdir}/{params.output_prefix}.metrics.json {output.stats_json} \
+                && mv --verbose {resources.tmpdir}/{params.output_prefix}.fastqc_metrics.csv {output.stats_fastqc} \
+                && mv --verbose {resources.tmpdir}/{params.output_prefix}.trimmer_metrics.csv {output.stats_trimmer} \
+                && mv --verbose {resources.tmpdir}/{params.output_prefix}.mapping_metrics.csv {output.stats_map} \
+                && mv --verbose {resources.tmpdir}/{params.output_prefix}.ploidy_estimation_metrics.csv {output.stats_ploidy} \
+                && mv --verbose {resources.tmpdir}/{params.output_prefix}.time_metrics.csv {output.stats_time}
+        ) >{log[0]} 2>&1
         """
 
 

@@ -13,7 +13,7 @@ from subprocess import check_output
 sys.path.insert(0, os.path.dirname(__file__))
 
 
-@pytest.mark.skip(reason="picard does not support comparison of un-sorted SAM/BAM files")
+@pytest.mark.skip(reason="picard bug https://github.com/broadinstitute/picard/issues/2053")
 def test_align_sort_taxon(conda_prefix):
 
     with tempfile.TemporaryDirectory() as tmpdir:

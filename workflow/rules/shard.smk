@@ -225,7 +225,7 @@ rule shard_dragen:
         "<benchmarks>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     threads: 10
     resources:
-        mem=lambda w, attempt: f"{32* attempt} GiB",
+        mem=lambda w, attempt: f"{50* attempt} GiB",
         runtime=lambda w, attempt: f"{1* attempt} h",
         constraint=lambda w: f"idx{int(w.n_shard)%2:02d}",
     params:
@@ -233,24 +233,21 @@ rule shard_dragen:
         idx_dir=lambda w: expand(config["ref"][w.ref]["path"], **w),
         #idx_dir=lambda w, input: os.path.commonprefix(input.idx),
         output_prefix=lambda w, output: Path(output.bam).with_suffix("").name,
-        #output_dir=lambda w, output: str(Path(output.bam).parent),
-        #stats_dir=lambda w, output: str(Path(output.stats_time).parent),
+        output_dir=lambda w, output: str(Path(output.bam).parent),
         rg=lambda w: read_group_merge(w, "dragen"),
         extra=lambda w: config["ref"][w.ref]["map"]["params"],
     shell:
         """
         (
-            /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --preserve-map-align-order=true --filter-flags-from-output=4 --force --output-directory {resources.tmpdir} --output-file-prefix {params.output_prefix} \
-                && touch {resources.tmpdir}/{params.output_prefix}.mapping_metrics.csv \
-                && mv --verbose {resources.tmpdir}/{params.output_prefix}.bam {output.bam} \
-                && mv --verbose {resources.tmpdir}/{params.output_prefix}.bam.md5 {output.md5} \
-                && mv --verbose {resources.tmpdir}/{params.output_prefix}-replay.json {output.replay} \
-                && mv --verbose {resources.tmpdir}/{params.output_prefix}.metrics.json {output.stats_json} \
-                && mv --verbose {resources.tmpdir}/{params.output_prefix}.fastqc_metrics.csv {output.stats_fastqc} \
-                && mv --verbose {resources.tmpdir}/{params.output_prefix}.trimmer_metrics.csv {output.stats_trimmer} \
-                && mv --verbose {resources.tmpdir}/{params.output_prefix}.mapping_metrics.csv {output.stats_map} \
-                && mv --verbose {resources.tmpdir}/{params.output_prefix}.ploidy_estimation_metrics.csv {output.stats_ploidy} \
-                && mv --verbose {resources.tmpdir}/{params.output_prefix}.time_metrics.csv {output.stats_time}
+            /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --preserve-map-align-order=true --force --output-directory {params.output_dir} --output-file-prefix {params.output_prefix} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}-replay.json {output.replay} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.metrics.json {output.stats_json} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.fastqc_metrics.csv {output.stats_fastqc} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.trimmer_metrics.csv {output.stats_trimmer} \
+                && touch {params.output_dir}/{params.output_prefix}.mapping_metrics.csv \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.mapping_metrics.csv {output.stats_map} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.ploidy_estimation_metrics.csv {output.stats_ploidy} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.time_metrics.csv {output.stats_time}
         ) >{log[0]} 2>&1
         """
 

@@ -129,7 +129,7 @@ rule shard_bowtie2:
         runtime=lambda w, input, attempt: f"{(Path(input.sample[0]).stat().st_size/1024**3+8)* attempt} h",
         slurm_extra="--extra-node-info 1",
     params:
-        extra=lambda w: f"""--time --rg-id '{read_group_merge(w, "bowtie2")}' """
+        extra=lambda w: f"""--time --reorder --rg-id '{read_group_merge(w, "bowtie2")}' """
         + config["ref"][w.ref]["map"]["params"],
     wrapper:
         "v7.9.1/bio/bowtie2/align"
@@ -268,14 +268,18 @@ rule shard_count_alns:
     benchmark:
         "<benchmarks>/<shards>/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     conda:
-        f"https://github.com/snakemake/snakemake-wrappers/raw/v7.9.1/bio/samtools/view/environment.yaml"
+        urlunparse(
+            baseurl._replace(
+                path=str(Path(baseurl.path) / "envs" / "samtools_datamash_sed.yaml")
+            )
+        )
     threads: 2
     resources:
-        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+30)* attempt} GiB",
+        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+1)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.1)* attempt} h",
     shell:
         """
-        (samtools view {input.bam} | awk 'BEGIN{{print "read_id\tn_aligns"}} {{x[$1]++}} END{{for(read_id in x){{print read_id"\t"x[read_id]}}}}') >{output.counts} 2>{log}
+        (samtools view {input.bam} | datamash groupby 1 count 1 | sed '1i read_id\tn_aligns') >{output.counts} 2>{log}
         """
 
 

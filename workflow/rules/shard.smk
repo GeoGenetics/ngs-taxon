@@ -226,8 +226,7 @@ rule shard_dragen:
     threads: 10
     resources:
         mem=lambda w, attempt: f"{50* attempt} GiB",
-        runtime=lambda w, attempt: f"{1* attempt} h",
-        constraint=lambda w: f"idx{int(w.n_shard)%2:02d}",
+        runtime=lambda w, attempt: f"{2* attempt} h",
     params:
         version="4.5.4",
         idx_dir=lambda w: expand(config["ref"][w.ref]["path"], **w),
@@ -275,8 +274,8 @@ rule shard_count_alns:
         )
     threads: 2
     resources:
-        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+1)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.1)* attempt} h",
+        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+5)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.2)* attempt} h",
     shell:
         """
         (samtools view {input.bam} | datamash groupby 1 count 1 | sed '1i read_id\tn_aligns') >{output.counts} 2>{log}
@@ -298,10 +297,10 @@ rule shard_saturated_reads_filter:
         "<benchmarks>/<shards>/saturated_reads/filter/{sample}_{library}_{read_type_map}.jsonl"
     threads: 2
     resources:
-        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+8)* attempt} GiB",
+        mem=lambda w, input, attempt: f"{(0.2* input.size_gb+5)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.3)* attempt} h",
     params:
-        extra="--headerless-tsv-output cat then filter '$n_aligns >= {}' then sort -f read_id then uniq -g read_id then cut -f read_id".format(
+        extra="--headerless-tsv-output cat then filter '$n_aligns >= {}' then uniq -g read_id then cut -f read_id then sort -f read_id".format(
             config["filter"]["saturated_reads"]["n_alns"]
         ),
     wrapper:
@@ -379,8 +378,8 @@ rule shard_unicorn_refstats:
         )
     threads: 4
     resources:
-        mem=lambda w, input, attempt: f"{(4* input.size_gb+50)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+0.1)* attempt} h",
+        mem=lambda w, input, attempt: f"{(8* input.size_gb+20)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.1* input.size_gb+0.5)* attempt} h",
     params:
         extra=config["unicorn"]["refstats"]["params"],
     shell:

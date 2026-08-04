@@ -59,11 +59,11 @@ rule align_sort_taxon:
         "<benchmarks>/<aligns>/sort_taxon/{sample}_{library}_{read_type_map}.jsonl"
     threads: 6
     resources:
-        mem=lambda w, input, attempt: f"{(10* input.size_gb+20)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+1)* attempt} h",
+        mem=lambda w, input, attempt: f"{(input.size_gb+20)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+1)* attempt} h",
     params:
         extra="-t XR",
-        mem_overhead_factor=0.2,
+        mem_overhead_factor=0.25,
     wrapper:
         "v9.4.2/bio/samtools/sort"
 
@@ -84,7 +84,7 @@ rule align_samtools_stats:
         "<benchmarks>/<aligns>/samtools/stats/{sample}_{library}_{read_type_map}.jsonl"
     threads: 2
     resources:
-        mem=lambda w, input, attempt: f"{5* attempt} GiB",
+        mem=lambda w, input, attempt: f"{10* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.5)* attempt} h",
     wrapper:
         "v8.1.1/bio/samtools/stats"
@@ -109,8 +109,8 @@ rule align_unicorn_taxstats:
         )
     threads: 4
     resources:
-        mem=lambda w, input, attempt: f"{(4* input.size_gb+50)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+0.1)* attempt} h",
+        mem=lambda w, input, attempt: f"{(4* input.size_gb+5)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.1* input.size_gb+0.1)* attempt} h",
     params:
         extra=config["unicorn"]["taxstats"]["params"],
     shell:

@@ -129,7 +129,7 @@ rule shard_bowtie2:
         runtime=lambda w, input, attempt: f"{(Path(input.sample[0]).stat().st_size/1024**3+8)* attempt} h",
         slurm_extra="--extra-node-info 1",
     params:
-        extra=lambda w: f"""--time --rg-id '{read_group_merge(w, "bowtie2")}' """
+        extra=lambda w: f"""--time --reorder --rg-id '{read_group_merge(w, "bowtie2")}' """
         + config["ref"][w.ref]["map"]["params"],
     wrapper:
         "v7.9.1/bio/bowtie2/align"
@@ -212,13 +212,11 @@ rule shard_dragen:
         md5=temp(
             "<temp>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam.md5sum"
         ),
-        replay="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}-replay.json",
+        replay="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.replay.json",
         stats_json="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.json",
         stats_fastqc="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.fastqc.csv",
         stats_trimmer="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.trim.csv",
-        stats_map=touch(
-            "<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.map.csv"
-        ),
+        stats_map="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.map.csv",
         stats_ploidy="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.ploidy.csv",
         stats_time="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.time.csv",
     log:
@@ -227,30 +225,28 @@ rule shard_dragen:
         "<benchmarks>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     threads: 10
     resources:
-        mem=lambda w, attempt: f"{100* attempt} GiB",
-        runtime=lambda w, attempt: f"{1* attempt} h",
-        constraint=lambda w: f"idx{int(w.n_shard)%2:02d}",
+        mem=lambda w, attempt: f"{50* attempt} GiB",
+        runtime=lambda w, attempt: f"{2* attempt} h",
     params:
-        version="4.4.6",
+        version="4.5.4",
         idx_dir=lambda w: expand(config["ref"][w.ref]["path"], **w),
         #idx_dir=lambda w, input: os.path.commonprefix(input.idx),
-        output_dir=lambda w, output: Path(output.bam).parent,
         output_prefix=lambda w, output: Path(output.bam).with_suffix("").name,
-        stats_dir=lambda w, output: Path(output.stats_time).parent,
+        output_dir=lambda w, output: str(Path(output.bam).parent),
         rg=lambda w: read_group_merge(w, "dragen"),
         extra=lambda w: config["ref"][w.ref]["map"]["params"],
     shell:
         """
         (
-            /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --force --output-directory {params.output_dir} --output-file-prefix {params.output_prefix} \
+            /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --preserve-map-align-order=true --force --output-directory {params.output_dir} --output-file-prefix {params.output_prefix} \
                 && mv --verbose {params.output_dir}/{params.output_prefix}-replay.json {output.replay} \
                 && mv --verbose {params.output_dir}/{params.output_prefix}.metrics.json {output.stats_json} \
                 && mv --verbose {params.output_dir}/{params.output_prefix}.fastqc_metrics.csv {output.stats_fastqc} \
                 && mv --verbose {params.output_dir}/{params.output_prefix}.trimmer_metrics.csv {output.stats_trimmer} \
-                && [ ! -f {params.output_dir}/{params.output_prefix}.mapping_metrics.csv ] || mv --verbose {params.output_dir}/{params.output_prefix}.mapping_metrics.csv {output.stats_map} \
+                && touch {params.output_dir}/{params.output_prefix}.mapping_metrics.csv \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.mapping_metrics.csv {output.stats_map} \
                 && mv --verbose {params.output_dir}/{params.output_prefix}.ploidy_estimation_metrics.csv {output.stats_ploidy} \
-                && mv --verbose {params.output_dir}/{params.output_prefix}.time_metrics.csv {output.stats_time} \
-                && rm -f --verbose {params.output_dir}/*_usage.txt
+                && mv --verbose {params.output_dir}/{params.output_prefix}.time_metrics.csv {output.stats_time}
         ) >{log[0]} 2>&1
         """
 
@@ -271,14 +267,18 @@ rule shard_count_alns:
     benchmark:
         "<benchmarks>/<shards>/count_alns/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
     conda:
-        f"https://github.com/snakemake/snakemake-wrappers/raw/v7.9.1/bio/samtools/view/environment.yaml"
+        urlunparse(
+            baseurl._replace(
+                path=str(Path(baseurl.path) / "envs" / "samtools_datamash_sed.yaml")
+            )
+        )
     threads: 2
     resources:
-        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+30)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.1)* attempt} h",
+        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+5)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+0.2)* attempt} h",
     shell:
         """
-        (samtools view {input.bam} | awk 'BEGIN{{print "read_id\tn_aligns"}} {{x[$1]++}} END{{for(read_id in x){{print read_id"\t"x[read_id]}}}}') >{output.counts} 2>{log}
+        (samtools view {input.bam} | datamash groupby 1 count 1 | sed '1i read_id\tn_aligns') >{output.counts} 2>{log}
         """
 
 
@@ -297,10 +297,10 @@ rule shard_saturated_reads_filter:
         "<benchmarks>/<shards>/saturated_reads/filter/{sample}_{library}_{read_type_map}.jsonl"
     threads: 2
     resources:
-        mem=lambda w, input, attempt: f"{(0.5* input.size_gb+8)* attempt} GiB",
+        mem=lambda w, input, attempt: f"{(0.2* input.size_gb+5)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.3)* attempt} h",
     params:
-        extra="--headerless-tsv-output cat then filter '$n_aligns >= {}' then sort -f read_id then uniq -g read_id then cut -f read_id".format(
+        extra="--headerless-tsv-output cat then filter '$n_aligns >= {}' then uniq -g read_id then cut -f read_id then sort -f read_id".format(
             config["filter"]["saturated_reads"]["n_alns"]
         ),
     wrapper:
@@ -378,8 +378,8 @@ rule shard_unicorn_refstats:
         )
     threads: 4
     resources:
-        mem=lambda w, input, attempt: f"{(4* input.size_gb+50)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.05* input.size_gb+0.1)* attempt} h",
+        mem=lambda w, input, attempt: f"{(8* input.size_gb+20)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.1* input.size_gb+0.5)* attempt} h",
     params:
         extra=config["unicorn"]["refstats"]["params"],
     shell:

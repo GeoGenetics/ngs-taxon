@@ -37,6 +37,8 @@ rule align_merge:
         "<logs>/<aligns>/merge/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "<benchmarks>/<aligns>/merge/{sample}_{library}_{read_type_map}.jsonl"
+    shadow:
+        "shallow"  # Quick fix until https://github.com/richarddurbin/onebam/issues/12
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "onebam.yaml"))
@@ -48,7 +50,9 @@ rule align_merge:
     params:
         extra="-noTrimHeader",
     shell:
-        "onebam bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M -P {resources.tmpdir} {params.extra} -o {output.bam} {input} > {log} 2>&1"
+        #"onebam bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M -P {resources.tmpdir} {params.extra} -o {output.bam} {input} > {log} 2>&1"
+        # Quick fix until https://github.com/richarddurbin/onebam/issues/12
+        "onebam bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M {params.extra} -o {output.bam} {input} > {log} 2>&1"
 
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c

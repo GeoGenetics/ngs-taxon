@@ -13,7 +13,7 @@ from subprocess import check_output
 sys.path.insert(0, os.path.dirname(__file__))
 
 
-@pytest.mark.skip(reason="alignments order is not deterministic")
+@pytest.mark.skip(reason="Picard BAM comparison fails (https://github.com/broadinstitute/picard/issues/2053)")
 def test_align_merge(conda_prefix):
 
     with tempfile.TemporaryDirectory() as tmpdir:

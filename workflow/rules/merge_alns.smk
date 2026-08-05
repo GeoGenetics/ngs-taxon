@@ -28,23 +28,31 @@ def get_merge_aln(wildcards, rule):
 rule align_merge:
     input:
         lambda w: expand_pandas(
-            rules.shard_sort_query.output.bam, ref_sets, allow_missing=True
+            rules.shard_sort_query.input.bam, ref_sets, allow_missing=True
         ),
-    # lambda w: expand(rules.shard_sort_query.output.bam, zip, **ref_sets.to_dict("list"), allow_missing=True),
+    # lambda w: expand(rules.shard_sort_query.input.bam, zip, **ref_sets.to_dict("list"), allow_missing=True),
     output:
         bam="<results>/<aligns>/merge/{sample}_{library}_{read_type_map}.bam",
     log:
         "<logs>/<aligns>/merge/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "<benchmarks>/<aligns>/merge/{sample}_{library}_{read_type_map}.jsonl"
-    threads: 3
+    shadow:
+        "shallow"  # Quick fix until https://github.com/richarddurbin/onebam/issues/12
+    conda:
+        urlunparse(
+            baseurl._replace(path=str(Path(baseurl.path) / "envs" / "onebam.yaml"))
+        )
+    threads: 10
     resources:
         mem=lambda w, input, attempt: f"{(0.2* input.size_gb+30)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+1)* attempt} h",
     params:
-        extra="-n -c -p",
-    wrapper:
-        "v7.9.1/bio/samtools/merge"
+        extra="-noTrimHeader",
+    shell:
+        #"onebam bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M -P {resources.tmpdir} {params.extra} -o {output.bam} {input} > {log} 2>&1"
+        # Quick fix until https://github.com/richarddurbin/onebam/issues/12
+        "onebam bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M {params.extra} -o {output.bam} {input} > {log} 2>&1"
 
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c

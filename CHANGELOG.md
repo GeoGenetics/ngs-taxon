@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.12.0](https://github.com/GeoGenetics/ngs-taxon/compare/v0.11.2...v0.12.0) (2026-08-24)
+
+
+### Features
+
+* implement dragen mapper ([#48](https://github.com/GeoGenetics/ngs-taxon/issues/48)) ([14e7948](https://github.com/GeoGenetics/ngs-taxon/commit/14e79484db3d8b37ac4eb4448c3aba5737a009cb))
+* Implement onebam merge ([#53](https://github.com/GeoGenetics/ngs-taxon/issues/53)) ([51c268b](https://github.com/GeoGenetics/ngs-taxon/commit/51c268b72742a654bc8d658e4b8c715a80cfc709))
+* Implement unicorn taxstats ([#55](https://github.com/GeoGenetics/ngs-taxon/issues/55)) ([5edd9ab](https://github.com/GeoGenetics/ngs-taxon/commit/5edd9ab63bdf1f37c014cca620d17582579c923f))
+* remove bam_filter rules ([#54](https://github.com/GeoGenetics/ngs-taxon/issues/54)) ([29ce555](https://github.com/GeoGenetics/ngs-taxon/commit/29ce555db67923bf66eb5b7ea97600a7b64001c0))
+
+
+### Bug Fixes
+
+* dragen output paths ([#51](https://github.com/GeoGenetics/ngs-taxon/issues/51)) ([b8488b1](https://github.com/GeoGenetics/ngs-taxon/commit/b8488b1bb28513979a0cc2c52db9245d4ebb9b0b))
+
+
+### Performance Improvements
+
+* Bump Dragen ([#52](https://github.com/GeoGenetics/ngs-taxon/issues/52)) ([2b167e2](https://github.com/GeoGenetics/ngs-taxon/commit/2b167e28f1584d204b9fd2a84431e54be3124a44))
+* bump metadmg ([#50](https://github.com/GeoGenetics/ngs-taxon/issues/50)) ([da1972b](https://github.com/GeoGenetics/ngs-taxon/commit/da1972b33f212afc73897eebe0aed47775f52428))
+
 ## [0.11.2](https://github.com/GeoGenetics/ngs-taxon/compare/v0.11.1...v0.11.2) (2026-03-06)
 
 

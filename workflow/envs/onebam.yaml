@@ -3,4 +3,4 @@ channels:
   - bioconda
   - nodefaults
 dependencies:
-  - onebam =1.1.0
+  - onebam =1.2.0

@@ -37,8 +37,6 @@ rule align_merge:
         "<logs>/<aligns>/merge/{sample}_{library}_{read_type_map}.log",
     benchmark:
         "<benchmarks>/<aligns>/merge/{sample}_{library}_{read_type_map}.jsonl"
-    shadow:
-        "shallow"  # Quick fix until https://github.com/richarddurbin/onebam/issues/12
     conda:
         urlunparse(
             baseurl._replace(path=str(Path(baseurl.path) / "envs" / "onebam.yaml"))
@@ -50,9 +48,7 @@ rule align_merge:
     params:
         extra="-noTrimHeader",
     shell:
-        #"onebam bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M -P {resources.tmpdir} {params.extra} -o {output.bam} {input} > {log} 2>&1"
-        # Quick fix until https://github.com/richarddurbin/onebam/issues/12
-        "onebam bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M {params.extra} -o {output.bam} {input} > {log} 2>&1"
+        "onebam bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M -P {resources.tmpdir} {params.extra} -o {output.bam} {input} > {log} 2>&1"
 
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c
@@ -73,7 +69,7 @@ rule align_sort_taxon:
         extra="-t XR",
         mem_overhead_factor=0.25,
     wrapper:
-        "v9.4.2/bio/samtools/sort"
+        "v9.15.0/bio/samtools/sort"
 
 
 ##########
@@ -95,7 +91,7 @@ rule align_samtools_stats:
         mem=lambda w, input, attempt: f"{10* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+0.5)* attempt} h",
     wrapper:
-        "v8.1.1/bio/samtools/stats"
+        "v9.15.0/bio/samtools/stats"
 
 
 rule align_unicorn_taxstats:

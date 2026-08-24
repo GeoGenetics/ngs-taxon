@@ -132,7 +132,7 @@ rule shard_bowtie2:
         extra=lambda w: f"""--time --reorder --rg-id '{read_group_merge(w, "bowtie2")}' """
         + config["ref"][w.ref]["map"]["params"],
     wrapper:
-        "v7.9.1/bio/bowtie2/align"
+        "v9.15.0/bio/bowtie2/align"
 
 
 rule shard_bwa_aln:
@@ -159,7 +159,7 @@ rule shard_bwa_aln:
     params:
         extra=lambda w: config["ref"][w.ref]["map"]["params"],
     wrapper:
-        "v5.10.0/bio/bwa/aln"
+        "v9.4.2/bio/bwa/aln"
 
 
 rule shard_bwa_samxe:
@@ -186,7 +186,7 @@ rule shard_bwa_samxe:
         extra=lambda w: f"""-r '{read_group_merge(w, "bwa_aln")}' """,
         sort="samtools",
     wrapper:
-        "v7.9.1/bio/bwa/samxe"
+        "v9.16.0/bio/bwa/samxe"
 
 
 rule shard_dragen:
@@ -304,7 +304,7 @@ rule shard_saturated_reads_filter:
             config["filter"]["saturated_reads"]["n_alns"]
         ),
     wrapper:
-        "v7.9.1/utils/miller"
+        "v9.16.0/utils/miller"
 
 
 rule shard_saturated_reads_remove:
@@ -326,7 +326,7 @@ rule shard_saturated_reads_remove:
     params:
         extra=lambda w, input: f"--qname-file ^{input.read_id}",
     wrapper:
-        "v7.9.1/bio/samtools/view"
+        "v9.15.0/bio/samtools/view"
 
 
 rule shard_saturated_reads_extract:
@@ -406,4 +406,4 @@ rule shard_sort_query:
         extra="-n",
         mem_overhead_factor=0.2,
     wrapper:
-        "v7.9.1/bio/samtools/sort"
+        "v9.15.0/bio/samtools/sort"

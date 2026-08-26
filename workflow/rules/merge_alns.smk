@@ -43,12 +43,12 @@ rule align_merge:
         )
     threads: 10
     resources:
-        mem=lambda w, input, attempt: f"{(input.size_gb+50)* attempt} GiB",
+        mem=lambda w, input, attempt: f"{(0.02 * input.size_gb+10)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+1)* attempt} h",
     params:
-        extra="-noTrimHeader",
+        extra="-M -noTrimHeader",
     shell:
-        "onebam bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M -P {resources.tmpdir} -M {params.extra} -o {output.bam} {input} > {log} 2>&1"
+        "onebam bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M -P {resources.tmpdir} {params.extra} -o {output.bam} {input} > {log} 2>&1"
 
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c

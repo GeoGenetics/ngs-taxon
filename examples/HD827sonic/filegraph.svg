@@ -82,7 +82,7 @@
 <polygon fill="none" stroke="#71d957" stroke-width="2" points="583,-399 583,-1015 974,-1015 974,-399 583,-399"/>
 </g>
 <!-- 1&#45;&gt;0 -->
-<g id="edge3" class="edge">
+<g id="edge4" class="edge">
 <title>1&#45;&gt;0</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M975.0145,-472.0759C1003.5277,-437.9896 1032.5733,-403.2669 1060.2059,-370.2334"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1063.0918,-372.2384 1066.8234,-362.3225 1057.7226,-367.7471 1063.0918,-372.2384"/>
@@ -105,33 +105,33 @@
 <polygon fill="none" stroke="#57d957" stroke-width="2" points="1,-2613 1,-2743 710,-2743 710,-2613 1,-2613"/>
 </g>
 <!-- 2&#45;&gt;1 -->
-<g id="edge9" class="edge">
+<g id="edge5" class="edge">
 <title>2&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M274.2052,-2611.9693C211.5354,-2553.1802 135.5,-2461.0344 135.5,-2360 135.5,-2360 135.5,-2360 135.5,-1349 135.5,-1216.7302 83.7015,-1163.7268 154.5,-1052 248.2555,-904.0449 429.0064,-814.2472 571.9395,-763.518"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="573.4533,-766.6961 581.7307,-760.0828 571.1358,-760.0908 573.4533,-766.6961"/>
 </g>
-<!-- 6 -->
-<g id="node7" class="node">
-<title>6</title>
-<text text-anchor="start" x="523" y="-2237.6" font-family="sans" font-weight="bold" font-size="18.00" fill="#000000">shard_saturated_reads_remove</text>
-<text text-anchor="start" x="263.5" y="-2213.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="267.5" y="-2213.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
-<text text-anchor="start" x="320.5" y="-2213.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="263.5" y="-2194" font-family="monospace" font-size="10.00" fill="#000000">&lt;input function&gt;</text>
-<text text-anchor="start" x="263.5" y="-2176" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/saturated_reads/filter/{sample}_{library}_{read_type_map}.tsv</text>
-<text text-anchor="start" x="981.5" y="-2155.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="985.5" y="-2155.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
-<text text-anchor="start" x="1046.5" y="-2155.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="263.5" y="-2136" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/saturated_reads/remove/{sample}_{library}_{read_type_map,pe|se|singleton|collapsed}.{ref}.{n_shard}&#45;of&#45;{tot_shards}.bam</text>
-<polygon fill="#57a5d9" stroke="#57a5d9" points="257.5,-2228 257.5,-2228 1057.5,-2228 1057.5,-2228 257.5,-2228"/>
-<polygon fill="#57a5d9" stroke="#57a5d9" points="257.5,-2170 257.5,-2170 1057.5,-2170 1057.5,-2170 257.5,-2170"/>
-<polygon fill="none" stroke="#57a5d9" stroke-width="2" points="257,-2127 257,-2257 1056,-2257 1056,-2127 257,-2127"/>
+<!-- 7 -->
+<g id="node8" class="node">
+<title>7</title>
+<text text-anchor="start" x="523" y="-2387.6" font-family="sans" font-weight="bold" font-size="18.00" fill="#000000">shard_saturated_reads_remove</text>
+<text text-anchor="start" x="263.5" y="-2363.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="267.5" y="-2363.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
+<text text-anchor="start" x="320.5" y="-2363.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="263.5" y="-2344" font-family="monospace" font-size="10.00" fill="#000000">&lt;input function&gt;</text>
+<text text-anchor="start" x="263.5" y="-2326" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/saturated_reads/filter/{sample}_{library}_{read_type_map}.tsv</text>
+<text text-anchor="start" x="981.5" y="-2305.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="985.5" y="-2305.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
+<text text-anchor="start" x="1046.5" y="-2305.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
+<text text-anchor="start" x="263.5" y="-2286" font-family="monospace" font-size="10.00" fill="#000000">temp/shards/saturated_reads/remove/{sample}_{library}_{read_type_map,pe|se|singleton|collapsed}.{ref}.{n_shard}&#45;of&#45;{tot_shards}.bam</text>
+<polygon fill="#57a5d9" stroke="#57a5d9" points="257.5,-2378 257.5,-2378 1057.5,-2378 1057.5,-2378 257.5,-2378"/>
+<polygon fill="#57a5d9" stroke="#57a5d9" points="257.5,-2320 257.5,-2320 1057.5,-2320 1057.5,-2320 257.5,-2320"/>
+<polygon fill="none" stroke="#57a5d9" stroke-width="2" points="257,-2277 257,-2407 1056,-2407 1056,-2277 257,-2277"/>
 </g>
-<!-- 2&#45;&gt;6 -->
-<g id="edge13" class="edge">
-<title>2&#45;&gt;6</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M350.1837,-2611.895C347.1711,-2527.2828 355.3113,-2381.2342 435.5,-2294 445.7634,-2282.8349 457.4925,-2272.7956 470.0746,-2263.7859"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="472.2079,-2266.5665 478.4592,-2258.0125 468.238,-2260.8011 472.2079,-2266.5665"/>
+<!-- 2&#45;&gt;7 -->
+<g id="edge14" class="edge">
+<title>2&#45;&gt;7</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M350.1837,-2761.895C347.1711,-2677.2828 355.3113,-2531.2342 435.5,-2444 445.7634,-2432.8349 457.4925,-2422.7956 470.0746,-2413.7859"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="472.2079,-2416.5665 478.4592,-2408.0125 468.238,-2410.8011 472.2079,-2416.5665"/>
 </g>
 <!-- 8 -->
 <g id="node9" class="node">
@@ -228,7 +228,7 @@
 <text text-anchor="start" x="830.5" y="-1673.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="834.5" y="-1673.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
 <text text-anchor="start" x="887.5" y="-1673.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="830.5" y="-1654" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7f8ea6a811c0&gt;</text>
+<text text-anchor="start" x="830.5" y="-1654" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7f9f69553ed0&gt;</text>
 <text text-anchor="start" x="830.5" y="-1636" font-family="monospace" font-size="10.00" fill="#000000">data/taxdump/names.dmp</text>
 <text text-anchor="start" x="830.5" y="-1618" font-family="monospace" font-size="10.00" fill="#000000">data/taxdump/nodes.dmp</text>
 <text text-anchor="start" x="830.5" y="-1600" font-family="monospace" font-size="10.00" fill="#000000">data/test.acc2taxid.gz</text>
@@ -258,7 +258,7 @@
 <text text-anchor="start" x="1095.5" y="-737.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="1099.5" y="-737.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">↪ input</text>
 <text text-anchor="start" x="1152.5" y="-737.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
-<text text-anchor="start" x="1095.5" y="-718" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7f8ea6a80f40&gt;</text>
+<text text-anchor="start" x="1095.5" y="-718" font-family="monospace" font-size="10.00" fill="#000000">&lt;function &lt;lambda&gt; at 0x7f9f695528d0&gt;</text>
 <text text-anchor="start" x="1591.5" y="-697.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
 <text text-anchor="start" x="1595.5" y="-697.8" font-family="sans" font-weight="bold" font-size="14.00" fill="#000000">output →</text>
 <text text-anchor="start" x="1656.5" y="-697.8" font-family="sans" font-size="10.00" fill="#000000"> </text>
@@ -377,9 +377,9 @@
 <polygon fill="#d9a557" stroke="#d9a557" points="233.5,-1318 233.5,-1318 811.5,-1318 811.5,-1318 233.5,-1318"/>
 <polygon fill="none" stroke="#d9a557" stroke-width="2" points="233,-1275 233,-1423 810,-1423 810,-1275 233,-1275"/>
 </g>
-<!-- 9&#45;&gt;1 -->
+<!-- 10&#45;&gt;1 -->
 <g id="edge7" class="edge">
-<title>9&#45;&gt;1</title>
+<title>10&#45;&gt;1</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M707.9522,-1273.9589C720.4053,-1263.4214 731.5345,-1251.4903 740.5,-1238 765.0924,-1200.9961 776.5724,-1116.8885 781.3206,-1026.2781"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="784.8275,-1026.2235 781.8265,-1016.0626 777.836,-1025.8772 784.8275,-1026.2235"/>
 </g>
@@ -433,9 +433,9 @@
 <polygon fill="#d9d957" stroke="#d9d957" points="827.5,-1096 827.5,-1096 1405.5,-1096 1405.5,-1096 827.5,-1096"/>
 <polygon fill="none" stroke="#d9d957" stroke-width="2" points="827,-1053 827,-1237 1404,-1237 1404,-1053 827,-1053"/>
 </g>
-<!-- 11&#45;&gt;13 -->
-<g id="edge21" class="edge">
-<title>11&#45;&gt;13</title>
+<!-- 12&#45;&gt;14 -->
+<g id="edge22" class="edge">
+<title>12&#45;&gt;14</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1107.9172,-1273.907C1108.4072,-1265.5782 1108.9123,-1256.9915 1109.4181,-1248.3917"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1112.9181,-1248.4932 1110.0115,-1238.3049 1105.9302,-1248.082 1112.9181,-1248.4932"/>
 </g>
@@ -445,15 +445,15 @@
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1103.5,-1459.8672C1103.5,-1451.1906 1103.5,-1442.578 1103.5,-1434.2124"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1107.0001,-1434.1428 1103.5,-1424.1429 1100.0001,-1434.1429 1107.0001,-1434.1428"/>
 </g>
-<!-- 12&#45;&gt;13 -->
-<g id="edge22" class="edge">
-<title>12&#45;&gt;13</title>
+<!-- 13&#45;&gt;14 -->
+<g id="edge23" class="edge">
+<title>13&#45;&gt;14</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1361.398,-1459.8768C1371.2818,-1448.7914 1380.1045,-1436.8498 1387.5,-1424 1420.7547,-1366.2197 1423.1366,-1330.3425 1387.5,-1274 1380.9521,-1263.6476 1373.3233,-1254.1096 1364.8664,-1245.3235"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1367.1471,-1242.6567 1357.5734,-1238.1186 1362.2276,-1247.6365 1367.1471,-1242.6567"/>
 </g>
-<!-- 13&#45;&gt;0 -->
-<g id="edge4" class="edge">
-<title>13&#45;&gt;0</title>
+<!-- 14&#45;&gt;0 -->
+<g id="edge3" class="edge">
+<title>14&#45;&gt;0</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1086.3116,-1051.921C1083.5051,-1039.936 1081.1086,-1027.7487 1079.5,-1016 1042.2405,-743.8723 1002.3142,-661.5984 1079.5,-398 1082.0852,-389.1711 1085.152,-380.3605 1088.6061,-371.6222"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1091.9267,-372.7504 1092.5019,-362.1712 1085.455,-370.0827 1091.9267,-372.7504"/>
 </g>
@@ -463,15 +463,15 @@
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1043.8248,-1051.8435C1024.9232,-1027.277 1003.5611,-999.5126 981.3683,-970.6686"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="983.9601,-968.2975 975.0881,-962.5062 978.4122,-972.5661 983.9601,-968.2975"/>
 </g>
-<!-- 14&#45;&gt;0 -->
-<g id="edge1" class="edge">
-<title>14&#45;&gt;0</title>
-<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1569.5069,-1930.6774C1621.0098,-1852.8475 1695.5,-1717.9848 1695.5,-1589 1695.5,-1589 1695.5,-1589 1695.5,-1145 1695.5,-812.8926 1857.6349,-676.3621 1676.5,-398 1618.6212,-309.0538 1513.6217,-255.7522 1418.7477,-224.2513"/>
-<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1419.6032,-220.8491 1409.0109,-221.0824 1417.4367,-227.5054 1419.6032,-220.8491"/>
-</g>
 <!-- 15&#45;&gt;0 -->
 <g id="edge2" class="edge">
 <title>15&#45;&gt;0</title>
+<path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1579.9235,-2080.7738C1630.4724,-2016.4867 1695.5,-1913.8066 1695.5,-1811 1695.5,-1811 1695.5,-1811 1695.5,-1145 1695.5,-812.8926 1857.6349,-676.3621 1676.5,-398 1618.6212,-309.0538 1513.6217,-255.7522 1418.7477,-224.2513"/>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1419.6032,-220.8491 1409.0109,-221.0824 1417.4367,-227.5054 1419.6032,-220.8491"/>
+</g>
+<!-- 16&#45;&gt;0 -->
+<g id="edge1" class="edge">
+<title>16&#45;&gt;0</title>
 <path fill="none" stroke="#c0c0c0" stroke-width="2" d="M1354.8037,-631.9165C1334.3761,-564.3386 1303.4747,-462.1114 1276.2568,-372.0695"/>
 <polygon fill="#c0c0c0" stroke="#c0c0c0" stroke-width="2" points="1279.5407,-370.8372 1273.2969,-362.2777 1272.8402,-372.8627 1279.5407,-370.8372"/>
 </g>

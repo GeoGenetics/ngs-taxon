@@ -43,7 +43,7 @@ rule align_merge:
         )
     threads: 10
     resources:
-        mem=lambda w, input, attempt: f"{(0.02 * input.size_gb+10)* attempt} GiB",
+        mem=lambda w, input, attempt: f"{(0.02* input.size_gb+10)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+1)* attempt} h",
     params:
         extra="-M -noTrimHeader",

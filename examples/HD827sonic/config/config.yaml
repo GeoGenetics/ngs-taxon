@@ -24,6 +24,8 @@ filter:
 unicorn:
   refstats:
     params: "--minrefl 1 --minreads 1 --rank genus"
+  alnfilt:
+    params: "--mode ALLTOP --minani 93 --maxani 100"
   taxstats:
     params: "-k 17 --minrefl  1 --minreads 1 --minmani 0 --minalnas -Inf --maxdust 100"
 

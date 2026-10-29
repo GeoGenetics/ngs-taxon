@@ -52,7 +52,7 @@ rule align_unicorn_alnfilt:
     params:
         extra=config["unicorn"]["alnfilt"]["params"],
     shell:
-        "unicorn alnfilt --threads {threads} -b {input.bam} --outbam {output.bam} > {log} 2>&1"
+        "unicorn alnfilt --threads {threads} -b {input.bam} {params.extra} --outbam {output.bam} > {log} 2>&1"
 
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c

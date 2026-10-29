@@ -1,24 +1,3 @@
-def get_merge_aln(wildcards, rule):
-    fall_through = False
-    if rule in ["metadmg_damage", "metadmg_lca"] or fall_through:
-        if is_activated("bam_filter/filter") or is_activated("bam_filter/reassign"):
-            return {"aln": rules.align_sort_query.output.bam}
-        fall_through = True
-    if rule == "align_filter" or fall_through:
-        if is_activated("bam_filter/reassign"):
-            return {"aln": rules.align_reassign.output.bam}
-        fall_through = True
-    if rule == "align_reassign" or fall_through:
-        if is_activated("bam_filter/filter") or is_activated("bam_filter/reassign"):
-            return {
-                "aln": rules.align_sort_coord.output.bam,
-                "idx": rules.align_sort_coord.output.idx,
-            }
-        else:
-            return {"aln": rules.align_merge.output.bam}
-        fall_through = True
-    raise ValueError(f"Invalid rule specified: {rule}")
-
 
 #############
 ### RULES ###
@@ -51,10 +30,35 @@ rule align_merge:
         "onebam bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M -P {resources.tmpdir} {params.extra} -o {output.bam} {input} > {log} 2>&1"
 
 
+rule align_unicorn_alnfilt:
+    input:
+        bam=rules.align_merge.output.bam,
+    output:
+        bam="<temp>/<aligns>/unicorn/alnfilt/{sample}_{library}_{read_type_map}.bam",
+    log:
+        "<logs>/<aligns>/unicorn/alnfilt/{sample}_{library}_{read_type_map}.log",
+    benchmark:
+        "<benchmarks>/<aligns>/unicorn/alnfilt/{sample}_{library}_{read_type_map}.jsonl"
+    conda:
+        urlunparse(
+            baseurl._replace(
+                path=str(Path(baseurl.path) / "envs" / "enhjoerning.yaml")
+            )
+        )
+    threads: 4
+    resources:
+        mem=lambda w, input, attempt: f"{(4* input.size_gb+5)* attempt} GiB",
+        runtime=lambda w, input, attempt: f"{(0.1* input.size_gb+0.1)* attempt} h",
+    params:
+        extra=config["unicorn"]["alnfilt"]["params"],
+    shell:
+        "unicorn alnfilt --threads {threads} -b {input.bam} {params.extra} --outbam {output.bam} > {log} 2>&1"
+
+
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c
 rule align_sort_taxon:
     input:
-        bam=rules.align_merge.output.bam,
+        bam=rules.align_unicorn_alnfilt.output.bam,
     output:
         bam=temp("<temp>/<aligns>/sort_taxon/{sample}_{library}_{read_type_map}.bam"),
     log:
@@ -79,7 +83,7 @@ rule align_sort_taxon:
 
 rule align_samtools_stats:
     input:
-        bam=rules.align_merge.output.bam,
+        bam=rules.align_unicorn_alnfilt.output.bam,
     output:
         "<stats>/<aligns>/samtools/stats/{sample}_{library}_{read_type_map}.txt",
     log:

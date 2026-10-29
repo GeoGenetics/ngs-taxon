@@ -78,6 +78,14 @@ properties:
             pattern: "^((?!\b--?(h|t|threads|b|n|names|d|nodes|a|acc2taxid|outbam|o|outstat)[ =]).)*$"
         required:
           - params
+      alnfilt:
+        type: object
+        properties:
+          params:
+            type: string
+            pattern: "^((?!\b--?(h|t|threads|b|outbam)[ =]).)*$"
+        required:
+          - params
       taxstats:
         type: object
         properties:
@@ -88,6 +96,7 @@ properties:
           - params
     required:
       - refstats
+      - alnfilt
       - taxstats
 
   metadmg:

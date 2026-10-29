@@ -5,7 +5,7 @@
 
 rule metadmg_damage:
     input:
-        unpack(lambda w: get_merge_aln(w, "metadmg_damage")),
+        bam=rules.align_unicorn_alnfilt.output.bam,
     output:
         dmg="<results>/<metadmg>/damage/{sample}_{library}_{read_type_map}.bdamage.gz",
         stats="<stats>/<metadmg>/damage/{sample}_{library}_{read_type_map}.stat.gz",
@@ -30,7 +30,7 @@ rule metadmg_damage:
     shell:
         """
         (
-            metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.aln}
+            metaDMG-cpp getdamage --threads {threads} --run_mode 0 {params.extra} --out_prefix {params.out_prefix} {input.bam}
             mv {params.out_prefix}.stat.gz {output.stats}
             mv {params.out_prefix}.rlens.gz {output.rlen}
         ) >{log} 2>&1
@@ -39,7 +39,7 @@ rule metadmg_damage:
 
 rule metadmg_lca:
     input:
-        unpack(lambda w: get_merge_aln(w, "metadmg_lca")),
+        bam=rules.align_unicorn_alnfilt.output.bam,
         nodes=config["taxonomy"]["nodes"],
         names=config["taxonomy"]["names"],
         acc2taxid=[
@@ -72,7 +72,7 @@ rule metadmg_lca:
     shell:
         """
         (
-            metaDMG-cpp lca --threads {threads} --bam {input.aln} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --famout 1 --out_prefix {params.out_prefix}
+            metaDMG-cpp lca --threads {threads} --bam {input.bam} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --famout 1 --out_prefix {params.out_prefix}
             mv {params.out_prefix}.famoutreads.bam {output.bam_fam}
             mv {params.out_prefix}.usedreads.bam {output.bam_used}
             mv {params.out_prefix}.stat.gz {output.stats}

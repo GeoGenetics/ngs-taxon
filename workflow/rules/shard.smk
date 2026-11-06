@@ -219,6 +219,7 @@ rule shard_dragen:
         stats_map="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.map.csv",
         stats_ploidy="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.ploidy.csv",
         stats_time="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.time.csv",
+        stats_align="<stats>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.align.csv",
     log:
         "<logs>/<shards>/dragen/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
     benchmark:
@@ -228,17 +229,17 @@ rule shard_dragen:
         mem=lambda w, attempt: f"{50* attempt} GiB",
         runtime=lambda w, attempt: f"{2* attempt} h",
     params:
-        version="4.5.4",
+        version="4.6.2",
         idx_dir=lambda w: expand(config["ref"][w.ref]["path"], **w),
         #idx_dir=lambda w, input: os.path.commonprefix(input.idx),
         output_prefix=lambda w, output: Path(output.bam).with_suffix("").name,
         output_dir=lambda w, output: str(Path(output.bam).parent),
         rg=lambda w: read_group_merge(w, "dragen"),
-        extra=lambda w: config["ref"][w.ref]["map"]["params"],
+        extra=lambda w: "--generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --preserve-map-align-order=true --enable-reference-alignment-tally=true" + config["ref"][w.ref]["map"]["params"],
     shell:
         """
         (
-            /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --preserve-map-align-order=true --force --output-directory {params.output_dir} --output-file-prefix {params.output_prefix} \
+            /opt/dragen/{params.version}/bin/dragen --num-threads {threads} -1 {input.sample} -r {params.idx_dir} {params.rg} {params.extra} --force --output-directory {params.output_dir} --output-file-prefix {params.output_prefix} \
                 && mv --verbose {params.output_dir}/{params.output_prefix}-replay.json {output.replay} \
                 && mv --verbose {params.output_dir}/{params.output_prefix}.metrics.json {output.stats_json} \
                 && mv --verbose {params.output_dir}/{params.output_prefix}.fastqc_metrics.csv {output.stats_fastqc} \
@@ -246,7 +247,8 @@ rule shard_dragen:
                 && touch {params.output_dir}/{params.output_prefix}.mapping_metrics.csv \
                 && mv --verbose {params.output_dir}/{params.output_prefix}.mapping_metrics.csv {output.stats_map} \
                 && mv --verbose {params.output_dir}/{params.output_prefix}.ploidy_estimation_metrics.csv {output.stats_ploidy} \
-                && mv --verbose {params.output_dir}/{params.output_prefix}.time_metrics.csv {output.stats_time}
+                && mv --verbose {params.output_dir}/{params.output_prefix}.time_metrics.csv {output.stats_time} \
+                && mv --verbose {params.output_dir}/{params.output_prefix}.contig_alignment_metrics.csv {output.stats_align}
         ) >{log[0]} 2>&1
         """
 

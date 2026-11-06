@@ -1,24 +1,3 @@
-def get_merge_aln(wildcards, rule):
-    fall_through = False
-    if rule in ["metadmg_damage", "metadmg_lca"] or fall_through:
-        if is_activated("bam_filter/filter") or is_activated("bam_filter/reassign"):
-            return {"aln": rules.align_sort_query.output.bam}
-        fall_through = True
-    if rule == "align_filter" or fall_through:
-        if is_activated("bam_filter/reassign"):
-            return {"aln": rules.align_reassign.output.bam}
-        fall_through = True
-    if rule == "align_reassign" or fall_through:
-        if is_activated("bam_filter/filter") or is_activated("bam_filter/reassign"):
-            return {
-                "aln": rules.align_sort_coord.output.bam,
-                "idx": rules.align_sort_coord.output.idx,
-            }
-        else:
-            return {"aln": rules.align_merge.output.bam}
-        fall_through = True
-    raise ValueError(f"Invalid rule specified: {rule}")
-
 
 #############
 ### RULES ###
@@ -27,10 +6,11 @@ def get_merge_aln(wildcards, rule):
 
 rule align_merge:
     input:
-        lambda w: expand_pandas(
+        bam=expand_pandas(
             rules.shard_sort_query.input.bam, ref_sets, allow_missing=True
         ),
-    # lambda w: expand(rules.shard_sort_query.input.bam, zip, **ref_sets.to_dict("list"), allow_missing=True),
+        fastq=get_fastq2map,
+    # bam=expand(rules.shard_sort_query.input.bam, zip, **ref_sets.to_dict("list"), allow_missing=True),
     output:
         bam="<results>/<aligns>/merge/{sample}_{library}_{read_type_map}.bam",
     log:
@@ -46,9 +26,9 @@ rule align_merge:
         mem=lambda w, input, attempt: f"{(0.2* input.size_gb+30)* attempt} GiB",
         runtime=lambda w, input, attempt: f"{(0.03* input.size_gb+1)* attempt} h",
     params:
-        extra="-noTrimHeader",
+        extra="-noTrimHeader -noUnmapped",
     shell:
-        "onebam bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M -P {resources.tmpdir} {params.extra} -o {output.bam} {input} > {log} 2>&1"
+        "bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M -P {resources.tmpdir} {params.extra} -Cs {input.fastq} -o {output.bam} {input.bam} > {log} 2>&1"
 
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c

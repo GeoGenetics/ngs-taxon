@@ -72,7 +72,7 @@ def read_group_merge(wildcards, tool):
 #############
 
 
-def get_data(wildcards):
+def get_fastq2map(wildcards):
     read_type_trim = {"pe": ["R1", "R2"], "se": ["R"]}
     return local(
         expand(
@@ -110,7 +110,7 @@ def get_bowtie2_index(wildcards):
 
 rule shard_bowtie2:
     input:
-        sample=get_data,
+        sample=get_fastq2map,
         idx=get_bowtie2_index,
     output:
         bam=temp(
@@ -137,7 +137,7 @@ rule shard_bowtie2:
 
 rule shard_bwa_aln:
     input:
-        fastq=get_data,
+        fastq=get_fastq2map,
         idx=lambda w: multiext(
             config["ref"][w.ref]["path"], ".amb", ".ann", ".bwt", ".pac", ".sa"
         ),
@@ -191,7 +191,7 @@ rule shard_bwa_samxe:
 
 rule shard_dragen:
     input:
-        sample=get_data,
+        sample=get_fastq2map,
         #idx=lambda w: multiext(
         #    config["ref"][w.ref]["path"] + "/",
         #    "dragen-replay.json",
@@ -331,7 +331,7 @@ rule shard_saturated_reads_remove:
 
 rule shard_saturated_reads_extract:
     input:
-        fastq=get_data,
+        fastq=get_fastq2map,
         read_id=rules.shard_saturated_reads_filter.output.read_id,
     output:
         fq="<results>/<reads>/saturated/{sample}_{library}_{read_type_map}.fastq.gz",

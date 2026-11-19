@@ -1,11 +1,10 @@
 """
-Rule test code for unit testing of rules generated with Snakemake 9.25.2.
+Rule test code for unit testing of rules generated with Snakemake 9.27.2.
 """
 
 import os
 import sys
 import shutil
-import pytest
 import tempfile
 from pathlib import Path
 from subprocess import check_output
@@ -13,7 +12,6 @@ from subprocess import check_output
 sys.path.insert(0, os.path.dirname(__file__))
 
 
-@pytest.mark.skip(reason="Picard BAM comparison fails (https://github.com/broadinstitute/picard/issues/2053)")
 def test_align_merge(conda_prefix):
 
     with tempfile.TemporaryDirectory() as tmpdir:

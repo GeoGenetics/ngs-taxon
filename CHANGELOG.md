@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.1](https://github.com/GeoGenetics/ngs-taxon/compare/v0.12.0...v0.12.1) (2026-11-19)
+
+
+### Bug Fixes
+
+* update onebam sort to output collated fastq files ([#60](https://github.com/GeoGenetics/ngs-taxon/issues/60)) ([3b1c2d5](https://github.com/GeoGenetics/ngs-taxon/commit/3b1c2d5ff1bafd4f35b95b8148252e7ba82a2334))
+
 ## [0.12.0](https://github.com/GeoGenetics/ngs-taxon/compare/v0.11.2...v0.12.0) (2026-08-24)
 
 

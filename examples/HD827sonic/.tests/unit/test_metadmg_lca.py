@@ -1,5 +1,5 @@
 """
-Rule test code for unit testing of rules generated with Snakemake 9.19.0.
+Rule test code for unit testing of rules generated with Snakemake 9.27.1.
 """
 
 import os
@@ -32,8 +32,8 @@ def test_metadmg_lca(conda_prefix):
                 "python",
                 "-m",
                 "snakemake",
-                "results/metadmg/lca/HD827sonic_1_lib1_collapsed.bdamage.gz",
                 "results/metadmg/lca/HD827sonic_1_lib1_collapsed.lca.gz",
+                "results/metadmg/lca/HD827sonic_1_lib1_collapsed.bdamage.gz",
                 "results/metadmg/lca/HD827sonic_1_lib1_collapsed.family.bam",
                 "results/metadmg/lca/HD827sonic_1_lib1_collapsed.used.bam",
                 "stats/metadmg/lca/HD827sonic_1_lib1_collapsed.stat.gz",

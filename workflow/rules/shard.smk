@@ -72,7 +72,7 @@ def read_group_merge(wildcards, tool):
 #############
 
 
-def get_data(wildcards):
+def get_fastq2map(wildcards):
     read_type_trim = {"pe": ["R1", "R2"], "se": ["R"]}
     return local(
         expand(
@@ -110,7 +110,7 @@ def get_bowtie2_index(wildcards):
 
 rule shard_bowtie2:
     input:
-        sample=get_data,
+        sample=get_fastq2map,
         idx=get_bowtie2_index,
     output:
         bam=temp(
@@ -137,7 +137,7 @@ rule shard_bowtie2:
 
 rule shard_bwa_aln:
     input:
-        fastq=get_data,
+        fastq=get_fastq2map,
         idx=lambda w: multiext(
             config["ref"][w.ref]["path"], ".amb", ".ann", ".bwt", ".pac", ".sa"
         ),
@@ -191,7 +191,7 @@ rule shard_bwa_samxe:
 
 rule shard_dragen:
     input:
-        sample=get_data,
+        sample=get_fastq2map,
         #idx=lambda w: multiext(
         #    config["ref"][w.ref]["path"] + "/",
         #    "dragen-replay.json",
@@ -331,7 +331,7 @@ rule shard_saturated_reads_remove:
 
 rule shard_saturated_reads_extract:
     input:
-        fastq=get_data,
+        fastq=get_fastq2map,
         read_id=rules.shard_saturated_reads_filter.output.read_id,
     output:
         fq="<results>/<reads>/saturated/{sample}_{library}_{read_type_map}.fastq.gz",
@@ -384,26 +384,3 @@ rule shard_unicorn_refstats:
         extra=config["unicorn"]["refstats"]["params"],
     shell:
         "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --names {input.names} --nodes {input.nodes} --acc2tax {input.acc2taxid} --outbam {output.bam} --outstat {output.stats} > {log} 2>&1"
-
-
-# https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c
-rule shard_sort_query:
-    input:
-        bam=rules.shard_unicorn_refstats.output.bam,
-    output:
-        bam=temp(
-            "<temp>/<shards>/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.bam"
-        ),
-    log:
-        "<logs>/<shards>/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.log",
-    benchmark:
-        "<benchmarks>/<shards>/sort_query/{sample}_{library}_{read_type_map}.{ref}.{n_shard}-of-{tot_shards}.jsonl"
-    threads: 6
-    resources:
-        mem=lambda w, input, attempt: f"{(10* input.size_gb+20)* attempt} GiB",
-        runtime=lambda w, input, attempt: f"{(0.02* input.size_gb+1)* attempt} h",
-    params:
-        extra="-n",
-        mem_overhead_factor=0.2,
-    wrapper:
-        "v9.15.0/bio/samtools/sort"

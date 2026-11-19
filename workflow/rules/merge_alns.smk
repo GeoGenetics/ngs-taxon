@@ -6,10 +6,10 @@
 rule align_merge:
     input:
         bam=expand_pandas(
-            rules.shard_sort_query.input.bam, ref_sets, allow_missing=True
+            rules.shard_unicorn_refstats.output.bam, ref_sets, allow_missing=True
         ),
         fastq=get_fastq2map,
-    # bam=expand(rules.shard_sort_query.input.bam, zip, **ref_sets.to_dict("list"), allow_missing=True),
+    # bam=expand(rules.shard_unicorn_refstats.output.bam, zip, **ref_sets.to_dict("list"), allow_missing=True),
     output:
         bam="<results>/<aligns>/merge/{sample}_{library}_{read_type_map}.bam",
     log:

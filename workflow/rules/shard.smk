@@ -235,7 +235,8 @@ rule shard_dragen:
         output_prefix=lambda w, output: Path(output.bam).with_suffix("").name,
         output_dir=lambda w, output: str(Path(output.bam).parent),
         rg=lambda w: read_group_merge(w, "dragen"),
-        extra=lambda w: "--generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --preserve-map-align-order=true --enable-reference-alignment-tally=true" + config["ref"][w.ref]["map"]["params"],
+        extra=lambda w: "--generate-zs-tags=true --enable-vcf-indexing=false --enable-bam-indexing=false --qc-coverage-reports-wgs=false --generate-md-tags=true --enable-sort=false --dump-map-align-registers=true --preserve-map-align-order=true --enable-reference-alignment-tally=true"
+        + config["ref"][w.ref]["map"]["params"],
     shell:
         """
         (

@@ -28,7 +28,7 @@ rule align_merge:
     params:
         extra="-noTrimHeader -noUnmapped",
     shell:
-        "bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M -P {resources.tmpdir} {params.extra} -Cs {input.fastq} -o {output.bam} {input.bam} > {log} 2>&1"
+        "onebam bamsort -T {threads} -m $(({resources.mem_mb} / {threads}))M -P {resources.tmpdir} {params.extra} -Cs {input.fastq} -o {output.bam} {input.bam} > {log} 2>&1"
 
 
 # https://bioinformatics.stackexchange.com/questions/18538/samtools-sort-most-efficient-memory-and-thread-settings-for-many-samples-on-a-c

@@ -40,8 +40,7 @@ rule metadmg_damage:
 rule metadmg_lca:
     input:
         bam=rules.align_merge.output.bam,
-        nodes=config["taxonomy"]["nodes"],
-        names=config["taxonomy"]["names"],
+        taxdump=config["taxdump"],
         acc2taxid=[
             config["ref"][ref]["acc2taxid"]
             for ref in config["ref"]
@@ -72,7 +71,7 @@ rule metadmg_lca:
     shell:
         """
         (
-            metaDMG-cpp lca --threads {threads} --bam {input.bam} --nodes {input.nodes} --names {input.names} --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --famout 1 --out_prefix {params.out_prefix}
+            metaDMG-cpp lca --threads {threads} --bam {input.bam} --nodes {input.taxdump}/nodes.dmp --names {input.taxdump}/names.dmp --acc2tax <(cat {input.acc2taxid}) {params.extra} --temp {resources.tmpdir}/ --famout 1 --out_prefix {params.out_prefix}
             mv {params.out_prefix}.famoutreads.bam {output.bam_fam}
             mv {params.out_prefix}.usedreads.bam {output.bam_used}
             mv {params.out_prefix}.stat.gz {output.stats}
@@ -93,8 +92,7 @@ def _get_library_type(wildcards):
 rule metadmg_dfit:
     input:
         dmg=rules.metadmg_lca.output.dmg,
-        nodes=config["taxonomy"]["nodes"],
-        names=config["taxonomy"]["names"],
+        taxdump=config["taxdump"],
     output:
         dfit="<results>/<metadmg>/dfit/{sample}_{library}_{read_type_map}.dfit.gz",
     log:
@@ -116,7 +114,7 @@ rule metadmg_dfit:
         extra=lambda w: f"--lib {_get_library_type(w)} "
         + config["metadmg"]["dfit"]["params"],
     shell:
-        "metaDMG-cpp dfit {input.dmg} --threads {threads} --names {input.names} --nodes {input.nodes} {params.extra} --out_prefix {params.out_prefix} > {log} 2>&1"
+        "metaDMG-cpp dfit {input.dmg} --threads {threads} --nodes {input.taxdump}/nodes.dmp --names {input.taxdump}/names.dmp {params.extra} --out_prefix {params.out_prefix} > {log} 2>&1"
 
 
 rule metadmg_aggregate:
@@ -124,8 +122,7 @@ rule metadmg_aggregate:
         dmg=rules.metadmg_lca.output.dmg,
         lca=rules.metadmg_lca.output.stats,
         dfit=rules.metadmg_dfit.output.dfit,
-        nodes=config["taxonomy"]["nodes"],
-        names=config["taxonomy"]["names"],
+        taxdump=config["taxdump"],
     output:
         stats="<results>/<metadmg>/aggregate/{sample}_{library}_{read_type_map}.stat.gz",
     log:
@@ -145,4 +142,4 @@ rule metadmg_aggregate:
             Path(output.stats.removesuffix(".gz")).with_suffix("")
         ),
     shell:
-        "metaDMG-cpp aggregate {input.dmg} --nodes {input.nodes} --names {input.names} --lcastat {input.lca} --dfit {input.dfit} --out_prefix {params.out_prefix} > {log} 2>&1"
+        "metaDMG-cpp aggregate {input.dmg} --nodes {input.taxdump}/nodes.dmp --names {input.taxdump}/names.dmp --lcastat {input.lca} --dfit {input.dfit} --out_prefix {params.out_prefix} > {log} 2>&1"

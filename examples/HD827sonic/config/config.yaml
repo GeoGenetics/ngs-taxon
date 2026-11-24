@@ -2,9 +2,7 @@
 #############
 ### ALIGN ###
 #############
-taxonomy:
-  nodes: "data/taxdump/nodes.dmp"
-  names: "data/taxdump/names.dmp"
+taxdump: "data/taxdump/"
 
 ref:
   test:
@@ -15,6 +13,7 @@ ref:
       params: "-k 10 -L 22 -i S,1,1.15 --mp 1,1 --rdg 0,1 --rfg 0,1 --score-min L,0,-0.1 --no-unal"
       bt2l: False
     acc2taxid: "data/test.acc2taxid.gz"
+    lengths: "data/test.lengths.tsv"
 
 filter:
   saturated_reads:
@@ -36,6 +35,12 @@ metadmg:
 
   dfit:
     params: "--nopt 5 --showfits 2 --seed 12345"
+
+mlid:
+  abundance:
+    params: "--truncate-fraction 0.1"
+  lca:
+    params: "--mass-absolute 0.1 --mass-relative 0.1"
 
 report:
   multiqc: "--verbose"

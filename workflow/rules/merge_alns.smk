@@ -76,8 +76,7 @@ rule align_samtools_stats:
 rule align_unicorn_taxstats:
     input:
         bam=rules.align_sort_taxon.output.bam,
-        nodes=config["taxonomy"]["nodes"],
-        names=config["taxonomy"]["names"],
+        taxdump=config["taxdump"],
     output:
         stats="<stats>/<aligns>/unicorn/taxstats/{sample}_{library}_{read_type_map}.tsv",
     log:
@@ -97,4 +96,4 @@ rule align_unicorn_taxstats:
     params:
         extra=config["unicorn"]["taxstats"]["params"],
     shell:
-        "unicorn taxstats --threads {threads} -b {input.bam} --names {input.names} --nodes {input.nodes} --qsize 10000 {params.extra} --outstat {output.stats} > {log} 2>&1"
+        "unicorn taxstats --threads {threads} -b {input.bam} --nodes {input.taxdump}/nodes.dmp --names {input.taxdump}/names.dmp --qsize 10000 {params.extra} --outstat {output.stats} > {log} 2>&1"

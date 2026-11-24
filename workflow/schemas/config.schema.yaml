@@ -5,16 +5,8 @@ description: Read taxonomic assignment configuration file
 type: object
 properties:
 
-  taxonomy:
-    type: object
-    properties:
-      names:
-        type: string
-      nodes:
-        type: string
-    required:
-      - names
-      - nodes
+  taxdump:
+    type: string
 
   ref:
     type: object
@@ -122,6 +114,29 @@ properties:
       - lca
       - dfit
 
+  mlid:
+    type: object
+    properties:
+      abundance:
+        type: object
+        properties:
+          params:
+            type: string
+            pattern: "^((?!\b--?(threads|trace|temp-dir|output)[ =]).)*$"
+        required:
+          - params
+      lca:
+        type: object
+        properties:
+          params:
+            type: string
+            pattern: "^((?!\b--?(taxdump|output)[ =]).)*$"
+        required:
+          - params
+    required:
+      - abundance
+      - lca
+
   report:
     type: object
     properties:
@@ -132,8 +147,9 @@ properties:
       - multiqc
 
 required:
-  - taxonomy
+  - taxdump
   - ref
   - filter
   - unicorn
   - metadmg
+  - mlid

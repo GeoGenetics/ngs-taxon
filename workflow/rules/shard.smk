@@ -358,8 +358,7 @@ rule shard_unicorn_refstats:
             if is_activated("filter/saturated_reads")
             else rules.shard_count_alns.input.bam
         ),
-        nodes=config["taxonomy"]["nodes"],
-        names=config["taxonomy"]["names"],
+        taxdump=config["taxdump"],
         acc2taxid=lambda w: config["ref"][w.ref]["acc2taxid"],
     output:
         bam=temp(
@@ -383,4 +382,4 @@ rule shard_unicorn_refstats:
     params:
         extra=config["unicorn"]["refstats"]["params"],
     shell:
-        "unicorn refstats --threads {threads} -b {input.bam} {params.extra} --names {input.names} --nodes {input.nodes} --acc2tax {input.acc2taxid} --outbam {output.bam} --outstat {output.stats} > {log} 2>&1"
+        "unicorn refstats --threads {threads} -b {input.bam} --nodes {input.taxdump}/nodes.dmp --names {input.taxdump}/names.dmp --acc2tax {input.acc2taxid} {params.extra} --outbam {output.bam} --outstat {output.stats} > {log} 2>&1"
